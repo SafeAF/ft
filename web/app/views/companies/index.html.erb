@@ -2,13 +2,19 @@
 
 <h1>Companies</h1>
 
+<%= link_to "New company", new_company_path %>
+
 <div id="companies">
   <% @companies.each do |company| %>
+    <div class="row mt-5">
     <%= render company %>
     <p>
       <%= link_to "Show this company", company %>
     </p>
+    </div>
   <% end %>
 </div>
 
 <%= link_to "New company", new_company_path %>
+
+
