@@ -14,11 +14,68 @@
     <% end %>
     </div>
     <div class="col">
-    <%= render company %>
+    
+            <h3><%= link_to  company.name , company %></h3>
+
+            <div class="about mt-3">
+            <%= company.about.truncate(160) %>
+            </div>
+
+          <div class="row mt-2">
+            <div class="col">
+        
+          <%= company.address %>
+          <div class="row">
+            <div class="col">
+            <%= company.phone %>
+
+            </div>
+
+            </div>
+
+          <div class="row">
+            <div class="col">
+            <%= company.hours %>
+
+            </div>
+
+            </div>
+
+
+
+            </div>
+
+            <div class="col">
+                <div class="row">
+                <div class="col-3">
+                  <strong>Website:</strong>
+              <%= company.website %>
+              </div>
+              </div>
+
+          <div class="row">
+          <div class="col-3">
+              <strong>Email:</strong>
+              <%= company.email %>
+              </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
-    <p>
-      <%= link_to "Show this company", company %>
-    </p>
+
     </div>
   <% end %>
 </div>
