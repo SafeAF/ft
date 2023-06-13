@@ -7,6 +7,9 @@
 <div id="companies">
   <% @companies.each do |company| %>
     <div class="row mt-5">
+    <% if company.logo.attached? %>
+    <%= image_tag company.logo.variant(:thumb) %>
+    <% end %>
     <%= render company %>
     <p>
       <%= link_to "Show this company", company %>
