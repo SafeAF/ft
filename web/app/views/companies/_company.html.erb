@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col">
 
-  <h3><%= company.name %></h3>
+  <h3><%= link_to  company.name , company %></h3>
   <p>
     <strong>Contact: </strong><%= company.contact %>
     
@@ -15,8 +15,8 @@
     <%= company.address %>
   </p>
 
-
-    <div class="col">
+    <div class="row mt-5">
+    <div class="col-2">
 
       <p>
         <strong>Phone:</strong>
@@ -27,7 +27,7 @@
         <strong>Email:</strong>
         <%= company.email %>
       </p>
-
+   <div class="col">
       <p>
         <strong>Website:</strong>
         <%= company.website %>
@@ -38,6 +38,7 @@
         <%= company.hours %>
       </p>
 
+      </div>
       </div>
 
   <p>
@@ -50,6 +51,7 @@
     <%= company.category %>
   </p>
 
+      </div>
     </div>
   </div>
 </div>
