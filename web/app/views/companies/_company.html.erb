@@ -1,42 +1,48 @@
 <div id="<%= dom_id company %>">
+  <div class="row">
+    <div class="col">
+
+  <h3><%= company.name %></h3>
   <p>
-    <strong>Name:</strong>
-    <%= company.name %>
+    <strong>Contact: </strong><%= company.contact %>
+    
   </p>
 
-  <p>
-    <strong>Contact:</strong>
-    <%= company.contact %>
-  </p>
+
 
   <p>
     <strong>Address:</strong>
     <%= company.address %>
   </p>
 
-  <p>
-    <strong>Phone:</strong>
-    <%= company.phone %>
-  </p>
 
-  <p>
-    <strong>Email:</strong>
-    <%= company.email %>
-  </p>
+    <div class="col">
 
-  <p>
-    <strong>Website:</strong>
-    <%= company.website %>
-  </p>
+      <p>
+        <strong>Phone:</strong>
+        <%= company.phone %>
+      </p>
 
-  <p>
-    <strong>Hours:</strong>
-    <%= company.hours %>
-  </p>
+      <p>
+        <strong>Email:</strong>
+        <%= company.email %>
+      </p>
+
+      <p>
+        <strong>Website:</strong>
+        <%= company.website %>
+      </p>
+
+      <p>
+        <strong>Hours:</strong>
+        <%= company.hours %>
+      </p>
+
+      </div>
 
   <p>
     <strong>About:</strong>
-    <%= company.about %>
+    <%= company.about.truncate(160) %>
   </p>
 
   <p>
@@ -44,4 +50,6 @@
     <%= company.category %>
   </p>
 
+    </div>
+  </div>
 </div>
