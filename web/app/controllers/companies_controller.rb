@@ -1,5 +1,7 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: %i[ show edit update destroy ]
+  before_action :check_user, only: [:edit, :update, :destroy]
+
 
   # GET /companies or /companies.json
   def index
@@ -68,4 +70,12 @@ class CompaniesController < ApplicationController
     def company_params
       params.require(:company).permit(:name, :contact, :address, :phone, :email, :website, :hours, :about, :category, :description, :logo)
     end
+
+    # only allow the user that created the company to destroy it.
+    def check_user
+      unless current_user == @company.user
+        redirect_to companies_path, alert: "Sorry, you aren't allowed to edit this company."
+      end
+    end
+    
 end

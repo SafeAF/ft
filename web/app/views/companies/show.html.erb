@@ -1,5 +1,4 @@
-<p style="color: green"><%= notice %></p>
-
+<div class="container">
 <%= render @company %>
 
 <%= @company.description %>
@@ -9,4 +8,8 @@
   <%= link_to "Back to companies", companies_path %>
 
   <%= button_to "Destroy this company", @company, method: :delete %>
+</div>
+
+
+<%= @company.user.id %>
 </div>

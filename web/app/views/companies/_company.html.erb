@@ -3,6 +3,12 @@
     <div class="col">
 
   <h3><%= link_to  company.name , company %></h3>
+  
+  <p>
+    <strong>About:</strong>
+    <%= company.about.truncate(160) %>
+  </p>
+
   <p>
     <strong>Contact: </strong><%= company.contact %>
     
@@ -41,11 +47,7 @@
       </div>
       </div>
 
-  <p>
-    <strong>About:</strong>
-    <%= company.about.truncate(160) %>
-  </p>
-
+  
   <p>
     <strong>Category:</strong>
     <%= company.category %>
