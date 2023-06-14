@@ -5,3 +5,50 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+# Clean database (optional)
+Company.destroy_all
+User.destroy_all
+
+
+foo = User.create!(
+    username: "Foo",
+    location: "Twin Falls, ID",
+    email: "foo@foo.com",
+    password: "foobar",
+    password_confirmation: "foobar"
+)
+
+# Create some Users
+user1 = User.create!(
+  username: 'JohnDoe',
+  location: 'New York, USA',
+  email: 'john@example.com',
+  password: '12345678',
+  password_confirmation: '12345678'
+)
+
+
+user2 = User.create!(
+    username: 'JaneDoe',
+    location: 'Los Angeles, USA',
+    email: 'jane@example.com',
+    password: '12345678',
+    password_confirmation: '12345678'
+  )
+
+
+
+  50.times do
+    Company.create!(
+      name: Faker::Company.name,
+      contact: Faker::Name.name,
+      address: Faker::Address.full_address,
+      phone: Faker::PhoneNumber.phone_number,
+      email: Faker::Internet.email,
+      website: Faker::Internet.url,
+      hours: "9am - 5pm",
+      about: Faker::Company.catch_phrase,
+      category: Faker::Company.industry,
+      user: User.all.sample
+    )
+  end
