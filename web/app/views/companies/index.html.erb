@@ -1,9 +1,9 @@
 <div class="container">
 
 
-<h1>Companies</h1>
+<h1>Company Directory</h1>
 
-<%= link_to "New company", new_company_path %>
+<%= link_to "New company", new_company_path, class: "btn btn-info" %>
 
 <div id="companies">
   <% @companies.each do |company| %>
@@ -80,7 +80,7 @@
   <% end %>
 </div>
 
-<%= link_to "New company", new_company_path %>
+<%= link_to "New company", new_company_path, class: "btn btn-info" %>
 
 
 </div>
