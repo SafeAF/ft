@@ -11,6 +11,8 @@ class Company < ApplicationRecord
   #validates :phone, format: { with: /\A\d+\z/, message: "Integer only. No sign allowed." }
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
 
+  scope :in_category, ->(category) { where(category: category) if category.present? }
+# ex usage: Company.in_category("technology")
 
     # Enum for Category
     enum category: {
@@ -49,7 +51,7 @@ class Company < ApplicationRecord
     }
 
 
-    
+
   def self.ransackable_attributes(auth_object = nil)
     ["about", "address", "category", "contact", "email", "hours", "id", "name", "phone", "website"]
   end

@@ -21,3 +21,14 @@
   </div>
 
 <% end %>
+
+
+<%= search_form_for @q do |f| %>
+  <%= f.label :name_cont %>
+  <%= f.search_field :name_cont %>
+
+  <%= f.label :category_eq %>
+  <%= f.select :category_eq, Company.categories.keys.map { |c| [c.humanize, c] }, include_blank: true %>
+
+  <%= f.submit %>
+<% end %>

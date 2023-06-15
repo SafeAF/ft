@@ -9,10 +9,13 @@ class CompaniesController < ApplicationController
     #@companies = Company.all
 
     @q = Company.ransack(params[:q])
+#    @q = Company.ransack(name_cont: 'company_name', category_eq: 'category_name')
 
     # Show 10 companies per page
     #@companies = @q.result(distinct: true).page(params[:page]).per(10) 
     @companies = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(10)
+
+
   end
 
   # GET /companies/1 or /companies/1.json
