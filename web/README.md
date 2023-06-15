@@ -1,24 +1,46 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Here are the commands used to set up the project:
 
-Things you may want to cover:
+1.  Generate home controller and index action:
+    ```
+    rails g controller home index
+    ```
 
-* Ruby version
+2.  Install Devise:
+    ```
+    bundle add devise
+    bundle install 
+    rails g devise:install
+    rails g devise User
+    ```
 
-* System dependencies
+3.  Database migration:
+    ```
+    rake db:migrate
+    ```
 
-* Configuration
+4.  Generate Company scaffold:
+    ```
+    rails g scaffold company name contact address phone email website hours about:text category 
+    rails db:migrate
+    ```
 
-* Database creation
+5.  Install and setup Action Text:
+    ```
+    rails action_text:install
+    rake db:migrate
+    ```
 
-* Database initialization
+6.  Add image processing gem and install Active Storage:
+    ```
+    bundle add image_processing
+    bundle install
+    rails active_storage:install
+    rails db:migrate
+    ```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+7.  Generate Kaminari views for pagination:
+    ```
+    rails g kaminari:views bootstrap4
+    ```
