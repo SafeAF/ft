@@ -13,9 +13,18 @@
 
 <div id="companies">
 
-<div class="row mt-5 justify-content-end">
+<div class="row mt-5 d-flex justify-content-end">
 
 <%= sort_link(@q, :name, 'Sort by Company Name', class: 'btn btn-primary') %>
+
+
+<div class="row">
+  <div class="col mt-3 d-flex justify-content-end">
+
+<%= paginate @companies %>
+
+  </div>
+</div>
 
 <div>
 
@@ -105,8 +114,13 @@
   <% end %>
 </div>
 
+<div class="row">
+  <div class="col mt-3 d-flex justify-content-end">
 
 <%= paginate @companies %>
+
+  </div>
+</div>
 
 <%= link_to "New company", new_company_path, class: "btn btn-info" %>
 
