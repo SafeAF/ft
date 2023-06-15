@@ -44,3 +44,8 @@ Here are the commands used to set up the project:
     ```
     rails g kaminari:views bootstrap4
     ```
+
+8.  Generate Devise views
+    ```
+    rails generate devise:views
+    ```
