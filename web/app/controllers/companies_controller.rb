@@ -3,12 +3,16 @@ class CompaniesController < ApplicationController
   before_action :check_user, only: [:edit, :update, :destroy]
 
 
+
   # GET /companies or /companies.json
   def index
     #@companies = Company.all
 
     @q = Company.ransack(params[:q])
-    @companies = @q.result(distinct: true).page(params[:page]).per(10) # Show 10 companies per page
+
+    # Show 10 companies per page
+    @companies = @q.result(distinct: true).page(params[:page]).per(10) 
+    
   end
 
   # GET /companies/1 or /companies/1.json
@@ -63,7 +67,11 @@ class CompaniesController < ApplicationController
     end
   end
 
+
+
   private
+
+
     # Use callbacks to share common setup or constraints between actions.
     def set_company
       @company = Company.find(params[:id])
@@ -71,7 +79,8 @@ class CompaniesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def company_params
-      params.require(:company).permit(:name, :contact, :address, :phone, :email, :website, :hours, :about, :category, :description, :logo)
+      params.require(:company).permit(:name, :contact, :address, :phone, :email, :website,
+         :hours, :about, :category, :description, :logo, :q)
     end
 
     # only allow the user that created the company to destroy it.
