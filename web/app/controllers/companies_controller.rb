@@ -11,8 +11,8 @@ class CompaniesController < ApplicationController
     @q = Company.ransack(params[:q])
 
     # Show 10 companies per page
-    @companies = @q.result(distinct: true).page(params[:page]).per(10) 
-    
+    #@companies = @q.result(distinct: true).page(params[:page]).per(10) 
+    @companies = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   # GET /companies/1 or /companies/1.json

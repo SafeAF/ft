@@ -8,6 +8,10 @@
 <%= link_to "New company", new_company_path, class: "btn btn-info" %>
 
 <div id="companies">
+
+<%= sort_link(@q, :name, 'Sort by Company Name') %>
+
+
   <% @companies.each do |company| %>
     <div class="row mt-5">
     <div class="col-1">
