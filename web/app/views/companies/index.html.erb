@@ -1,16 +1,23 @@
 <div class="container">
+  <div class="text-center">
+ 
+    <h1>Company Directory | <%= link_to "New company", new_company_path, class: "btn btn-info" %></h1>
+ 
+    <div class="mt-5">
+    <%= render 'search' %>
+    </div> 
 
-<%= render 'search' %>
 
+  </div>
 
-<h1>Company Directory</h1>
-
-<%= link_to "New company", new_company_path, class: "btn btn-info" %>
 
 <div id="companies">
 
-<%= sort_link(@q, :name, 'Sort by Company Name') %>
+<div class="row mt-5 justify-content-end">
 
+<%= sort_link(@q, :name, 'Sort by Company Name', class: 'btn btn-primary') %>
+
+<div>
 
   <% @companies.each do |company| %>
     <div class="row mt-5">
