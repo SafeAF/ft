@@ -8,7 +8,7 @@ class Company < ApplicationRecord
   # Validation
   validates :name, :contact, :address, :phone, :about, :category, presence: true
   validates :name, :email, uniqueness: true
-  validates :phone, format: { with: /\A\d+\z/, message: "Integer only. No sign allowed." }
+  #validates :phone, format: { with: /\A\d+\z/, message: "Integer only. No sign allowed." }
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
 
   def self.ransackable_attributes(auth_object = nil)
