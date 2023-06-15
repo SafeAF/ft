@@ -9,6 +9,6 @@ class Company < ApplicationRecord
 
 
     def self.ransackable_attributes(auth_object = nil)
-      ["about", "address", "category", "contact", "created_at", "email", "hours", "id", "name", "phone", "updated_at", "user_id", "website"]
+      ["about", "address", "category", "contact", "email", "hours", "id", "name", "phone", "website"]
     end
 end
