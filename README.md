@@ -9,6 +9,13 @@ Our platform will pair a hyperlocal marketplace with a hyperlocal company direct
 ## Company Description
 We are a platform that connects local businesses with local consumers, aiming to boost the visibility and reach of local enterprises while providing consumers with a curated list of local businesses and services.
 
+## Business Objectives
+
+- Develop a self-sustaining, profitable business within two years.
+- Offer lifetime listings for free to early adopters to foster community building and drive early adoption.
+- Sell at least 5 company listings per month during the first year and grow at a rate of 10% annually.
+- Secure at least 25% occupancy of preferential placement spots on an ongoing basis.
+
 ## Market Analysis
 ### Market Trends
 With the rising trend of 'shopping local' and supporting community businesses, a platform that easily connects consumers with local enterprises can capitalize on this movement.
@@ -70,41 +77,13 @@ Our initial sales strategy is to sign up as many businesses as possible before l
 Self funded
 
 ## Exit Strategy
-An exit strategy should be considered in case the business needs to be sold or closed. This could involve selling the business to a larger competitor or another interested party.
+An exit strategy  could involve selling the business to a larger competitor or another interested party.
 
-
-
-
-
-
-Great, thank you for providing all the needed details. Let's put this information together and build out the financial projections for your business.
-
-# Business Plan
-
-## 1. Executive Summary
-
-This document is a business plan for an innovative hyperlocal company directory and marketplace, aimed at connecting local businesses with potential customers. The unique feature of the platform is its business model, where the marketplace functionality is free, but companies pay for listing on the directory. This model aims to drive traffic and provide a high-value proposition for businesses.
-
-## 2. Business Objectives
-
-- Develop a self-sustaining, profitable business within two years.
-- Offer lifetime listings for free to early adopters to foster community building and drive early adoption.
-- Sell at least 5 company listings per month during the first year and grow at a rate of 10% annually.
-- Secure at least 25% occupancy of preferential placement spots on an ongoing basis.
-
-## 3. Sales & Marketing Strategy
-
-Sales and marketing efforts will primarily focus on community engagement and direct outreach. Before launch, the business will seek to sign up as many companies as possible through cold calling and attending community events. After launch, the marketplace will be promoted in a similar fashion.
-
-
-
-## 5. Conclusion
+## Conclusion
 
 The hyperlocal company directory and marketplace aims to provide a unique platform for businesses to reach potential customers. Through an innovative business model and community-focused marketing approach, the platform is expected to achieve profitability within two years. With limited startup and operating costs, the revenue potential for this venture is significant. By remaining flexible and responsive to market needs, this platform can create a vibrant, community-centered marketplace that provides significant value to local businesses.
 
-## 6. Disclaimer
 
-These financial projections are based on estimates and assumptions which may not hold true in real life. Regular financial reviews and adjustments should be carried out to ensure the business remains financially viable.
 
 
 
