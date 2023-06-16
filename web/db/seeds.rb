@@ -40,15 +40,15 @@ user2 = User.create!(
 
   50.times do
     Company.create!(
-      name: Faker::Company.name + rand(10000000).to_s,
+      name: Faker::Company.name + rand(10).to_s,
       contact: Faker::Name.name,
       address: Faker::Address.full_address,
       phone: Faker::PhoneNumber.phone_number,
-      email: Faker::Internet.email + rand(100000000).to_s,
+      email: Faker::Internet.email + rand(10).to_s,
       website: Faker::Internet.url,
       hours: "9am - 5pm",
       about: Faker::Company.catch_phrase,
-      category: Faker::Company.industry,
+      category: Company.categories.keys.sample,
       user: User.all.sample
     )
   end
