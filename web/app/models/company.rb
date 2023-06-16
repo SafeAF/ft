@@ -14,7 +14,9 @@ class Company < ApplicationRecord
   scope :in_category, ->(category) { where(category: category) if category.present? }
 # ex usage: Company.in_category("technology")
 
+
     # Enum for Category
+    # ex. Company.category
     enum category: {
       agriculture: 'Agriculture',
       apparel_and_accessories: 'Apparel & Accessories',

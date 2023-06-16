@@ -1,33 +1,11 @@
-<%= search_form_for @q, html: { class: 'form' } do |f| %>
 
-  <div class="row d-flex">
-    <div class="col">
-     
-      <%= f.search_field :name_cont, class: 'form-control' %>
-    </div>
-
-
-  <%= f.label :category %>
-  <%= f.select :category, Company.categories.keys.map { |key| [Company.categories[key], key] }, prompt: 'Select a category' %>
-
-  <!-- Submit button -->
-  <%= f.submit %>
-
-
-
-    <div class="col-4">
-      <%= f.submit "Search", class: "btn btn-primary mt-4" %>
-    </div>
-  </div>
-
-<% end %>
 
 
 <%= search_form_for @q do |f| %>
-  <%= f.label :name_cont %>
+
   <%= f.search_field :name_cont %>
 
-  <%= f.label :category_eq %>
+  
   <%= f.select :category_eq, Company.categories.keys.map { |c| [c.humanize, c] }, include_blank: true %>
 
   <%= f.submit %>
