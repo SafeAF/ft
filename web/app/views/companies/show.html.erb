@@ -1,7 +1,13 @@
 <div class="container">
 <%= render @company %>
 
+
+<div class="card mt-4">
+  <div class="card-body mt-4">
+    <h3 class="card-title"></h3>
 <%= @company.description %>
+</div>
+</div>
 
 <div>
   <%= link_to "Edit this company", edit_company_path(@company) %> |
