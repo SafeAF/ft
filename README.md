@@ -16,6 +16,24 @@ We are a platform that connects local businesses with local consumers, aiming to
 - Sell at least 5 company listings per month during the first year and grow at a rate of 10% annually.
 - Secure at least 25% occupancy of preferential placement spots on an ongoing basis.
 
+## Business Model
+
+### Revenue Streams
+
+1. **Company Listings:** Businesses will be charged $50 per year for a standard listing in our directory. Prior to the platform's launch, lifetime listings will be given away for free to attract early adopters and stimulate growth.
+
+2. **Preferential Placement:** Businesses can pay an additional $200 per year for preferential placement within their respective category. We expect to sell a quarter of these premium spots on a continuous basis.
+
+3. **Advertising:** The platform will host two ads per page. Pricing for ad space will start at $100 per month, scaling as site traffic increases. Advertising services will include:
+   * **Tiered Pricing:** Different tiers of ad spaces will be available, with prime locations being sold at a premium rate.
+   * **Pay-Per-Click (PPC) or Cost-Per-Impression (CPM) Models:** Advertisers will have the option to pay based on the number of clicks or impressions their ad receives.
+   * **Targeted Advertising:** Advertisers can target their ads to specific categories or geographical locations on the platform.
+   * **Sponsored Content:** Businesses will have the opportunity to feature sponsored content such as blog posts, articles, or videos on the site.
+   * **Affiliate Marketing:** Affiliate deals may be available for businesses selling products or services online.
+   * **Bundle Advertising with Other Services:** If a business purchases a company listing or preferential placement, they will be offered a discount on advertising packages.
+
+
+
 ## Market Analysis
 ### Market Trends
 With the rising trend of 'shopping local' and supporting community businesses, a platform that easily connects consumers with local enterprises can capitalize on this movement.
@@ -35,7 +53,62 @@ The management team will be responsible for overseeing the operations, marketing
 Our primary services include the company directory listing and marketplace advertising. Additional paid services include preferential placement in listings.
 
 ## Marketing and Sales Strategy
-Our initial sales strategy is to sign up as many businesses as possible before launch through cold calling and local marketing at fairs and community events. Post-launch, the marketplace will be promoted in a similar fashion. Additionally, we'll utilize online marketing channels such as social media, SEO, and email marketing.
+Our initial sales strategy is to sign up as many businesses as possible before launch through cold calling and local marketing at fairs and community events. Post-launch, the marketplace will be promoted in a similar fashion. Additionally, we'll utilize online marketing channels such as social media, SEO, and email marketing. The free marketplace is expected to act as a major draw for consumers, which in turn should make listing and advertising on the platform attractive to local businesses.
+
+
+## 4. Financial Projections
+
+### 4.1 Startup Costs
+
+- Legal entity setup: $200
+
+### 4.2 Operating Costs
+
+- Monthly server costs (3 VPS): $30 x 12 = $360 annually
+
+### 4.3 Revenue Streams
+
+#### 4.3.1 Company Listings
+
+- $50 per year
+- Estimated 5 listings sold per month in the first year: $50 x 5 x 12 = $3,000
+
+#### 4.3.2 Preferential Placement
+
+- $200 per year
+- 25% occupancy of preferential spots: $200 x 0.25 x 20 = $1,000 (Assuming 20 categories)
+
+#### 4.3.3 Advertising
+
+Here are the potential sources of advertising revenue:
+
+- **Basic Ad Spots:** These are your regular ad spots that businesses can purchase for $100 per month. They're visible, but they're not as prominent as the premium ad spots. These could be small banner ads, side panel ads, etc.
+
+- **Premium Ad Spots:** These spots are more visible or desirable for advertisers. They're positioned in prime locations on your webpage—like at the top of the page, or between sections of content—where they're more likely to catch a visitor's attention. These spots cost $150 per month, more than the basic spots due to their prime location.
+
+- **Pay-Per-Click (PPC) or Cost-Per-Impression (CPM) Models:** Instead of a fixed price, some ads will generate revenue based on user interaction. Pay-per-click means you earn revenue each time a visitor clicks on the ad, while cost-per-impression means you earn revenue based on the number of times the ad is displayed or seen by visitors. The earnings from these models can vary greatly, but for simplicity, we're estimating an average income of $100 per month from these ads.
+
+
+
+- **Additional sources (Targeted Advertising, Sponsored Content, Affiliate Marketing, and Bundle Deals):** These are other various methods of advertising. For example, targeted advertising could involve showing specific ads to users based on their browsing habits or demographics, sponsored content could involve hosting content that promotes a particular business or product, affiliate marketing involves promoting others' products and earning a commission, and bundle deals could involve selling ad spots in bulk at a discount. We're conservatively estimating these sources to bring in an additional $200 per month.
+
+
+Given that there are two ad spots on every page, the monthly revenue from advertising could be: $100 (basic) + $150 (premium) + $100 (PPC/CPM) + $200 (additional sources) = $550 per ad spot. Given two ad spots per page, this would total to $1,100/month or $13,200 annually.
+
+
+
+
+
+### 4.4 Summary
+
+- Year 1 Revenue: $3,000 (listings) + $1,000 (preferential) + $13,200 (ads) = $17,200
+- Year 1 Operating costs: $360
+- Year 1 Profit before tax: $16,840
+
+(Note: These projections assume that all estimates are accurate and do not account for taxes or potential additional costs that may arise. It also assumes all ads are sold out throughout the year.)
+
+
+
 
 ## Financial Projections
 ## 4. Financial Projections
