@@ -157,6 +157,20 @@ An exit strategy  could involve selling the business to a larger competitor or a
 The hyperlocal company directory and marketplace aims to provide a unique platform for businesses to reach potential customers. Through an innovative business model and community-focused marketing approach, the platform is expected to achieve profitability within two years. With limited startup and operating costs, the revenue potential for this venture is significant. By remaining flexible and responsive to market needs, this platform can create a vibrant, community-centered marketplace that provides significant value to local businesses.
 
 
+# Business Model Appendix
+
+## Implementing a Cost Per Impression (CPM) Model
+
+Implementing a Cost Per Impression (CPM) model in your advertising platform requires a way to track and count the number of times an advertisement is served and displayed on a webpage, regardless of whether it is clicked or not. Here's a high-level overview of how you could implement this:
+
+1. **Ad Serving and Tracking:** Each time a webpage is loaded, the server would select an ad from your database to display, and then log that impression in your database. Typically, the ad selection process is handled by an ad server, which could be a third-party service or a custom-built solution. The ad server is responsible for selecting ads based on various criteria, such as the user's location, the targeting preferences of the advertiser, and so on.
+
+2. **Impression Logging:** Whenever an ad is served, an entry should be created in an impressions table in your database. This table could include information like the ID of the ad, the time it was displayed, the page it was displayed on, and potentially other information about the user, like their IP address or a unique user identifier.
+
+3. **Billing:** At the end of the billing period, you would calculate the total number of impressions for each ad and charge the advertiser accordingly. For example, if you were charging $1 per 1000 impressions (a common CPM rate), and an ad was displayed 100,000 times in a month, you would charge the advertiser $100.
+
+4. **Reporting:** Provide reports to your advertisers showing how many impressions their ads received. This could be a simple table in a monthly email, or a more sophisticated dashboard in your web app showing daily impressions and trends over time.
+
 
 
 
