@@ -57,7 +57,8 @@
 
   <div class="mb-3">
     <%= form.label :category, class: "form-label" %>
-    <%= form.text_field :category, class: "form-control" %>
+    <%= form.select :category, Company.categories.keys.map { |c| [c.humanize, c] }, include_blank: false %>
+
   </div>
 
   <div class="mb-3">
