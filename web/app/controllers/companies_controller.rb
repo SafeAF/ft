@@ -9,7 +9,8 @@ class CompaniesController < ApplicationController
     #@companies = Company.all
 
     @q = Company.ransack(params[:q])
-#    @q = Company.ransack(name_cont: 'company_name', category_eq: 'category_name')
+ 
+ #   @q = Company.ransack(name_cont: 'company_name', category_eq: 'category_name')
 
     # Show 10 companies per page
     #@companies = @q.result(distinct: true).page(params[:page]).per(10) 
