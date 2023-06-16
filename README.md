@@ -75,8 +75,10 @@ Our initial sales strategy is to sign up as many businesses as possible before l
 
 #### 4.3.2 Preferential Placement
 
-- $200 per year
-- 25% occupancy of preferential spots: $200 x 0.25 x 20 = $1,000 (Assuming 20 categories)
+Preferential Placement will be rolled out in short order and does not require the same critical mass that other forms of advertising like the CPM model requires.
+
+- $100 per month
+- 25% occupancy of preferential spots: $100 x 0.25 x 20 x 12 = $6,000 (Assuming 20 categories)
 
 #### 4.3.3 Advertising
 
