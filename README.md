@@ -4,7 +4,7 @@
 # Business Plan
 
 ## Executive Summary
-Our platform will pair a hyperlocal marketplace with a hyperlocal company directory. The marketplace, intended to drive traffic to the site and associated directory, will be offered for free. Companies will be charged an annual fee of $99 for listings, but we'll offer a limited number of lifetime listings for free as part of our pre-launch promotion. We'll also sell advertising on the marketplace and provide preferential placement for companies that pay an additional fee. 
+Our platform will pair a hyperlocal marketplace with a hyperlocal company directory. The marketplace, intended to drive traffic to the site and associated directory, will be offered for free. Companies will be charged an annual fee of $50 for listings, but we'll offer a limited number of lifetime listings for free as part of our pre-launch promotion. We'll also sell advertising on the marketplace and provide preferential placement for companies that pay an additional fee. 
 
 ## Company Description
 We are a platform that connects local businesses with local consumers, aiming to boost the visibility and reach of local enterprises while providing consumers with a curated list of local businesses and services.
