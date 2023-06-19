@@ -5,7 +5,6 @@ class HomeController < ApplicationController
   def marketplace
 
   end
-  
 
   def privacy_policy
 
@@ -14,5 +13,10 @@ class HomeController < ApplicationController
   def terms_of_service
 
   end
+  
+  def new_user_guide
+
+  end
+  
   
 end
