@@ -53,7 +53,8 @@ The management team will be responsible for overseeing the operations, marketing
 Our primary services include the company directory listing and marketplace advertising. Additional paid services include preferential placement in listings.
 
 ## Marketing and Sales Strategy
-Our initial sales strategy is to sign up as many businesses as possible before launch through cold calling and local marketing at fairs and community events. Post-launch, the marketplace will be promoted in a similar fashion. Additionally, we'll utilize online marketing channels such as social media, SEO, and email marketing. The free marketplace is expected to act as a major draw for consumers, which in turn should make listing and advertising on the platform attractive to local businesses.
+Our initial sales strategy is to sign up as many businesses as possible before launch through cold calling and local marketing at fairs and community events. Post-launch, the marketplace will be promoted in a similar fashion. Additionally, we'll utilize online marketing channels such as social media, SEO, and email marketing. The free marketplace is expected to act as a major draw for consumers, which in turn should make listing and advertising on the platform attractive to local businesses. We will stress our customer support accessability
+as a selling point, "Just give us a call if you have any problems".
 
 
 ## 4. Financial Projections
