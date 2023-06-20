@@ -1,8 +1,11 @@
 <div class="container">
   <div class="text-center">
  
-    <h1>Local Business Directory | <%= link_to "List New Business", new_company_path, class: "btn btn-info" %></h1>
- 
+    <h1>Local Business Directory
+    
+    <% if current_user %>
+     | <%= link_to "List New Business", new_company_path, class: "btn btn-info" %></h1>
+    <% end %>
     <div class="mt-5">
    
     </div> 
