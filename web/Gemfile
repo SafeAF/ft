@@ -6,8 +6,10 @@ ruby "3.0.0"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4", ">= 7.0.4.3"
 
-# for logos
-#gem 'image_processing', '~> 1.2'
+###########################
+
+# for icons
+gem "font-awesome-sass", "~> 6.4.0"
 
 #for pagination
 gem 'kaminari'
@@ -15,6 +17,7 @@ gem 'kaminari'
 # for search
 gem 'ransack'
 
+#######################
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 

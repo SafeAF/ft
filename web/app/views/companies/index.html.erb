@@ -11,30 +11,28 @@
   </div>
 
 
-<div id="companies">
-
-<div class="row mt-5 d-flex justify-content-end">
 
 
-<div class="row  mt-3 d-flex ">
 
-<div class="col d-flex">
+
+
+<div class="row  mt-3 ">
+<div class="col d-flex  justify-content-center text-center ">
  <%= render 'search' %>
-
+</div>
 </div>
 
-  <div class="col d-flex">
-    <div class="company-toolbar">
 
+<div class="row  mt-4  ">
+  <div class="col d-flex justify-content-center text-center  ">
 
-
-<%= paginate @companies %>
-  </div>
+      <%= paginate @companies %>
 
   </div>
 </div>
 
-
+<div id="companies">
+<div class="row mt-5 d-flex justify-content-center">
 
   <% @companies.each do |company| %>
     <div class="row mt-5">
@@ -43,7 +41,7 @@
     <%= image_tag company.logo.variant(:thumb) , width: '100', height: '100' %>
     <% end %>
     </div>
-    <div class="col">
+    <div class="col ">
     
             <h3><%= link_to  company.name , company %></h3>
 
@@ -122,13 +120,12 @@
   <% end %>
 </div>
 
-<div class="row">
-  <div class="col mt-3 d-flex justify-content-end">
+<div class="row  mt-4  ">
+  <div class="col d-flex justify-content-center text-center  ">
 
-<%= paginate @companies %>
+      <%= paginate @companies %>
 
   </div>
 </div>
-
 
 </div>

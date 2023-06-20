@@ -1,4 +1,5 @@
 <div class="container">
+<i class="fa-brands fa-font-awesome"></i>
 <%= render @company %>
 
 <% unless @company.description.body.blank? %>
@@ -11,12 +12,9 @@
 <% end %>
 
 <div>
-  <%= link_to "Edit this company", edit_company_path(@company) %> |
-  <%= link_to "Back to companies", companies_path %>
 
-  <%= button_to "Destroy this company", @company, method: :delete %>
+
 </div>
 
 
-<%= @company.user.id %>
 </div>
