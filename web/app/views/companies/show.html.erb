@@ -1,11 +1,14 @@
 <div class="container">
-<i class="fa-brands fa-font-awesome"></i>
+
 <%= render @company %>
 
 <% unless @company.description.body.blank? %>
 <div class="card mt-4">
   <div class="card-body mt-4">
     <h3 class="card-title"></h3>
+
+
+
 <%= @company.description %>
 </div>
 </div>

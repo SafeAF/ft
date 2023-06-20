@@ -5,8 +5,11 @@
     <%= image_tag company.logo.variant(:thumb) , width: '100', height: '100' %>
     <% end %>
     <%= link_to company.name , company %> | 
-    <%= link_to "Edit this company", edit_company_path(@company) %> |
-      <%= button_to "Destroy this company", @company, method: :delete %>
+   <%= link_to edit_company_path(@company) do %>
+  <i class="fa-solid fa-pen-to-square"></i> 
+<% end %>
+ 
+    
     </h3>
 
     <p class="card-text">
@@ -53,5 +56,10 @@
         </p>
       </div>
     </div>
+    
+  <%= button_to "Destroy this company", @company, method: :delete %>
+
+
+
   </div>
 </div>
