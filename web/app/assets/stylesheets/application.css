@@ -44,8 +44,12 @@ main {
 @import "font-awesome";
 
 
-
-
+.beta::after {
+    content: 'BETA';
+    font-size: 12px;
+    vertical-align: top;
+    color: red;
+ }
 
 .company-toolbar {
 
