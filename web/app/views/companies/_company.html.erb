@@ -4,16 +4,20 @@
           <% if company.logo.attached? %>
     <%= image_tag company.logo.variant(:thumb) , width: '100', height: '100' %>
     <% end %>
-    <%= link_to company.name , company %> | 
-   <%= link_to edit_company_path(@company) do %>
-  <i class="fa-solid fa-pen-to-square"></i> 
+    <%= link_to company.name , company %>  
+<% if company.user == current_user %>
+|
+  <%= link_to edit_company_path(@company) do %>
+    <i class="fa-solid fa-pen-to-square"></i>
+  <% end %>
 <% end %>
+
  
     
     </h3>
 
     <p class="card-text">
-      <strong>About:</strong>
+     
       <%= company.about.truncate(160) %>
     </p>
 
@@ -56,9 +60,10 @@
         </p>
       </div>
     </div>
-    
-  <%= button_to "Destroy this company", @company, method: :delete %>
 
+<% if company.user == current_user %>
+  <%= button_to "Destroy this company", @company, method: :delete %>
+<% end %>
 
 
   </div>
