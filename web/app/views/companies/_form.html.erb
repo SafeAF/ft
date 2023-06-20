@@ -56,7 +56,7 @@
   </div>
 
   <div class="mb-3">
-    <%= form.label :category, class: "form-label" %>
+    <%= form.label :industry, class: "form-label" %>
     <%= form.select :category, Company.categories.keys.map { |c| [c.humanize, c] }, include_blank: false %>
 
   </div>
