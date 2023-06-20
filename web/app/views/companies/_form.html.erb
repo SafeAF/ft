@@ -1,7 +1,7 @@
 <div class="container">
 <div class="card rounded">
   <div class="card-body">
-    <div class="col-6 ">
+    <div class="col ">
 <%= form_with(model: company, html: {class: 'needs-validation', novalidate: true}) do |form| %>
   <% if company.errors.any? %>
     <div class="alert alert-danger">
@@ -16,7 +16,7 @@
   <% end %>
 
   <div class="mb-3">
-    <%= form.label :name, class: "form-label" %>
+    <%= form.label :company_name, class: "form-label" %>
     <%= form.text_field :name, class: "form-control" %>
   </div>
 
@@ -67,9 +67,12 @@
   </div>
 
   </div>
-  <div class="col">
 
-<p>You can upload images and marketing material here:</p>
+
+  <div class="col mt-5 d-flex justify-content-center">
+
+<div class="row">
+<h2>You can upload images and marketing material here:</h2>
   <div class="mb-3">
     <%= form.label :description, class: "form-label" %>
     <%= form.rich_text_area :description, class: "form-control" %>
