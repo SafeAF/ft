@@ -14,7 +14,7 @@ class CompaniesController < ApplicationController
 
     # Show 10 companies per page
     #@companies = @q.result(distinct: true).page(params[:page]).per(10) 
-    @companies = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(10)
+    @companies = @q.result(distinct: true).order(name: :asc).page(params[:page]).per(10)
 
 
   end
