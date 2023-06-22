@@ -1,16 +1,21 @@
 <div id="<%= dom_id company %>" class="card mt-4">
   <div class="card-body mt-4">
     <h3 class="card-title">
-          <% if company.logo.attached? %>
-    <%= image_tag company.logo.variant(:thumb) , width: '100', height: '100' %>
-    <% end %>
-    <%= link_to company.name , company %>  
+<div class="d-flex align-items-center">
+  <% if company.logo.attached? %>
+    <%= image_tag company.logo.variant(:thumb), width: '100', height: '100', class: 'me-2' %>
+  <% end %>
+  <%= link_to company.name, company %>
+
+
+
 <% if company.user == current_user %>
-|
-  <%= link_to edit_company_path(@company) do %>
-    <i class="fa-solid fa-pen-to-square"></i>
+
+  <%= link_to edit_company_path(@company), class: "ms-2" do %>
+    <i class="fa-solid fa-pen-to-square "></i>
   <% end %>
 <% end %>
+</div>
 
  
     
