@@ -23,7 +23,8 @@
               <div class="row">
                <div class="col">
                  
-                 Email: <%= company.email %>
+                Email: <%= mail_to company.email %>
+
                 </div>
               </div>
 
@@ -31,7 +32,8 @@
                 <div class="row mt-1">
                 <div class="col">
                  
-              Website: <%= company.website %>
+                Website: <%= link_to company.website, company.website, target: "_blank" %>
+
               </div>
               </div>
 
