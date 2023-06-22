@@ -1,0 +1,66 @@
+
+            <div class="about mt-3">
+            <%= company.about.truncate(160) %>
+            </div>
+
+          <div class="row mt-2">
+            <div class="col">
+        
+
+              <div class="row mt-1">
+                <div class="col">
+                  Address: <%= company.address %>
+                </div>
+              </div>
+        
+
+              <div class="row mt-1">
+                <div class="col">
+                  Phone: <%= company.phone %>
+                </div>
+              </div>
+
+              <div class="row">
+               <div class="col">
+                 
+                 Email: <%= company.email %>
+                </div>
+              </div>
+
+
+                <div class="row mt-1">
+                <div class="col">
+                 
+              Website: <%= company.website %>
+              </div>
+              </div>
+
+
+
+              <div class="row mt-1">
+                <div class="col">
+                  Hours: <%= company.hours %>
+                </div>
+              </div>
+
+            </div>
+
+
+              <div class="row mt-1">
+            <div class="col">
+
+            Industry: <%= Company.categories[company.category] %>
+
+            </div>
+
+
+
+            </div>
+          </div>
+
+
+
+
+
+
+
