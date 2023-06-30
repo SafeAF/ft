@@ -1,6 +1,17 @@
 <p style="color: green"><%= notice %></p>
 
+  <% if @listing.thumbnail.attached? %>
+    <%= image_tag @listing.thumbnail.variant(:thumb), width: '200', height: '200', class: 'me-2' %>
+  <% end %>
+
+
 <%= render @listing %>
+
+
+
+
+<%= @listing.content %>
+
 
 <div>
   <%= link_to "Edit this listing", edit_listing_path(@listing) %> |

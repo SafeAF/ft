@@ -36,7 +36,20 @@
     <%= form.number_field :views %>
   </div>
 
+    <div class="mb-3">
+    <%= form.label :thumbnail, class: "form-label" %>
+    <%= form.file_field :thumbnail, class: "form-control" %>
+  </div>
+
+
+
+  <div class="mb-3">
+    <%= form.label :content, class: "form-label" %>
+    <%= form.rich_text_area :content, class: "form-control" %>
+  </div>
+
+
   <div>
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-primary"  %>
   </div>
 <% end %>

@@ -52,3 +52,5 @@ user2 = User.create!(
       user: User.all.sample
     )
   end
+
+
