@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
+  resources :listings
   resources :companies
 
   devise_for :users
   root 'home#index'
 
-  get 'marketplace', to: 'home#marketplace'
+  get '/marketplace', to: 'listings#index', as: 'marketplace'
   get '/privacy-policy', to: 'home#privacy_policy'
   get '/terms-of-service', to: 'home#terms_of_service'
   get '/new-user-guide', to: 'home#new_user_guide'
