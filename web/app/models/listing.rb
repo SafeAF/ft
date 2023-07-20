@@ -9,7 +9,7 @@ class Listing < ApplicationRecord
 
 
   has_one_attached :thumbnail  do |attachable|
-    attachable.variant :thumb, resize_to_limit: [200, 200]
+    attachable.variant :thumb, resize_to_limit: [300, 300]
   end
 
 
