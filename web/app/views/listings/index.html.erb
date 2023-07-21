@@ -19,7 +19,7 @@
                 <span class="badge bg-success rounded-pill">Price: <%= listing.price %></span>
                 <span class="badge bg-warning rounded-pill">Views: <%= listing.views %></span>
               </div>
-              <p class="card-text mt-2"><%= listing.description %></p>
+              <p class="card-text mt-2"><%= truncate(listing.description, length: 100) %></p>
             </div>
           </div>
         <% end %>
