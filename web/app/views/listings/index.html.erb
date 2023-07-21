@@ -1,8 +1,9 @@
-<div class="container">
-
 
 <div class="container">
-  <h1>Listings</h1>
+  <h1 class="text-center" >Listings</h1>
+  <div class="d-flex justify-content-center mt-2">
+    <%= link_to "New listing", new_listing_path, class: "btn btn-primary mb-4" %>
+  </div>
   <div class="row">
     <% @listings.each do |listing| %>
       <div class="col-md-4">
@@ -26,66 +27,3 @@
   <%= link_to "New listing", new_listing_path %>
 </div>
 
-
-<h1>FOO</h1>
-<div class="row">
-  <% @listings.each do |listing| %>
-    <div class="col-md-4">
-      <div class="card">
-        <div class="card-body">
-          <h2 class="card-title"><%= listing.title %></h2>
-          <p class="card-text"><%= listing.description %></p>
-          <p class="card-text">Location: <%= listing.location %></p>
-          <p class="card-text">Price: <%= listing.price %></p>
-          <p class="card-text">Views: <%= listing.views %></p>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</div>
-
-
-<div class="row">
-  <% @listings.each do |listing| %>
-    <div class="col-md-6">
-      <div class="card">
-        <div class="card-body">
-          <h2 class="card-title"><%= listing.title %></h2>
-          <p class="card-text"><%= listing.description %></p>
-          <p class="card-text">Location: <%= listing.location %></p>
-          <p class="card-text">Price: <%= listing.price %></p>
-          <p class="card-text">Views: <%= listing.views %></p>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</div>
-
-
-<% @listings.each do |listing| %>
-  <div class="card">
-    <div class="card-body">
-      <h2 class="card-title"><%= listing.title %></h2>
-      <p class="card-text"><%= listing.description %></p>
-      <p class="card-text">Location: <%= listing.location %></p>
-      <p class="card-text">Price: <%= listing.price %></p>
-      <p class="card-text">Views: <%= listing.views %></p>
-    </div>
-  </div>
-<% end %>
-
-
-
-
-<div id="listings">
-  <% @listings.each do |listing| %>
-    <%= render listing %>
-    <p>
-      <%= link_to "Show this listing", listing %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New listing", new_listing_path %>
-
-</div>
