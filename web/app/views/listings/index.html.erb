@@ -1,29 +1,28 @@
-
 <div class="container">
-  <h1 class="text-center" >Listings</h1>
-  <div class="d-flex justify-content-center mt-2">
-    <%= link_to "New listing", new_listing_path, class: "btn btn-primary mb-4" %>
+  <div class="d-flex justify-content-center">
+    <%= link_to "New listing", new_listing_path, class: "btn btn-primary mb-3" %>
   </div>
+  <h1 class="text-center">Listings</h1>
   <div class="row">
     <% @listings.each do |listing| %>
       <div class="col-md-4">
         <div class="card">
           <div class="card-body">
-                    <% if listing.thumbnail.attached? %>
-            <%= image_tag listing.thumbnail.variant(:thumb),
-                 width: '300', height: '300', class: 'mx-auto d-block' %>
-          <% end %>
+            <% if listing.thumbnail.attached? %>
+              <%= image_tag listing.thumbnail.variant(:thumb),
+                   width: '300', height: '300', class: 'mx-auto d-block' %>
+            <% end %>
             <h2 class="card-title"><%= listing.title %></h2>
-            <p class="card-text"><%= listing.description %></p>
-            <p class="card-text">Location: <%= listing.location %></p>
-            <p class="card-text">Price: <%= listing.price %></p>
-            <p class="card-text">Views: <%= listing.views %></p>
-            <%= link_to "Show this listing", listing %>
+            <div>
+              <span class="badge bg-primary rounded-pill">Location: <%= listing.location %></span>
+              <span class="badge bg-success rounded-pill">Price: <%= listing.price %></span>
+              <span class="badge bg-warning rounded-pill">Views: <%= listing.views %></span>
+            </div>
+            <p class="card-text mt-2"><%= listing.description %></p>
+            <%= link_to "Show this listing", listing, class: "btn btn-secondary mt-2" %>
           </div>
         </div>
       </div>
     <% end %>
   </div>
-  <%= link_to "New listing", new_listing_path %>
 </div>
-
