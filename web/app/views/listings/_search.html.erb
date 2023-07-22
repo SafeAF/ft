@@ -1,0 +1,8 @@
+<%= search_form_for @q do |f| %>
+
+  <%= f.search_field :title_cont %>
+
+  <%= f.select :category_eq, Listing.categories.keys.map { |c| [c.humanize, c] }.unshift(['All categories', nil]), include_blank: false, selected: @q.category_eq || nil %>
+
+  <%= f.submit %>
+<% end %>

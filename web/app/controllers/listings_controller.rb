@@ -3,7 +3,10 @@ class ListingsController < ApplicationController
 
   # GET /listings or /listings.json
   def index
-    @listings = Listing.order(created_at: :desc)
+    @q = Listing.ransack(params[:q])
+    #@listings = Listing.order(created_at: :desc)
+    @listings = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(10)
+
   end
 
   # GET /listings/1 or /listings/1.json
@@ -67,6 +70,6 @@ class ListingsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def listing_params
       params.require(:listing).permit(:title, :description, :location,
-         :price, :views, :content, :thumbnail, :category)
+         :price, :views, :content, :thumbnail, :category, :q)
     end
 end

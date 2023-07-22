@@ -37,4 +37,8 @@ class Listing < ApplicationRecord
     other: 'Other'
   }
 
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["title", "category", "description", "location"]
+  end
   end
