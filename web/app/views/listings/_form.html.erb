@@ -1,55 +1,59 @@
-<%= form_with(model: listing) do |form| %>
-  <% if listing.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
+<div class="container">
+  <div class="card rounded">
+    <div class="card-body">
+      <div class="col">
+        <%= form_with(model: listing, html: {class: 'needs-validation', novalidate: true}) do |form| %>
+          <% if listing.errors.any? %>
+            <div class="alert alert-danger">
+              <h2><%= pluralize(listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
+              <ul>
+                <% listing.errors.each do |error| %>
+                  <li><%= error.full_message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
 
-      <ul>
-        <% listing.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <div class="mb-3">
+            <%= form.label :title, class: "form-label" %>
+            <%= form.text_field :title, class: "form-control" %>
+          </div>
+
+          <div class="mb-3">
+            <%= form.label :description, class: "form-label" %>
+            <%= form.text_area :description, class: "form-control" %>
+          </div>
+
+          <div class="mb-3">
+            <%= form.label :location, class: "form-label" %>
+            <%= form.text_field :location, class: "form-control" %>
+          </div>
+
+          <div class="mb-3">
+            <%= form.label :price, class: "form-label" %>
+            <%= form.text_field :price, class: "form-control" %>
+          </div>
+
+          <div class="mb-3">
+            <%= form.label :category, class: "form-label" %>
+            <%= form.select :category, Listing.categories.keys.map { |key| [Listing.categories[key], key] }, { selected: listing.category.presence || :other }, class: "form-control" %>
+          </div>
+
+          <div class="mb-3">
+            <%= form.label :thumbnail, class: "form-label" %>
+            <%= form.file_field :thumbnail, class: "form-control" %>
+          </div>
+
+          <div class="mb-3">
+            <%= form.label :content, class: "form-label" %>
+            <%= form.rich_text_area :content, class: "form-control" %>
+          </div>
+
+          <div class="mb-3 d-flex justify-content-center">
+            <%= form.submit class: "btn btn-primary" %>
+          </div>
         <% end %>
-      </ul>
+      </div>
     </div>
-  <% end %>
-
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
   </div>
-
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div>
-    <%= form.label :location, style: "display: block" %>
-    <%= form.text_field :location %>
-  </div>
-
-  <div>
-    <%= form.label :price, style: "display: block" %>
-    <%= form.text_field :price %>
-  </div>
-
-
-<div class="mb-3">
-  <%= form.label :category, class: "form-label" %>
-  <%= form.select :category, Listing.categories.keys.map { 
-    |key| [Listing.categories[key], key] }, { selected: listing.category.presence || :other }, class: "form-control" %>
 </div>
-
-  <div class="mb-3">
-    <%= form.label :thumbnail, class: "form-label" %>
-    <%= form.file_field :thumbnail, class: "form-control" %>
-  </div>
-
-
-  <div class="mb-3">
-    <%= form.label :content, class: "form-label" %>
-    <%= form.rich_text_area :content, class: "form-control" %>
-  </div>
-
-  <div>
-    <%= form.submit class: "btn btn-primary"  %>
-  </div>
-<% end %>
