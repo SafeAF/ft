@@ -18,30 +18,29 @@
   </div>
 
 
-  <div class="row">
-    <% @listings.each do |listing| %>
-      <div class="col-md-4">
-        <%= link_to listing do %>
-          <div class="card mt-4">
-            <div class="card-body">
-              <% if listing.thumbnail.attached? %>
-                <%= image_tag listing.thumbnail.variant(:thumb),
-                     width: '300', height: '300', class: 'mx-auto d-block' %>
-              <% end %>
-              <h2 class="card-title"><%= listing.title %></h2>
-              <div>
-                <span class="badge bg-primary rounded-pill">Location: <%= listing.location %></span>
-                <span class="badge bg-success rounded-pill">Price: <%= listing.price %></span>
-                <span class="badge bg-warning rounded-pill">Views: <%= listing.views %></span>
-                <span class="badge bg-info rounded-pill">Category: <%= listing.category %></span>
-              </div>
-              <p class="card-text mt-2"><%= truncate(listing.description, length: 100) %></p>
+<div class="row">
+  <% @listings.each do |listing| %>
+    <div class="col-md-4">
+      <%= link_to listing, class: "no-underline" do %>
+        <div class="card mt-4">
+          <div class="card-body">
+            <% if listing.thumbnail.attached? %>
+              <%= image_tag listing.thumbnail.variant(:thumb),
+                   width: '300', height: '300', class: 'mx-auto d-block' %>
+            <% end %>
+            <h2 class="card-title"><%= listing.title %></h2>
+            <div>
+              <span class="badge bg-primary rounded-pill">Location: <%= listing.location %></span>
+              <span class="badge bg-success rounded-pill">Price: <%= listing.price %></span>
+              <span class="badge bg-warning rounded-pill">Views: <%= listing.views %></span>
+              <span class="badge bg-info rounded-pill">Category: <%= listing.category %></span>
             </div>
+            <p class="card-text mt-2"><%= truncate(listing.description, length: 100) %></p>
           </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 
 
