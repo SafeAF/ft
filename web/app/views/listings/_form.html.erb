@@ -31,23 +31,23 @@
     <%= form.text_field :price %>
   </div>
 
-  <div>
-    <%= form.label :views, style: "display: block" %>
-    <%= form.number_field :views %>
-  </div>
 
-    <div class="mb-3">
+<div class="mb-3">
+  <%= form.label :category, class: "form-label" %>
+  <%= form.select :category, Listing.categories.keys.map { 
+    |key| [Listing.categories[key], key] }, { selected: listing.category.presence || :other }, class: "form-control" %>
+</div>
+
+  <div class="mb-3">
     <%= form.label :thumbnail, class: "form-label" %>
     <%= form.file_field :thumbnail, class: "form-control" %>
   </div>
-
 
 
   <div class="mb-3">
     <%= form.label :content, class: "form-label" %>
     <%= form.rich_text_area :content, class: "form-control" %>
   </div>
-
 
   <div>
     <%= form.submit class: "btn btn-primary"  %>
