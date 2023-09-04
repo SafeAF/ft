@@ -34,7 +34,6 @@ Here are the commands used to set up the project:
 
 6.  Add image processing gem and install Active Storage:
     ```
-    apt-get install libvips
     bundle add image_processing
     bundle install
     rails active_storage:install
