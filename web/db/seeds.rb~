@@ -54,8 +54,6 @@ user2 = User.create!(
   end
 
 
-# Assuming you have some users in your database, 
-# the following will fetch the first user to associate with the dummy listings.
 user = User.first
 
 # Create dummy listings
@@ -67,9 +65,8 @@ user = User.first
     price: rand(50.0..500.0).round(2),
     views: rand(10..100),
     user: user,
-    category: Listing.categories.keys.sample, # Use the keys from your enum for random selection
-    created_at: Faker::Date.backward(days: 365) # Random dates within the last year
+    category: ["Electronics", "Fashion", "Home & Garden", "Motors"].sample,
+    created_at: Faker::Date.backward(days: 365) # This assumes you have the Faker gem for random dates within the last year
   )
 end
-
 
