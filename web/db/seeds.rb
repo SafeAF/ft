@@ -58,18 +58,17 @@ user2 = User.create!(
 # the following will fetch the first user to associate with the dummy listings.
 user = User.first
 
-# Create dummy listings
-10.times do |i|
-  Listing.create(
-    title: "Sample Listing #{i + 1}",
-    description: "This is a sample description for Listing #{i + 1}. It's a great item!",
-    location: ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix", "Philadelphia"].sample,
-    price: rand(50.0..500.0).round(2),
-    views: rand(10..100),
-    user: user,
-    category: Listing.categories.keys.sample, # Use the keys from your enum for random selection
-    created_at: Faker::Date.backward(days: 365) # Random dates within the last year
-  )
+
+
+
+(1..10).each do |list|
+list = Listing.new
+list.title = Faker::Lorem.sentence(word_count: 5)
+list.description = Faker::Lorem.sentence(word_count: 15)
+list.user = User.first
+list.category = Listing.categories.keys.sample
+list.location = Faker::Address.city
+list.price = rand(1..100.0).round(2)
+list.thumbnail.attach(io: File.open('/home/sam/Downloads/old-gold.jpg'), filename: 'old-gold.jpg')
+list.save!
 end
-
-
