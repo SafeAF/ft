@@ -52,3 +52,5 @@ Here are the commands used to set up the project:
     ```
 
 9. Test
+
+    test new dev env
