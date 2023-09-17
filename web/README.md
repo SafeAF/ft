@@ -50,3 +50,5 @@ Here are the commands used to set up the project:
     ```
     rails generate devise:views
     ```
+
+9. Test
