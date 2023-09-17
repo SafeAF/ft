@@ -9,12 +9,13 @@ class ListingsController < ApplicationController
     @q = Listing.ransack(params[:q])
     #@listings = Listing.order(created_at: :desc)
     @listings = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(10)
-
+  
   end
 
   # GET /listings/1 or /listings/1.json
   def show
-    
+    @listing.views += 1
+    @listing.save!
   end
 
   # GET /listings/new
