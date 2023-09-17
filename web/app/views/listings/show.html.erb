@@ -1,12 +1,38 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
 
   <% if @listing.thumbnail.attached? %>
     <%= image_tag @listing.thumbnail.variant(:thumb), width: '200', height: '200', class: 'me-2' %>
   <% end %>
 
+  <div id="<%= dom_id @listing %>">
+  <h3>
+    
+    <%= @listing.title %>
+  </h3>
 
-<%= render @listing %>
+  <p>
+    
+    <%= @listing.description %>
+  </p>
 
+  <p>
+    <strong>Location:</strong>
+    <%= @listing.location %>
+  </p>
+
+  <p>
+    <strong>Price:</strong>
+    <%= @listing.price %>
+  </p>
+
+  <p>
+    <strong>Views:</strong>
+    <%= @listing.views %>
+  </p>
+
+  <p> Posted by: <%= @listing.user.username %>
+
+</div>
 
 
 
@@ -18,4 +44,7 @@
   <%= link_to "Back to listings", listings_path %>
 
   <%= button_to "Destroy this listing", @listing, method: :delete %>
+</div>
+
+
 </div>
