@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, except: [:show, :index] # Ensure the user is logged in for all actions except show and index
+  before_action :authenticate_user! #, except: [:show, :index] # Ensure the user is logged in for all actions except show and index
   before_action :check_owner, only: %i[edit update destroy] # Check if the current user is the owner before edit, update, or destroy
 
  
