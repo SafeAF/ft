@@ -3,8 +3,7 @@ class Listing < ApplicationRecord
   belongs_to :user
 
   has_rich_text :content
-
-  validates :title, length: {maximum: 70}, allow_blank: false
+  has_many :comments, as: :commentable, dependent: :destroy
 
 
 
@@ -36,6 +35,9 @@ class Listing < ApplicationRecord
     pets: 'Pets',
     other: 'Other'
   }
+
+
+  validates :title, length: {maximum: 70}, allow_blank: false
 
 
   def self.ransackable_attributes(auth_object = nil)

@@ -5,6 +5,8 @@ class Company < ApplicationRecord
     attachable.variant :thumb, resize_to_limit: [100, 100]
   end
   
+  has_many :comments, as: :commentable, dependent: :destroy
+
   # Validation
   validates :name, :contact, :address, :phone, :about, :category, presence: true
   validates :name, :email, uniqueness: true
