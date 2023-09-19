@@ -47,22 +47,11 @@
 </div>
 
 
-<hr>
-
-  <div class="row mt-2">
-    <div class="col">
-      <% if user_signed_in? %>
-        <%= render 'comments/form' %>
-      <% else %>
-        <p>You must be logged in to post a comment.</p>
-      <% end %>
-    </div>
-  </div>
 
   
-
-
-  <div class="row mt-2">
+<hr>
+<h2>Comments!</h2>
+  <div class="row mt-5">
     <div class="col">
       <% @listing.comments.each do |comment| %>
 
@@ -78,6 +67,18 @@
 
 
         
+      <% end %>
+    </div>
+  </div>
+
+<hr>
+<h2>Add a Comment</h2>
+  <div class="row mt-2">
+    <div class="col">
+      <% if user_signed_in? %>
+        <%= render 'comments/form' %>
+      <% else %>
+        <p>You must be logged in to post a comment.</p>
       <% end %>
     </div>
   </div>
