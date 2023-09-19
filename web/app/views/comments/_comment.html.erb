@@ -1,0 +1,9 @@
+<div class="card mb-3">
+    <div class="card-body">
+        <%= comment.content %>
+
+        <p class="text-muted mt-2">
+            Posted by <%= comment.user.name %> on <%= comment.created_at.strftime('%B %d, %Y') %>
+        </p>
+    </div>
+</div>
