@@ -4,7 +4,8 @@ class Listing < ApplicationRecord
 
   has_rich_text :content
   has_many :comments, as: :commentable, dependent: :destroy
-
+  has_many :flags, as: :flaggable, dependent: :destroy
+  
 
 
   has_one_attached :thumbnail  do |attachable|
