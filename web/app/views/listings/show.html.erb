@@ -40,7 +40,11 @@
 
 
 <div>
-  <%= link_to "Flag this listing", listing_path(@listing), method: :post %>
+  <!-- app/views/listings/show.html.erb -->
+<%= form_with url: flag_listing_path(@listing), method: :post do %>
+  <%= submit_tag "Flag this listing" %>
+<% end %>
+
   <%= link_to "Edit this listing", edit_listing_path(@listing) %> |
   <%= link_to "Back to listings", listings_path %>
 

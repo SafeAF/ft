@@ -5,9 +5,11 @@ Rails.application.routes.draw do
   end
 
   resources :listings do
-    resources :comments, only: [:create, :edit, :update, :destroy] do
-    end
-    
+    resources :comments, only: [:create, :edit, :update, :destroy] 
+  
+  member do
+    post :flag
+  end
     
   end
 

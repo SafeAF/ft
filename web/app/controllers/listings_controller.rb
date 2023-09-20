@@ -66,6 +66,15 @@ class ListingsController < ApplicationController
     end
   end
 
+
+  def flag
+    @listing = Listing.find(params[:id])
+    @listing.increment!(:flags_count)
+    redirect_to @listing, notice: 'Listing has been flagged for review.'
+  end
+
+  
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_listing
