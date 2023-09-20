@@ -5,9 +5,11 @@ Rails.application.routes.draw do
   end
 
   resources :listings do
-    resources :comments, only: [:create, :edit, :update, :destroy]
+    resources :comments, only: [:create, :edit, :update, :destroy] do
+    end
+    
+    
   end
-
 
   devise_for :users
   root 'home#index'

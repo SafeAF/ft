@@ -40,6 +40,7 @@
 
 
 <div>
+  <%= link_to "Flag this listing", listing_path(@listing), method: :post %>
   <%= link_to "Edit this listing", edit_listing_path(@listing) %> |
   <%= link_to "Back to listings", listings_path %>
 

@@ -8,9 +8,8 @@ class User < ApplicationRecord
   has_many :listings, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  has_many :flags, dependent: :destroy
 
   validates :username, presence: true, uniqueness: true
 
-  
+
 end

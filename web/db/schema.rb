@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_19_185900) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_19_143829) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -76,17 +76,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_19_185900) do
     t.index ["user_id"], name: "index_companies_on_user_id"
   end
 
-  create_table "flags", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.string "flaggable_type", null: false
-    t.integer "flaggable_id", null: false
-    t.text "reason"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["flaggable_type", "flaggable_id"], name: "index_flags_on_flaggable"
-    t.index ["user_id"], name: "index_flags_on_user_id"
-  end
-
   create_table "listings", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -130,6 +119,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_19_185900) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "users"
   add_foreign_key "companies", "users"
-  add_foreign_key "flags", "users"
   add_foreign_key "listings", "users"
 end
