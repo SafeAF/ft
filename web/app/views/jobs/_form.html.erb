@@ -1,0 +1,69 @@
+<!-- app/views/jobs/_form.html.erb -->
+
+<%= form_with(model: @job) do |form| %>
+  <% if @job.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
+
+      <ul>
+      <% @job.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :job_type %>
+    <%= form.text_field :job_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= form.label :company_name %>
+    <%= form.text_field :company_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :company_description %>
+    <%= form.text_area :company_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :company_website %>
+    <%= form.text_field :company_website %>
+  </div>
+
+  <div class="field">
+    <%= form.label :company_phone %>
+    <%= form.text_field :company_phone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :company_contact %>
+    <%= form.text_field :company_contact %>
+  </div>
+
+  <div class="field">
+    <%= form.label :details, "Job Details" %>
+    <%= form.rich_text_area :details %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
