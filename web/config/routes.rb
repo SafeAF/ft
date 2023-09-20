@@ -7,11 +7,12 @@ Rails.application.routes.draw do
   resources :listings do
     resources :comments, only: [:create, :edit, :update, :destroy] 
   
-  member do
-    post :flag
+    member do
+      post :flag
+    end
   end
-    
-  end
+
+  resources :jobs
 
   devise_for :users
   root 'home#index'
