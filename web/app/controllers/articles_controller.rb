@@ -1,5 +1,8 @@
 class ArticlesController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show] # Ensure the user is authenticated for actions except index and show
   before_action :set_article, only: %i[ show edit update destroy ]
+  before_action :verify_owner, only: [:edit, :update, :destroy] # Ensure the current user is the owner for edit, update, and destroy
+
 
   # GET /articles or /articles.json
   def index
@@ -23,7 +26,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     @article.user = current_user
-    
+
     respond_to do |format|
       if @article.save
         format.html { redirect_to article_url(@article), notice: "Article was successfully created." }
@@ -48,6 +51,8 @@ class ArticlesController < ApplicationController
     end
   end
 
+
+  
   # DELETE /articles/1 or /articles/1.json
   def destroy
     @article.destroy
@@ -63,6 +68,14 @@ class ArticlesController < ApplicationController
     def set_article
       @article = Article.find(params[:id])
     end
+
+     # Verify that the current user is the owner of the article
+     def verify_owner
+      unless @article.user == current_user
+        redirect_to articles_path, alert: "You don't have permission to edit or delete this article."
+      end
+    end
+
 
     # Only allow a list of trusted parameters through.
     def article_params
