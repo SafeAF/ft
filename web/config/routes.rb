@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :articles
 
   resources :companies do
     resources :comments, only: [:create, :edit, :update, :destroy]
