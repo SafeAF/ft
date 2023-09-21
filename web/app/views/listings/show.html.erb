@@ -45,10 +45,14 @@
   <%= submit_tag "Flag this listing" %>
 <% end %>
 
-  <%= link_to "Edit this listing", edit_listing_path(@listing) %> |
+
+<% if @listing.user == current_user || current_user.moderator? %>
+  <%= link_to 'Edit', edit_listing_path(@listing) %> |
+  <%= link_to 'Destroy', @listing, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+
   <%= link_to "Back to listings", listings_path %>
 
-  <%= button_to "Destroy this listing", @listing, method: :delete %>
 </div>
 
 

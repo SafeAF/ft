@@ -89,7 +89,7 @@ class ListingsController < ApplicationController
     
   # Check if the current user is the owner of the listing
   def check_owner
-    unless @listing.user == current_user
+    unless @listing.user == current_user || current_user.moderator?
       redirect_to listings_path, alert: "You don't have permission to do that."
     end
   end

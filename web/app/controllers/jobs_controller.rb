@@ -62,7 +62,7 @@ class JobsController < ApplicationController
   
     # Authorization: Ensure current user owns the job
     def authorize_user!
-      redirect_to @job, alert: 'Not authorized.' unless @job.user == current_user
+      redirect_to @job, alert: 'Not authorized.' unless @job.user == current_user || current_user.moderator?
     end
   end
   

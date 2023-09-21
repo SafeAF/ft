@@ -47,7 +47,7 @@
 </p>
 
 <%= link_to 'Back', jobs_path %>
-<% if @job.user == current_user %>
+<% if @job.user == current_user || current_user.moderator? %>
   <%= link_to 'Edit', edit_job_path(@job) %> |
   <%= link_to 'Destroy', @job, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>

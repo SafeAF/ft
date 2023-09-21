@@ -70,7 +70,7 @@ class ArticlesController < ApplicationController
 
      # Verify that the current user is the owner of the article
      def verify_owner
-      unless @article.user == current_user
+      unless @article.user == current_user || current_user.moderator?
         redirect_to articles_path, alert: "You don't have permission to edit or delete this article."
       end
     end

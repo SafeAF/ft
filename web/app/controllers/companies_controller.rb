@@ -89,7 +89,7 @@ class CompaniesController < ApplicationController
 
     # only allow the user that created the company to destroy it.
     def check_user
-      unless current_user == @company.user
+      unless @company.user == current_user || current_user.moderator?
         redirect_to companies_path, alert: "Sorry, you aren't allowed to edit this company."
       end
     end

@@ -43,7 +43,7 @@ class CommentsController < ApplicationController
     end
   
     def correct_user
-      unless @comment.user == current_user
+      unless @comment.user == current_user || current_user.moderator?
         redirect_to @commentable, alert: 'You are not authorized to perform this action.'
       end
     end
