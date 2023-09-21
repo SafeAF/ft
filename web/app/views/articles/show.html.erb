@@ -37,6 +37,37 @@
   </div>
 
   <hr>
+
+  <!-- Comments Section -->
+  <h2>Comments!</h2>
+  <div class="row mt-5">
+    <div class="col">
+      <% @article.comments.each do |comment| %>
+        <div class="card mb-3">
+          <div class="card-body">
+            <%= comment.content %>
+            <p class="text-muted mt-2">
+              Posted by <%= comment.user.username %> on <%= comment.created_at.strftime('%B %d, %Y') %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Add a Comment -->
+  <h2>Add a Comment</h2>
+  <div class="row mt-2">
+    <div class="col">
+      <% if user_signed_in? %>
+        <%= render 'comments/form', commentable: @article %>
+      <% else %>
+        <p>You must be logged in to post a comment.</p>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 

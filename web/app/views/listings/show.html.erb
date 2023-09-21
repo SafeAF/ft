@@ -81,7 +81,7 @@
   <div class="row mt-2">
     <div class="col">
       <% if user_signed_in? %>
-        <%= render 'comments/form' %>
+        <%= render 'comments/form', commentable: @listing %>
       <% else %>
         <p>You must be logged in to post a comment.</p>
       <% end %>

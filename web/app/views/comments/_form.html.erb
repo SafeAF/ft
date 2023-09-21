@@ -1,5 +1,5 @@
 
-<%= form_with model: [ @listing, Comment.new ], local: true do |form| %>
+<%= form_with model: [ commentable, Comment.new ], local: true do |form| %>
     <% if form.object.errors.any? %>
         <div id="error_explanation">
             <h2><%= pluralize(form.object.errors.count, "error") %> prohibited this comment from being save: </h2>
