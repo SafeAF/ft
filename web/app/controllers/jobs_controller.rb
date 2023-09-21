@@ -24,7 +24,7 @@ class JobsController < ApplicationController
     # POST /jobs
     def create
       @job = current_user.jobs.new(job_params)
-  
+      
       if @job.save
         redirect_to @job, notice: 'Job was successfully created.'
       else

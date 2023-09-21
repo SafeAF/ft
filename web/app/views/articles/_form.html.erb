@@ -1,47 +1,59 @@
-<%= form_with(model: article) do |form| %>
-  <% if article.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+<div class="container">
+  <div class="card rounded">
+    <div class="card-body">
+      <div class="col">
+        <%= form_with(model: article, html: {class: 'needs-validation', novalidate: true}) do |form| %>
+          <% if article.errors.any? %>
+            <div class="alert alert-danger">
+              <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+              <ul>
+                <% article.errors.each do |error| %>
+                  <li><%= error.full_message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
 
-      <ul>
-        <% article.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <!-- User ID (Generally this would be set in the controller and not directly editable by users) -->
+          <div class="mb-3 d-none">
+            <%= form.hidden_field :user_id, value: current_user.id %>
+          </div>
+
+          <div class="mb-3">
+            <%= form.label :title, class: "form-label" %>
+            <%= form.text_field :title, class: "form-control" %>
+          </div>
+
+          <div class="mb-3">
+            <%= form.label :description, class: "form-label" %>
+            <%= form.text_area :description, class: "form-control" %>
+          </div>
+
+          <div class="mb-3">
+            <%= form.label :content, class: "form-label" %>
+            <%= form.rich_text_area :content, class: "form-control" %>
+          </div>
+
+          <div class="mb-3">
+            <%= form.label :location, class: "form-label" %>
+            <%= form.text_field :location, class: "form-control" %>
+          </div>
+
+          <div class="mb-3">
+            <%= form.label :category, class: "form-label" %>
+            <%= form.text_field :category, class: "form-control" %>
+          </div>
+
+          <div class="mb-3">
+            <%= form.label :thumbnail, class: "form-label" %>
+            <%= form.file_field :thumbnail, class: "form-control" %>
+          </div>
+
+          <div class="mb-3 d-flex justify-content-center">
+            <%= form.submit class: "btn btn-primary" %>
+          </div>
         <% end %>
-      </ul>
+      </div>
     </div>
-  <% end %>
-
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
   </div>
-
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div>
-    <%= form.label :location, style: "display: block" %>
-    <%= form.text_field :location %>
-  </div>
-
-  <div>
-    <%= form.label :views, style: "display: block" %>
-    <%= form.number_field :views %>
-  </div>
-
-  <div>
-    <%= form.label :category, style: "display: block" %>
-    <%= form.text_field :category %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
