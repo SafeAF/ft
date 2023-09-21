@@ -15,8 +15,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :jobs
-
+  resources :jobs do
+    resources :comments, only: [:create, :edit, :update, :destroy] 
+  end
+  
   devise_for :users
   root 'home#index'
 
