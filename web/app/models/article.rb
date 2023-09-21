@@ -1,6 +1,7 @@
 class Article < ApplicationRecord
   belongs_to :user
 
+  has_many :comments, as: :commentable
   has_rich_text :content
   
   has_one_attached :thumbnail  do |attachable|

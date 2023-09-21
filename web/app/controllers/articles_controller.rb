@@ -51,7 +51,6 @@ class ArticlesController < ApplicationController
     end
   end
 
-
   
   # DELETE /articles/1 or /articles/1.json
   def destroy

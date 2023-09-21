@@ -1,4 +1,46 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <!-- Thumbnail -->
+  <% if @article.thumbnail.attached? %>
+    <%= image_tag @article.thumbnail.variant(resize: "200x200"), class: 'me-2' %>
+  <% end %>
+
+  <!-- Article Details -->
+  <div id="<%= dom_id @article %>">
+    <h3><%= @article.title %></h3>
+    <p><%= @article.description %></p>
+    <p>
+      <strong>Location:</strong> <%= @article.location %>
+    </p>
+    <p>
+      <strong>Views:</strong> <%= @article.views %>
+    </p>
+    <p>
+      Posted by: <%= @article.user.username %>
+    </p>
+  </div>
+
+  <hr>
+
+  <!-- Article Content -->
+  <div>
+    <%= @article.content %>
+  </div>
+
+  <!-- Flag and Edit Links -->
+  <div>
+   
+
+    <%= link_to "Edit this article", edit_article_path(@article), class: "btn btn-primary" %> |
+    <%= link_to "Back to articles", articles_path, class: "btn btn-secondary" %>
+
+    <%= button_to "Destroy this article", @article, method: :delete, class: "btn btn-danger" %>
+  </div>
+
+  <hr>
+</div>
+
+
+
 
 <%= render @article %>
 
