@@ -10,6 +10,10 @@ class User < ApplicationRecord
   has_many :jobs, dependent: :destroy
   has_many :articles, dependent: :destroy
   
+
+  has_rich_text :bio
+
+  
   validates :username, presence: true, uniqueness: true
 
 

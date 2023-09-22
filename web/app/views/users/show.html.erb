@@ -3,12 +3,16 @@
   <div class="row">
     <div class="col-md-12">
       <h1><%= @user.username %>'s Profile</h1>
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Email</h5>
-          <p class="card-text"><%= @user.email %></p>
+      
+      <!-- Displaying Bio -->
+      <% if @user.bio.present? %>
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">Bio</h5>
+            <p class="card-text"><%= @user.bio %></p>
+          </div>
         </div>
-      </div>
+      <% end %>
 
       <h2 class="mt-4">Activity</h2>
       <ul class="list-group">
