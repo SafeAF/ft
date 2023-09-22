@@ -10,6 +10,8 @@ class JobsController < ApplicationController
       
     # GET /jobs/1
     def show
+      # @job.views += 1
+      # @job.save!
     end
   
     # GET /jobs/new

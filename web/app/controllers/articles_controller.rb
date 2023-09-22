@@ -11,6 +11,8 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1 or /articles/1.json
   def show
+    @article.views += 1
+    @article.save!
   end
 
   # GET /articles/new
