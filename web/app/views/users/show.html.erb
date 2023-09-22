@@ -1,10 +1,27 @@
 <!-- app/views/users/show.html.erb -->
-<h1><%= @user.username %>'s Profile</h1>
-<p>Email: <%= @user.email %></p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-12">
+      <h1><%= @user.username %>'s Profile</h1>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Email</h5>
+          <p class="card-text"><%= @user.email %></p>
+        </div>
+      </div>
 
-<h2>Activity</h2>
-<ul>
-  <li><%= link_to "View Comment History", comments_user_path(@user) %></li>
-  <li><%= link_to "View Listings", listings_user_path(@user) %></li>
-  <li><%= link_to "View Articles", articles_user_path(@user) %></li>
-</ul>
+      <h2 class="mt-4">Activity</h2>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <%= link_to "View Comment History", comments_user_path(@user) %>
+        </li>
+        <li class="list-group-item">
+          <%= link_to "View Listings", listings_user_path(@user) %>
+        </li>
+        <li class="list-group-item">
+          <%= link_to "View Articles", articles_user_path(@user) %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
