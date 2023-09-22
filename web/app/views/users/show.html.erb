@@ -27,5 +27,16 @@
         </li>
       </ul>
     </div>
+
+    <div class="mt-3">
+    <!-- Link to change password -->
+    <% if current_user == @user %>
+        <%= link_to "Change Password", edit_user_registration_path, class: 'btn btn-warning' %>
+    <% end %>
+    </div>
+  
   </div>
+
+
+
 </div>
