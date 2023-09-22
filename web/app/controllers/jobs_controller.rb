@@ -5,9 +5,9 @@ class JobsController < ApplicationController
   
     # GET /jobs
     def index
-      @jobs = Job.all
+      @jobs = Job.order(created_at: :desc)
     end
-  
+      
     # GET /jobs/1
     def show
     end
