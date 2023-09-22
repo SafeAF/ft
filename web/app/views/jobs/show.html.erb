@@ -1,86 +1,60 @@
-<!-- app/views/jobs/show.html.erb -->
-
-<h1><%= @job.title %></h1>
-<p>
-  <strong>Description:</strong>
-  <%= @job.description %>
-</p>
-
-<p>
-  <strong>Job Type:</strong>
-  <%= @job.job_type %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @job.location %>
-</p>
-
-<p>
-  <strong>Company:</strong>
-  <%= @job.company_name %>
-</p>
-
-<p>
-  <strong>Company Description:</strong>
-  <%= @job.company_description %>
-</p>
-
-<p>
-  <strong>Company Website:</strong>
-  <%= link_to @job.company_website, @job.company_website %>
-</p>
-
-<p>
-  <strong>Company Phone:</strong>
-  <%= @job.company_phone %>
-</p>
-
-<p>
-  <strong>Company Contact:</strong>
-  <%= @job.company_contact %>
-</p>
-
-<p>
-  <strong>Details:</strong>
-  <%= @job.details %>
-</p>
-
-<%= link_to 'Back', jobs_path %>
-<% if @job.user == current_user || current_user.moderator? %>
-  <%= link_to 'Edit', edit_job_path(@job) %> |
-  <%= link_to 'Destroy', @job, method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>
-
-
-<hr>
-<h2>Comments!</h2>
-<div class="row mt-5">
-  <div class="col">
-    <% @job.comments.each do |comment| %>
-      <div class="card mb-3">
-        <div class="card-body">
-          <%= comment.content %>
-          <p class="text-muted mt-2">
-            Posted by <%= comment.user.username %> on <%= comment.created_at.strftime('%B %d, %Y') %>
-          </p>
-        </div>
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-body">
+      <h1 class="card-title"><%= @job.title %></h1>
+      
+      <!-- Job Details -->
+      <div class="mt-4">
+        <p><strong>Description:</strong> <%= @job.description %></p>
+        <p><strong>Job Type:</strong> <%= @job.job_type %></p>
+        <p><strong>Location:</strong> <%= @job.location %></p>
+        <p><strong>Company:</strong> <%= @job.company_name %></p>
+        <p><strong>Company Description:</strong> <%= @job.company_description %></p>
+        <p><strong>Company Website:</strong> <%= link_to @job.company_website, @job.company_website %></p>
+        <p><strong>Company Phone:</strong> <%= @job.company_phone %></p>
+        <p><strong>Company Contact:</strong> <%= @job.company_contact %></p>
+        <p><strong>Details:</strong> <%= @job.details %></p>
       </div>
-    <% end %>
+
+      <!-- Edit and Delete Buttons -->
+      <div class="mt-3">
+        <%= link_to 'Back', jobs_path, class: "btn btn-secondary" %>
+        <% if @job.user == current_user %>
+          <%= link_to 'Edit', edit_job_path(@job), class: "btn btn-primary" %> |
+          <%= link_to 'Destroy', @job, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comments Section -->
+  <hr>
+  <h2>Comments!</h2>
+  <div class="row mt-5">
+    <div class="col">
+      <% @job.comments.each do |comment| %>
+        <div class="card mb-3">
+          <div class="card-body">
+            <%= comment.content %>
+            <p class="text-muted mt-2">
+              Posted by <%= comment.user.username %> on <%= comment.created_at.strftime('%B %d, %Y') %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Add a Comment -->
+  <hr>
+  <h2>Add a Comment</h2>
+  <div class="row mt-2">
+    <div class="col">
+      <% if user_signed_in? %>
+        <%= render 'comments/form', commentable: @job %>
+      <% else %>
+        <p>You must be logged in to post a comment.</p>
+      <% end %>
+    </div>
   </div>
 </div>
-
-<hr>
-
-<!-- Add a Comment -->
-<h2>Add a Comment</h2>
-<div class="row mt-2">
-  <div class="col">
-    <% if user_signed_in? %>
-      <%= render 'comments/form', commentable: @job %>
-    <% else %>
-      <p>You must be logged in to post a comment.</p>
-    <% end %>
-  </div>
-</div>
-
