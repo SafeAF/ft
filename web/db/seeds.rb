@@ -61,7 +61,7 @@ user = User.first
 
 
 
-(1..10).each do |list|
+(1..50).each do |list|
 list = Listing.new
 list.title = Faker::Lorem.sentence(word_count: 5)
 list.description = Faker::Lorem.sentence(word_count: 15)
@@ -72,3 +72,43 @@ list.price = rand(1..100.0).round(2)
 list.thumbnail.attach(io: File.open('/home/sam/Downloads/old-gold.jpg'), filename: 'old-gold.jpg')
 list.save!
 end
+
+
+# seeds.rb
+
+# Assuming User model exists and has at least one record
+first_user = User.first
+
+50.times do
+  Job.create(
+    title: Faker::Job.title,
+    description: Faker::Lorem.paragraph(sentence_count: 3),
+    job_type: ["Full-Time", "Part-Time", "Contract", "Internship"].sample,
+    location: Faker::Address.city,
+    company_name: Faker::Company.name,
+    company_description: Faker::Company.catch_phrase,
+    company_website: Faker::Internet.url(host: 'example.com'),
+    company_phone: Faker::PhoneNumber.cell_phone,
+    company_contact: Faker::Name.name,
+    user: first_user  # Replace this with logic to assign to different users if needed
+  )
+end
+  
+  # seeds.rb
+
+# Assuming User model exists and has at least one record
+first_user = User.first
+
+50.times do
+  Article.create(
+    user_id: first_user.id,
+    title: Faker::Book.title,
+    description: Faker::Lorem.paragraph(sentence_count: 3),
+    location: Faker::Address.city,
+    views: rand(0..1000),
+    category: ["Local News", "Technology", "Sports", "Health", "Entertainment"].sample,
+    created_at: Faker::Date.between(from: 2.days.ago, to: Date.today),
+    updated_at: Faker::Date.between(from: 1.days.ago, to: Date.today)
+  )
+end
+
