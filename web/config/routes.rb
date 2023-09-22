@@ -20,6 +20,10 @@ Rails.application.routes.draw do
   end
   
   devise_for :users
+
+  resources :users, only: [:show]
+
+  
   root 'home#index'
 
   get '/marketplace', to: 'listings#index', as: 'marketplace'
