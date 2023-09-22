@@ -21,9 +21,16 @@ Rails.application.routes.draw do
   
   devise_for :users
 
-  resources :users, only: [:show]
+  # config/routes.rb
+  resources :users, only: [:show] do
+    member do
+      get 'comments'
+      get 'listings'
+      get 'articles'
+    
+    end
+  end
 
-  
   root 'home#index'
 
   get '/marketplace', to: 'listings#index', as: 'marketplace'

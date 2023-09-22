@@ -1,4 +1,10 @@
 <!-- app/views/users/show.html.erb -->
 <h1><%= @user.username %>'s Profile</h1>
 <p>Email: <%= @user.email %></p>
-<!-- Add more user fields as needed -->
+
+<h2>Activity</h2>
+<ul>
+  <li><%= link_to "View Comment History", comments_user_path(@user) %></li>
+  <li><%= link_to "View Listings", listings_user_path(@user) %></li>
+  <li><%= link_to "View Articles", articles_user_path(@user) %></li>
+</ul>

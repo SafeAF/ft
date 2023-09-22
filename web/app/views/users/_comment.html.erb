@@ -1,0 +1,9 @@
+<!-- app/views/users/_comment.html.erb -->
+<div class="card mb-3">
+  <div class="card-body">
+    <%= comment.content %>
+    <p class="text-muted mt-2">
+      Posted on <%= comment.created_at.strftime('%B %d, %Y') %>
+    </p>
+  </div>
+</div>
