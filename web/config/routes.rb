@@ -27,7 +27,10 @@ Rails.application.routes.draw do
       get 'comments'
       get 'listings'
       get 'articles'
-    
+      
+      get 'edit_bio'
+      patch 'update_bio'
+      
     end
   end
 

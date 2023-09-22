@@ -35,6 +35,14 @@
     <% end %>
     </div>
   
+    <div class="mb-3">
+    <!-- Link to edit bio -->
+    <% if current_user == @user %>
+        <%= link_to "Edit Bio", edit_bio_user_path(@user), class: 'btn btn-primary' %>
+    <% end %>
+    </div>
+
+
   </div>
 
 

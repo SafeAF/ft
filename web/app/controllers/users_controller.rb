@@ -52,7 +52,22 @@ class UsersController < ApplicationController
           end
         end
       end
-    
+
+      
+  def edit_bio
+    @user = User.find(params[:id])
+  end
+
+  def update_bio
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to user_path(@user), notice: 'Bio was successfully updated.'
+    else
+      render :edit_bio
+    end
+  end
+
+
       private
     
       # Use callbacks to share common setup or constraints between actions.
@@ -67,8 +82,9 @@ class UsersController < ApplicationController
     
       # Only allow a list of trusted parameters through.
       def user_params
-        params.require(:user).permit(:username, :email, :bio)
+        params.require(:user).permit(:bio)
       end
     
+
 end
   
