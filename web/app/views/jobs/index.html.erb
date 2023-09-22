@@ -1,34 +1,40 @@
-<!-- app/views/jobs/index.html.erb -->
+<div class="container mt-5">
+  <h1>Job Listings</h1>
 
-<h1>Job Listings</h1>
+  <!-- New Job Button -->
+  <div class="mb-3">
+    <%= link_to 'New Job', new_job_path, class: "btn btn-primary" %>
+  </div>
 
-<%= link_to 'New Job', new_job_path %>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Job Type</th>
-      <th>Location</th>
-      <th>Company</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @jobs.each do |job| %>
-      <tr>
-        <td><%= link_to job.title, job %></td>
-        <td><%= job.job_type %></td>
-        <td><%= job.location %></td>
-        <td><%= job.company_name %></td>
-        <td>
-          <%= link_to 'Show', job %> |
-          <% if job.user == current_user %>
-            <%= link_to 'Edit', edit_job_path(job) %> |
-            <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <!-- Job Table -->
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Job Type</th>
+          <th>Location</th>
+          <th>Company</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @jobs.each do |job| %>
+          <tr>
+            <td><%= link_to job.title, job %></td>
+            <td><%= job.job_type %></td>
+            <td><%= job.location %></td>
+            <td><%= job.company_name %></td>
+            <td>
+              <%= link_to 'Show', job, class: "btn btn-info btn-sm" %> 
+              <% if job.user == current_user %>
+                <%= link_to 'Edit', edit_job_path(job), class: "btn btn-primary btn-sm" %> 
+                <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
