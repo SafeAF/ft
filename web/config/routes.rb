@@ -26,6 +26,15 @@ Rails.application.routes.draw do
       post :flag
     end  
   end
+
+
+  resources :comments, only: [] do  # assuming you've already defined CRUD operations elsewhere
+    member do
+      post :flag
+    end
+  end
+
+
   
   devise_for :users
 

@@ -31,6 +31,16 @@ class CommentsController < ApplicationController
       redirect_to @commentable, notice: 'Comment was successfully deleted.'
     end
   
+
+    def flag
+      @comment = Comment.find(params[:id])
+      @comment.increment!(:flags_count)
+      # Add any additional logic here, like notifying admins
+
+      redirect_to @comment.commentable, notice: 'Comment has been flagged.'
+    end
+
+
     private
   
     def set_commentable
