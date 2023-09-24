@@ -37,6 +37,10 @@
 
     <%= link_to "Back to articles", articles_path, class: "btn btn-secondary" %>
 
+<%= form_with url: flag_article_path(@article), method: :post do %>
+  <%= submit_tag "Flag this Article" %>
+<% end %>
+
   </div>
 
   <hr>

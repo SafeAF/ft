@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :articles do
     resources :comments, only: [:create, :edit, :update, :destroy]
+
+    member do
+      post :flag
+    end  
   end
 
   resources :companies do

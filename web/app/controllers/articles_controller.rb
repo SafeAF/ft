@@ -64,6 +64,15 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def flag
+    @article = Article.find(params[:id])
+    @article.increment!(:flags_count)
+    # Add any additional logic like notifying admins, etc.
+
+    redirect_to @article, notice: 'Article has been flagged.'
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
