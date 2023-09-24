@@ -50,6 +50,16 @@ class JobsController < ApplicationController
       redirect_to jobs_url, notice: 'Job was successfully destroyed.'
     end
   
+    
+    def flag
+      @job = Job.find(params[:id])
+      @job.increment!(:flags_count)
+      # Add any additional logic like notifying admins, etc.
+
+      redirect_to @job, notice: 'Job has been flagged.'
+    end
+
+
     private
   
     # Use callbacks to share common setup or constraints between actions.

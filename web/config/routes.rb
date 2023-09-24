@@ -17,6 +17,10 @@ Rails.application.routes.draw do
 
   resources :jobs do
     resources :comments, only: [:create, :edit, :update, :destroy] 
+
+    member do
+      post :flag
+    end  
   end
   
   devise_for :users
