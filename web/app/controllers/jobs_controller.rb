@@ -5,8 +5,9 @@ class JobsController < ApplicationController
   
     # GET /jobs
     def index
-      @jobs = Job.order(created_at: :desc)
+      @jobs = Job.order(created_at: :desc).page(params[:page]).per(10)
     end
+
       
     # GET /jobs/1
     def show
