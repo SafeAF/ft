@@ -1,0 +1,10 @@
+<h1>Moderator Dashboard</h1>
+
+<h2>Flagged Articles</h2>
+<%= render partial: 'flagged_item', locals: { items: @flagged_articles, item_type: 'Article' } %>
+
+<h2>Flagged Jobs</h2>
+<%= render partial: 'flagged_item', locals: { items: @flagged_jobs, item_type: 'Job' } %>
+
+<h2>Flagged Comments</h2>
+<%= render partial: 'flagged_item', locals: { items: @flagged_comments, item_type: 'Comment' } %>

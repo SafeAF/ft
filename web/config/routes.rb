@@ -35,6 +35,10 @@ Rails.application.routes.draw do
   end
 
 
+  resources :moderators, only: [:index] do
+    post 'unflag', on: :collection
+  end
+
   
   devise_for :users
 
