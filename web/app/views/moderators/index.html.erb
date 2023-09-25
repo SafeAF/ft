@@ -1,5 +1,9 @@
 <h1>Moderator Dashboard</h1>
 
+<h2>Flagged Listings</h2>
+<%= render partial: 'flagged_item', locals: { items: @flagged_listings, item_type: 'Listing' } %>
+
+
 <h2>Flagged Articles</h2>
 <%= render partial: 'flagged_item', locals: { items: @flagged_articles, item_type: 'Article' } %>
 

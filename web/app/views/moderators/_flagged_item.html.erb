@@ -17,7 +17,7 @@
         <td><%= item.created_at.strftime("%B %d, %Y") %></td>
         <td>
   <% case item_type %>
-    <% when 'Article', 'Job' %>
+    <% when 'Article', 'Job', 'Listing' %>
       <%= link_to "View", polymorphic_path(item) %> |
     <% when 'Comment' %>
       <%= link_to "View", polymorphic_path([item.commentable, item]) %> |

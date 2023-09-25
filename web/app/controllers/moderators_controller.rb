@@ -8,6 +8,7 @@ class ModeratorsController < ApplicationController
       @flagged_articles = Article.where("flags_count > ?", 0).order(created_at: :desc)
       @flagged_jobs = Job.where("flags_count > ?", 0).order(created_at: :desc)
       @flagged_comments = Comment.where("flags_count > ?", 0).order(created_at: :desc)
+      @flagged_listings = Listing.where("flags_count > ?", 0).order(created_at: :desc)
     end
   
     private
