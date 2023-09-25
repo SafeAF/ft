@@ -19,9 +19,13 @@ class CompaniesController < ApplicationController
 
   end
 
-  # GET /companies/1 or /companies/1.json
+  
   def show
+    @company = Company.find(params[:id])
+    @comments = @company.comments
+
   end
+
 
   # GET /companies/new
   def new

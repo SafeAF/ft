@@ -14,9 +14,26 @@
 </div>
 <% end %>
 
-<div>
+<!-- Bootstrap-styled Comments Section -->
 
+<h2 class="mt-4">Comments</h2>
 
+<div class="list-group">
+  <% @comments.each do |comment| %>
+    <div class="list-group-item">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1"><%= comment.user.username %></h5>
+      </div>
+      <p class="mb-1"><%= comment.content %></p>
+    </div>
+  <% end %>
+</div>
+
+<h2 class="mt-4">Add a New Comment</h2>
+<div class="card">
+  <div class="card-body">
+    <%= render 'comments/form', commentable: @company %>
+  </div>
 </div>
 
 
