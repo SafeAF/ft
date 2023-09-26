@@ -21,17 +21,17 @@ class UsersController < ApplicationController
     
     def comments
       @user = User.find(params[:id])
-      @comments = @user.comments.order('created_at DESC')
+      @comments = @user.comments.order('created_at DESC').page(params[:page]).per(10) # 10 comments per page
     end
     
     def listings
       @user = User.find(params[:id])
-      @listings = @user.listings.order('created_at DESC')
+      @listings = @user.listings.order('created_at DESC').page(params[:page]).per(10) # 10 comments per page
     end
     
     def articles
       @user = User.find(params[:id])
-      @articles = @user.articles.order('created_at DESC')
+      @articles = @user.articles.order('created_at DESC').page(params[:page]).per(10) # 10 comments per page
     end
     
     
