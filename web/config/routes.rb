@@ -34,14 +34,13 @@ Rails.application.routes.draw do
     end
   end
 
-
   resources :moderators, only: [:index] do
-    post 'unflag', on: :collection
+    collection do
+      post :hide_item, as: 'hide_item'
+      post :unflag_item, as: 'unflag_item'
+    end
   end
-
-  post 'moderators/hide_item', to: 'moderators#hide_item', as: 'hide_item_moderators'
-  post 'moderators/unflag_item', to: 'moderators#unflag_item', as: 'unflag_item_moderators'
-
+  
   
   devise_for :users
 
