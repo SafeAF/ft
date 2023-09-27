@@ -13,6 +13,7 @@ class JobsController < ApplicationController
     def show
       # @job.views += 1
       # @job.save!
+      @comments = @job.comments.where(visible: true)
     end
   
     # GET /jobs/new

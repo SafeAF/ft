@@ -13,6 +13,8 @@ class ArticlesController < ApplicationController
   def show
     @article.views += 1
     @article.save!
+
+    @comments = @article.comments.where(visible: true)
   end
 
   # GET /articles/new
