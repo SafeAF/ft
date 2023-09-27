@@ -17,6 +17,7 @@ class ListingsController < ApplicationController
   def show
     @listing.views += 1
     @listing.save!
+    @comments = @listing.comments.where(visible: true)
   end
 
   # GET /listings/new
