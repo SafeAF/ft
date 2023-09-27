@@ -6,11 +6,12 @@ class ListingsController < ApplicationController
  
   # GET /listings or /listings.json
   def index
-    @q = Listing.ransack(params[:q])
+    @q = Listing.where(visible: true).ransack(params[:q])
     #@listings = Listing.order(created_at: :desc)
     @listings = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(10)
   
   end
+
 
   # GET /listings/1 or /listings/1.json
   def show
