@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.order(created_at: :desc).page(params[:page]).per(10)
+    @articles = Article.where(visible: true).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   # GET /articles/1 or /articles/1.json

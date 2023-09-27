@@ -5,7 +5,7 @@ class JobsController < ApplicationController
   
     # GET /jobs
     def index
-      @jobs = Job.order(created_at: :desc).page(params[:page]).per(10)
+      @jobs = Job.where(visible: true).order(created_at: :desc).page(params[:page]).per(10)
     end
 
       
