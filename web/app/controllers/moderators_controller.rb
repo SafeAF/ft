@@ -36,6 +36,19 @@ class ModeratorsController < ApplicationController
   end
 
 
+  def lock_user
+    @user = User.find(params[:user_id])
+    @user.update(locked: true)
+    redirect_back(fallback_location: moderators_path, notice: "User has been locked.")
+  end
+
+  def unlock_user
+    @user = User.find(params[:user_id])
+    @user.update(locked: false)
+    redirect_back(fallback_location: moderators_path, notice: "User has been unlocked.")
+  end
+
+
   private
 
   def authenticate_moderator!

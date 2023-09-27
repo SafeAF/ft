@@ -38,6 +38,8 @@ Rails.application.routes.draw do
     collection do
       post :hide_item, as: 'hide_item'
       post :unflag_item, as: 'unflag_item'
+      post :lock_user
+      post :unlock_user
     end
   end
   
