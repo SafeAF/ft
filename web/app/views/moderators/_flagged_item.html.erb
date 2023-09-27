@@ -22,7 +22,9 @@
     <% when 'Comment' %>
       <%= link_to "View", polymorphic_path([item.commentable, item]) %> |
     <% end %>
-  <%= link_to "Unflag", unflag_moderators_path(item), method: :post %>
+<%= button_to "Hide", hide_item_moderators_path(item_type: item.class.name, item_id: item.id), method: :post %>
+<%= button_to "Unflag", unflag_item_moderators_path(item_type: item.class.name, item_id: item.id), method: :post %>
+
 </td>
 
       </tr>
