@@ -68,6 +68,24 @@ class UsersController < ApplicationController
   end
 
 
+  # Flag User Action
+  def flag
+    @user = User.find(params[:id])
+    @user.increment!(:flags_count)
+    redirect_to @user, notice: 'User has been flagged.'
+  end
+
+  # Lock User Action (only accessible by moderators)
+  def lock
+    if current_user&.moderator?
+      @user = User.find(params[:id])
+      @user.update(locked: true)
+      redirect_to @user, notice: 'User has been locked.'
+    else
+      redirect_to @user, alert: 'You are not authorized to perform this action.'
+    end
+  end
+
       private
     
       # Use callbacks to share common setup or constraints between actions.

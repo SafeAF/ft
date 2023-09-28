@@ -12,7 +12,7 @@
             <p class="card-text"><%= @user.bio %></p>
           </div>
         </div>
-      <% end %>
+      <% end %> 
 
       <h2 class="mt-4">Activity</h2>
       <ul class="list-group">
@@ -42,6 +42,18 @@
         <%= link_to "Edit Bio", edit_bio_user_path(@user), class: 'btn btn-primary' %>
     <% end %>
     </div>
+
+
+
+  <!-- Flag User Button -->
+  <% unless current_user == @user %>
+    <%= button_to "Flag User", flag_user_path(@user), method: :post, class: 'btn btn-danger' %>
+  <% end %>
+
+  <!-- Lock User Button (visible only to moderators) -->
+  <% if current_user&.moderator? %>
+    <%= button_to "Lock User", lock_user_path(@user), method: :post, class: 'btn btn-warning' %>
+  <% end %>
 
 
   </div>

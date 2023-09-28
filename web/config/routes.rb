@@ -56,8 +56,12 @@ Rails.application.routes.draw do
       get 'edit_bio'
       patch 'update_bio'
       
+      post 'flag'
+      post 'lock'      
     end
   end
+
+
 
   root 'home#index'
 
