@@ -6,7 +6,7 @@
             Posted by <%= comment.user.username %> on <%= comment.created_at.strftime('%B %d, %Y') %>
         </p>
 
-        <!-- This could be in a comments partial, or within your show pages for articles, listings, and jobs -->
+   
 
 <%= form_with url: flag_comment_path(comment), method: :post do %>
   <%= submit_tag "Flag this Comment" %>
