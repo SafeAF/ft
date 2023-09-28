@@ -27,7 +27,8 @@ class CommentsController < ApplicationController
     end
   
     def destroy
-      @comment.destroy
+      #@comment.destroy
+      @comment.update(visible: false)
       redirect_to @commentable, notice: 'Comment was successfully deleted.'
     end
   

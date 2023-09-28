@@ -20,12 +20,12 @@
         <td>
           <% case item_type %>
             <% when 'Article', 'Job', 'Listing' %>
-              <%= link_to "View", polymorphic_path(item) %> |
+              <%= link_to "View", polymorphic_path(item) %> 
             <% when 'Comment' %>
-              <%= link_to "View", polymorphic_path([item.commentable, item]) %> |
+              <%= link_to "View", polymorphic_path([item.commentable, item]) %> 
           <% end %>
-          <%= button_to "Hide", hide_item_moderators_path(item_type: item.class.name, item_id: item.id), method: :post %> |
-          <%= button_to "Unflag", unflag_item_moderators_path(item_type: item.class.name, item_id: item.id), method: :post %> |
+          <%= button_to "Hide", hide_item_moderators_path(item_type: item.class.name, item_id: item.id), method: :post %> 
+          <%= button_to "Unflag", unflag_item_moderators_path(item_type: item.class.name, item_id: item.id), method: :post %>   
           <% if item.try(:user) %>
             <%= button_to "Lock User", lock_user_moderators_path(user_id: item.user.id), method: :post %>
           <% end %> 

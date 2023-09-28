@@ -60,7 +60,8 @@ class ListingsController < ApplicationController
 
   # DELETE /listings/1 or /listings/1.json
   def destroy
-    @listing.destroy
+    @listing.update(visible: false)
+    #@listing.destroy
 
     respond_to do |format|
       format.html { redirect_to listings_url, notice: "Listing was successfully destroyed." }

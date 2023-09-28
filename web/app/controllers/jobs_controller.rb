@@ -47,7 +47,8 @@ class JobsController < ApplicationController
   
     # DELETE /jobs/1
     def destroy
-      @job.destroy
+      #@job.destroy
+      @job.update(visible: false)
       redirect_to jobs_url, notice: 'Job was successfully destroyed.'
     end
   
