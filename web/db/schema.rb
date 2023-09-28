@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_27_155025) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_28_151200) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -146,8 +146,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_27_155025) do
     t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "is_admin", default: false
-    t.boolean "is_mod", default: false
     t.boolean "moderator", default: false
     t.integer "flagged_count"
     t.boolean "locked", default: false
