@@ -34,20 +34,12 @@
   <!-- Comments Section -->
   <hr>
   <h2>Comments!</h2>
-  <div class="row mt-5">
-    <div class="col">
-      <% @comments.each do |comment| %>
-        <div class="card mb-3">
-          <div class="card-body">
-            <%= comment.content %>
-            <p class="text-muted mt-2">
-              Posted by <%= comment.user.username %> on <%= comment.created_at.strftime('%B %d, %Y') %>
-            </p>
-          </div>
-        </div>
-      <% end %>
-    </div>
+<div class="row mt-5">
+  <div class="col">
+    <%= render partial: 'comments/comment', collection: @comments %>
   </div>
+</div>
+
 
   <!-- Add a Comment -->
   <hr>
