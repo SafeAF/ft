@@ -1,16 +1,13 @@
 <div class="card mb-3">
-    <div class="card-body">
-        <%= comment.content %>
+  <div class="card-body">
+    <%= comment.content %>
 
-        <p class="text-muted mt-2">
-            Posted by <%= comment.user.username %> on <%= comment.created_at.strftime('%B %d, %Y') %>
-        </p>
+    <p class="text-muted mt-2">
+      Posted by <%= link_to comment.user.username, user_path(comment.user) %> on <%= comment.created_at.strftime('%B %d, %Y') %>
+    </p>
 
-   
-
-<%= form_with url: flag_comment_path(comment), method: :post do %>
-  <%= submit_tag "Flag this Comment" %>
-<% end %>
-
-    </div>
+    <%= form_with url: flag_comment_path(comment), method: :post do %>
+      <%= submit_tag "Flag this Comment" %>
+    <% end %>
+  </div>
 </div>
