@@ -17,9 +17,9 @@
         <div class="card mt-2">
           <div class="card-body">
             <%= reply.content %>
-
-            Posted by <%= link_to reply.user.username, user_path(reply.user) %> on <%= reply.created_at.strftime('%B %d, %Y') %>
-            <!-- Add other details such as author, date, etc. -->
+            <p class="text-muted mt-2">
+              Posted by <%= link_to reply.user.username, user_path(reply.user) %> on <%= reply.created_at.strftime('%B %d, %Y') %>
+            </p>
           </div>
         </div>
       <% end %>
