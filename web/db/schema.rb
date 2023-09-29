@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_28_151200) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_29_142951) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -73,7 +73,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_28_151200) do
     t.datetime "updated_at", null: false
     t.integer "flags_count", default: 0
     t.boolean "visible", default: true
+    t.integer "parent_id"
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
+    t.index ["parent_id"], name: "index_comments_on_parent_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -127,6 +129,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_28_151200) do
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
 
+  create_table "replies", force: :cascade do |t|
+    t.text "content"
+    t.integer "comment_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_replies_on_comment_id"
+    t.index ["user_id"], name: "index_replies_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "location"
@@ -161,4 +173,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_28_151200) do
   add_foreign_key "companies", "users"
   add_foreign_key "jobs", "users"
   add_foreign_key "listings", "users"
+  add_foreign_key "replies", "comments"
+  add_foreign_key "replies", "users"
 end
