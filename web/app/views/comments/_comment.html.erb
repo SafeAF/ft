@@ -9,5 +9,28 @@
     <%= form_with url: flag_comment_path(comment), method: :post do %>
       <%= submit_tag "Flag this Comment" %>
     <% end %>
+
+    <!-- Displaying replies -->
+    <div class="mt-3">
+      <strong>Replies:</strong>
+      <% comment.replies.each do |reply| %>
+        <div class="card mt-2">
+          <div class="card-body">
+            <%= reply.content %>
+
+            Posted by <%= link_to reply.user.username, user_path(reply.user) %> on <%= reply.created_at.strftime('%B %d, %Y') %>
+            <!-- Add other details such as author, date, etc. -->
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Add a form to submit a reply to this comment -->
+    <div class="mt-3">
+      <%= form_with(model: [comment, Reply.new], local: true, url: comment_replies_path(comment)) do |form| %>
+        <%= form.text_area :content, placeholder: "Reply to this comment...", rows: 2, class: "form-control" %>
+        <%= form.submit "Reply", class: "btn btn-primary mt-2" %>
+      <% end %>
+    </div>
   </div>
 </div>

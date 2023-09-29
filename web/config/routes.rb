@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+
   resources :articles do
-    resources :comments, only: [:create, :edit, :update, :destroy]
+    resources :comments, only: [:create, :edit, :update, :destroy] do
+      resources :replies, only: [:create]  
+    end
 
     member do
       post :flag
@@ -8,27 +11,33 @@ Rails.application.routes.draw do
   end
 
   resources :companies do
-    resources :comments, only: [:create, :edit, :update, :destroy]
+    resources :comments, only: [:create, :edit, :update, :destroy] do
+      resources :replies, only: [:create]  
+    end
   end
 
   resources :listings do
-    resources :comments, only: [:create, :edit, :update, :destroy] 
-  
+    resources :comments, only: [:create, :edit, :update, :destroy] do
+      resources :replies, only: [:create]  
+    end
+
     member do
       post :flag
     end
   end
 
   resources :jobs do
-    resources :comments, only: [:create, :edit, :update, :destroy] 
+    resources :comments, only: [:create, :edit, :update, :destroy] do
+      resources :replies, only: [:create]  
+    end
 
     member do
       post :flag
     end  
   end
 
-
-  resources :comments, only: [] do  # assuming you've already defined CRUD operations elsewhere
+  resources :comments, only: [] do  
+    resources :replies, only: [:create], as: 'replies'
     member do
       post :flag
     end

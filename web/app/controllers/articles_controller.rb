@@ -11,11 +11,13 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1 or /articles/1.json
   def show
+    @article = Article.find(params[:id])
     @article.views += 1
     @article.save!
-
-    @comments = @article.comments.where(visible: true)
+  
+    @comments = @article.comments.includes(:replies).where(visible: true)
   end
+  
 
   # GET /articles/new
   def new
