@@ -1,0 +1,5 @@
+<% @conversations.each do |conversation| %>
+  <%= link_to user_path(conversation.opposite_user(current_user)) do %>
+    Chat with <%= conversation.opposite_user(current_user).username %>
+  <% end %>
+<% end %>

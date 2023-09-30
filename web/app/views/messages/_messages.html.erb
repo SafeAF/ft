@@ -1,0 +1,8 @@
+<% @messages.each do |message| %>
+  <%= message.content %>
+<% end %>
+
+<%= form_with model: [@conversation, Message.new], local: true do |form| %>
+  <%= form.text_area :content %>
+  <%= form.submit "Send" %>
+<% end %>
