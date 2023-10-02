@@ -1,11 +1,24 @@
 <!-- app/views/users/edit_bio.html.erb -->
 <div class="container mt-5">
+  
+  
   <h1>Edit Bio</h1>
+
+
+
   <%= form_with(model: @user, url: update_bio_user_path(@user), method: :patch, local: true) do |form| %>
     <div class="form-group">
+      
+
       <%= form.label :bio %>
       <%= form.rich_text_area :bio, class: "form-control" %>
+  
+      <hr class="mt-4">
+
+      <%= form.label :avatar %>
+      <%= form.file_field :avatar %>
+
     </div>
-    <%= form.submit 'Update Bio', class: 'btn btn-primary' %>
+    <%= form.submit 'Update Bio', class: 'btn btn-primary mt-4' %>
   <% end %>
 </div>
