@@ -1,5 +1,13 @@
-<% @conversations.each do |conversation| %>
-  <%= link_to user_path(conversation.opposite_user(current_user)) do %>
-    Chat with <%= conversation.opposite_user(current_user).username %>
+<!-- app/views/conversations/index.html.erb -->
+
+<h1>Conversations</h1>
+
+<%= link_to 'New Conversation', new_conversation_path %>
+
+<ul>
+  <% @conversations.each do |conversation| %>
+    <li>
+      <%= link_to conversation.opposed_user(current_user).username, conversation_messages_path(conversation) %>
+    </li>
   <% end %>
-<% end %>
+</ul>

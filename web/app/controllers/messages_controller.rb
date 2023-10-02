@@ -1,19 +1,25 @@
+# app/controllers/messages_controller.rb
+
 class MessagesController < ApplicationController
-    def index
-      @conversation = Conversation.find(params[:conversation_id])
-      @messages = @conversation.messages
+  def index
+    @conversation = Conversation.find(params[:conversation_id])
+    @messages = @conversation.messages
+    @message = Message.new
+  end
+
+  def create
+    @message = Message.new(message_params)
+    @message.user_id = current_user.id
+    if @message.save
+      redirect_to conversation_messages_path(@message.conversation)
+    else
+      render 'index'
     end
-    
-    def create
-      @conversation = Conversation.find(params[:conversation_id])
-      @message = @conversation.messages.create!(message_params)
-      redirect_to conversation_messages_path(@conversation)
-    end
-    
-    private
-    
-    def message_params
-      params.require(:message).permit(:content).merge(user_id: current_user.id)
-    end
+  end
+
+  private
+
+  def message_params
+    params.require(:message).permit(:content, :conversation_id)
+  end
 end
-  
