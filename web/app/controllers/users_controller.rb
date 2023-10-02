@@ -1,4 +1,3 @@
-# app/controllers/users_controller.rb
 class UsersController < ApplicationController
  
   before_action :set_user, only: [:show, :edit, :update]
@@ -86,23 +85,23 @@ class UsersController < ApplicationController
     end
   end
 
-      private
-    
-      # Use callbacks to share common setup or constraints between actions.
-      def set_user
-        @user = User.find(params[:id])
-      end
-    
-      # Confirm the correct user.
-      def correct_user
-        redirect_to(root_url) unless @user == current_user
-      end
-    
-      # Only allow a list of trusted parameters through.
-      def user_params
-        params.require(:user).permit(:bio)
-      end
-    
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  # Confirm the correct user.
+  def correct_user
+    redirect_to(root_url) unless @user == current_user
+  end
+
+  # Only allow a list of trusted parameters through.
+  def user_params
+    params.require(:user).permit(:bio, :avatar, :username, :email, :password)
+  end
+
 
 end
   
