@@ -24,7 +24,7 @@
         <%= link_to 'Back', jobs_path, class: "btn btn-secondary" %>
         <% if @job.user == current_user %>
           <%= link_to 'Edit', edit_job_path(@job), class: "btn btn-primary" %> |
-          <%= link_to 'Destroy', @job, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+          <%= button_to 'Destroy', @job, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
         <% end %>
         <!-- app/views/jobs/show.html.erb -->
         <%= form_with url: flag_job_path(@job), method: :post do %>
