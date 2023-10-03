@@ -60,7 +60,7 @@ Rails.application.routes.draw do
   
   devise_for :users
 
-  # config/routes.rb
+  
   resources :users, only: [:show] do
     member do
       get 'comments'
@@ -75,8 +75,6 @@ Rails.application.routes.draw do
     end
   end
 
-
-
   root 'home#index'
 
   get '/marketplace', to: 'listings#index', as: 'marketplace'
@@ -85,8 +83,4 @@ Rails.application.routes.draw do
   get '/new-user-guide', to: 'home#new_user_guide'
   
   
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
 end
