@@ -71,7 +71,10 @@ Rails.application.routes.draw do
       patch 'update_bio'
       
       post 'flag'
-      post 'lock'      
+      post 'lock'  
+      
+      get 'notifications'
+      
     end
   end
 
