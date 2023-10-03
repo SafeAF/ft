@@ -15,8 +15,9 @@ class User < ApplicationRecord
   has_many :replies, dependent: :destroy
   has_many :jobs, dependent: :destroy
   has_many :articles, dependent: :destroy
-  
+  has_many :notifications, dependent: :destroy
 
+  
   has_rich_text :bio
 
   # User Profile Picture
