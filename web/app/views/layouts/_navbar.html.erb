@@ -26,6 +26,16 @@
 
     <%= render 'user/session_manager' %>
 
+
+  <% if user_signed_in? %>
+    <div class="notification-dropdown">
+      <button>Notifications (<%= @notifications.count %>)</button>
+
+    </div>
+  <% end %>
+
+
+
   </ul>
   <form class="d-flex" role="search">
 

@@ -4,6 +4,15 @@ class ApplicationController < ActionController::Base
 
     before_action :check_for_locked_status
     
+    before_action :fetch_notifications
+
+    def fetch_notifications
+      if user_signed_in? # Replace with your actual user authentication check
+        @notifications = current_user.notifications.order(created_at: :desc).limit(5)
+      end
+    end
+    
+
     private
     
       def check_for_locked_status
