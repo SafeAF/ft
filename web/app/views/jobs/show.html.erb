@@ -16,6 +16,9 @@
         <p><strong>Details:</strong> <%= @job.details %></p>
       </div>
 
+    <p>
+      Posted by: <%= link_to @job.user.username, user_path(@job.user) %> <span class="small">- <%= @job.created_at.strftime('%B %d, %Y') %></span>
+    </p>
       <!-- Edit and Delete Buttons -->
       <div class="mt-3">
         <%= link_to 'Back', jobs_path, class: "btn btn-secondary" %>

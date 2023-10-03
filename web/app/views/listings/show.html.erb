@@ -29,8 +29,10 @@
     <strong>Views:</strong>
     <%= @listing.views %>
   </p>
-
-  <p> Posted by: <%= @listing.user.username %>
+<p>
+    Posted by: <%= link_to @listing.user.username, user_path(@listing.user) %> <span class="small">- <%= @listing.created_at.strftime('%B %d, %Y') %></span>
+      
+    </p>
 
 </div>
 
