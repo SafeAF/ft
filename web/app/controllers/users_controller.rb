@@ -87,7 +87,7 @@ class UsersController < ApplicationController
 
   # Get notifications
   def notifications
-    @notifications = current_user.notifications.order(created_at: :desc)
+    @notifications = current_user.notifications.unread.order(created_at: :desc)
   end
 
 

@@ -46,6 +46,13 @@ Rails.application.routes.draw do
   resources :conversations, only: [:index, :new, :create] do
     resources :messages, only: [:index, :create]
   end
+
+  resources :notifications, only: [:index] do
+    member do
+      post :mark_as_read
+    end
+  end
+  
   
 
   resources :moderators, only: [:index] do
