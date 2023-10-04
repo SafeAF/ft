@@ -3,11 +3,15 @@
 <ul>
   <% @notifications.each do |notification| %>
     <li>
+      <% notifiable = notification.notifiable %>
       <% case notification.notifiable_type %>
       <% when 'Comment' %>
-        You have a new comment.
+        <% commentable = notifiable.commentable %>
+        <%= link_to 'You have a new comment.', polymorphic_path(commentable, anchor: "comment_#{notifiable.id}") %>
       <% when 'Reply' %>
-        Someone replied to your comment.
+        <% comment = notifiable.comment %>
+        <% commentable = comment.commentable %>
+        <%= link_to 'Someone replied to your comment.', polymorphic_path(commentable, anchor: "reply_#{notifiable.id}") %>
       <% end %>
       <small>Received at <%= notification.created_at.strftime('%Y-%m-%d %H:%M:%S') %></small>
     </li>
