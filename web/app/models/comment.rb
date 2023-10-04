@@ -11,8 +11,14 @@ class Comment < ApplicationRecord
   after_create :create_notification
 
   def create_notification
-    # Create the notification
-    Notification.create(user: self.commentable.user, notifiable: self, status: :unread) if self.commentable.user
+    if self.commentable.user
+      Notification.create(
+        user: self.commentable.user,
+        notifiable: self,
+        status: :unread,
+        message: "#{self.user.username} commented on your #{self.commentable.class.name.downcase}."
+      )
+    end
   end
 end
 
