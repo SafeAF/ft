@@ -7,11 +7,11 @@
       <% case notification.notifiable_type %>
       <% when 'Comment' %>
         <% commentable = notifiable.commentable %>
-        <%= link_to 'You have a new comment.', polymorphic_path(commentable, anchor: "comment_#{notifiable.id}") %>
+        <%= link_to "You have a new comment from #{notifiable.user.username}.", polymorphic_path(commentable, anchor: "comment_#{notifiable.id}") %>
       <% when 'Reply' %>
         <% comment = notifiable.comment %>
         <% commentable = comment.commentable %>
-        <%= link_to 'Someone replied to your comment.', polymorphic_path(commentable, anchor: "reply_#{notifiable.id}") %>
+        <%= link_to "#{notifiable.user.username} replied to your comment.", polymorphic_path(commentable, anchor: "reply_#{notifiable.id}") %>
       <% end %>
       <small>Received at <%= notification.created_at.strftime('%Y-%m-%d %H:%M:%S') %></small>
     </li>
