@@ -4,8 +4,13 @@
   <% @notifications.each do |notification| %>
     <li>
       <% notifiable = notification.notifiable %>
-      <% if notifiable.respond_to?(:commentable) %>
-        <%= link_to notification.message, polymorphic_path(notifiable.commentable, anchor: "#{notifiable.class.name.downcase}_#{notifiable.id}") %>
+      <% case notifiable.class.name %>
+      <% when 'Comment' %>
+        <%= link_to notification.message, polymorphic_path(notifiable.commentable, anchor: "comment_#{notifiable.id}") %>
+      <% when 'Reply' %>
+        <% comment = notifiable.comment %>
+        <% commentable = comment.commentable %>
+        <%= link_to notification.message, polymorphic_path(commentable, anchor: "reply_#{notifiable.id}") %>
       <% else %>
         <!-- Fallback content for notifiables without a commentable -->
         <%= notification.message %>
