@@ -4,7 +4,7 @@ class NotificationsController < ApplicationController
     # Display the current user's unread notifications
     ## Not being used as of yet. See users_controller#notifications
     def index
-      @notifications = current_user.notifications.unread
+        @notifications = current_user.notifications.unread.order(created_at: :desc)
     end
   
     # Mark a notification as read      

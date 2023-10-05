@@ -1,0 +1,26 @@
+<h1>Your Notifications</h1>
+
+<ul>
+  <% @notifications.each do |notification| %>
+    <!-- Add a unique ID for the list item -->
+    <li id="notification_<%= notification.id %>">
+      <% notifiable = notification.notifiable %>
+      <% case notifiable.class.name %>
+      <% when 'Comment' %>
+        <%= link_to notification.message, polymorphic_path(notifiable.commentable, anchor: "comment_#{notifiable.id}") %>
+      <% when 'Reply' %>
+        <% comment = notifiable.comment %>
+        <% commentable = comment.commentable %>
+        <%= link_to notification.message, polymorphic_path(commentable, anchor: "reply_#{notifiable.id}") %>
+      <% else %>
+        <!-- Fallback content for notifiables without a commentable -->
+        <%= notification.message %>
+      <% end %>
+      <!-- Modify form_with to include data-turbo-frame -->
+      <%= form_with url: mark_as_read_notification_path(notification), method: :post, data: { turbo_frame: "notification_#{notification.id}" } do %>
+        <%= submit_tag 'Mark as Read', class: 'btn btn-sm btn-primary' %>
+      <% end %>
+      <small>Received at <%= notification.created_at.strftime('%Y-%m-%d %H:%M:%S') %></small>
+    </li>
+  <% end %>
+</ul>

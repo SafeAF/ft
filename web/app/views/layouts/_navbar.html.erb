@@ -30,7 +30,7 @@
   <% if user_signed_in? %>
     <div class="notification-dropdown">
      <% if user_signed_in? %>
-    <%= link_to "Notifications (#{current_user.notifications.unread.count})", notifications_user_path(current_user.id) %>
+    <%= link_to "Notifications (#{current_user.notifications.unread.count})", notifications_path(current_user.id) %>
   <% end %>
     </div>
   <% end %>

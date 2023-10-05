@@ -83,8 +83,6 @@ Rails.application.routes.draw do
       post 'flag'
       post 'lock'  
       
-      get 'notifications'
-      
     end
   end
 

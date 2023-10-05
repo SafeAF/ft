@@ -85,12 +85,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # Get notifications
-  def notifications
-    @notifications = current_user.notifications.unread.order(created_at: :desc)
-  end
-
-
   private
 
   # Use callbacks to share common setup or constraints between actions.
