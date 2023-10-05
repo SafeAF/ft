@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show] # Ensure the user is authenticated for actions except index and show
+  before_action :authenticate_user! #, except: [:index, :show] # Ensure the user is authenticated for actions except index and show
   before_action :set_article, only: %i[ show edit update destroy ]
   before_action :verify_owner, only: [:edit, :update, :destroy] # Ensure the current user is the owner for edit, update, and destroy
 

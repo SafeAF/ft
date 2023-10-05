@@ -1,18 +1,7 @@
 class UsersController < ApplicationController
- 
   before_action :set_user, only: [:show, :edit, :update]
   before_action :authenticate_user! #, except: [:show]
   before_action :correct_user, only: [:edit, :update]
-
-    # def show
-    #   @user = User.find(params[:id])
-
-    # # We want other users to be able to see what each user has been up to
-    # #   if @user != current_user
-    # #     redirect_to root_path, alert: "Access denied."
-    # #   end
-    # end
-
 
     def show
       @user = User.find(params[:id])
@@ -32,7 +21,6 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       @articles = @user.articles.order('created_at DESC').page(params[:page]).per(10) # 10 comments per page
     end
-    
     
       # GET /users/1/edit
       def edit
@@ -65,7 +53,6 @@ class UsersController < ApplicationController
       render :edit_bio
     end
   end
-
 
   # Flag User Action
   def flag
