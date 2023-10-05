@@ -1,13 +1,15 @@
-<!-- app/views/conversations/index.html.erb -->
-
 <h1>Conversations</h1>
 
 <%= link_to 'New Conversation', new_conversation_path %>
 
-<ul>
-  <% @conversations.each do |conversation| %>
-    <li>
-      <%= link_to conversation.opposed_user(current_user).username, conversation_messages_path(conversation) %>
-    </li>
-  <% end %>
-</ul>
+<!-- Wrap the conversation list in a TurboFrame -->
+<turbo-frame id="conversation-list">
+  <ul>
+    <% @conversations.each do |conversation| %>
+      <li>
+        <!-- Direct link to the conversation page -->
+        <%= link_to conversation.opposed_user(current_user).username, conversation_messages_path(conversation), data: { turbo_frame: "message_list" } %>
+      </li>
+    <% end %>
+  </ul>
+</turbo-frame>

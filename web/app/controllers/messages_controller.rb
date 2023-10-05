@@ -11,7 +11,10 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.user_id = current_user.id
     if @message.save
-      redirect_to conversation_messages_path(@message.conversation)
+      respond_to do |format|
+        format.turbo_stream
+      end
+
     else
       render 'index'
     end
