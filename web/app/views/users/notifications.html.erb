@@ -15,6 +15,10 @@
         <!-- Fallback content for notifiables without a commentable -->
         <%= notification.message %>
       <% end %>
+      <!-- Add Mark as Read button here -->
+      <%= form_with url: mark_as_read_notification_path(notification), method: :post do %>
+        <%= submit_tag 'Mark as Read', class: 'btn btn-sm btn-primary' %>
+      <% end %>
       <small>Received at <%= notification.created_at.strftime('%Y-%m-%d %H:%M:%S') %></small>
     </li>
   <% end %>

@@ -47,6 +47,9 @@ Rails.application.routes.draw do
     resources :messages, only: [:index, :create]
   end
 
+
+  # Notifications 
+
   resources :notifications, only: [:index] do
     member do
       post :mark_as_read
