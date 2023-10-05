@@ -4,6 +4,9 @@ class Conversation < ApplicationRecord
   
   has_many :messages, dependent: :destroy
 
+  validates_uniqueness_of :sender_id, scope: :recipient_id
+
+
 
   def opposed_user(user)
     user == sender ? recipient : sender
@@ -22,4 +25,6 @@ class Conversation < ApplicationRecord
 
 
 end
+
+
 

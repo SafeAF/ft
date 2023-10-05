@@ -4,3 +4,4 @@ class Message < ApplicationRecord
 
   validates_presence_of :content, :conversation_id, :user_id
 end
+
