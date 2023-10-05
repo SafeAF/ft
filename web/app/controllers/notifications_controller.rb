@@ -7,18 +7,20 @@ class NotificationsController < ApplicationController
       @notifications = current_user.notifications.unread
     end
   
-    # Mark a notification as read
+    # Mark a notification as read      
     def mark_as_read
         @notification = Notification.find(params[:id])
-        
-        # Ensure the current user owns the notification
+
         if @notification.user == current_user
-          @notification.update!(status: :read)
-          redirect_to notifications_path, notice: 'Notification marked as read.'
+            @notification.update!(status: :read)
+
+            respond_to do |format|
+            format.turbo_stream
+            end
         else
-          redirect_to root_path, alert: 'You do not have permission to access this resource.'
+            redirect_to root_path, alert: 'You do not have permission to access this resource.'
         end
-      end
-      
-  end
+    end
+  
+end
   
