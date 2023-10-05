@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
     def fetch_notifications
       if user_signed_in? # Replace with your actual user authentication check
-        @notifications = current_user.notifications.order(created_at: :desc).limit(5)
+        @notifications = current_user.notifications.unread.order(created_at: :desc).limit(20)
       end
     end
     
