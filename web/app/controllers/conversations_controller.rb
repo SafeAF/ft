@@ -7,6 +7,12 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.new
   end
 
+  def show
+    @conversation = Conversation.find(params[:id])
+    @messages = @conversation.messages.order(:asc)
+  end
+
+
   def create
     if Conversation.between(params[:sender_id], params[:recipient_id]).present?
       @conversation = Conversation.between(params[:sender_id], params[:recipient_id]).first

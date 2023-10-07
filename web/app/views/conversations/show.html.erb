@@ -1,0 +1,15 @@
+<!-- app/views/conversations/show.html.erb -->
+
+<h1>Conversation with <%= @conversation.opposed_user(current_user).username %></h1>
+
+<ul>
+  <% @messages.each do |message| %>
+    <li>
+      
+      <%= message.content %>
+      <small>(<%= message.created_at.strftime("%Y-%m-%d %H:%M:%S") %>)</small>
+    </li>
+  <% end %>
+</ul>
+
+<!-- Add your form for sending new messages here -->
