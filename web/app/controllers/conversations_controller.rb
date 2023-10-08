@@ -15,8 +15,8 @@ class ConversationsController < ApplicationController
 
 
   def create
-    if Conversation.between(current_user, params[:recipient_id]).present?
-      @conversation = Conversation.between(current_user, params[:recipient_id]).first
+    if Conversation.between(current_user.id, params[:recipient_id]).present?
+      @conversation = Conversation.between(current_user.id, params[:recipient_id]).first
     else
       @conversation = Conversation.create!(conversation_params)
     end
@@ -26,6 +26,6 @@ class ConversationsController < ApplicationController
   private
 
   def conversation_params
-    params.permit(:recipient_id)
+    params.permit(:conversation, :recipient_id)
   end
 end
