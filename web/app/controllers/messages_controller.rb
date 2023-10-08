@@ -1,5 +1,3 @@
-# app/controllers/messages_controller.rb
-
 class MessagesController < ApplicationController
   def index
     @conversation = Conversation.find(params[:conversation_id])

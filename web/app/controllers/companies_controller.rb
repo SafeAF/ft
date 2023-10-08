@@ -1,4 +1,5 @@
-class CompaniesController < ApplicationController
+class CompaniesController < 
+  before_action :authenticate_user!
   before_action :set_company, only: %i[ show edit update destroy ]
   before_action :check_user, only: [:edit, :update, :destroy]
 
