@@ -10,3 +10,9 @@
   <% end %>
 </ul>
 
+<%= form_with model: [@conversation, @message], url: conversation_messages_path(@conversation), local: true do |form| %>
+  <%= form.text_area :content %>
+  <%= form.submit "Send" %>
+<% end %>
+
+<%= debug @conversation %>
