@@ -11,11 +11,13 @@ class ConversationsController < ApplicationController
 
   def show
     @conversation = Conversation.find(params[:id])
+    Rails.logger.debug("Debug: #{@conversation.inspect}")
+    @messages = @conversation.messages
     @message = Message.new
-    @messages = @conversation.messages.order(:asc)
   end
+  
 
-
+  # change params sender_id to current_user? no longer permit sender_id?
   def create
     if Conversation.between(params[:sender_id], params[:recipient_id]).present?
       @conversation = Conversation.between(params[:sender_id], params[:recipient_id]).first
