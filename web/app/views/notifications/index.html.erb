@@ -12,6 +12,8 @@
         <% comment = notifiable.comment %>
         <% commentable = comment.commentable %>
         <%= link_to notification.message, polymorphic_path(commentable, anchor: "reply_#{notifiable.id}") %>
+      <% when 'Message' %>
+        <%= link_to notification.message, conversation_path(notifiable.conversation_id, anchor: "message_#{notifiable.id}") %>
       <% else %>
         <!-- Fallback content for notifiables without a commentable -->
         <%= notification.message %>
@@ -24,3 +26,4 @@
     </li>
   <% end %>
 </ul>
+

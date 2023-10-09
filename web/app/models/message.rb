@@ -2,12 +2,12 @@ class Message < ApplicationRecord
   belongs_to :conversation
   belongs_to :user
 
+  has_many :notifications, as: :notifiable, dependent: :destroy
+
+
   validates_presence_of :content, :conversation_id, :user_id
 
-  def message_time
-    created_at.strftime("%m/%d/%y at %l:%M %p")
-  end
-
+  
   # Callback to create a notification after a message is saved
   after_create :create_notification
 
@@ -21,5 +21,10 @@ class Message < ApplicationRecord
       )
     end
   end
+
+  def message_time
+    created_at.strftime("%m/%d/%y at %l:%M %p")
+  end
+
 end
 
