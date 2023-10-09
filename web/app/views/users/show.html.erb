@@ -3,6 +3,15 @@
   <div class="row">
     <div class="col-md-12">
       <h1><%= @user.username %>'s Profile</h1>
+
+
+        <% unless @user == current_user %>
+          <%= form_with url: start_conversation_user_path(@user), method: :post do %>
+            <%= submit_tag "Start a Conversation", class: "btn btn-primary" %>
+          <% end %>
+        <% end %>
+
+
       
       <% if @user.avatar.attached? %>
         <%= image_tag @user.avatar, alt: "User's avatar", width: 65, height: 65, class: "rounded-circle" %>

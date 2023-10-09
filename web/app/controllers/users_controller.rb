@@ -72,6 +72,20 @@ class UsersController < ApplicationController
     end
   end
 
+  # initiate DM
+  def start_conversation
+    recipient = User.find(params[:id])
+    conversation = Conversation.between(current_user.id, recipient.id).first
+
+    if conversation.nil?
+      conversation = Conversation.create!(sender_id: current_user.id, recipient_id: recipient.id)
+    end
+    
+    redirect_to conversation_path(conversation)
+  end
+
+
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -86,7 +100,7 @@ class UsersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def user_params
-    params.require(:user).permit(:bio, :avatar)
+    params.require(:user).permit(:bio, :avatar, :recipient_id)
   end
 
 
