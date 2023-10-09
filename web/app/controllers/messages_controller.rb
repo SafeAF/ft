@@ -29,7 +29,6 @@ class MessagesController < ApplicationController
     if @message.save
       redirect_to conversation_path(@conversation)
     else
-      Rails.logger.debug(@message.errors.full_messages.to_sentence)
       @messages = @conversation.messages
       render 'index'
     end

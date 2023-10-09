@@ -11,7 +11,6 @@ class ConversationsController < ApplicationController
 
   def show
     @conversation = Conversation.find(params[:id])
-    Rails.logger.debug("Debug: #{@conversation.inspect}")
     @messages = @conversation.messages
     @message = Message.new
   end
