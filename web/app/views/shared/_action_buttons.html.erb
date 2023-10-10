@@ -1,0 +1,13 @@
+<% allowed_resources = ['listing', 'company', 'job', 'article'] %>
+<% if allowed_resources.include?(resource_type) %>
+  <%= form_with url: send("flag_#{resource_type}_path", resource), method: :post do %>
+    <%= submit_tag "Flag this #{resource_type}" %>
+  <% end %>
+
+  <% if resource.user == current_user || current_user.moderator? %>
+    <%= link_to 'Edit', send("edit_#{resource_type}_path", resource) %> |
+    <%= button_to 'Destroy', resource, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+
+  <%= link_to "Back to #{resource_type.pluralize}", send("#{resource_type.pluralize}_path") %>
+<% end %>

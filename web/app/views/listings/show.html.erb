@@ -49,18 +49,7 @@
 
 
 <div>
-  <!-- app/views/listings/show.html.erb -->
-<%= form_with url: flag_listing_path(@listing), method: :post do %>
-  <%= submit_tag "Flag this listing" %>
-<% end %>
-
-
-<% if @listing.user == current_user || current_user.moderator? %>
-  <%= link_to 'Edit', edit_listing_path(@listing) %> |
-  <%= button_to 'Destroy', @listing, method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>
-
-  <%= link_to "Back to listings", listings_path %>
+<%= render partial: 'shared/action_buttons', locals: { resource: @listing, resource_type: 'listing' } %>
 
 </div>
 
