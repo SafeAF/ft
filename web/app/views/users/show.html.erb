@@ -13,12 +13,7 @@
 
 
       
-      <% if @user.avatar.attached? %>
-        <%= image_tag @user.avatar, alt: "User's avatar", width: 65, height: 65, class: "rounded-circle" %>
-      <% else %>
-       <!-- Fallback avatar if user doesn't have one -->
-       <div class="rounded-circle shadow-1-strong me-3" style="width: 65px; height: 65px; background-color: grey;"></div>
-      <% end %>
+   <%= render partial: 'shared/avatar', locals: { user: @user } %>
 
       <!-- Displaying Bio -->
       <% if @user.bio.present? %>
