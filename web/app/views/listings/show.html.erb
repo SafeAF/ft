@@ -29,10 +29,17 @@
     <strong>Views:</strong>
     <%= @listing.views %>
   </p>
-<p>
-    Posted by: <%= link_to @listing.user.username, user_path(@listing.user) %> <span class="small">- <%= @listing.created_at.strftime('%B %d, %Y') %></span>
-      
-    </p>
+
+<div class="d-flex align-items-center">
+  <div class="me-2">
+    <%= render partial: 'shared/avatar', locals: { user: @listing.user } %>
+  </div>
+  <div>
+    Posted by: <%= link_to @listing.user.username, user_path(@listing.user) %>
+    <span class="small">- <%= @listing.created_at.strftime('%B %d, %Y') %></span>
+  </div>
+</div>
+
 
 </div>
 
