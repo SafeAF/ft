@@ -19,18 +19,9 @@
     <p>
       Posted by: <%= link_to @job.user.username, user_path(@job.user) %> <span class="small">- <%= @job.created_at.strftime('%B %d, %Y') %></span>
     </p>
-      <!-- Edit and Delete Buttons -->
-      <div class="mt-3">
-        <%= link_to 'Back', jobs_path, class: "btn btn-secondary" %>
-        <% if @job.user == current_user %>
-          <%= link_to 'Edit', edit_job_path(@job), class: "btn btn-primary" %> |
-          <%= button_to 'Destroy', @job, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
-        <% end %>
-        <!-- app/views/jobs/show.html.erb -->
-        <%= form_with url: flag_job_path(@job), method: :post do %>
-          <%= submit_tag "Flag this Job" %>
-        <% end %>
-      </div>
+      
+    <%= render partial: 'shared/action_buttons', locals: { resource: @job, resource_type: 'job' } %>
+
     </div>
   </div>
 

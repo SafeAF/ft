@@ -28,21 +28,9 @@
     <%= @article.content %>
   </div>
 
-  <!-- Flag and Edit Links -->
+
   <div>
-   
-<% if @article.user == current_user || current_user.moderator? %>
-  <%= link_to 'Edit', edit_article_path(@article) %> |
-    <%= button_to "Destroy this article", @article, method: :delete, class: "btn btn-danger" %>
-<% end %>
-
-
-    <%= link_to "Back to articles", articles_path, class: "btn btn-secondary" %>
-
-<%= form_with url: flag_article_path(@article), method: :post do %>
-  <%= submit_tag "Flag this Article" %>
-<% end %>
-
+   <%= render partial: 'shared/action_buttons', locals: { resource: @article, resource_type: 'article' } %>
   </div>
 
   <hr>
