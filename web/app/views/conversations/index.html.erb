@@ -3,14 +3,14 @@
 <%= link_to 'New Conversation', new_conversation_path %>
 
 <!-- Wrap the conversation list in a TurboFrame -->
+<ul>
+  <% @conversations.each do |conversation| %>
+    <li>
+      <!-- Render the avatar next to the username -->
+      <%= render partial: 'shared/avatar', locals: { user: conversation.opposed_user(current_user) } %>
 
-  <ul>
-    <% @conversations.each do |conversation| %>
-      <li>
-        <!-- Direct link to the conversation page -->
-        <%= link_to conversation.opposed_user(current_user).username, conversation_path(conversation) %>
-
-      </li>
-    <% end %>
-  </ul>
-
+      <!-- Direct link to the conversation page -->
+      <%= link_to conversation.opposed_user(current_user).username, conversation_path(conversation) %>
+    </li>
+  <% end %>
+</ul>
