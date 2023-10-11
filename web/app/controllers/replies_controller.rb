@@ -10,6 +10,19 @@ class RepliesController < ApplicationController
         redirect_to @comment.commentable, alert: 'Error creating reply.'
       end
     end
+
+    def destroy
+      @reply = Reply.find(params[:id])
+      # Add authorization checks if needed
+      if @reply.user == current_user || current_user.moderator?
+        @reply.update(visible: false)
+        flash[:success] = 'Reply has been hidden.'
+      else
+        flash[:alert] = 'You do not have permission to hide this reply.'
+      end
+      # Redirect to the appropriate page
+      redirect_to request.referrer || root_path
+    end
   
     private
   

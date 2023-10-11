@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   resources :articles do
     resources :comments, only: [:create, :edit, :update, :destroy] do
-      resources :replies, only: [:create]  
+      resources :replies, only: [:create, :destroy]  
     end
 
     member do
@@ -12,13 +12,13 @@ Rails.application.routes.draw do
 
   resources :companies do
     resources :comments, only: [:create, :edit, :update, :destroy] do
-      resources :replies, only: [:create]  
+      resources :replies, only: [:create, :destroy]  
     end
   end
 
   resources :listings do
     resources :comments, only: [:create, :edit, :update, :destroy] do
-      resources :replies, only: [:create]  
+      resources :replies, only: [:create, :destroy]  
     end
 
     member do
@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   end
 
   resources :comments, only: [] do  
-    resources :replies, only: [:create], as: 'replies'
+    resources :replies, only: [:create, :destroy], as: 'replies'
     member do
       post :flag
     end
