@@ -34,6 +34,11 @@
             <div class="d-flex justify-content-between align-items-center">
               <p class="mb-1">
                 <%= link_to reply.user.username, user_path(reply.user) %> <span class="small">- <%= reply.created_at.strftime('%B %d, %Y') %></span>
+                <% if reply.user == current_user || current_user.moderator? %>
+                  <% parent_type = reply.comment.commentable_type.downcase %>
+                  <% delete_path = "#{parent_type}_comment_reply_path".to_sym %>
+                  <%= button_to 'Delete', send(delete_path, reply.comment.commentable, reply.comment, reply), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %>
+                <% end %>
 
               </p>
             </div>

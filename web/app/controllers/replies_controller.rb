@@ -16,7 +16,7 @@ class RepliesController < ApplicationController
       # Add authorization checks if needed
       if @reply.user == current_user || current_user.moderator?
         @reply.update(visible: false)
-        flash[:success] = 'Reply has been hidden.'
+        flash[:success] = 'Reply has been deleted.'
       else
         flash[:alert] = 'You do not have permission to hide this reply.'
       end
