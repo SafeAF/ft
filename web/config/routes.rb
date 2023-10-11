@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 
   resources :jobs do
     resources :comments, only: [:create, :edit, :update, :destroy] do
-      resources :replies, only: [:create]  
+      resources :replies, only: [:create, :destroy]  
     end
 
     member do
