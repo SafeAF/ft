@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_11_151519) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_11_154639) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -58,7 +58,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_11_151519) do
     t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "flagged_count", default: 0
     t.integer "flags_count", default: 0
     t.boolean "visible", default: true
     t.index ["user_id"], name: "index_articles_on_user_id"
