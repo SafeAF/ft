@@ -43,6 +43,12 @@ img {
 
 /* Comment styling */
 
+// Don't shrink the avatar if large block of text in comment/reply
+.no-shrink {
+   flex-shrink: 0;
+ }
+ 
+
 .gradient-custom { /* fallback for old browsers */ background: #4facfe; /* Chrome 10-25,
    Safari 5.1-6 */ background: -webkit-linear-gradient(to bottom right, rgba(79, 172, 254,
    1), rgba(0, 242, 254, 1)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+,
