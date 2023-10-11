@@ -25,7 +25,7 @@
     <!-- Displaying replies -->
     <div class="mt-3">
       <strong>Replies:</strong>
-      <% comment.replies.each do |reply| %>
+      <% comment.replies.visible.each do |reply| %>
         <div class="d-flex flex-start no-shrink mt-4" id="reply_<%= reply.id %>">
           <div class="me-2 no-shrink">
             <%= render partial: 'shared/avatar', locals: { user: reply.user } %>

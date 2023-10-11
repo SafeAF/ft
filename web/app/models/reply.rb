@@ -30,4 +30,13 @@ class Reply < ApplicationRecord
   end
   
 
+
+  scope :visible, -> { where(visible: true) }
+  scope :hidden, -> { where(visible: false) }
+
+  def hide
+    update(visible: false)
+  end
+
+
 end
