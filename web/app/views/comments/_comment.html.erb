@@ -9,6 +9,11 @@
       <p class="mb-1">
         <%= link_to comment.user.username, user_path(comment.user) %> <span class="small">- <%= comment.created_at.strftime('%B %d, %Y') %></span>
       </p>
+
+      <% if comment.user == current_user || current_user.moderator? %>
+        <%= button_to 'Delete', polymorphic_path([comment.commentable, comment]), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %>
+      <% end %>
+
       <%= form_with url: flag_comment_path(comment), method: :post do %>
         <%= submit_tag "Flag", class: "btn btn-sm btn-danger" %>
       <% end %>
