@@ -1,4 +1,4 @@
-<table>
+<table class="table table-striped table-hover">
   <thead>
     <tr>
       <th>ID</th>
@@ -15,22 +15,24 @@
         <td><%= item.id %></td>
         <td><%= item.try(:user).try(:username) || 'N/A' %></td>
         <td><%= item.try(:title) || item.try(:content) %></td>
-        <td><%= item.flags_count %></td> <!-- Assumes flags_count exists -->
+        <td><%= item.flags_count %></td>
         <td><%= item.created_at.strftime("%B %d, %Y") %></td>
         <td>
-          <% case item_type %>
-            <% when 'Article', 'Job', 'Listing' %>
-              <%= link_to "View", polymorphic_path(item) %> 
-            <% when 'Comment' %>
-              <%= link_to "View", polymorphic_path([item.commentable, item]) %>
-            <% when 'Reply' %> <!-- New Case for Replies -->
-              <%= link_to "View", polymorphic_path([item.comment.commentable, item.comment, item]) %> <!-- Modify path as needed -->
-          <% end %>
-          <%= button_to "Hide", hide_item_moderators_path(item_type: item.class.name, item_id: item.id), method: :post %> 
-          <%= button_to "Unflag", unflag_item_moderators_path(item_type: item.class.name, item_id: item.id), method: :post %>   
-          <% if item.try(:user) %>
-            <%= button_to "Lock User", lock_user_moderators_path(user_id: item.user.id), method: :post %>
-          <% end %>
+          <div class="btn-group" role="group">
+            <% case item_type %>
+              <% when 'Article', 'Job', 'Listing' %>
+                <%= link_to "View", polymorphic_path(item), class: 'btn btn-primary' %> 
+              <% when 'Comment' %>
+                <%= link_to "View", polymorphic_path([item.commentable, item]), class: 'btn btn-primary' %> 
+              <% when 'Reply' %> <!-- New Case for Replies -->
+                <%= link_to "View", polymorphic_path([item.comment.commentable, item.comment, item]), class: 'btn btn-primary' %> <!-- Modify path as needed -->
+            <% end %>
+            <%= button_to "Hide", hide_item_moderators_path(item_type: item.class.name, item_id: item.id), method: :post, class: 'btn btn-warning' %> 
+            <%= button_to "Unflag", unflag_item_moderators_path(item_type: item.class.name, item_id: item.id), method: :post, class: 'btn btn-success' %>   
+            <% if item.try(:user) %>
+              <%= button_to "Lock User", lock_user_moderators_path(user_id: item.user.id), method: :post, class: 'btn btn-danger' %>
+            <% end %>
+          </div>
         </td>
       </tr>
     <% end %>

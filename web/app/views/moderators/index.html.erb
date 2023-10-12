@@ -1,37 +1,51 @@
-<h1>Moderator Dashboard</h1>
+<div class="container mt-5">
+  <h1 class="mb-4">Moderator Dashboard</h1>
 
-<% if @flagged_listings.any? %>
-  <h2>Flagged Listings</h2>
-  <%= render partial: 'flagged_item', locals: { items: @flagged_listings, item_type: 'Listing' } %>
-  <%= paginate @flagged_listings, param_name: 'page_listings' %>
-<% end %>
+  <% if @flagged_listings.any? %>
+    <h2 class="my-3">Flagged Listings</h2>
+    <div class="table-responsive">
+      <%= render partial: 'flagged_item', locals: { items: @flagged_listings, item_type: 'Listing' } %>
+    </div>
+    <%= paginate @flagged_listings, param_name: 'page_listings' %>
+  <% end %>
 
-<% if @flagged_articles.any? %>
-  <h2>Flagged Articles</h2>
-  <%= render partial: 'flagged_item', locals: { items: @flagged_articles, item_type: 'Article' } %>
-  <%= paginate @flagged_articles, param_name: 'page_articles' %>
-<% end %>
+  <% if @flagged_articles.any? %>
+    <h2 class="my-3">Flagged Articles</h2>
+    <div class="table-responsive">
+      <%= render partial: 'flagged_item', locals: { items: @flagged_articles, item_type: 'Article' } %>
+    </div>
+    <%= paginate @flagged_articles, param_name: 'page_articles' %>
+  <% end %>
 
-<% if @flagged_jobs.any? %>
-  <h2>Flagged Jobs</h2>
-  <%= render partial: 'flagged_item', locals: { items: @flagged_jobs, item_type: 'Job' } %>
-  <%= paginate @flagged_jobs, param_name: 'page_jobs' %>
-<% end %>
+  <% if @flagged_jobs.any? %>
+    <h2 class="my-3">Flagged Jobs</h2>
+    <div class="table-responsive">
+      <%= render partial: 'flagged_item', locals: { items: @flagged_jobs, item_type: 'Job' } %>
+    </div>
+    <%= paginate @flagged_jobs, param_name: 'page_jobs' %>
+  <% end %>
 
-<% if @flagged_comments.any? %>
-  <h2>Flagged Comments</h2>
-  <%= render partial: 'flagged_item', locals: { items: @flagged_comments, item_type: 'Comment' } %>
-  <%= paginate @flagged_comments, param_name: 'page_comments' %>
-<% end %>
+  <% if @flagged_comments.any? %>
+    <h2 class="my-3">Flagged Comments</h2>
+    <div class="table-responsive">
+      <%= render partial: 'flagged_item', locals: { items: @flagged_comments, item_type: 'Comment' } %>
+    </div>
+    <%= paginate @flagged_comments, param_name: 'page_comments' %>
+  <% end %>
 
-<% if @flagged_replies.any? %>
-  <h2>Flagged Replies</h2>
-  <%= render partial: 'flagged_item', locals: { items: @flagged_replies, item_type: 'Reply' } %>
-  <%= paginate @flagged_replies, param_name: 'page_replies' %>
-<% end %>
+  <% if @flagged_replies.any? %>
+    <h2 class="my-3">Flagged Replies</h2>
+    <div class="table-responsive">
+      <%= render partial: 'flagged_item', locals: { items: @flagged_replies, item_type: 'Reply' } %>
+    </div>
+    <%= paginate @flagged_replies, param_name: 'page_replies' %>
+  <% end %>
 
-<% if @flagged_comments.any? %>
-  <h2>Flagged Users</h2>
-  <%= render partial: 'flagged_item', locals: { items: @flagged_comments, item_type: 'User' } %>
-  <%= paginate @flagged_comments, param_name: 'page_users' %>
-<% end %>
+  <% if @flagged_comments.any? %>
+    <h2 class="my-3">Flagged Users</h2>
+    <div class="table-responsive">
+      <%= render partial: 'flagged_item', locals: { items: @flagged_comments, item_type: 'User' } %>
+    </div>
+    <%= paginate @flagged_comments, param_name: 'page_users' %>
+  <% end %>
+</div>
