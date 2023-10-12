@@ -32,7 +32,7 @@
 
     <!-- Displaying replies -->
     <div class="mt-3">
-      <strong>Replies:</strong>
+      
       <% comment.replies.visible.each do |reply| %>
         <%= render partial: 'comments/reply', locals: { reply: reply, comment: comment } %>
       <% end %>
