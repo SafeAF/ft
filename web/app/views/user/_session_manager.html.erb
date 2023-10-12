@@ -1,7 +1,6 @@
 <% if current_user %>
 <li class="nav-item">
   <%= link_to "List Your Company", new_company_path, class: "nav-link" %>
-
 </li>
 
 <li class="nav-item dropdown">
@@ -11,6 +10,12 @@
   <ul class="dropdown-menu">
     <li><a class="dropdown-item" href="#">Action</a></li>
     <li><%= link_to "Profile", user_path(current_user), class: "dropdown-item" %></li>
+
+    <% if current_user.moderator? %>
+      <!-- Show the link if the user is a moderator -->
+      <li><%= link_to "Moderators", moderators_path, class: "dropdown-item" %></li>
+    <% end %>
+
     <li><hr class="dropdown-divider"></li>
     <li> <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
     <li><a class="dropdown-item" href="#">Something else here</a></li>
