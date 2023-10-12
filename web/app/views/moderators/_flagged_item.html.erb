@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th>User</th> <!-- New column -->
+      <th>User</th>
       <th>Title/Content</th>
       <th>Flags Count</th>
       <th>Created At</th>
@@ -13,22 +13,24 @@
     <% items.each do |item| %>
       <tr>
         <td><%= item.id %></td>
-        <td><%= item.try(:user).try(:username) || 'N/A' %></td> <!-- New column data -->
+        <td><%= item.try(:user).try(:username) || 'N/A' %></td>
         <td><%= item.try(:title) || item.try(:content) %></td>
-        <td><%= item.flags_count %></td>
+        <td><%= item.flags_count %></td> <!-- Assumes flags_count exists -->
         <td><%= item.created_at.strftime("%B %d, %Y") %></td>
         <td>
           <% case item_type %>
             <% when 'Article', 'Job', 'Listing' %>
               <%= link_to "View", polymorphic_path(item) %> 
             <% when 'Comment' %>
-              <%= link_to "View", polymorphic_path([item.commentable, item]) %> 
+              <%= link_to "View", polymorphic_path([item.commentable, item]) %>
+            <% when 'Reply' %> <!-- New Case for Replies -->
+              <%= link_to "View", polymorphic_path([item.comment.commentable, item.comment, item]) %> <!-- Modify path as needed -->
           <% end %>
           <%= button_to "Hide", hide_item_moderators_path(item_type: item.class.name, item_id: item.id), method: :post %> 
           <%= button_to "Unflag", unflag_item_moderators_path(item_type: item.class.name, item_id: item.id), method: :post %>   
           <% if item.try(:user) %>
             <%= button_to "Lock User", lock_user_moderators_path(user_id: item.user.id), method: :post %>
-          <% end %> 
+          <% end %>
         </td>
       </tr>
     <% end %>

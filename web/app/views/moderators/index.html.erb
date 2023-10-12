@@ -13,6 +13,11 @@
 <h2>Flagged Comments</h2>
 <%= render partial: 'flagged_item', locals: { items: @flagged_comments, item_type: 'Comment' } %>
 
+<h2>Flagged Replies</h2>
+<%= render partial: 'flagged_item', locals: { items: @flagged_replies, item_type: 'Reply' } %>
+
+
+
 <h2>Flagged Users</h2>
 <%= render partial: 'flagged_item', locals: { items: @flagged_comments, item_type: 'User' } %>
 

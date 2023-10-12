@@ -8,6 +8,7 @@ class ModeratorsController < ApplicationController
     @flagged_jobs = Job.where("flags_count > ?", 0).where(visible: true).order(created_at: :desc)
     @flagged_comments = Comment.where("flags_count > ?", 0).where(visible: true).order(created_at: :desc)
     @flagged_listings = Listing.where("flags_count > ?", 0).where(visible: true).order(created_at: :desc)
+    @flagged_replies = Reply.where("flags_count > ?", 0).where(visible: true).order(created_at: :desc)
   end
   
   def hide_item
