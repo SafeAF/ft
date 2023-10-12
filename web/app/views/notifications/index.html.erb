@@ -1,32 +1,36 @@
-<h1>Your Notifications</h1>
+<div class="container">
+  <h1 class="mb-4">Your Notifications</h1>
 
-<ul>
-  <% @notifications.each do |notification| %>
-    <!-- Add a unique ID for the list item -->
-    <li id="notification_<%= notification.id %>">
-      <% notifiable = notification.notifiable %>
-      <% case notifiable.class.name %>
-      <% when 'Comment' %>
-        <%= link_to notification.message, polymorphic_path(notifiable.commentable, anchor: "comment_#{notifiable.id}") %>
-      <% when 'Reply' %>
-        <% comment = notifiable.comment %>
-        <% commentable = comment.commentable %>
-        <%= link_to notification.message, polymorphic_path(commentable, anchor: "reply_#{notifiable.id}") %>
-      <% when 'Message' %>
-        <%= link_to notification.message, conversation_path(notifiable.conversation_id, anchor: "message_#{notifiable.id}") %>
-      <% else %>
-        <!-- Fallback content for notifiables without a commentable -->
-        <%= notification.message %>
-      <% end %>
-      <!-- Modify form_with to include data-turbo-frame -->
-      <%= form_with url: mark_as_read_notification_path(notification), method: :post, data: { turbo_frame: "notification_#{notification.id}" } do %>
-        <%= submit_tag 'Mark as Read', class: 'btn btn-sm btn-primary' %>
-      <% end %>
-      <small>Received at <%= notification.created_at.strftime('%Y-%m-%d %H:%M:%S') %></small>
-    </li>
-  <% end %>
-</ul>
+  <div class="list-group">
+    <% @notifications.each do |notification| %>
+      <div class="list-group-item" id="notification_<%= notification.id %>">
+        <div class="d-flex justify-content-between align-items-center">
+          <h5 class="mb-0 me-2">
+            <% notifiable = notification.notifiable %>
+            <% case notifiable.class.name %>
+            <% when 'Comment' %>
+              <%= link_to notification.message, polymorphic_path(notifiable.commentable, anchor: "comment_#{notifiable.id}") %>
+            <% when 'Reply' %>
+              <% comment = notifiable.comment %>
+              <% commentable = comment.commentable %>
+              <%= link_to notification.message, polymorphic_path(commentable, anchor: "reply_#{notifiable.id}") %>
+            <% when 'Message' %>
+              <%= link_to notification.message, conversation_path(notifiable.conversation_id, anchor: "message_#{notifiable.id}") %>
+            <% else %>
+              <!-- Fallback content for notifiables without a commentable -->
+              <%= notification.message %>
+            <% end %>
+          </h5>
+          <small class="text-muted me-2">Received at <%= notification.created_at.strftime('%Y-%m-%d %H:%M:%S') %></small>
+          <%= form_with url: mark_as_read_notification_path(notification), method: :post, data: { turbo_frame: "notification_#{notification.id}" }, class: 'mb-0' do %>
+            <%= submit_tag 'Mark as Read', class: 'btn btn-sm btn-primary mb-0' %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 
-
-<%= paginate @notifications %>
-
+  <div class="mt-4">
+    <%= paginate @notifications %>
+  </div>
+</div>
