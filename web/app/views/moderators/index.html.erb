@@ -2,22 +2,24 @@
 
 <h2>Flagged Listings</h2>
 <%= render partial: 'flagged_item', locals: { items: @flagged_listings, item_type: 'Listing' } %>
-
+<%= paginate @flagged_listings, param_name: 'page_listings' %>
 
 <h2>Flagged Articles</h2>
 <%= render partial: 'flagged_item', locals: { items: @flagged_articles, item_type: 'Article' } %>
+<%= paginate @flagged_articles, param_name: 'page_articles' %>
 
 <h2>Flagged Jobs</h2>
 <%= render partial: 'flagged_item', locals: { items: @flagged_jobs, item_type: 'Job' } %>
+<%= paginate @flagged_jobs, param_name: 'page_jobs' %>
 
 <h2>Flagged Comments</h2>
 <%= render partial: 'flagged_item', locals: { items: @flagged_comments, item_type: 'Comment' } %>
+<%= paginate @flagged_comments, param_name: 'page_comments' %>
 
 <h2>Flagged Replies</h2>
 <%= render partial: 'flagged_item', locals: { items: @flagged_replies, item_type: 'Reply' } %>
-
-
+<%= paginate @flagged_replies, param_name: 'page_replies' %>
 
 <h2>Flagged Users</h2>
 <%= render partial: 'flagged_item', locals: { items: @flagged_comments, item_type: 'User' } %>
-
+<%= paginate @flagged_comments, param_name: 'page_users' %>

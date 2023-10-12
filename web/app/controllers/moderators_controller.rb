@@ -3,13 +3,15 @@ class ModeratorsController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_moderator!
 
+  
   def index
-    @flagged_articles = Article.where("flags_count > ?", 0).where(visible: true).order(created_at: :desc)
-    @flagged_jobs = Job.where("flags_count > ?", 0).where(visible: true).order(created_at: :desc)
-    @flagged_comments = Comment.where("flags_count > ?", 0).where(visible: true).order(created_at: :desc)
-    @flagged_listings = Listing.where("flags_count > ?", 0).where(visible: true).order(created_at: :desc)
-    @flagged_replies = Reply.where("flags_count > ?", 0).where(visible: true).order(created_at: :desc)
+    @flagged_articles = Article.where("flags_count > ?", 0).where(visible: true).order(created_at: :desc).page(params[:page_articles]).per(10)
+    @flagged_jobs = Job.where("flags_count > ?", 0).where(visible: true).order(created_at: :desc).page(params[:page_jobs]).per(10)
+    @flagged_comments = Comment.where("flags_count > ?", 0).where(visible: true).order(created_at: :desc).page(params[:page_comments]).per(10)
+    @flagged_listings = Listing.where("flags_count > ?", 0).where(visible: true).order(created_at: :desc).page(params[:page_listings]).per(10)
+    @flagged_replies = Reply.where("flags_count > ?", 0).where(visible: true).order(created_at: :desc).page(params[:page_replies]).per(10)
   end
+  
   
   def hide_item
     item_type = params[:item_type]
