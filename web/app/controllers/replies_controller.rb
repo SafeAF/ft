@@ -23,6 +23,12 @@ class RepliesController < ApplicationController
       # Redirect to the appropriate page
       redirect_to request.referrer || root_path
     end
+
+    def flag
+      @reply = Reply.find(params[:id])
+      @reply.increment!(:flags_count)
+      redirect_to article_path(@reply.comment.commentable), notice: 'Reply was successfully flagged.'
+    end
   
     private
   

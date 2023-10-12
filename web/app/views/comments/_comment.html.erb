@@ -39,6 +39,9 @@
                   <% delete_path = "#{parent_type}_comment_reply_path".to_sym %>
                   <%= button_to 'Delete', send(delete_path, reply.comment.commentable, reply.comment, reply), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %>
                 <% end %>
+<%= form_with url: flag_comment_reply_path(article_id: @article.id, comment_id: comment.id, id: reply.id), method: :post do %>
+  <%= submit_tag "Flag", class: "btn btn-sm btn-danger" %>
+<% end %>
 
               </p>
             </div>

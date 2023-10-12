@@ -37,7 +37,12 @@ Rails.application.routes.draw do
   end
 
   resources :comments, only: [] do  
-    resources :replies, only: [:create, :destroy], as: 'replies'
+    resources :replies, only: [:create, :destroy], as: 'replies' do
+      member do
+        post :flag
+      end
+    end
+    
     member do
       post :flag
     end
