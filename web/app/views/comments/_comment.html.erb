@@ -9,13 +9,17 @@
       <p class="mb-1">
         <%= link_to comment.user.username, user_path(comment.user) %> <span class="small">- <%= comment.created_at.strftime('%B %d, %Y') %></span>
       </p>
+        <% if comment.user == current_user || current_user.moderator? %>
+          <%= button_to polymorphic_path([comment.commentable, comment]), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" do %>
+            <i class="fas fa-trash"></i>
+          <% end %>
+        <% end %>
 
-      <% if comment.user == current_user || current_user.moderator? %>
-        <%= button_to 'Delete', polymorphic_path([comment.commentable, comment]), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %>
-      <% end %>
 
       <%= form_with url: flag_comment_path(comment), method: :post do %>
-        <%= submit_tag "Flag", class: "btn btn-sm btn-danger" %>
+        <%= button_tag(type: 'submit', class: "btn btn-sm btn-danger") do %>
+          <i class="fas fa-flag"></i>
+        <% end %>
       <% end %>
     </div>
     <p class="small mb-0">
@@ -37,11 +41,15 @@
                 <% if reply.user == current_user || current_user.moderator? %>
                   <% parent_type = reply.comment.commentable_type.downcase %>
                   <% delete_path = "#{parent_type}_comment_reply_path".to_sym %>
-                  <%= button_to 'Delete', send(delete_path, reply.comment.commentable, reply.comment, reply), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %>
+                  <%= button_to send(delete_path, reply.comment.commentable, reply.comment, reply), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" do %>
+                    <i class="fas fa-trash"></i>
+                  <% end %>
                 <% end %>
-<%= form_with url: flag_comment_reply_path(article_id: @article.id, comment_id: comment.id, id: reply.id), method: :post do %>
-  <%= submit_tag "Flag", class: "btn btn-sm btn-danger" %>
-<% end %>
+                <%= form_with url: flag_comment_reply_path(article_id: @article.id, comment_id: comment.id, id: reply.id), method: :post do %>
+                    <%= button_tag(type: 'submit', class: "btn btn-sm btn-danger") do %>
+                    <i class="fas fa-flag"></i>
+                  <% end %>
+                <% end %>
 
               </p>
             </div>
