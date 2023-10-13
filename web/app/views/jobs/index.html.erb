@@ -1,13 +1,38 @@
-<div class="container mt-5">
+<div class="container mt-5 mb-2">
   <h1>Job Listings</h1>
 
   <!-- New Job Button -->
-  <div class="mb-3">
+  <div class="mb-4">
     <%= link_to 'New Job', new_job_path, class: "btn btn-primary" %>
   </div>
 
+<div class="container mt-4">
+  <%= search_form_for @q, class: 'form-inline' do |f| %>
+    <div class="form-group mr-2">
+      <%= f.label :title_cont, 'Title contains', class: 'mr-1' %>
+      <%= f.search_field :title_cont, class: 'form-control' %>
+    </div>
+
+    <div class="form-group mr-2">
+      <%= f.label :job_type_cont, 'Job Type contains', class: 'mr-1' %>
+      <%= f.search_field :job_type_cont, class: 'form-control' %>
+    </div>
+
+    <div class="form-group mr-2">
+      <%= f.label :location_cont, 'Location contains', class: 'mr-1' %>
+      <%= f.search_field :location_cont, class: 'form-control' %>
+    </div>
+
+    <div class="form-group mt-2">
+      <%= f.submit 'Search', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>
+
+
+
   <!-- Job List Group -->
-  <div class="list-group">
+  <div class="list-group mt-4">
     <% @jobs.each do |job| %>
       <div class="list-group-item">
         <div class="d-flex justify-content-between align-items-center">

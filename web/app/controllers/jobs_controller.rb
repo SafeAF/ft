@@ -5,8 +5,10 @@ class JobsController < ApplicationController
   
     # GET /jobs
     def index
-      @jobs = Job.where(visible: true).order(created_at: :desc).page(params[:page]).per(10)
+      @q = Job.where(visible: true).ransack(params[:q])
+      @jobs = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(10)
     end
+    
 
       
     # GET /jobs/1
@@ -90,7 +92,7 @@ class JobsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def job_params
       params.require(:job).permit(:title, :description, :job_type, :location, :company_name, :company_description, :company_website, :company_phone,
-            :company_email, :company_contact, :details)
+            :company_email, :company_contact, :details, :q)
     end
   
     # Authorization: Ensure current user owns the job
