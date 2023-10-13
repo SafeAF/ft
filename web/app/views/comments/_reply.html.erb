@@ -17,7 +17,7 @@
             <% end %>
           <% end %>
         <% end %>
-        <%= form_with url: flag_comment_reply_path(article_id: @article.id, comment_id: comment.id, id: reply.id), method: :post, class: "d-inline" do %>
+        <%= form_with url: flag_comment_reply_path(comment_id: comment.id, id: reply.id), method: :post, class: "d-inline" do %>
           <%= button_tag(type: 'submit', class: "btn btn-sm btn-danger") do %>
             <i class="fas fa-flag"></i>
           <% end %>
