@@ -43,11 +43,7 @@
             <p class="mb-1">Company: <%= job.company_name %></p>
           </div>
           <div>
-            <%= link_to 'Show', job, class: "btn btn-info btn-sm" %>
-            <% if job.user == current_user %>
-              <%= link_to 'Edit', edit_job_path(job), class: "btn btn-primary btn-sm" %>
-              <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
-            <% end %>
+          
           </div>
         </div>
       </div>
