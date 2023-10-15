@@ -1,4 +1,6 @@
 class RepliesController < ApplicationController
+  before_action :authenticate_user!
+
     def create
       @comment = Comment.find(params[:comment_id])
       @reply = @comment.replies.new(reply_params)
