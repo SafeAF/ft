@@ -39,12 +39,21 @@ class CompaniesController < ApplicationController
 
   # POST /companies or /companies.json
   def create
+    # Check if the current user already has a company
+    existing_company = Company.find_by(user: current_user)
+  
+    if existing_company
+      # Redirect the user to their existing company with a message
+      redirect_to company_url(existing_company), alert: 'Please contact us to list more than one business.'
+      return
+    end
+  
     @company = Company.new(company_params)
     @company.user = current_user
-
+  
     respond_to do |format|
       if @company.save
-        format.html { redirect_to company_url(@company), notice: "Company was successfully created." }
+        format.html { redirect_to company_url(@company), notice: 'Company was successfully created.' }
         format.json { render :show, status: :created, location: @company }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -52,7 +61,7 @@ class CompaniesController < ApplicationController
       end
     end
   end
-
+  
   # PATCH/PUT /companies/1 or /companies/1.json
   def update
     respond_to do |format|
