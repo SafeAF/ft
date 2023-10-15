@@ -2,8 +2,10 @@ class ConversationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @conversations = Conversation.involving(current_user)
+    @conversations = Conversation.involving(current_user).order(updated_at: :desc).page(params[:page]).per(10)
   end
+  
+  
 
   def new
     @conversation = Conversation.new
@@ -11,9 +13,10 @@ class ConversationsController < ApplicationController
 
   def show
     @conversation = Conversation.find(params[:id])
-    @messages = @conversation.messages.page(params[:page]).per(10) # 20 messages per page
+    @messages = @conversation.messages.order(created_at: :desc).page(params[:page]).per(10)
     @message = Message.new
   end
+  
   
   
 
