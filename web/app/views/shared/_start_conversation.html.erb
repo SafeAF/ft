@@ -1,0 +1,5 @@
+<% unless @user == current_user %>
+    <%= form_with url: start_conversation_user_path(@user), method: :post do %>
+    <%= submit_tag "Start a Conversation", class: "btn btn-primary" %>
+    <% end %>
+<% end %>
