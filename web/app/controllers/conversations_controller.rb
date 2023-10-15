@@ -11,9 +11,10 @@ class ConversationsController < ApplicationController
 
   def show
     @conversation = Conversation.find(params[:id])
-    @messages = @conversation.messages
+    @messages = @conversation.messages.page(params[:page]).per(10) # 20 messages per page
     @message = Message.new
   end
+  
   
 
   # change params sender_id to current_user? no longer permit sender_id?
