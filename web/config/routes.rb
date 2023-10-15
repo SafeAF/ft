@@ -61,6 +61,9 @@ Rails.application.routes.draw do
     end
   end
   
+  # Following/Follwers
+  resources :relationships, only: [:create, :destroy]
+
   
 
   resources :moderators, only: [:index] do
