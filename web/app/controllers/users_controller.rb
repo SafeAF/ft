@@ -3,8 +3,13 @@ class UsersController < ApplicationController
   before_action :authenticate_user! #, except: [:show]
   before_action :correct_user, only: [:edit, :update]
 
+    # def show
+    #   @user = User.find(params[:id])
+    # end
+    
     def show
-      @user = User.find(params[:id])
+      @user = User.find_by(username: params[:id])
+      redirect_to root_path, alert: "User not found" unless @user
     end
     
     def comments
@@ -89,9 +94,17 @@ class UsersController < ApplicationController
   private
 
   # Use callbacks to share common setup or constraints between actions.
+  # def set_user
+  #   @user = User.find(params[:id])
+  # end
+
+
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find_by!(username: params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_path, alert: "User not found"
   end
+
 
   # Confirm the correct user.
   def correct_user

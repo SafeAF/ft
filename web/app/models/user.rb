@@ -4,9 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-
   # Validations
-  validates :username, presence: true, uniqueness: true
+  validates :username, presence: true, uniqueness: { case_sensitive: false }
 
   # Relationships
   has_many :companies, dependent: :destroy
@@ -17,7 +16,7 @@ class User < ApplicationRecord
   has_many :articles, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
-  
+  # ActiveText
   has_rich_text :bio
 
   # User Profile Picture
@@ -57,8 +56,15 @@ class User < ApplicationRecord
   end
 
 
+  # Username slugs
+
+  def to_param
+    username
+  end
+
   private
   
+  # Format user profile picture
   def avatar_format
     return unless avatar.attached?
 
@@ -74,3 +80,5 @@ class User < ApplicationRecord
   end
 
 end
+
+
