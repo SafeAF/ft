@@ -28,15 +28,6 @@ class JobsController < ApplicationController
     end
   
     # POST /jobs
-    def create
-      @job = current_user.jobs.new(job_params)
-      
-      if @job.save
-        redirect_to @job, notice: 'Job was successfully created.'
-      else
-        render :new
-      end
-    end
 
     def create
       existing_visible_job = current_user.jobs.find_by(visible: true)
