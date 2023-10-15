@@ -25,10 +25,6 @@ class User < ApplicationRecord
   validate :avatar_format
   
 
-  
-
-
-
   # Direct Messages
   has_many :sent_conversations, class_name: 'Conversation', foreign_key: :sender_id, dependent: :destroy
   has_many :received_conversations, class_name: 'Conversation', foreign_key: :recipient_id, dependent: :destroy
@@ -39,6 +35,27 @@ class User < ApplicationRecord
   def conversations
     Conversation.where("sender_id = ? OR recipient_id = ?", self.id, self.id)
   end
+
+
+  # Follows
+  has_many :active_relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
+  has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy
+  
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
+  
+  def follow(other_user)
+    following << other_user unless self == other_user
+  end
+
+  def unfollow(other_user)
+    following.delete(other_user)
+  end
+
+  def following?(other_user)
+    following.include?(other_user)
+  end
+
 
   private
   
