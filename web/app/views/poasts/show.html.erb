@@ -1,0 +1,21 @@
+<div class="container mt-5">
+  <h1 class="display-4"><%= @poast.title %></h1>
+  <h3 class="text-muted"><%= @poast.subheading %></h3>
+
+  <div class="mt-4">
+    <% if @poast.thumbnail.attached? %>
+      <%= image_tag @poast.thumbnail, class: 'img-fluid' %>
+    <% else %>
+      <p>No thumbnail available.</p>
+    <% end %>
+  </div>
+
+  <div class="mt-4">
+    <%= @poast.content %>
+  </div>
+
+  <div class="mt-5">
+    <%= link_to 'Edit', edit_poast_path(@poast), class: 'btn btn-primary' %>
+    <%= link_to 'Back', poasts_path, class: 'btn btn-secondary' %>
+  </div>
+</div>

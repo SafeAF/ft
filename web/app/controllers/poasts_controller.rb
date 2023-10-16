@@ -1,42 +1,43 @@
-class PostsController < ApplicationController
-    before_action :set_post, only: [:show, :edit, :update, :destroy]
+class PoastsController < ApplicationController
+    before_action :set_poast, only: [:show, :edit, :update, :destroy]
     before_action :authenticate_user!
     before_action :authorize_user!, only: [:edit, :update, :destroy]
   
-    # GET /posts
-    # def index
-    #     @poasts = Poast.where(visible: true).order(created_at: :desc)
-    # end
-      
+    # GET /poasts
+    def index
+      @poasts = Poast.where(visible: true).order(created_at: :desc)
+    end
   
-    # GET /posts/1
-    # def show
-    # end
+    # GET /poasts/1
+    def show
+      # Defined in the before_action :set_poast
+    end
   
-    # GET /posts/new
+    # GET /poasts/new
     def new
-      @post = Post.new
+      @poast = Poast.new
     end
   
-    # GET /posts/1/edit
+    # GET /poasts/1/edit
     def edit
+      # Defined in the before_action :set_poast
     end
   
-    # POST /posts
+    # POST /poasts
     def create
-      @post = current_user.posts.new(post_params)
+      @poast = current_user.poasts.new(poast_params)
   
-      if @post.save
-        redirect_to @post, notice: 'Post was successfully created.'
+      if @poast.save
+        redirect_to @poast, notice: 'Poast was successfully created.'
       else
         render :new
       end
     end
   
-    # PATCH/PUT /posts/1
+    # PATCH/PUT /poasts/1
     def update
-      if @post.update(post_params)
-        redirect_to @post, notice: 'Post was successfully updated.'
+      if @poast.update(poast_params)
+        redirect_to @poast, notice: 'Poast was successfully updated.'
       else
         render :edit
       end
@@ -44,27 +45,27 @@ class PostsController < ApplicationController
   
     # DELETE /poasts/1
     def destroy
-        @poast.update(visible: false)
-        redirect_to poasts_url, notice: 'Poast was successfully deleted.'
+      @poast.update(visible: false)
+      redirect_to poasts_url, notice: 'Poast was successfully deleted.'
     end
   
     private
   
     # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
+    def set_poast
+      @poast = Poast.find(params[:id])
     end
   
     # Only allow a list of trusted parameters through.
-    def post_params
-      params.require(:post).permit(:title, :subheading, :content, :thumbnail)
+    def poast_params
+      params.require(:poast).permit(:title, :subheading, :content, :thumbnail)
     end
   
-# Authorization: Ensure current user owns the poast or is a moderator
+    # Authorization: Ensure current user owns the poast or is a moderator
     def authorize_user!
-        unless @poast.user == current_user || current_user.moderator?
+      unless @poast.user == current_user || current_user.moderator?
         redirect_to @poast, alert: 'Not authorized.'
-        end
-    end  
-end
+      end
+    end
+  end
   

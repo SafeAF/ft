@@ -5,10 +5,11 @@ class UsersController < ApplicationController
 
     def show
       @user = User.find_by!(username: params[:id])
+      @poasts = @user.poasts.where(visible: true).order(created_at: :desc).page(params[:page]).per(5)
       rescue ActiveRecord::RecordNotFound
         redirect_to root_path, alert: "User not found"
     end
-    
+  
     def comments
       @user = User.find(params[:id])
       @comments = @user.comments.order('created_at DESC').page(params[:page]).per(10) # 10 comments per page

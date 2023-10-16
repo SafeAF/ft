@@ -5,7 +5,7 @@ class Poast < ApplicationRecord
 
   validates :title, presence: true
   validates :subheading, presence: true
-  validates :active_text_content, presence: true
+  validates :content, presence: true
   validates :thumbnail, presence: true 
   
 
