@@ -48,9 +48,17 @@ Rails.application.routes.draw do
     end
   end
 
+
+  # User Poasts
+
+  resources :poasts
+
+  # Direct Messages
+
   resources :conversations, only: [:index, :new, :show, :create] do
     resources :messages, only: [:create]
   end
+
 
 
   # Notifications 
