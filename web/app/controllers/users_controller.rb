@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :comments]
   before_action :authenticate_user! #, except: [:show]
   before_action :correct_user, only: [:edit, :update]
 
@@ -13,7 +13,6 @@ class UsersController < ApplicationController
     end
   
     def comments
-      @user = User.find(params[:id])
       @comments = @user.comments.order('created_at DESC').page(params[:page]).per(10) # 10 comments per page
     end
     
