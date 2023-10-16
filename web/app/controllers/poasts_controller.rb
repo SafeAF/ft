@@ -1,17 +1,17 @@
 class PostsController < ApplicationController
     before_action :set_post, only: [:show, :edit, :update, :destroy]
-    before_action :authenticate_user!, except: [:index, :show]
+    before_action :authenticate_user!
     before_action :authorize_user!, only: [:edit, :update, :destroy]
   
     # GET /posts
-    def index
-        @poasts = Poast.where(visible: true).order(created_at: :desc)
-    end
+    # def index
+    #     @poasts = Poast.where(visible: true).order(created_at: :desc)
+    # end
       
   
     # GET /posts/1
-    def show
-    end
+    # def show
+    # end
   
     # GET /posts/new
     def new
