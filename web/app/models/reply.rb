@@ -18,16 +18,24 @@ class Reply < ApplicationRecord
       )
     end
   
-    # Notify the user who owns the item (article, listing, etc.) that the comment was made on
-    if self.comment.commentable.user && self.comment.commentable.user != self.comment.user
+    # Determine the owner of the commentable item
+    owner = if self.comment.commentable.respond_to?(:user)
+              self.comment.commentable.user
+            elsif self.comment.commentable.is_a?(User)
+              self.comment.commentable
+            end
+  
+    # Notify the owner if they're not the same as the user who created the comment
+    if owner && owner != self.comment.user
       Notification.create(
-        user: self.comment.commentable.user,
+        user: owner,
         notifiable: self,
         status: :unread,
         message: "#{self.user.username} replied to a comment on your #{self.comment.commentable.class.name.downcase}."
       )
     end
   end
+  
   
 
 
