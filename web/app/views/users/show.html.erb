@@ -41,13 +41,14 @@
       </ul>
     </div>
 
-
 <h2>Poasts</h2>
 <%= link_to 'New Poast', new_poast_path, class: 'btn btn-primary mb-3' %>
 
 <% @poasts.each do |poast| %>
   <div class="card mb-3">
-    <%= image_tag poast.thumbnail, class: "card-img-top" %>
+    <% if poast.thumbnail.present? %>
+      <%= image_tag poast.thumbnail, class: "card-img-top" %>
+    <% end %>
     <div class="card-body">
       <%= link_to truncate(poast.title, length: 60), poast_path(poast), class: "card-title" %>
       <p class="card-text">
