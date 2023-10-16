@@ -22,7 +22,8 @@ class User < ApplicationRecord
   has_many :jobs, dependent: :destroy
   has_many :articles, dependent: :destroy
   has_many :notifications, dependent: :destroy
-
+  has_many :poasts, dependent: :destroy
+  
   # ActiveText
   has_rich_text :bio
 
