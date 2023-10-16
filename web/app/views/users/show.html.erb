@@ -42,6 +42,8 @@
     </div>
 
 <h2>Poasts</h2>
+<%= link_to 'View All Poasts', poasts_path(username: @user.username), class: 'btn btn-primary' %>
+
 <%= link_to 'New Poast', new_poast_path, class: 'btn btn-primary mb-3' %>
 
 <% @poasts.each do |poast| %>

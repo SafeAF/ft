@@ -1,8 +1,8 @@
 <%= form_with(model: poast, local: true) do |form| %>
+  
   <% if poast.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(poast.errors.count, "error") %> prohibited this poast from being saved:</h2>
-
+    <div class="alert alert-danger">
+      <h4><%= pluralize(poast.errors.count, "error") %> prohibited this poast from being saved:</h4>
       <ul>
         <% poast.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-
+  
   <div class="form-group">
     <%= form.label :title %>
     <%= form.text_field :title, class: "form-control" %>
@@ -30,7 +30,6 @@
     <%= form.label :content %>
     <%= form.rich_text_area :content, class: "form-control" %>
   </div>
-
 
   <div class="actions">
     <%= form.submit class: "btn btn-primary" %>
