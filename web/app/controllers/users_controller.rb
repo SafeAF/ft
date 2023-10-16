@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :comments]
+  before_action :set_user, only: [:show, :edit, :update, :comments, :listings, :articles]
   before_action :authenticate_user! #, except: [:show]
   before_action :correct_user, only: [:edit, :update]
 
@@ -17,12 +17,10 @@ class UsersController < ApplicationController
     end
     
     def listings
-      @user = User.find(params[:id])
       @listings = @user.listings.order('created_at DESC').page(params[:page]).per(10) # 10 comments per page
     end
     
     def articles
-      @user = User.find(params[:id])
       @articles = @user.articles.order('created_at DESC').page(params[:page]).per(10) # 10 comments per page
     end
   
