@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_15_144825) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_16_132519) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -162,6 +162,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_15_144825) do
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
+  create_table "poasts", force: :cascade do |t|
+    t.string "title"
+    t.string "subheading"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_poasts_on_user_id"
+  end
+
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
@@ -218,6 +227,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_15_144825) do
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
   add_foreign_key "notifications", "users"
+  add_foreign_key "poasts", "users"
   add_foreign_key "replies", "comments"
   add_foreign_key "replies", "users"
 end
