@@ -23,6 +23,9 @@ class User < ApplicationRecord
   has_many :articles, dependent: :destroy
   has_many :notifications, dependent: :destroy
   has_many :poasts, dependent: :destroy
+
+  # Comments on user#show
+  has_many :comments, as: :commentable, dependent: :destroy
   
   # ActiveText
   has_rich_text :bio

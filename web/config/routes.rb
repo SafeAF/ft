@@ -90,6 +90,10 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :poasts, only: [:index]
     
+    resources :comments, only: [:create, :edit, :update, :destroy] do
+      resources :replies, only: [:create, :destroy]  
+    end
+    
     member do
       
       get 'comments'

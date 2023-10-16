@@ -63,6 +63,27 @@
 <% paginate @poasts %>
 
 
+<h2>Comments!</h2>
+<div class="row mt-5">
+  <div class="col">
+    <% @comments.each do |comment| %>
+      <%= render partial: 'comments/comment', locals: { comment: comment } %>
+    <% end %>
+  </div>
+</div>
+
+<h2>Add a Comment</h2>
+  <div class="row mt-2">
+    <div class="col">
+      <% if user_signed_in? %>
+        <%= render 'comments/form', commentable: @user %>
+      <% else %>
+        <p>You must be logged in to post a comment.</p>
+      <% end %>
+    </div>
+  </div>
+
+
     <div class="mt-3">
     <!-- Link to change password -->
     <% if current_user == @user %>

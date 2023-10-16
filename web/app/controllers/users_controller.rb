@@ -6,6 +6,8 @@ class UsersController < ApplicationController
     def show
       @user = User.find_by!(username: params[:id])
       @poasts = @user.poasts.where(visible: true).order(created_at: :desc).page(params[:page]).per(5)
+      @comments = @user.comments.includes(:replies).where(visible: true)
+
       rescue ActiveRecord::RecordNotFound
         redirect_to root_path, alert: "User not found"
     end
