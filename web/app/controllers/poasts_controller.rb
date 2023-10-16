@@ -5,8 +5,9 @@ class PostsController < ApplicationController
   
     # GET /posts
     def index
-      @posts = Post.all
+        @poasts = Poast.where(visible: true).order(created_at: :desc)
     end
+      
   
     # GET /posts/1
     def show
@@ -41,10 +42,10 @@ class PostsController < ApplicationController
       end
     end
   
-    # DELETE /posts/1
+    # DELETE /poasts/1
     def destroy
-      @post.destroy
-      redirect_to posts_url, notice: 'Post was successfully destroyed.'
+        @poast.update(visible: false)
+        redirect_to poasts_url, notice: 'Poast was successfully deleted.'
     end
   
     private
