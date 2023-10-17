@@ -15,7 +15,7 @@ class PoastsController < ApplicationController
     # GET /poasts/1
     def show
       # Defined in the before_action :
-      @comments = @poast.comments.includes(:replies).where(visible: true)
+      @comments = @poast.comments.includes(:replies).where(visible: true).page(params[:page]).per(5)
     end
   
     # GET /poasts/new
