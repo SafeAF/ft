@@ -17,7 +17,7 @@ class ListingsController < ApplicationController
   def show
     @listing.views += 1
     @listing.save!
-    @comments = @listing.comments.includes(:replies).where(visible: true)
+    @comments = @listing.comments.includes(:replies).where(visible: true).page(params[:page]).per(10)
   end
 
   # GET /listings/new

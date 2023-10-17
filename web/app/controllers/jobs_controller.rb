@@ -15,7 +15,7 @@ class JobsController < ApplicationController
     def show
       # @job.views += 1
       # @job.save!
-      @comments = @job.comments.includes(:replies).where(visible: true)
+      @comments = @job.comments.includes(:replies).where(visible: true).page(params[:page]).per(10)
     end
   
     # GET /jobs/new

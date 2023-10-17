@@ -23,7 +23,7 @@ class CompaniesController < ApplicationController
   
   def show
     @company = Company.find(params[:id])
-    @comments = @company.comments.includes(:replies).where(visible: true)
+    @comments = @company.comments.includes(:replies).where(visible: true).page(params[:page]).per(10)
 
   end
 
