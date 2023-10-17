@@ -3,15 +3,23 @@ class RepliesController < ApplicationController
 
     def create
       @comment = Comment.find(params[:comment_id])
+    
+      # Check if the comment already has 5 replies
+      if @comment.replies.count >= 5
+        redirect_to @comment.commentable, alert: 'Maximum number of replies reached for this comment.'
+        return
+      end
+    
       @reply = @comment.replies.new(reply_params)
       @reply.user = current_user
-  
+    
       if @reply.save
         redirect_to @comment.commentable, notice: 'Reply was successfully created.'
       else
         redirect_to @comment.commentable, alert: 'Error creating reply.'
       end
     end
+  
 
     def destroy
       @reply = Reply.find(params[:id])
