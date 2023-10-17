@@ -78,8 +78,10 @@ Rails.application.routes.draw do
 
 
   # Timeline
-  
-  resources :timelines, only: [:show]
+
+  get '/timeline', to: 'timelines#show', as: :timeline
+
+  #resources :timelines, only: [:show]
 
   # Moderator Dashboard
   resources :moderators, only: [:index] do
