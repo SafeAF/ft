@@ -51,7 +51,11 @@ Rails.application.routes.draw do
 
   # User Poasts
 
-  resources :poasts
+  resources :poasts do
+    resources :comments, only: [:create, :edit, :update, :destroy] do
+      resources :replies, only: [:create, :destroy]  
+    end
+  end
 
   # Direct Messages
 
@@ -93,7 +97,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :edit, :update, :destroy] do
       resources :replies, only: [:create, :destroy]  
     end
-    
+
     member do
       
       get 'comments'

@@ -3,6 +3,8 @@ class Poast < ApplicationRecord
   has_one_attached :thumbnail
   has_rich_text :content
 
+  has_many :comments, as: :commentable
+
   validates :title, presence: true
   validates :subheading, presence: true
   #validates :content, presence: true
