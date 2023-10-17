@@ -19,6 +19,11 @@
     <%= link_to 'Back', poasts_path, class: 'btn btn-secondary' %>
   </div>
 
+<div>
+<%= render partial: 'shared/action_buttons', locals: { resource: @poast, resource_type: 'poast' } %>
+
+</div>
+
 
   <!-- Comments Section -->
   <h2>Comments!</h2>

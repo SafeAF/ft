@@ -53,7 +53,14 @@ class PoastsController < ApplicationController
       @poast.update(visible: false)
       redirect_to poasts_url, notice: 'Poast was successfully deleted.'
     end
-  
+
+    def flag
+      @poast = Poast.find(params[:id])
+      @poast.increment!(:flags_count)
+    
+      redirect_to @poast, notice: 'Poast has been flagged.'
+    end
+    
     private
   
     # Use callbacks to share common setup or constraints between actions.

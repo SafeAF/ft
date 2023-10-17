@@ -55,6 +55,10 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :edit, :update, :destroy] do
       resources :replies, only: [:create, :destroy]  
     end
+
+    member do
+      post :flag
+    end
   end
 
   # Direct Messages
