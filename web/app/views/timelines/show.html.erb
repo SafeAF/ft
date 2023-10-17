@@ -1,0 +1,14 @@
+
+<!-- app/views/timelines/show.html.erb -->
+<div class="container">
+  <h1>Your Timeline</h1>
+  <ul>
+    <% @poasts.each do |poast| %>
+      <li>
+        <strong><%= link_to poast.title, poast_path(poast) %></strong>
+        <p><%= poast.subheading %></p>
+      </li>
+    <% end %>
+  </ul>
+  <%= paginate @poasts %>
+</div>

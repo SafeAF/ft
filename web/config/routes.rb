@@ -58,7 +58,7 @@ Rails.application.routes.draw do
   end
 
   # Direct Messages
-
+  
   resources :conversations, only: [:index, :new, :show, :create] do
     resources :messages, only: [:create]
   end
@@ -76,8 +76,12 @@ Rails.application.routes.draw do
   # Following/Followers
   resources :relationships, only: [:create, :destroy]
 
-  
 
+  # Timeline
+  
+  resources :timelines, only: [:show]
+
+  # Moderator Dashboard
   resources :moderators, only: [:index] do
     collection do
       post :hide_item, as: 'hide_item'
