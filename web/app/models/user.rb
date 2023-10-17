@@ -69,11 +69,17 @@ class User < ApplicationRecord
 
   # Timeline
 
-  def timeline_poasts
-    followed_user_ids = "SELECT followed_id FROM relationships WHERE follower_id = :user_id"
-    Poast.where("user_id IN (#{followed_user_ids}) OR user_id = :user_id", user_id: id)
-  end
+  # def timeline_poasts
+  #   followed_user_ids = "SELECT followed_id FROM relationships WHERE follower_id = :user_id"
+  #   Poast.where("user_id IN (#{followed_user_ids}) OR user_id = :user_id", user_id: id)
+  # end
 
+  # Active Record version
+  def timeline_poasts
+    followed_user_ids = Relationship.where(follower_id: id).pluck(:followed_id)
+    Poast.where(user_id: followed_user_ids + [id])
+  end
+  
 
   # Username slugs
 
