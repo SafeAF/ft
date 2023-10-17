@@ -10,6 +10,7 @@ class ModeratorsController < ApplicationController
     @flagged_comments = Comment.where("flags_count > ?", 0).where(visible: true).order(created_at: :desc).page(params[:page_comments]).per(10)
     @flagged_listings = Listing.where("flags_count > ?", 0).where(visible: true).order(created_at: :desc).page(params[:page_listings]).per(10)
     @flagged_replies = Reply.where("flags_count > ?", 0).where(visible: true).order(created_at: :desc).page(params[:page_replies]).per(10)
+    @flagged_poasts = Poast.where("flags_count > ?", 0).where(visible: true).order(created_at: :desc).page(params[:page_replies]).per(10)
   end
   
   

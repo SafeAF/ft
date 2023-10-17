@@ -19,14 +19,17 @@
         <td><%= item.created_at.strftime("%B %d, %Y") %></td>
         <td>
           <div class="btn-group" role="group">
-            <% case item_type %>
-              <% when 'Article', 'Job', 'Listing' %>
-                <%= link_to "View", polymorphic_path(item), class: 'btn btn-primary' %> 
-              <% when 'Comment' %>
-                <%= link_to "View", polymorphic_path([item.commentable, item]), class: 'btn btn-primary' %> 
-              <% when 'Reply' %> <!-- New Case for Replies -->
-                <%= link_to "View", polymorphic_path([item.comment.commentable, item.comment, item]), class: 'btn btn-primary' %> <!-- Modify path as needed -->
-            <% end %>
+          <% case item_type %>
+            <% when 'Article', 'Job', 'Listing' %>
+              <%= link_to "View", polymorphic_path(item), class: 'btn btn-primary' %> 
+            <% when 'Comment' %>
+              <%= link_to "View", polymorphic_path([item.commentable, item]), class: 'btn btn-primary' %> 
+            <% when 'Reply' %> <!-- New Case for Replies -->
+              <%= link_to "View", polymorphic_path([item.comment.commentable, item.comment, item]), class: 'btn btn-primary' %> <!-- Modify path as needed -->
+            <% when 'Poast' %> <!-- New Case for Poast -->
+              <%= link_to "View", poast_path(item), class: 'btn btn-primary' %>
+          <% end %>
+
             <%= button_to "Hide", hide_item_moderators_path(item_type: item.class.name, item_id: item.id), method: :post, class: 'btn btn-warning' %> 
             <%= button_to "Unflag", unflag_item_moderators_path(item_type: item.class.name, item_id: item.id), method: :post, class: 'btn btn-success' %>   
             <% if item.try(:user) %>

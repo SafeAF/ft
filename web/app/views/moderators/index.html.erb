@@ -48,4 +48,14 @@
     </div>
     <%= paginate @flagged_comments, param_name: 'page_users' %>
   <% end %>
+
+  <% if @flagged_poasts.any? %>
+    <h2 class="my-3">Flagged Poasts</h2>
+    <div class="table-responsive">
+      <%= render partial: 'flagged_item', locals: { items: @flagged_poasts, item_type: 'Poast' } %>
+    </div>
+    <%= paginate @flagged_poasts, param_name: 'page_poasts' %>
+  <% end %>
+
 </div>
+
