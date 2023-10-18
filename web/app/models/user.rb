@@ -35,6 +35,10 @@ class User < ApplicationRecord
   validate :avatar_format
   
 
+  # Achievement Badges
+  has_many :user_badges, dependent: :destroy
+  has_many :badges, through: :user_badges
+
   # Direct Messages
   has_many :sent_conversations, class_name: 'Conversation', foreign_key: :sender_id, dependent: :destroy
   has_many :received_conversations, class_name: 'Conversation', foreign_key: :recipient_id, dependent: :destroy
