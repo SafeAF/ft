@@ -1,0 +1,17 @@
+<h1>Create a New Badge</h1>
+
+<%= form_for :badge, url: create_badge_moderators_path, html: { multipart: true } do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image, class: 'form-control-file' %>
+  </div>
+  <%= f.submit "Create Badge", class: 'btn btn-primary' %>
+<% end %>

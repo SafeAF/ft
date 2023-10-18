@@ -88,8 +88,26 @@ def remove_badge
   end
 end
 
+# Create new types of badges
+
+def new_badge
+  
+end
+
+def create_badge
+  @badge = Badge.new(badge_params)
+  if @badge.save
+    redirect_to new_badge_moderators_path, notice: 'Badge created successfully.'
+  else
+    render :new_badge, alert: 'Failed to create badge.'
+  end
+end
 
 private
+
+def badge_params
+  params.require(:badge).permit(:name, :description, :image)
+end
 
 def authenticate_moderator!
     # Replace this with your actual authentication logic for moderators

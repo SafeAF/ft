@@ -94,9 +94,15 @@ Rails.application.routes.draw do
       post :unflag_item, as: 'unflag_item'
       post :lock_user
       post :unlock_user
+
+      # Find and assign/remove badges to users
       post :assign_badge  
       delete :remove_badge 
       get :search_user, as: 'search_user'
+
+      # Create new types of badges
+      get :new_badge, as: 'new_badge'
+      post :create_badge, as: 'create_badge'
     end
   end
   
