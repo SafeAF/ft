@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_18_150822) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_18_151102) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -203,6 +203,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_18_150822) do
     t.index ["user_id"], name: "index_replies_on_user_id"
   end
 
+  create_table "user_badges", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "badge_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["badge_id"], name: "index_user_badges_on_badge_id"
+    t.index ["user_id"], name: "index_user_badges_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "location"
@@ -243,4 +252,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_18_150822) do
   add_foreign_key "poasts", "users"
   add_foreign_key "replies", "comments"
   add_foreign_key "replies", "users"
+  add_foreign_key "user_badges", "badges"
+  add_foreign_key "user_badges", "users"
 end
