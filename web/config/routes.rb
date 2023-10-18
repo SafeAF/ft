@@ -96,6 +96,7 @@ Rails.application.routes.draw do
       post :unlock_user
       post :assign_badge  
       delete :remove_badge 
+      get :search_user, as: 'search_user'
     end
   end
   

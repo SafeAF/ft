@@ -1,0 +1,34 @@
+<%= form_tag search_user_moderators_path, method: :get do %>
+  <label for="username">Username:</label>
+  <%= text_field_tag :username %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<% if @user %>
+  <h2>User Profile</h2>
+  <p>Username: <%= @user.username %></p>
+  
+  <h3>Current Badges</h3>
+  <ul>
+    <% @user.badges.each do |badge| %>
+      <li><%= badge.name %> <%= link_to "Remove", remove_badge_moderators_path(user_id: @user.id, badge_id: badge.id), method: :post %></li>
+    <% end %>
+  </ul>
+
+  <h3>Add New Badge</h3>
+  <%= form_with url: assign_badge_moderators_path, method: :post do |f| %>
+    <%= f.hidden_field :user_id, value: @user.id %>
+    <%= f.select :badge_id, Badge.all.map { |b| [b.name, b.id] }, prompt: "Select Badge" %>
+    <%= f.submit "Add Badge" %>
+  <% end %>
+<% else %>
+  <% if params[:username] %>
+    <p>No user found for the username '<%= params[:username] %>'</p>
+  <% end %>
+<% end %>
+
+<ul>
+  <% @user.badges.each do |badge| %>
+    <li><%= badge.name %> <%= link_to "Remove", remove_badge_moderators_path(user_id: @user.id, badge_id: badge.id), method: :post %></li>
+  <% end %>
+</ul>

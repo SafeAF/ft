@@ -55,6 +55,17 @@ class ModeratorsController < ApplicationController
   end
 
 # Add and remove user achievement badges
+def search_user
+  username = params[:username]
+  @user = User.find_by(username: username)
+
+  if @user
+    # Prepare additional data if needed
+  else
+    redirect_to moderators_path, alert: "User not found."
+  end
+end
+
 
 def assign_badge
   badge = Badge.find(params[:badge_id])

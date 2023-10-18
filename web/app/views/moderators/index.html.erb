@@ -57,5 +57,52 @@
     <%= paginate @flagged_poasts, param_name: 'page_poasts' %>
   <% end %>
 
+
+<div class="container mt-5">
+  <h1 class="mb-4">Moderator Dashboard</h1>
+
+  <!-- ... existing code for flagged items, etc ... -->
+
+  <!-- Section for Badge Management -->
+  <h2 class="my-3">Badge Management</h2>
+
+  <!-- Form to Search User by Username -->
+  <%= form_with url: search_user_moderators_path, method: :get, local: true do |form| %>
+    <div class="form-group">
+      <%= form.label :username, 'Search User by Username' %>
+      <%= form.text_field :username, class: 'form-control' %>
+    </div>
+    <%= form.submit 'Search', class: 'btn btn-primary' %>
+  <% end %>
+
+  <!-- Display search results -->
+  <% if @user %>
+    <h3>Manage Badges for <%= @user.username %></h3>
+
+    <!-- Form to Add Badge -->
+    <%= form_with url: assign_badge_moderators_path, method: :post, local: true do |form| %>
+      <div class="form-group">
+        <%= form.hidden_field :user_id, value: @user.id %>
+        <%= form.label :badge_id, 'Select Badge to Assign' %>
+        <%= form.select :badge_id, Badge.all.collect { |badge| [ badge.name, badge.id ] }, {}, class: 'form-control' %>
+      </div>
+      <%= form.submit 'Assign Badge', class: 'btn btn-success' %>
+    <% end %>
+
+    <!-- Form to Remove Badge -->
+    <%= form_with url: remove_badge_moderators_path, method: :delete, local: true do |form| %>
+      <div class="form-group">
+        <%= form.hidden_field :user_id, value: @user.id %>
+        <%= form.label :badge_id, 'Select Badge to Remove' %>
+        <%= form.select :badge_id, @user.badges.collect { |badge| [ badge.name, badge.id ] }, {}, class: 'form-control' %>
+      </div>
+      <%= form.submit 'Remove Badge', class: 'btn btn-danger' %>
+    <% end %>
+  <% end %>
+
+</div>
+
+
+
 </div>
 
