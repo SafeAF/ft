@@ -2,6 +2,7 @@ class ModeratorsController < ApplicationController
   # Make sure to include some form of authentication to ensure only moderators can access this
   before_action :authenticate_user!
   before_action :authenticate_moderator!
+  before_action :set_user, only: [:assign_badge, :remove_badge]
 
   
   def index
@@ -39,6 +40,7 @@ class ModeratorsController < ApplicationController
     end
   end
 
+ # User account locking
 
   def lock_user
     @user = User.find(params[:user_id])
@@ -52,13 +54,41 @@ class ModeratorsController < ApplicationController
     redirect_back(fallback_location: moderators_path, notice: "User has been unlocked.")
   end
 
+# Add and remove user achievement badges
 
-  private
+def assign_badge
+  badge = Badge.find(params[:badge_id])
+  user_badge = @user.user_badges.new(badge: badge)
 
-  def authenticate_moderator!
+  if user_badge.save
+    redirect_to moderators_path, notice: "Badge was successfully assigned to user."
+  else
+    redirect_to moderators_path, alert: "Failed to assign badge."
+  end
+end
+
+def remove_badge
+  user_badge = @user.user_badges.find_by(badge_id: params[:badge_id])
+
+  if user_badge&.destroy
+    redirect_to moderators_path, notice: "Badge was successfully removed from user."
+  else
+    redirect_to moderators_path, alert: "Failed to remove badge."
+  end
+end
+
+
+private
+
+def authenticate_moderator!
     # Replace this with your actual authentication logic for moderators
     unless current_user&.moderator?
       redirect_to root_path, alert: "You are not authorized to access this page."
     end
   end
 end
+
+def set_user
+  @user = User.find(params[:user_id])
+end
+

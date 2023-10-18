@@ -94,6 +94,8 @@ Rails.application.routes.draw do
       post :unflag_item, as: 'unflag_item'
       post :lock_user
       post :unlock_user
+      post :assign_badge  
+      delete :remove_badge 
     end
   end
   
