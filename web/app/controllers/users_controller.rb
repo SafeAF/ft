@@ -3,14 +3,16 @@ class UsersController < ApplicationController
   before_action :authenticate_user! #, except: [:show]
   before_action :correct_user, only: [:edit, :update]
 
-    def show
-      @user = User.find_by!(username: params[:id])
-      @poasts = @user.poasts.where(visible: true).order(created_at: :desc).page(params[:page]).per(5)
-      @comments = @user.comments.includes(:replies).where(visible: true)
-
-      rescue ActiveRecord::RecordNotFound
-        redirect_to root_path, alert: "User not found"
-    end
+  def show 
+    # may want to eager load poats and comments also, later. 
+    #@user = User.includes(:badges, :poasts, :comments).find_by!(username: params[:id])
+    @user = User.includes(:badges).find_by!(username: params[:id])
+    @poasts = @user.poasts.where(visible: true).order(created_at: :desc).page(params[:page]).per(5)
+    @comments = @user.comments.includes(:replies).where(visible: true)
+  
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_path, alert: "User not found"
+  end
   
     def comments
       @comments = @user.comments.order('created_at DESC').page(params[:page]).per(10) # 10 comments per page
