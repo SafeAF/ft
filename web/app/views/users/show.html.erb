@@ -7,6 +7,15 @@
       
    <%= render partial: 'shared/avatar', locals: { user: @user } %>
 
+<% @user.badges.each do |badge| %>
+  <div class="badge">
+    <%= image_tag url_for(badge.image) if badge.image.attached? %>
+    <p><%= badge.name %></p>
+    <p><%= badge.description %></p>
+  </div>
+<% end %>
+
+
       <!-- Displaying Bio -->
       <% if @user.bio.present? %>
         <div class="card mt-4">
