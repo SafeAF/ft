@@ -64,15 +64,16 @@ class UsersController < ApplicationController
   end
 
   # Lock User Action (only accessible by moderators)
-  def lock
-    if current_user&.moderator?
-      @user = User.find(params[:id])
-      @user.update(locked: true)
-      redirect_to @user, notice: 'User has been locked.'
-    else
-      redirect_to @user, alert: 'You are not authorized to perform this action.'
-    end
-  end
+  # This (should be) is depracated, see moderators_controller.
+  # def lock
+  #   if current_user&.moderator?
+  #     @user = User.find(params[:id])
+  #     @user.update(locked: true)
+  #     redirect_to @user, notice: 'User has been locked.'
+  #   else
+  #     redirect_to @user, alert: 'You are not authorized to perform this action.'
+  #   end
+  # end
 
   # initiate DM
   def start_conversation
