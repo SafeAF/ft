@@ -54,6 +54,21 @@ class ModeratorsController < ApplicationController
     redirect_back(fallback_location: moderators_path, notice: "User has been unlocked.")
   end
 
+
+# Create global alert messages
+
+def create_alert
+  Rails.cache.write('global_alert', { message: params[:message], alert_type: params[:alert_type] }, expires_in: params[:expires_in].to_i.minutes)
+  redirect_to moderators_path, notice: 'Global alert set.'
+end
+
+def remove_alert
+  Rails.cache.delete('global_alert')
+  redirect_to moderators_path, notice: 'Global alert removed.'
+end
+
+
+
 # Add and remove user achievement badges
 def search_user
   username = params[:username]

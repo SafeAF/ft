@@ -1,0 +1,16 @@
+<h1>Create a Global Alert</h1>
+<%= form_with(url: create_alert_moderators_path, local: true) do |f| %>
+  <div>
+    <%= f.label :message %>
+    <%= f.text_field :message %>
+  </div>
+  <div>
+    <%= f.label :alert_type %>
+    <%= f.select :alert_type, ['warning', 'info', 'success', 'danger'] %>
+  </div>
+  <div>
+    <%= f.label :expires_in, "Expires in (minutes)" %>
+    <%= f.number_field :expires_in, min: 1, max: 1440 %>
+  </div>
+  <%= f.submit 'Create Alert' %>
+<% end %>

@@ -103,6 +103,11 @@ Rails.application.routes.draw do
       # Create new types of badges
       get :new_badge, as: 'new_badge'
       post :create_badge, as: 'create_badge'
+
+      # Create global alert messages
+      get :new_alert
+      post :create_alert
+      post :remove_alert
     end
   end
   

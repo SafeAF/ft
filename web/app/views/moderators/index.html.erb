@@ -100,10 +100,14 @@
     <% end %>
   <% end %>
 
-  <%= link_to 'Create New Badge', new_badge_moderators_path, class: 'btn btn-secondary' %>
+  <%= link_to 'Create New Badge', new_badge_moderators_path, class: 'btn btn-secondary mt-4' %>
 
 
-</div>
+  </div>
+
+<%= link_to 'Create Alert', new_alert_moderators_path %>
+<%= link_to 'Remove Alert', remove_alert_moderators_path, method: :post %>
+
 
 
 
