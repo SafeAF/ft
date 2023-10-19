@@ -1,0 +1,22 @@
+<h1>Manage Advertisers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Contact Info</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @advertisers.each do |advertiser| %>
+      <tr>
+        <td><%= advertiser.name %></td>
+        <td><%= advertiser.contact_info %></td>
+        <td><!-- Add edit and delete buttons here --></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Add New Advertiser', new_admin_advertising_path %>

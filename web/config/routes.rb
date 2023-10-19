@@ -111,6 +111,12 @@ Rails.application.routes.draw do
     end
   end
   
+  # Admin Dashboard
+  namespace :admin do
+    resources :advertising, only: [:index, :new, :create]
+  end
+
+
   
   devise_for :users
 
