@@ -114,9 +114,9 @@ Rails.application.routes.draw do
   # Admin Dashboard
   namespace :admin do
     root to: 'admin#index'  
-    resources :advertising, only: [:index, :new, :create]
+    resources :advertising, only: [:index, :new, :create, :edit, :update, :destroy]
   end
-
+  
 
   
   devise_for :users

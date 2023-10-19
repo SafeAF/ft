@@ -1,22 +1,37 @@
-<h1>Manage Advertisers</h1>
+<div class="container mt-5">
+  <h1 class="mb-4">Manage Advertisers</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Contact Info</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @advertisers.each do |advertiser| %>
+  <table class="table table-striped table-bordered">
+    <thead class="thead-dark">
       <tr>
-        <td><%= advertiser.name %></td>
-        <td><%= advertiser.contact_info %></td>
-        <td><!-- Add edit and delete buttons here --></td>
+        <th scope="col">Name</th>
+        <th scope="col">Details</th>
+        <th scope="col">Status</th>
+        <th scope="col">Contact Name</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Email</th>
+        <th scope="col">Actions</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @advertisers.each do |advertiser| %>
+        <tr>
+          <td><%= advertiser.name %></td>
+          <td><%= advertiser.details %></td>
+          <td><%= advertiser.status %></td>
+          <td><%= advertiser.contact_name %></td>
+          <td><%= advertiser.phone %></td>
+          <td><%= advertiser.email %></td>
+        <td>
+        <%= link_to 'Edit', edit_admin_advertising_path(advertiser), class: "btn btn-primary btn-sm" %> 
+        <%= link_to 'Delete', admin_advertising_path(advertiser), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+        </td>
 
-<%= link_to 'Add New Advertiser', new_admin_advertising_path %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to 'Add New Advertiser', new_admin_advertising_path, class: "btn btn-success" %>
+
+</div>

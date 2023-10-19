@@ -1,13 +1,3 @@
 <h1>New Advertiser</h1>
 
-<%= form_for @advertiser, url: admin_advertising_index_path do |f| %>
-  <div>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-  <div>
-    <%= f.label :contact_info %>
-    <%= f.text_area :contact_info %>
-  </div>
-  <%= f.submit 'Create' %>
-<% end %>
+<%= render 'new_advertiser_form' %>
