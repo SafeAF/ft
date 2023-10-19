@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_19_155243) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_19_155949) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -81,6 +81,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_19_155243) do
     t.string "image_path"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "campaigns", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "budget"
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "status", default: 0
+    t.integer "advertiser_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["advertiser_id"], name: "index_campaigns_on_advertiser_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -255,6 +268,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_19_155243) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "articles", "users"
+  add_foreign_key "campaigns", "advertisers"
   add_foreign_key "comments", "users"
   add_foreign_key "companies", "users"
   add_foreign_key "jobs", "users"
