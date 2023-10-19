@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_19_155949) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_19_160252) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -59,6 +59,26 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_19_155949) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "adverts", force: :cascade do |t|
+    t.string "name"
+    t.string "image_path"
+    t.string "alt_text"
+    t.string "link_url"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer "click_count", default: 0
+    t.integer "impressions", default: 0
+    t.string "status"
+    t.string "position"
+    t.integer "prominence"
+    t.string "display_locations"
+    t.string "tags"
+    t.integer "campaign_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["campaign_id"], name: "index_adverts_on_campaign_id"
   end
 
   create_table "articles", force: :cascade do |t|
@@ -267,6 +287,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_19_155949) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "adverts", "campaigns"
   add_foreign_key "articles", "users"
   add_foreign_key "campaigns", "advertisers"
   add_foreign_key "comments", "users"
