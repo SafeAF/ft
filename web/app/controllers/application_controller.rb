@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :check_for_locked_status
   before_action :fetch_notifications
+  before_action :set_global_alert
 
   def fetch_notifications
     if user_signed_in? # Replace with your actual user authentication check
@@ -10,6 +11,13 @@ class ApplicationController < ActionController::Base
   end
     
   private
+
+    
+  def set_global_alert
+    if (alert = Rails.cache.read('global_alert'))
+      flash.now[alert[:alert_type].to_sym] = alert[:message]
+    end
+  end
 
   def check_for_locked_status
     if current_user&.locked?
