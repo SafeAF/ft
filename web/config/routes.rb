@@ -113,6 +113,7 @@ Rails.application.routes.draw do
   
   # Admin Dashboard
   namespace :admin do
+    root to: 'admin#index'  
     resources :advertising, only: [:index, :new, :create]
   end
 

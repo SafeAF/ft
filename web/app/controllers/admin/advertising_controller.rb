@@ -1,4 +1,3 @@
-# app/controllers/admin/advertising_controller.rb
 class Admin::AdvertisingController < ApplicationController
     before_action :authenticate_admin!  
     before_action :authenticate_user!
@@ -23,7 +22,7 @@ class Admin::AdvertisingController < ApplicationController
   
     private
 
-    def authenticate_admin
+    def authenticate_admin!
         unless current_user&.administrator?
           redirect_to root_path, alert: "You are not authorized to access this page."
         end

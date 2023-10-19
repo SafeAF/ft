@@ -11,6 +11,11 @@
     <li><a class="dropdown-item" href="#">Action</a></li>
     <li><%= link_to "Profile", user_path(current_user), class: "dropdown-item" %></li>
 
+    <% if current_user&.administrator? %>
+      <!-- Show the link if the user is an administrator -->
+      <li><%= link_to "Admin Dashboard", admin_root_path, class: "dropdown-item" %></li>
+    <% end %>
+    
     <% if current_user.moderator? %>
       <!-- Show the link if the user is a moderator -->
       <li><%= link_to "Moderators", moderators_path, class: "dropdown-item" %></li>
