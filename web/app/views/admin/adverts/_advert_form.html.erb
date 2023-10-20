@@ -1,56 +1,60 @@
-<%= form_for [:admin, @advertiser, @campaign, @advert] do |f| %>
+<%= form_for [:admin, @advertiser, @campaign, @advert], html: { class: 'form-horizontal' } do |f| %>
   <div class="form-group">
-    <%= f.label :name %>
+    <%= f.label :name, class: 'control-label' %>
     <%= f.text_field :name, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :image_path %>
+    <%= f.label :image_path, class: 'control-label' %>
     <%= f.text_field :image_path, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :alt_text %>
+    <%= f.label :alt_text, class: 'control-label' %>
     <%= f.text_field :alt_text, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :link_url %>
+    <%= f.label :link_url, class: 'control-label' %>
     <%= f.text_field :link_url, class: 'form-control' %>
   </div>
 
-  <div class="form-group">
-    <%= f.label :start_date %>
-    <%= f.datetime_select :start_date, class: 'form-control' %>
-  </div>
+  <!-- Dates Section -->
+  <fieldset>
+    <legend>Dates</legend>
+    <div class="form-group">
+      <%= f.label :start_date, class: 'control-label' %>
+      <%= f.datetime_select :start_date, {}, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :end_date, class: 'control-label' %>
+      <%= f.datetime_select :end_date, {}, class: 'form-control' %>
+    </div>
+  </fieldset>
 
   <div class="form-group">
-    <%= f.label :end_date %>
-    <%= f.datetime_select :end_date, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :status %>
+    <%= f.label :status, class: 'control-label' %>
     <%= f.select :status, Advert.statuses.keys, {}, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :position %>
+    <%= f.label :position, class: 'control-label' %>
     <%= f.text_field :position, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :prominence %>
+    <%= f.label :prominence, class: 'control-label' %>
     <%= f.number_field :prominence, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :display_locations %>
+    <%= f.label :display_locations, class: 'control-label' %>
     <%= f.text_field :display_locations, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :tags %>
+    <%= f.label :tags, class: 'control-label' %>
     <%= f.text_field :tags, class: 'form-control' %>
   </div>
 
