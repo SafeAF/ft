@@ -1,9 +1,8 @@
-
-<%= form_for([:admin, @advertiser, @campaign]) do |f| %>
+<%= form_for [:admin, @advertiser, @campaign] do |f| %>
   <!-- Your form fields here -->
   <%= f.label :name %>
   <%= f.text_field :name %>
-  
+
   <%= f.label :description %>
   <%= f.text_area :description %>
 
@@ -20,7 +19,7 @@
   <%= f.select :status, Campaign.statuses.keys %>
 
   <%= f.label :advertiser_id %>
-  <%= f.collection_select :advertiser_id, Advertiser.all, :id, :name %>
+  <%= f.hidden_field :advertiser_id, value: @advertiser.id %>
 
-  <%= f.submit 'Create Campaign' %>
+  <%= f.submit 'Submit' %>
 <% end %>

@@ -1,0 +1,39 @@
+<div class="container mt-5">
+  <h1 class="mb-4">Manage Campaigns for <%= @advertiser.name %></h1>
+
+  <table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Budget</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">End Date</th>
+        <th scope="col">Status</th>
+        <th scope="col">Advertiser</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @campaigns.each do |campaign| %>
+        <tr>
+          <td><%= campaign.name %></td>
+          <td><%= campaign.description %></td>
+          <td><%= campaign.budget %></td>
+          <td><%= campaign.start_date %></td>
+          <td><%= campaign.end_date %></td>
+          <td><%= campaign.status %></td>
+          <td>
+            <%= link_to campaign.advertiser.name, admin_advertiser_campaigns_path(campaign.advertiser) %>
+          </td>
+          <td>
+            <%= link_to 'Edit', edit_admin_advertiser_campaign_path(campaign.advertiser, campaign), class: "btn btn-primary btn-sm" %>
+            <%= link_to 'Delete', admin_advertiser_campaign_path(campaign.advertiser, campaign), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to 'Add New Campaign', new_admin_advertiser_campaign_path, class: "btn btn-success" %>
+</div>
