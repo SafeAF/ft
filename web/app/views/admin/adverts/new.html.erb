@@ -1,0 +1,5 @@
+<h1>Create New Advert for <%= @campaign.name %> in <%= @advertiser.name %></h1>
+
+<%= render 'advert_form' %>
+
+<%= link_to 'Back to Advert List', admin_advertiser_campaign_adverts_path(@advertiser, @campaign) %>

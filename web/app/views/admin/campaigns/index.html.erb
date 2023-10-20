@@ -29,6 +29,7 @@
           <td>
             <%= link_to 'Edit', edit_admin_advertiser_campaign_path(campaign.advertiser, campaign), class: "btn btn-primary btn-sm" %>
             <%= link_to 'Delete', admin_advertiser_campaign_path(campaign.advertiser, campaign), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+            <%= link_to 'View Adverts', admin_advertiser_campaign_adverts_path(campaign.advertiser, campaign), class: "btn btn-info btn-sm" %>
           </td>
         </tr>
       <% end %>

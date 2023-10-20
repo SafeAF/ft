@@ -117,6 +117,7 @@ Rails.application.routes.draw do
     resources :advertisers, only: [:index, :new, :create, :edit, :update, :destroy] do
       resources :campaigns, only: [:index, :new, :create, :edit, :update, :destroy] do
         resources :adverts, only: [:index, :new, :create, :edit, :update, :destroy]
+      end
     end
   end
   

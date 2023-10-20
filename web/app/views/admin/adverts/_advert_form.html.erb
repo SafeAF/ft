@@ -1,0 +1,62 @@
+<%= form_for [:admin, @advertiser, @campaign, @advert] do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :image_path %>
+    <%= f.text_field :image_path, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :alt_text %>
+    <%= f.text_field :alt_text, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :link_url %>
+    <%= f.text_field :link_url, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :start_date %>
+    <%= f.datetime_select :start_date, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :end_date %>
+    <%= f.datetime_select :end_date, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :status %>
+    <%= f.select :status, Advert.statuses.keys, {}, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :position %>
+    <%= f.text_field :position, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :prominence %>
+    <%= f.number_field :prominence, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :display_locations %>
+    <%= f.text_field :display_locations, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :tags %>
+    <%= f.text_field :tags, class: 'form-control' %>
+  </div>
+
+  <%= f.hidden_field :campaign_id, value: @campaign.id %>
+
+  <div class="form-group">
+    <%= f.submit 'Submit', class: 'btn btn-primary' %>
+  </div>
+<% end %>

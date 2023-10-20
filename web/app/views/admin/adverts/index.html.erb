@@ -1,0 +1,47 @@
+<h1>Adverts for Campaign: <%= @campaign.name %></h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Image Path</th>
+      <th>Alt Text</th>
+      <th>Link URL</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Click Count</th>
+      <th>Impressions</th>
+      <th>Status</th>
+      <th>Position</th>
+      <th>Prominence</th>
+      <th>Display Locations</th>
+      <th>Tags</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @adverts.each do |advert| %>
+      <tr>
+        <td><%= advert.name %></td>
+        <td><%= advert.image_path %></td>
+        <td><%= advert.alt_text %></td>
+        <td><%= advert.link_url %></td>
+        <td><%= advert.start_date %></td>
+        <td><%= advert.end_date %></td>
+        <td><%= advert.click_count %></td>
+        <td><%= advert.impressions %></td>
+        <td><%= advert.status %></td>
+        <td><%= advert.position %></td>
+        <td><%= advert.prominence %></td>
+        <td><%= advert.display_locations %></td>
+        <td><%= advert.tags %></td>
+        <td>
+          <%= link_to 'Edit', edit_admin_advertiser_campaign_advert_path(@campaign.advertiser, @campaign, advert), class: 'btn btn-primary' %>
+          <%= link_to 'Delete', admin_advertiser_campaign_advert_path(@campaign.advertiser, @campaign, advert), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Add New Advert', new_admin_advertiser_campaign_advert_path(@campaign.advertiser, @campaign), class: 'btn btn-success' %>
