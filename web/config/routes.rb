@@ -115,7 +115,8 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'admin#index'  
     resources :advertisers, only: [:index, :new, :create, :edit, :update, :destroy] do
-      resources :campaigns, only: [:index, :new, :create, :edit, :update, :destroy]
+      resources :campaigns, only: [:index, :new, :create, :edit, :update, :destroy] do
+        resources :adverts, only: [:index, :new, :create, :edit, :update, :destroy]
     end
   end
   
