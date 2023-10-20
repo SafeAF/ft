@@ -8,8 +8,14 @@ class Admin::AdvertsController < ApplicationController
     end
   
     def new
-      @advert = @campaign.adverts.new
-    end
+        @advertiser = Advertiser.find(params[:advertiser_id])
+        @campaign = Campaign.find(params[:campaign_id])
+        @advert = Advert.new
+      end
+      
+    # def new
+    #   @advert = @campaign.adverts.new
+    # end
   
     def create
       @advert = @campaign.adverts.new(advert_params)
