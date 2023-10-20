@@ -1,0 +1,38 @@
+<h1>Manage Campaigns</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Budget</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Status</th>
+      <th>Advertiser</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @campaigns.each do |campaign| %>
+      <tr>
+        <td><%= campaign.name %></td>
+        <td><%= campaign.description %></td>
+        <td><%= campaign.budget %></td>
+        <td><%= campaign.start_date %></td>
+        <td><%= campaign.end_date %></td>
+        <td><%= campaign.status %></td>
+        <td>
+
+          <%= link_to campaign.advertiser.name, admin_advertiser_campaigns_path(campaign.advertiser) %>
+        </td>
+        <td>
+          <%= link_to 'Edit', edit_admin_campaign_path(campaign) %>
+          <%= link_to 'Delete', admin_campaign_path(campaign), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Add New Campaign', new_admin_advertising_campaign_path %>
