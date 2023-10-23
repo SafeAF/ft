@@ -3,8 +3,8 @@
 <table class="table table-striped">
   <thead>
     <tr>
+    <th>Thumbnail</th>
       <th>Name</th>
-
       <th>Alt Text</th>
       <th>Link URL</th>
       <th>Start Date</th>
@@ -22,6 +22,18 @@
   <tbody>
     <% @adverts.each do |advert| %>
       <tr>
+        <td>
+<% if advert.image.attached? %>
+  <%= link_to url_for(advert.image), target: "_blank" do %>
+    <%= image_tag url_for(advert.thumbnail), alt: advert.alt_text %>
+  <% end %>
+<% else %>
+  No image
+<% end %>
+
+        </td>
+        <td><%= advert.name %></td>
+
         <td><%= advert.name %></td>
         <td><%= advert.alt_text %></td>
         <td><%= advert.link_url %></td>

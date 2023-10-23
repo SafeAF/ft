@@ -25,9 +25,13 @@ class Admin::AdvertsController < ApplicationController
         render :new
       end
     end
-  
+
     def edit
-    end
+        @advertiser = Advertiser.find(params[:advertiser_id])
+        @campaign = Campaign.find(params[:campaign_id])
+        @advert = Advert.find(params[:id])
+      end
+      
   
     def update
       if @advert.update(advert_params)
