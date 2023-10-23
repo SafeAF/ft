@@ -3,10 +3,17 @@ class Advert < ApplicationRecord
 
     has_one_attached :image
 
+    validates :ad_type, inclusion: { in: %w[banner injection promoted],
+        message: "%{value} is not a valid ad type" }
+
+        
+
     def thumbnail
         image.variant(resize_to_limit: [50, 50]).processed
     end
 
     enum status: { active: 0, paused: 1, archived: 2 }
 end
+  
+
   

@@ -53,6 +53,10 @@
     <%= f.text_field :display_locations, class: 'form-control' %>
   </div>
 
+    <%= form.label :ad_type %>
+  <%= form.select :ad_type, ['banner', 'injection', 'promoted'] %>
+
+
   <div class="form-group">
     <%= f.label :tags, class: 'control-label' %>
     <%= f.text_field :tags, class: 'form-control' %>
