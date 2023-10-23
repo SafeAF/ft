@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_19_162440) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_23_131549) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -63,7 +63,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_19_162440) do
 
   create_table "adverts", force: :cascade do |t|
     t.string "name"
-    t.string "image_path"
     t.string "alt_text"
     t.string "link_url"
     t.datetime "start_date"

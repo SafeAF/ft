@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Image Path</th>
+
       <th>Alt Text</th>
       <th>Link URL</th>
       <th>Start Date</th>
@@ -23,7 +23,6 @@
     <% @adverts.each do |advert| %>
       <tr>
         <td><%= advert.name %></td>
-        <td><%= advert.image_path %></td>
         <td><%= advert.alt_text %></td>
         <td><%= advert.link_url %></td>
         <td><%= advert.start_date %></td>

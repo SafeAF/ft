@@ -60,7 +60,8 @@ class Admin::AdvertsController < ApplicationController
     end
   
     def advert_params
-      params.require(:advert).permit(:name, :image_path, :alt_text, :link_url, :start_date, :end_date, :click_count, :impressions, :status, :position, :prominence, :display_locations, :tags)
+      params.require(:advert).permit(:name, :alt_text, :link_url, :start_date, :end_date, 
+        :click_count, :impressions, :status, :position, :prominence, :display_locations, :tags, :image)
     end
   end
   
