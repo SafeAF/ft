@@ -3,7 +3,7 @@
 <table class="table table-striped">
   <thead>
     <tr>
-    <th>Thumbnail</th>
+      <th>Thumbnail</th>
       <th>Name</th>
       <th>Alt Text</th>
       <th>Link URL</th>
@@ -16,6 +16,7 @@
       <th>Prominence</th>
       <th>Display Locations</th>
       <th>Tags</th>
+      <th>Ad Type</th> <!-- Added this line -->
       <th>Actions</th>
     </tr>
   </thead>
@@ -23,17 +24,14 @@
     <% @adverts.each do |advert| %>
       <tr>
         <td>
-<% if advert.image.attached? %>
-  <%= link_to url_for(advert.image), target: "_blank" do %>
-    <%= image_tag url_for(advert.thumbnail), alt: advert.alt_text %>
-  <% end %>
-<% else %>
-  No image
-<% end %>
-
+          <% if advert.image.attached? %>
+            <%= link_to url_for(advert.image), target: "_blank" do %>
+              <%= image_tag url_for(advert.thumbnail), alt: advert.alt_text %>
+            <% end %>
+          <% else %>
+            No image
+          <% end %>
         </td>
-        <td><%= advert.name %></td>
-
         <td><%= advert.name %></td>
         <td><%= advert.alt_text %></td>
         <td><%= advert.link_url %></td>
@@ -46,6 +44,7 @@
         <td><%= advert.prominence %></td>
         <td><%= advert.display_locations %></td>
         <td><%= advert.tags %></td>
+        <td><%= advert.ad_type %></td> <!-- Added this line -->
         <td>
           <%= link_to 'Edit', edit_admin_advertiser_campaign_advert_path(@campaign.advertiser, @campaign, advert), class: 'btn btn-primary' %>
           <%= link_to 'Delete', admin_advertiser_campaign_advert_path(@campaign.advertiser, @campaign, advert), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
@@ -56,5 +55,4 @@
 </table>
 
 <%= link_to 'Add New Advert', new_admin_advertiser_campaign_advert_path(@campaign.advertiser, @campaign), class: 'btn btn-success' %>
-
 <%= link_to 'Back to Campaigns', admin_advertiser_campaigns_path(@campaign.advertiser), class: 'btn btn-secondary' %>

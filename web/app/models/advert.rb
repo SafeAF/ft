@@ -3,9 +3,13 @@ class Advert < ApplicationRecord
 
     has_one_attached :image
 
-    validates :ad_type, inclusion: { in: %w[banner injection promoted],
-        message: "%{value} is not a valid ad type" }
+    # validates :ad_type, inclusion: { in: %w[banner injection promoted],
+    #     message: "%{value} is not a valid ad type" }
 
+
+    def banner
+        image.variant(resize_to_limit: [300, 50]).processed
+    end
         
 
     def thumbnail

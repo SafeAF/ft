@@ -33,6 +33,13 @@
 
     <%= render 'layouts/alerts' %>
 
+    <% if @banner_ad && @banner_ad.image.attached? %>
+      <%= image_tag @banner_ad.banner %>
+    <% end %>
+
+
+
+
     <%= yield %>
 
   </body>
