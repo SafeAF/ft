@@ -21,11 +21,18 @@ class ApplicationController < ActionController::Base
   # end
   def fetch_banner_ads
     @banner_ad = Advert.joins(:campaign).where(campaigns: { status: :active }, ad_type: "banner").first
+    @banner_ad.impressions += 1
+    @banner_ad.save!
   end
 
   def skip_banner_ads?
-    controller_name == 'home' && action_name == 'index'
+    return true if controller_name == 'home' && action_name == 'index'
+    return true if controller_name == 'moderators' # Replace with actual controller name if different
+    return true if controller_path.start_with?('admin/') # Assumes all controllers under Admin:: namespace start with 'admin/'
+    
+    false
   end
+  
 
   private
 

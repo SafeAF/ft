@@ -8,7 +8,7 @@ class Advert < ApplicationRecord
 
 
     def banner
-        image.variant(resize_to_limit: [300, 50]).processed
+        image.variant(resize_to_limit: [300, 100]).processed
     end
         
 
