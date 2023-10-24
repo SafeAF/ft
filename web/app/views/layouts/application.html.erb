@@ -13,34 +13,29 @@
 
   </head>
 
-
-<header>
-
-<header>
-
-<%= render 'layouts/navbar' %>
-
-
-</header>
-
+<div class="container-fluid">
+  <header>
+    <%= render 'layouts/navbar' %>
+  </header>
 
   <body>
 
-<% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, class: name %>
-<% end %>
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, class: name %>
+    <% end %>
 
 
     <%= render 'layouts/alerts' %>
 
-<div class="row justify-content-center">
-<div class="col text-center">
-  
-      <% if @banner_ad && @banner_ad.image.attached? %>
-  <%= image_tag @banner_ad.banner, style: "display: block; margin: 0 auto;" %>
-    <% end %>  
-</div>
-</div>
+    <div class="row justify-content-center">
+      <div class="col text-center">
+        <% if @banner_ad && @banner_ad.image.attached? %>
+          <%= link_to @banner_ad.link_url, target: "_blank" do %>
+            <%= image_tag @banner_ad.banner, style: "display: block; margin: 0 auto;" %>
+          <% end %>
+        <% end %>  
+      </div>
+    </div>
 
 
 
@@ -53,5 +48,5 @@
 
 
 
-
+</div>
 </html>
