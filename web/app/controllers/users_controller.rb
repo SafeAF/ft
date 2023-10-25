@@ -90,16 +90,17 @@ class UsersController < ApplicationController
   end
 
   # User search
-
   def search
     @q = User.ransack(params[:q])
-    if params[:q].blank?
-      default_users = User.default_search
-      @users = Kaminari.paginate_array(default_users).page(params[:page]).per(10)
-    else
+  
+    if params[:q].present?
       @users = @q.result(distinct: true).page(params[:page]).per(10)
+    else
+      all_users = User.default_search
+      @users = Kaminari.paginate_array(all_users).page(params[:page]).per(10)
     end
   end
+  
         
 
 

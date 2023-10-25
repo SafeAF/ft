@@ -88,12 +88,23 @@ class User < ApplicationRecord
   scope :featured, -> { where(featured: true).limit(10) }
 
   def self.default_search
-    top_followed_ids = top_followed.pluck(:id)
-    most_poasts_ids = most_poasts.pluck(:id)
-    unique_ids = User.where(id: top_followed_ids + most_poasts_ids).distinct.pluck(:id)
-    User.where(id: unique_ids)
-  end
+    # Fetch top followed and top poasters
+    top_followed_users = top_followed.to_a
+    most_poasts_users = most_poasts.to_a
   
+    # Combine and remove duplicates
+    combined_users = top_followed_users + most_poasts_users
+  
+    # Fetch all other users and append them
+    other_users = User.where.not(id: combined_users.map(&:id)).to_a
+  
+    # Combine all groups of users
+    all_users = combined_users + other_users
+  
+    # Return the combined array
+    all_users
+  end
+    
 
   # Timeline
 

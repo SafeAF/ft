@@ -154,6 +154,7 @@ Rails.application.routes.draw do
   get 'search_users', to: 'users#search'
 
 
+
   # Landing page
   root 'home#index'
 
