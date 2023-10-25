@@ -1,7 +1,7 @@
-
+<div class="container">
 <%= render 'shared/user_search' %>
 
-<div class="container">
+
   <div class="row">
     <% @users.each do |user| %>
       <div class="col-md-4">
@@ -12,11 +12,17 @@
               <%= link_to user.username, user_path(user) %>
             </h5>
             <p class="card-text">
-              <%= user.email %>
+              
             </p>
           </div>
         </div>
       </div>
     <% end %>
   </div>
+
+<%= paginate @users %>
+
+
 </div>
+
+
