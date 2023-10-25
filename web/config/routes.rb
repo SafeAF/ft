@@ -67,6 +67,9 @@ Rails.application.routes.draw do
     resources :messages, only: [:create]
   end
 
+  # config/routes.rb
+  post 'start_conversation/:recipient_id', to: 'conversations#start_conversation', as: 'start_conversation'
+
 
 
   # Notifications 

@@ -29,6 +29,16 @@ class ConversationsController < ApplicationController
     redirect_to conversation_path(@conversation)
   end
 
+  # Action to bypass the "new" form
+  def start_conversation
+    recipient_id = params[:recipient_id]
+    conversation = Conversation.between(current_user.id, recipient_id).first_or_create!(sender_id: current_user.id, recipient_id: recipient_id)
+
+    redirect_to conversation_path(conversation)
+  end
+
+
+
   private
 
   def conversation_params

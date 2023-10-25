@@ -17,7 +17,12 @@
             <p class="card-text">
               <%= truncate(user.bio.to_plain_text, length: 80) %>
             </p>
-            <%= link_to "Message", new_conversation_path(recipient_id: user.id), class: "btn btn-primary" %>
+<%= form_with(url: start_conversation_path(user.id), method: :post) do |f| %>
+  <%= f.button type: 'submit', class: 'btn-as-link' do %>
+    <i class="fas fa-comment-dots"></i>
+  <% end %>
+<% end %>
+
           </div>
         </div>
       </div>
