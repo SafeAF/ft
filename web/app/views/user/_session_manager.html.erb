@@ -8,7 +8,7 @@
     <%= current_user.email %>
   </a>
   <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><%= link_to "Search Users", search_users_path, class: "dropdown-item" %></li>
     <li><%= link_to "Profile", user_path(current_user), class: "dropdown-item" %></li>
 
     <% if current_user&.administrator? %>
