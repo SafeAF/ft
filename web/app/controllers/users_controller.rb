@@ -78,16 +78,17 @@ class UsersController < ApplicationController
   # end
 
   # initiate DM
-  def start_conversation
-    recipient = User.find(params[:id])
-    conversation = Conversation.between(current_user.id, recipient.id).first
+  # DEPRACATED
+  # def start_conversation
+  #   recipient = User.find(params[:id])
+  #   conversation = Conversation.between(current_user.id, recipient.id).first
 
-    if conversation.nil?
-      conversation = Conversation.create!(sender_id: current_user.id, recipient_id: recipient.id)
-    end
+  #   if conversation.nil?
+  #     conversation = Conversation.create!(sender_id: current_user.id, recipient_id: recipient.id)
+  #   end
     
-    redirect_to conversation_path(conversation)
-  end
+  #   redirect_to conversation_path(conversation)
+  # end
 
   # User search
   def search

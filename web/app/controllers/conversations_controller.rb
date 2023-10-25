@@ -6,10 +6,11 @@ class ConversationsController < ApplicationController
   end
   
   
-
   def new
     @conversation = Conversation.new
+    @conversation.recipient_id = params[:recipient_id] if params[:recipient_id].present?
   end
+  
 
   def show
     @conversation = Conversation.find(params[:id])
