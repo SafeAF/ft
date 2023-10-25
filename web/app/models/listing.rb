@@ -41,7 +41,7 @@ class Listing < ApplicationRecord
   validates :title, length: {maximum: 70}, allow_blank: false
 
 
-  def self.ransackable_attributes(auth_object = nil)
-    ["title", "category", "description", "location"]
-  end
+    def self.ransackable_attributes(auth_object = nil)
+      ["title", "category", "description", "location"]
+    end
   end

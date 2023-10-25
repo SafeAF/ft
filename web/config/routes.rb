@@ -121,11 +121,9 @@ Rails.application.routes.draw do
     end
   end
   
-
-  
+  # Users  
   devise_for :users
 
-  
   resources :users, only: [:show] do
     resources :poasts, only: [:index]
     
@@ -146,9 +144,17 @@ Rails.application.routes.draw do
       post 'lock'  
 
       post 'start_conversation'
+
+      
     end
   end
 
+
+  # Search users
+  get 'search_users', to: 'users#search'
+
+
+  # Landing page
   root 'home#index'
 
   get '/marketplace', to: 'listings#index', as: 'marketplace'

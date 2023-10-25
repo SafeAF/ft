@@ -89,6 +89,13 @@ class UsersController < ApplicationController
     redirect_to conversation_path(conversation)
   end
 
+  # User search
+
+  def search
+    @q = User.ransack(params[:q])
+    @users = @q.result(distinct: true)
+  end
+  
 
 
   private

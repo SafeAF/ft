@@ -70,6 +70,15 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
+  # User searching
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["username", "email"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    []
+  end
 
   # Timeline
 
