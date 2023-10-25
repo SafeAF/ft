@@ -15,7 +15,7 @@
               <%= link_to user.username, user_path(user) %>
             </h5>
             <p class="card-text">
-              <!-- Additional content can go here -->
+              <%= truncate(user.bio.to_plain_text, length: 80) %>
             </p>
           </div>
         </div>
