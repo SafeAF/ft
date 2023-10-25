@@ -1,0 +1,5 @@
+<%= form_with(url: start_conversation_path(user.id), method: :post) do |f| %>
+  <%= f.button type: 'submit', class: 'btn-as-link' do %>
+    <i class="fas fa-comment-dots"></i>
+  <% end %>
+<% end %>
