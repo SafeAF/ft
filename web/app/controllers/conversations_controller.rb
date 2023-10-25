@@ -19,13 +19,11 @@ class ConversationsController < ApplicationController
   
   
   
-
-  # change params sender_id to current_user? no longer permit sender_id?
   def create
-    if Conversation.between(current_user, params[:recipient_id]).present?
-      @conversation = Conversation.between(current_user, params[:recipient_id]).first
+    if Conversation.between(current_user.id, conversation_params[:recipient_id]).present?
+      @conversation = Conversation.between(current_user.id, conversation_params[:recipient_id]).first
     else
-      @conversation = Conversation.create!(conversation_params)
+      @conversation = Conversation.create!(sender_id: current_user.id, recipient_id: conversation_params[:recipient_id])
     end
     redirect_to conversation_path(@conversation)
   end
@@ -33,6 +31,6 @@ class ConversationsController < ApplicationController
   private
 
   def conversation_params
-    params.require(:conversation).permit(:sender_id, :recipient_id)
+    params.require(:conversation).permit(:recipient_id)
   end
 end
