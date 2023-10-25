@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container">
   <div class="d-flex justify-content-center mb-5">
     <%= render 'shared/user_search' %>
   </div>
@@ -7,7 +7,7 @@
     <% @users.each do |user| %>
       <div class="col-md-4 mb-4">
         <div class="card">
-          <div style="margin-left: 20px; margin-top: 20px;">
+          <div style="margin-left: 1.25rem; margin-top: 1.25rem;">
             <%= render 'shared/avatar', user: user %>
           </div>
           <div class="card-body">
