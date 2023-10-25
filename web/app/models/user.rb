@@ -80,6 +80,21 @@ class User < ApplicationRecord
     []
   end
 
+  # Top Users, Featured Users, Default display
+
+  scope :top_followed, -> { order(followers_count: :desc).limit(10) }
+  scope :most_poasts, -> { joins(:poasts).group('users.id').order('COUNT(poasts.id) DESC').limit(10) }
+  # Featured is not implemented yet
+  scope :featured, -> { where(featured: true).limit(10) }
+
+  def self.default_search
+    top_followed_ids = top_followed.pluck(:id)
+    most_poasts_ids = most_poasts.pluck(:id)
+    unique_ids = User.where(id: top_followed_ids + most_poasts_ids).distinct.pluck(:id)
+    User.where(id: unique_ids)
+  end
+  
+
   # Timeline
 
   # def timeline_poasts
