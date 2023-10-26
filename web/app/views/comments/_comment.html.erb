@@ -10,6 +10,7 @@
         <%= link_to comment.user.username, user_path(comment.user) %> <span class="small">- <%= comment.created_at.strftime('%B %d, %Y') %></span>
       </p>
       <div class="action-icons d-inline">
+      
         <% if comment.user == current_user || current_user.moderator? %>
           <%= form_with url: polymorphic_path([comment.commentable, comment]), method: :delete, class: "d-inline" do %>
             <%= button_tag(type: 'submit', class: "btn btn-sm btn-danger") do %>
