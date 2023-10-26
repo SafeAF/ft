@@ -13,38 +13,35 @@ class UsersController < ApplicationController
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path, alert: "User not found"
   end
+
+  def comments
+    @comments = @user.comments.order('created_at DESC').page(params[:page]).per(10) # 10 comments per page
+  end
   
-    def comments
-      @comments = @user.comments.order('created_at DESC').page(params[:page]).per(10) # 10 comments per page
-    end
-    
-    def listings
-      @listings = @user.listings.order('created_at DESC').page(params[:page]).per(10) # 10 comments per page
-    end
-    
-    def articles
-      @articles = @user.articles.order('created_at DESC').page(params[:page]).per(10) # 10 comments per page
-    end
+  def listings
+    @listings = @user.listings.order('created_at DESC').page(params[:page]).per(10) # 10 comments per page
+  end
   
-    # GET /users/1/edit
-    def edit
-      # Edit action can remain the same, just make sure the form supports Action Text for bio
-    end
+  def articles
+    @articles = @user.articles.order('created_at DESC').page(params[:page]).per(10) # 10 comments per page
+  end
   
-    # PATCH/PUT /users/1 or /users/1.json
-    def update
-      respond_to do |format|
-        if @user.update(user_params)
-          format.html { redirect_to @user, notice: "Your profile was successfully updated." }
-          format.json { render :show, status: :ok, location: @user }
-        else
-          format.html { render :edit, status: :unprocessable_entity }
-          format.json { render json: @user.errors, status: :unprocessable_entity }
-        end
+  def edit
+  end
+
+  def update
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to @user, notice: "Your profile was successfully updated." }
+        format.json { render :show, status: :ok, location: @user }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+  end
 
-      
+  # Edit action_text bio, and avatar      
   def edit_bio
   end
 
@@ -70,7 +67,7 @@ class UsersController < ApplicationController
   
     if params[:q].present?
       @users = @q.result(distinct: true).page(params[:page]).per(10)
-    else
+    else # Default users shown, most followers, then the most poasts, then everyone else
       all_users = User.default_search
       @users = Kaminari.paginate_array(all_users).page(params[:page]).per(10)
     end
@@ -78,6 +75,7 @@ class UsersController < ApplicationController
   
   private
 
+  # Setup for username slugs
   def set_user
     @user = User.find_by!(username: params[:id])
   rescue ActiveRecord::RecordNotFound
