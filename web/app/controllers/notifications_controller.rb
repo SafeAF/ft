@@ -21,5 +21,9 @@ class NotificationsController < ApplicationController
         end
     end
   
+    def mark_all_as_read
+        current_user.notifications.unread.update_all(status: :read)
+        redirect_to notifications_path, notice: 'All notifications have been marked as read.'
+    end
 end
   

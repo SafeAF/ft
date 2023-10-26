@@ -73,13 +73,15 @@ Rails.application.routes.draw do
 
 
   # Notifications 
-
   resources :notifications, only: [:index] do
     member do
       post :mark_as_read
     end
+    collection do
+      post :mark_all_as_read
+    end
   end
-  
+
   # Following/Followers
   resources :relationships, only: [:create, :destroy]
 
