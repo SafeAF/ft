@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :comments, :listings, :articles]
-  before_action :authenticate_user! #, except: [:show]
-  before_action :correct_user, only: [:edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :comments, :listings, :articles, :edit_bio, :update_bio]
+  before_action :authenticate_user!
+  before_action :correct_user, only: [:edit, :update, :edit_bio, :update_bio]
 
   def show 
     # may want to eager load poats and comments also, later. 
@@ -46,11 +46,9 @@ class UsersController < ApplicationController
 
       
   def edit_bio
-    @user = User.find(params[:id])
   end
 
   def update_bio
-    @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to user_path(@user), notice: 'Bio was successfully updated.'
     else
@@ -60,7 +58,7 @@ class UsersController < ApplicationController
 
   # Flag User Action
   def flag
-    @user = User.find(params[:id])
+    return redirect_to @user, alert: "You can't flag yourself." if @user == current_user
     @user.increment!(:flags_count)
     redirect_to @user, notice: 'User has been flagged.'
   end
@@ -78,23 +76,13 @@ class UsersController < ApplicationController
     end
   end
   
-        
-
-
   private
-
-  # Use callbacks to share common setup or constraints between actions.
-  # def set_user
-  #   @user = User.find(params[:id])
-  # end
-
 
   def set_user
     @user = User.find_by!(username: params[:id])
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path, alert: "User not found"
   end
-
 
   # Confirm the correct user.
   def correct_user
