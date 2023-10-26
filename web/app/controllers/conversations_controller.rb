@@ -1,5 +1,7 @@
 class ConversationsController < ApplicationController
   before_action :authenticate_user!
+  before_action :authorize_user!, only: [:show]  
+
 
   def index
     @conversations = Conversation.involving(current_user).order(updated_at: :desc).page(params[:page]).per(10)
@@ -17,8 +19,6 @@ class ConversationsController < ApplicationController
     @messages = @conversation.messages.order(created_at: :desc).page(params[:page]).per(10)
     @message = Message.new
   end
-  
-  
   
   def create
     if Conversation.between(current_user.id, conversation_params[:recipient_id]).present?
@@ -40,6 +40,14 @@ class ConversationsController < ApplicationController
 
 
   private
+  
+  # Only users part of the conversation can view it
+  def authorize_user!
+    @conversation = Conversation.find(params[:id])
+    unless @conversation.sender_id == current_user.id || @conversation.recipient_id == current_user.id
+      redirect_to conversations_path, alert: 'You do not have permission to view this conversation.'
+    end
+  end
 
   def conversation_params
     params.require(:conversation).permit(:recipient_id)
