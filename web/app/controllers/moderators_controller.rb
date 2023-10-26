@@ -15,30 +15,45 @@ class ModeratorsController < ApplicationController
   end
   
   
+  # Prevent arbitrary code execution via the constantize function by hardcoding.
+  VALID_ITEM_TYPES = ['Article', 'Job', 'Comment', 'Listing', 'Reply', 'Poast'].freeze
+  
   def hide_item
     item_type = params[:item_type]
+  
+    unless VALID_ITEM_TYPES.include?(item_type)
+      redirect_to moderators_path, alert: "Invalid item type."
+      return
+    end
+  
     item_id = params[:item_id]
     item = item_type.constantize.find(item_id)
-
+  
     if item.update(visible: false)
       redirect_to moderators_path, notice: "#{item_type} has been hidden."
     else
       redirect_to moderators_path, alert: "Error hiding #{item_type}."
     end
   end
-
-
+  
   def unflag_item
     item_type = params[:item_type]
+  
+    unless VALID_ITEM_TYPES.include?(item_type)
+      redirect_to moderators_path, alert: "Invalid item type."
+      return
+    end
+  
     item_id = params[:item_id]
     item = item_type.constantize.find(item_id)
-
+  
     if item.update(flags_count: 0)
       redirect_to moderators_path, notice: "#{item_type} has been unflagged."
     else
       redirect_to moderators_path, alert: "Error unflagging #{item_type}."
     end
   end
+  
 
  # User account locking
 
