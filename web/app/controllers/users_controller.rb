@@ -65,30 +65,6 @@ class UsersController < ApplicationController
     redirect_to @user, notice: 'User has been flagged.'
   end
 
-  # Lock User Action (only accessible by moderators)
-  # This (should be) is depracated, see moderators_controller.
-  # def lock
-  #   if current_user&.moderator?
-  #     @user = User.find(params[:id])
-  #     @user.update(locked: true)
-  #     redirect_to @user, notice: 'User has been locked.'
-  #   else
-  #     redirect_to @user, alert: 'You are not authorized to perform this action.'
-  #   end
-  # end
-
-  # initiate DM
-  # DEPRACATED
-  # def start_conversation
-  #   recipient = User.find(params[:id])
-  #   conversation = Conversation.between(current_user.id, recipient.id).first
-
-  #   if conversation.nil?
-  #     conversation = Conversation.create!(sender_id: current_user.id, recipient_id: recipient.id)
-  #   end
-    
-  #   redirect_to conversation_path(conversation)
-  # end
 
   # User search
   def search
