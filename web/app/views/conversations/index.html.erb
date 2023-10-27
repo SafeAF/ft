@@ -13,13 +13,15 @@
   <div class="list-group mt-4">
     <% @conversations.each do |conversation| %>
       <a href="<%= conversation_path(conversation) %>" class="list-group-item list-group-item-action">
-        <!-- Render the avatar next to the username -->
         <div class="d-flex w-100 justify-content-between">
           <div class="d-flex">
             <div class="me-3">
               <%= render partial: 'shared/avatar', locals: { user: conversation.opposed_user(current_user) } %>
             </div>
-            <h5 class="mb-1"><%= conversation.opposed_user(current_user).username %></h5>
+            <div>
+              <h5 class="mb-1"><%= conversation.opposed_user(current_user).username %></h5>
+              <small class="text-muted"><%= conversation.last_message %></small>
+            </div>
           </div>
         </div>
       </a>

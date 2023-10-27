@@ -37,8 +37,6 @@ class ConversationsController < ApplicationController
     redirect_to conversation_path(conversation)
   end
 
-
-
   private
   
   # Only users part of the conversation can view it
