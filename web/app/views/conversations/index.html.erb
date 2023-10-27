@@ -1,18 +1,33 @@
-<h1>Conversations</h1>
+<!-- Wrap everything in a Bootstrap container for proper alignment -->
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1 class="display-4">Conversations</h1>
+    </div>
+    <div class="col-auto">
+      <%= link_to 'New Conversation', new_conversation_path, class: "btn btn-primary" %>
+    </div>
+  </div>
 
-<%= link_to 'New Conversation', new_conversation_path %>
+  <!-- Wrap the conversation list in a TurboFrame and a Bootstrap list-group -->
+  <div class="list-group mt-4">
+    <% @conversations.each do |conversation| %>
+      <a href="<%= conversation_path(conversation) %>" class="list-group-item list-group-item-action">
+        <!-- Render the avatar next to the username -->
+        <div class="d-flex w-100 justify-content-between">
+          <div class="d-flex">
+            <div class="me-3">
+              <%= render partial: 'shared/avatar', locals: { user: conversation.opposed_user(current_user) } %>
+            </div>
+            <h5 class="mb-1"><%= conversation.opposed_user(current_user).username %></h5>
+          </div>
+        </div>
+      </a>
+    <% end %>
+  </div>
 
-<!-- Wrap the conversation list in a TurboFrame -->
-<ul>
-  <% @conversations.each do |conversation| %>
-    <li>
-      <!-- Render the avatar next to the username -->
-      <%= render partial: 'shared/avatar', locals: { user: conversation.opposed_user(current_user) } %>
-
-      <!-- Direct link to the conversation page -->
-      <%= link_to conversation.opposed_user(current_user).username, conversation_path(conversation) %>
-    </li>
-  <% end %>
-</ul>
-
-<%= paginate @conversations %>
+  <!-- Add pagination controls -->
+  <div class="mt-4">
+    <%= paginate @conversations, class: "pagination justify-content-center" %>
+  </div>
+</div>
