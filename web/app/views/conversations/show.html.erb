@@ -1,21 +1,45 @@
-<h1>Conversation with <%= @conversation.opposed_user(current_user).username %></h1>
-
-<ul>
-  <% @messages.each do |message| %>
-    <li>
-      <p>
-      <%= render partial: 'shared/avatar', locals: { user: message.user } %>
-       <%= message.user.username %>
-      </p>
-      <%= message.content %>
-      <small>(<%= message.created_at.strftime("%Y-%m-%d %H:%M:%S") %>)</small>
-    </li>
-  <% end %>
-</ul>
-
-<%= form_with model: [@conversation, @message], url: conversation_messages_path(@conversation), local: true do |form| %>
-  <%= form.text_area :content %>
-  <%= form.submit "Send" %>
-<% end %>
-
-<%= paginate @messages %>
+<section style="background-color: #eee;">
+  <div class="container py-5">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-6">
+        <div class="card" id="chat2">
+          <div class="card-header d-flex justify-content-between align-items-center p-3">
+            <h5 class="mb-0">Conversation with <%= @conversation.opposed_user(current_user).username %></h5>
+          </div>
+          <div class="card-body" data-mdb-perfect-scrollbar="true" style="position: relative; height: 400px">
+            <% @messages.each do |message| %>
+              <% if message.user == current_user %>
+                <div class="d-flex flex-row justify-content-end mb-4 pt-1">
+                  <div>
+                    <p class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary"><%= message.content %></p>
+                    <p class="small me-3 mb-3 rounded-3 text-muted d-flex justify-content-end">
+                      <%= message.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+                    </p>
+                  </div>
+                  <%= render partial: 'shared/avatar', locals: { user: message.user } %>
+                </div>
+              <% else %>
+                <div class="d-flex flex-row justify-content-start mb-4">
+                  <%= render partial: 'shared/avatar', locals: { user: message.user } %>
+                  <div>
+                    <p class="small p-2 ms-3 mb-1 rounded-3" style="background-color: #f5f6f7;"><%= message.content %></p>
+                    <p class="small ms-3 mb-3 rounded-3 text-muted">
+                      <%= message.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+                    </p>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="card-footer text-muted d-flex justify-content-start align-items-center p-3">
+            <%= form_with model: [@conversation, @message], url: conversation_messages_path(@conversation), local: true do |form| %>
+              <%= form.text_area :content, class: 'form-control form-control-lg', placeholder: 'Type message' %>
+              <%= form.submit "Send", class: 'ms-3' %>
+            <% end %>
+          </div>
+        </div>
+        <%= paginate @messages %>
+      </div>
+    </div>
+  </div>
+</section>
