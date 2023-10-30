@@ -11,10 +11,11 @@
       <i class="fa fa-edit"></i> Edit
     <% end %>
     <%= form_with model: resource, method: :delete, local: true, class: 'd-inline' do |form| %>
-      <%= form.submit 'Delete', class: 'btn btn-danger', data: { confirm: 'Are you sure?' } do %>
-        <i class="fa-solid fa-trash"></i> Delete
+      <%= button_tag(type: 'submit', class: 'btn btn-danger', data: { confirm: 'Are you sure?' }) do %>
+        <i class="fas fa-trash"></i>
       <% end %>
     <% end %>
+
   <% end %>
 
   <%= link_to send("#{resource_type.pluralize}_path"), class: 'btn btn-secondary' do %>
