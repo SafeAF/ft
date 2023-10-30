@@ -1,13 +1,23 @@
 <% allowed_resources = ['listing', 'company', 'job', 'article', 'poast'] %>
 <% if allowed_resources.include?(resource_type) %>
-  <%= form_with url: send("flag_#{resource_type}_path", resource), method: :post do %>
-    <%= submit_tag "Flag this #{resource_type.capitalize}" %>
+  <%= form_with url: send("flag_#{resource_type}_path", resource), method: :post, class: 'd-inline-block' do %>
+    <%= button_tag type: 'submit', class: 'btn btn-warning' do %>
+      <i class="fa fa-flag"></i> Flag
+    <% end %>
   <% end %>
 
   <% if resource.user == current_user || current_user.moderator? %>
-    <%= link_to 'Edit', send("edit_#{resource_type}_path", resource) %> |
-    <%= button_to 'Destroy', resource, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to send("edit_#{resource_type}_path", resource), class: 'btn btn-primary me-2' do %>
+      <i class="fa fa-edit"></i> Edit
+    <% end %>
+    <%= form_with model: resource, method: :delete, local: true, class: 'd-inline' do |form| %>
+      <%= form.submit 'Delete', class: 'btn btn-danger', data: { confirm: 'Are you sure?' } do %>
+        <i class="fa-solid fa-trash"></i> Delete
+      <% end %>
+    <% end %>
   <% end %>
 
-  <%= link_to "Back to #{resource_type.pluralize.capitalize}", send("#{resource_type.pluralize}_path") %>
+  <%= link_to send("#{resource_type.pluralize}_path"), class: 'btn btn-secondary' do %>
+    <i class="fa fa-arrow-left"></i> Back
+  <% end %>
 <% end %>
