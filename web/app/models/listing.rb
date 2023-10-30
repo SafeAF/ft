@@ -8,6 +8,23 @@ class Listing < ApplicationRecord
   
 
 
+  # Limit size of action_text
+   # validates :content, length: { maximum: 500.kilobytes }, if: -> { content.blob.present? }
+  
+
+  # Limit number of images to 5 for listings
+   validate :validate_image_count
+
+   def validate_image_count
+     max_images = 5 # Set your limit here
+     image_count = Nokogiri::HTML(content.body.to_trix_html).css('figure').size
+ 
+     if image_count > max_images
+       errors.add(:content, "can have at most #{max_images} images")
+     end
+   end
+ 
+
   has_one_attached :thumbnail  do |attachable|
     attachable.variant :thumb, resize_to_limit: [300, 300]
   end

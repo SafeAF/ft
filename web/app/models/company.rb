@@ -13,6 +13,21 @@ class Company < ApplicationRecord
   #validates :phone, format: { with: /\A\d+\z/, message: "Integer only. No sign allowed." }
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
 
+
+
+  # Limit number of images to 4 for listings
+  validate :validate_image_count
+
+  def validate_image_count
+    max_images = 4 # Set your limit here
+    image_count = Nokogiri::HTML(content.body.to_trix_html).css('figure').size
+
+    if image_count > max_images
+      errors.add(:content, "can have at most #{max_images} images")
+    end
+  end
+
+
   scope :in_category, ->(category) { where(category: category) if category.present? }
 # ex usage: Company.in_category("technology")
 
