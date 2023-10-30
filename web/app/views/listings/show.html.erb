@@ -1,89 +1,67 @@
-<div class="container">
+<div class="container mt-4">
 
-  <% if @listing.thumbnail.attached? %>
-    <%= image_tag @listing.thumbnail.variant(:thumb), width: '200', height: '200', class: 'me-2' %>
-  <% end %>
-
-  <div id="<%= dom_id @listing %>">
-  <h3>
-    
-    <%= @listing.title %>
-  </h3>
-
-  <p>
-    
-    <%= @listing.description %>
-  </p>
-
-  <p>
-    <strong>Location:</strong>
-    <%= @listing.location %>
-  </p>
-
-  <p>
-    <strong>Price:</strong>
-    <%= @listing.price %>
-  </p>
-
-  <p>
-    <strong>Views:</strong>
-    <%= @listing.views %>
-  </p>
-
-<div class="d-flex align-items-center">
-  <div class="me-2">
-    <%= render partial: 'shared/avatar', locals: { user: @listing.user } %>
-  </div>
-  <div>
-    Posted by: <%= link_to @listing.user.username, user_path(@listing.user) %>
-    <span class="small">- <%= @listing.created_at.strftime('%B %d, %Y') %></span>
-  </div>
-</div>
-
-
-</div>
-
-<hr>
-
-<%= @listing.content %>
-
-
-<div>
-<%= render partial: 'shared/action_buttons', locals: { resource: @listing, resource_type: 'listing' } %>
-
-</div>
-
-
-
-  
-<hr>
-<h2>Comments!</h2>
-<div class="row mt-5">
-  <div class="col">
-    <% @comments.each do |comment| %>
-      <%= render partial: 'comments/comment', locals: { comment: comment } %>
-    <% end %>
-  </div>
-</div>
-
-
-<div class="mt-4">
-  <%= paginate @comments %>
-</div>
-
+  <div class="row">
+    <div class="col-md-4">
+      <% if @listing.thumbnail.attached? %>
+        <%= image_tag @listing.thumbnail.variant(:thumb), width: '200', height: '200', class: 'img-thumbnail' %>
+      <% end %>
+    </div>
+    <div class="col-md-8">
+      <div id="<%= dom_id @listing %>">
+        <h3 class="mb-3"><%= @listing.title %></h3>
+        <p><%= @listing.description %></p>
+        <p><strong>Location:</strong> <%= @listing.location %></p>
+        <p><strong>Price:</strong> <%= @listing.price %></p>
+        <p><strong>Views:</strong> <%= @listing.views %></p>
+      </div>
       
-<hr>
-<h2>Add a Comment</h2>
+      <div class="d-flex align-items-center mt-3">
+        <div class="me-2">
+          <%= render partial: 'shared/avatar', locals: { user: @listing.user } %>
+        </div>
+        <div>
+          Posted by: <%= link_to @listing.user.username, user_path(@listing.user) %>
+          <span class="text-muted small">- <%= @listing.created_at.strftime('%B %d, %Y') %></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="my-4">
+
+  <div><%= @listing.content %></div>
+
+  <div class="mt-3">
+    <%= render partial: 'shared/action_buttons', locals: { resource: @listing, resource_type: 'listing' } %>
+  </div>
+
+  <hr class="my-4">
+
+  <h2>Comments!</h2>
+  <div class="row mt-5">
+    <div class="col">
+      <% @comments.each do |comment| %>
+        <%= render partial: 'comments/comment', locals: { comment: comment } %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <%= paginate @comments %>
+  </div>
+
+  <hr class="my-4">
+
+  <h2>Add a Comment</h2>
   <div class="row mt-2">
     <div class="col">
       <% if user_signed_in? %>
         <%= render 'comments/form', commentable: @listing %>
       <% else %>
-        <p>You must be logged in to post a comment.</p>
+        <div class="alert alert-warning" role="alert">
+          You must be logged in to post a comment.
+        </div>
       <% end %>
     </div>
   </div>
-
-
-
-</div> 
+</div>
