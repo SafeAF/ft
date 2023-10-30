@@ -1,51 +1,51 @@
-
 <nav class="navbar navbar-expand-lg bg-body-tertiary px-3">
-<%= link_to root_path, class: "navbar-brand" do %>
-  <i class="fa-solid fa-cubes fa-2x me-2" style="color: #ff6219;"></i>
-  FallsTrade.com
-<% end %>
-
-<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-</button>
-<div class="collapse navbar-collapse" id="navbarSupportedContent">
-  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-    <li class="nav-item">
-      <%= link_to "Marketplace", marketplace_path, class: 'nav-link' %> 
-    </li>
-        <li class="nav-item">
-      <%= link_to "BusinessDirectory", companies_path, class: 'nav-link beta' %>
-    </li>
-    <li class="nav-item">
-      <%= link_to "Jobs", jobs_path, class: 'nav-link' %>
-    </li>
-    <li class="nav-item">
-      <%= link_to "News&Events", articles_path, class: 'nav-link' %>
-    </li>
-
-    <li class="nav-item">
-      <%= link_to "Timeline", timeline_path, class: 'nav-link' %>
-    </li>
-
-    <%= render 'user/session_manager' %>
-
-
-  <% if user_signed_in? %>
-    <div class="notification-dropdown">
-     <% if user_signed_in? %>
-    <%= link_to "Notifications (#{current_user.notifications.unread.count})", notifications_path(current_user.id) %>
-  <% end %>
-    </div>
+  <%= link_to root_path, class: "navbar-brand" do %>
+    <i class="fa-solid fa-cubes fa-2x me-2" style="color: #ff6219;"></i>
+    FallsTrade.com
   <% end %>
 
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <%= link_to "Marketplace", marketplace_path, class: 'nav-link' %> 
+      </li>
+      <li class="nav-item">
+        <%= link_to "BusinessDirectory", companies_path, class: 'nav-link beta' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Jobs", jobs_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "News&Events", articles_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Timeline", timeline_path, class: 'nav-link' %>
+      </li>
 
-  </ul>
-  <form class="d-flex" role="search">
+      <%= render 'user/session_manager' %>
 
+      <% if user_signed_in? %>
+        <div class="notification-dropdown">
+          <%= link_to notifications_path(current_user.id), class: 'nav-link' do %>
+            <i class="far fa-bell me-1"></i>
+            Notifications (<%= current_user.notifications.unread.count %>)
+          <% end %>
+        </div>
+      <% end %>
 
-  </form>
-</div>
-
+      <li class="nav-item">
+        <%= link_to conversations_path, class: 'nav-link' do %>
+          <i class="far fa-envelope me-1"></i>
+          Conversations
+        <% end %>
+      </li>
+    </ul>
+    <form class="d-flex" role="search">
+      <!-- Your search form here -->
+    </form>
+  </div>
 </nav>
