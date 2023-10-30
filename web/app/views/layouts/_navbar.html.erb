@@ -25,25 +25,29 @@
       <li class="nav-item">
         <%= link_to "Timeline", timeline_path, class: 'nav-link' %>
       </li>
+    </ul>
 
+    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
       <%= render 'user/session_manager' %>
 
       <% if user_signed_in? %>
-        <div class="notification-dropdown">
-          <%= link_to notifications_path(current_user.id), class: 'nav-link' do %>
-            <i class="far fa-bell me-1"></i>
-            Notifications (<%= current_user.notifications.unread.count %>)
+        <li class="nav-item">
+          <div class="notification-dropdown">
+            <%= link_to notifications_path(current_user.id), class: 'nav-link' do %>
+              <i class="far fa-bell me-1"></i>
+              Notifications (<%= current_user.notifications.unread.count %>)
+            <% end %>
+          </div>
+        </li>
+        <li class="nav-item">
+          <%= link_to conversations_path, class: 'nav-link' do %>
+            <i class="far fa-envelope me-1"></i>
+            
           <% end %>
-        </div>
+        </li>
       <% end %>
-
-      <li class="nav-item">
-        <%= link_to conversations_path, class: 'nav-link' do %>
-          <i class="far fa-envelope me-1"></i>
-          Conversations
-        <% end %>
-      </li>
     </ul>
+
     <form class="d-flex" role="search">
       <!-- Your search form here -->
     </form>
