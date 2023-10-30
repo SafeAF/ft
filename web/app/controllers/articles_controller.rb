@@ -14,8 +14,8 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @article.views += 1
     @article.save!
-
-    @comments = @article.comments.includes(:replies).where(visible: true).page(params[:page]).per(10)
+  
+    @comments = @article.comments.includes(:replies).where(visible: true).order(created_at: :desc).page(params[:page]).per(10)
   end
   
 

@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     #@user = User.includes(:badges, :poasts, :comments).find_by!(username: params[:id])
     @user = User.includes(:badges).find_by!(username: params[:id])
     @poasts = @user.poasts.where(visible: true).order(created_at: :desc).page(params[:page]).per(5)
-    @comments = @user.comments.includes(:replies).where(visible: true)
+    @comments = @user.comments.includes(:replies).where(visible: true).order(created_at: :desc).page(params[:page]).per(10)
   
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path, alert: "User not found"
