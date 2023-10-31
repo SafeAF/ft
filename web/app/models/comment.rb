@@ -18,6 +18,8 @@ class Comment < ApplicationRecord
               self.commentable
             end
   
+   return if owner == self.user # Skip notification if owner is the one who commented
+
     if owner
       commentable_type = self.commentable.class.name.downcase
       # Special case for when the commentable is a User
