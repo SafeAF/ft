@@ -31,24 +31,36 @@ class PoastsController < ApplicationController
     # POST /poasts
     def create
       @poast = current_user.poasts.new(poast_params)
-  
-      if @poast.save
-        redirect_to @poast, notice: 'Poast was successfully created.'
-      else
-        flash.now[:alert] = @poast.errors.full_messages.join(', ')
-        puts @poast.errors.full_messages
-        render :new
+    
+      respond_to do |format|
+        if @poast.save
+          format.html { redirect_to poast_url(@poast), notice: 'Poast was successfully created.' }
+          format.json { render :show, status: :created, location: @poast }
+        else
+          format.html do
+            flash.now[:alert] = @poast.errors.full_messages.join(', ')
+            render :new, status: :unprocessable_entity
+          end
+          format.json { render json: @poast.errors, status: :unprocessable_entity }
+        end
       end
     end
-  
+    
     def update
-      if @poast.update(poast_params)
-        redirect_to @poast, notice: 'Poast was successfully updated.'
-      else
-        flash.now[:alert] = @poast.errors.full_messages.join(', ')
-        render :edit
+      respond_to do |format|
+        if @poast.update(poast_params)
+          format.html { redirect_to @poast, notice: 'Poast was successfully updated.' }
+          format.json { render :show, status: :ok, location: @poast }
+        else
+          format.html do 
+            flash.now[:alert] = @poast.errors.full_messages.join(', ')
+            render :edit, status: :unprocessable_entity
+          end
+          format.json { render json: @poast.errors, status: :unprocessable_entity }
+        end
       end
     end
+    
   
     def destroy
       if @poast.update(visible: false)
