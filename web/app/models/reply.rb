@@ -8,8 +8,8 @@ class Reply < ApplicationRecord
   after_create :create_notification
 
   def create_notification
-    # Notify the user who originally created the comment
-    if self.comment.user
+    # Skip notification if the user is replying to their own comment
+    if self.comment.user != self.user
       Notification.create(
         user: self.comment.user,
         notifiable: self,
@@ -25,8 +25,8 @@ class Reply < ApplicationRecord
               self.comment.commentable
             end
   
-    # Notify the owner if they're not the same as the user who created the comment
-    if owner && owner != self.comment.user
+    # Notify the owner if they're not the same as the user who created the comment or replied
+    if owner && owner != self.user && owner != self.comment.user
       Notification.create(
         user: owner,
         notifiable: self,
@@ -35,6 +35,7 @@ class Reply < ApplicationRecord
       )
     end
   end
+  
   
   
 

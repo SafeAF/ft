@@ -12,6 +12,8 @@ class Message < ApplicationRecord
   after_create :create_notification
 
   def create_notification
+    
+
     if self.user
       Notification.create(
         user: self.user,
