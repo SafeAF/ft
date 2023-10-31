@@ -46,13 +46,17 @@ class UsersController < ApplicationController
   end
 
   def update_bio
-    if @user.update(user_params)
-      redirect_to user_path(@user), notice: 'Bio was successfully updated.'
-    else
-      render :edit_bio
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to user_path(@user), notice: 'Bio was successfully updated.' }
+        format.json { render :show, status: :ok, location: @user }
+      else
+        format.html { render :edit_bio, status: :unprocessable_entity }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
     end
   end
-
+  
   # Flag User Action
   def flag
     return redirect_to @user, alert: "You can't flag yourself." if @user == current_user

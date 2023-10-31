@@ -30,6 +30,19 @@ class User < ApplicationRecord
   # ActiveText
   has_rich_text :bio
 
+  validate :validate_image_count
+
+  def validate_image_count
+    max_images = 2 # Set your limit here
+    image_count = Nokogiri::HTML(bio.body.to_trix_html).css('figure').size
+
+    if image_count > max_images
+      errors.add(:bio, "can have at most #{max_images} images")
+    end
+  end
+
+
+
   # User Profile Picture
   has_one_attached :avatar  
   validate :avatar_format
