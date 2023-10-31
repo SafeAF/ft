@@ -2,10 +2,13 @@ class ConversationsController < ApplicationController
   before_action :authenticate_user!
   before_action :authorize_user!, only: [:show]  
 
-
   def index
-    @conversations = Conversation.involving(current_user).order(updated_at: :desc).page(params[:page]).per(10)
+    @conversations = Conversation.ordered_by_recent_message_for(current_user, params[:page], 10)
   end
+  
+  # def index
+  #   @conversations = Conversation.involving(current_user).order(updated_at: :desc).page(params[:page]).per(10)
+  # end
   
   
   def new

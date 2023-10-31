@@ -20,7 +20,7 @@ class Conversation < ApplicationRecord
   def opposed_user(user)
     user == sender ? recipient : sender
   end
-
+ 
   # Get the two users involved in a conversation
   scope :involving, -> (user) do
     where("sender_id = ? OR recipient_id = ?", user.id, user.id)
@@ -32,7 +32,16 @@ class Conversation < ApplicationRecord
      sender_id, recipient_id, recipient_id, sender_id)
   end
 
-
+  # Order by conversations with the most recent message
+  def self.ordered_by_recent_message_for(user, page = 1, per_page = 10)
+    joins(:messages)
+    .select('conversations.*, MAX(messages.created_at) as last_message_time')
+    .where('conversations.id IN (?)', involving(user).ids)
+    .group('conversations.id')
+    .order('last_message_time DESC')
+    .page(page)
+    .per(per_page)
+  end
 
 end
 
