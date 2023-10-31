@@ -21,29 +21,5 @@
 
 
   <!-- Comments Section -->
-  <h2>Comments!</h2>
-<div class="row mt-5">
-  <div class="col">
-    <%= render partial: 'comments/comment', collection: @comments %>
-  </div>
-</div>
-
-
-<div class="mt-4">
-  <%= paginate @comments %>
-</div>
-
-  <hr>
-
-  <!-- Add a Comment -->
-  <h2>Add a Comment</h2>
-  <div class="row mt-2">
-    <div class="col">
-      <% if user_signed_in? %>
-        <%= render 'comments/form', commentable: @poast %>
-      <% else %>
-        <p>You must be logged in to post a comment.</p>
-      <% end %>
-    </div>
-  </div>
+  <%= render partial: 'shared/comments_section', locals: { comments: @comments, commentable: @poast } %>
 </div>  
