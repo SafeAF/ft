@@ -17,6 +17,37 @@
 <% end %>
 
 
+    <div class="mt-3">
+    <!-- Link to change password -->
+    <% if current_user == @user %>
+        <%= link_to "Change Password", edit_user_registration_path, class: 'btn btn-warning' %>
+    <% end %>
+    </div>
+  
+
+    <div class="mb-3">
+    <!-- Link to edit bio -->
+    <% if current_user == @user %>
+        <%= link_to "Edit Bio", edit_bio_user_path(@user), class: 'btn btn-primary' %>
+    <% end %>
+    </div>
+
+
+
+  <!-- Flag User Button -->
+  <% unless current_user == @user %>
+    <%= button_to "Flag User", flag_user_path(@user), method: :post, class: 'btn btn-danger' %>
+  <% end %>
+
+  <!-- Lock User Button (visible only to moderators) -->
+  <% if current_user&.moderator? %>
+    <%= button_to "Lock User", lock_user_path(@user), method: :post, class: 'btn btn-warning' %>
+  <% end %>
+
+
+  </div>
+
+
       <!-- Displaying Bio -->
       <% if @user.bio.present? %>
         <div class="card mt-4">
@@ -99,36 +130,6 @@
   </div>
 
 
-
-    <div class="mt-3">
-    <!-- Link to change password -->
-    <% if current_user == @user %>
-        <%= link_to "Change Password", edit_user_registration_path, class: 'btn btn-warning' %>
-    <% end %>
-    </div>
-  
-
-    <div class="mb-3">
-    <!-- Link to edit bio -->
-    <% if current_user == @user %>
-        <%= link_to "Edit Bio", edit_bio_user_path(@user), class: 'btn btn-primary' %>
-    <% end %>
-    </div>
-
-
-
-  <!-- Flag User Button -->
-  <% unless current_user == @user %>
-    <%= button_to "Flag User", flag_user_path(@user), method: :post, class: 'btn btn-danger' %>
-  <% end %>
-
-  <!-- Lock User Button (visible only to moderators) -->
-  <% if current_user&.moderator? %>
-    <%= button_to "Lock User", lock_user_path(@user), method: :post, class: 'btn btn-warning' %>
-  <% end %>
-
-
-  </div>
 
 
 
