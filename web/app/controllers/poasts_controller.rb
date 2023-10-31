@@ -35,23 +35,28 @@ class PoastsController < ApplicationController
       if @poast.save
         redirect_to @poast, notice: 'Poast was successfully created.'
       else
+        flash.now[:alert] = @poast.errors.full_messages.join(', ')
+        puts @poast.errors.full_messages
         render :new
       end
     end
   
-    # PATCH/PUT /poasts/1
     def update
       if @poast.update(poast_params)
         redirect_to @poast, notice: 'Poast was successfully updated.'
       else
+        flash.now[:alert] = @poast.errors.full_messages.join(', ')
         render :edit
       end
     end
   
-    # DELETE /poasts/1
     def destroy
-      @poast.update(visible: false)
-      redirect_to poasts_url, notice: 'Poast was successfully deleted.'
+      if @poast.update(visible: false)
+        redirect_to poasts_url, notice: 'Poast was successfully deleted.'
+      else
+        flash[:alert] = @poast.errors.full_messages.join(', ')
+        redirect_to poasts_url
+      end
     end
 
     def flag
