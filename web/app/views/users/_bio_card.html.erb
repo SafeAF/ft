@@ -1,0 +1,14 @@
+<!-- _bio_card.html.erb -->
+<div class="card mt-4">
+  <div class="card-body">
+    <div data-controller="show-more">
+      <div data-target="show-more.short" class="truncate-text">
+        <p class="card-text"><%= bio.to_plain_text.truncate(200) %></p>
+      </div>
+      <div data-target="show-more.full" class="full-text" style="display:none;">
+        <%= bio %>
+      </div>
+      <button data-target="show-more.button" data-action="click->show-more#toggle" class="btn btn-primary">Show More</button>
+    </div>
+  </div>
+</div>

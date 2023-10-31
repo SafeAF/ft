@@ -1,0 +1,19 @@
+<!-- _poast_cards.html.erb -->
+<%= link_to 'View All Poasts', poasts_path(username: @user.username), class: 'btn btn-primary' %>
+<%= link_to 'New Poast', new_poast_path, class: 'btn btn-primary mb-3' %>
+
+<% poasts.each do |poast| %>
+  <div class="card mb-3">
+    <% if poast.thumbnail.present? %>
+      <%= image_tag poast.thumbnail, class: "card-img-top" %>
+    <% end %>
+    <div class="card-body">
+      <%= link_to truncate(poast.title, length: 60), poast_path(poast), class: "card-title" %>
+      <p class="card-text">
+        <%= truncate(poast.subheading, length: 60) %>
+      </p>
+    </div>
+  </div>
+<% end %>
+
+<%= paginate poasts %>
