@@ -21,9 +21,13 @@ class ApplicationController < ActionController::Base
   # end
   def fetch_banner_ads
     @banner_ad = Advert.joins(:campaign).where(campaigns: { status: :active }, ad_type: "banner").first
-    @banner_ad.impressions += 1
-    @banner_ad.save!
+  
+    if @banner_ad.present?
+      @banner_ad.impressions += 1
+      @banner_ad.save!
+    end
   end
+  
 
   def skip_banner_ads?
     return true if controller_name == 'home' && action_name == 'index'
