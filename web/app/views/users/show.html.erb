@@ -48,15 +48,25 @@
   </div>
 
 
-      <!-- Displaying Bio -->
-      <% if @user.bio.present? %>
+<h2>Bio</h2>
+<% if @user.bio.present? %>
         <div class="card mt-4">
           <div class="card-body">
-            
-            <p class="card-text"><%= @user.bio %></p>
-          </div>
-        </div>
-      <% end %> 
+
+<div data-controller="show-more">
+  <div data-target="show-more.short" class="truncate-text">
+          <p class="card-text"> <%= @user.bio.to_plain_text.truncate(200) %> </p>
+  </div>
+  <div data-target="show-more.full" class="full-text" style="display:none;">
+    <%= @user.bio %>
+  </div>
+  <button data-target="show-more.button" data-action="click->show-more#toggle" class="btn btn-primary">Show More</button>
+</div>
+<% end %> 
+
+</div>
+</div>
+
 
    <%= render 'shared/send_message_button', user: @user %>
 
