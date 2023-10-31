@@ -1,7 +1,7 @@
 <!-- _comments_section.html.erb -->
-<h2>Comments!</h2>
+<h2 class="mt-5">Comments!</h2>
 
-<div class="row mt-5">
+<div class="row mt-2">
   <div class="col">
     <% comments.each do |comment| %>
       <%= render partial: 'comments/comment', locals: { comment: comment } %>
