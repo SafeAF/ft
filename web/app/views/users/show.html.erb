@@ -9,6 +9,7 @@
 
 <% @user.badges.each do |badge| %>
   <div class="badge">
+   
     <%= image_tag url_for(badge.image) if badge.image.attached? %>
     <p><%= badge.name %></p>
     <p><%= badge.description %></p>
