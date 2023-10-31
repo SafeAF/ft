@@ -13,7 +13,7 @@ class Poast < ApplicationRecord
 
 
   # Limit number of images to 5 for listings
-  validate :validate_image_count
+  #validate :validate_image_count
 
   def validate_image_count
     max_images = 2 # Set your limit here
@@ -27,6 +27,22 @@ class Poast < ApplicationRecord
 
   has_one_attached :thumbnail  do |attachable|
     attachable.variant :thumb, resize_to_limit: [300, 300]
+  end
+
+  after_create :create_notifications_for_followers
+
+  private
+
+  def create_notifications_for_followers
+    # Assuming 'followers' returns a collection of users who follow the author of the poast
+    self.user.followers.each do |follower|
+      Notification.create(
+        user: follower,
+        notifiable: self,
+        status: :unread,
+        message: "#{self.user.username} has made a new poast."
+      )
+    end
   end
 end
 

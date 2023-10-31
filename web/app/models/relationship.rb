@@ -15,6 +15,5 @@ class Relationship < ApplicationRecord
         message: "#{self.follower.username} started following you."
       )
     end
-  
   end
   
