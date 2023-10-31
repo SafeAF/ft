@@ -2,7 +2,7 @@
   <h1 class="mb-4">Your Notifications</h1>
 
 <%= render 'mark_all_as_read' %>
-  <div class="list-group">
+  <div class="list-group mt-4">
     <% @notifications.each do |notification| %>
       <div class="list-group-item" id="notification_<%= notification.id %>">
         <div class="d-flex justify-content-between align-items-center">
