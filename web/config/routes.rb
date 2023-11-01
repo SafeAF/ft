@@ -148,7 +148,8 @@ Rails.application.routes.draw do
       post 'flag'
       post 'lock'  
 
-#post 'start_conversation'
+      get 'followers'
+      
 
       
     end

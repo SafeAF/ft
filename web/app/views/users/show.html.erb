@@ -4,14 +4,7 @@
       <h1><%= @user.username %>'s Profile</h1>
       <%= render partial: 'shared/avatar', locals: { user: @user } %>
 
-      <!-- Badges -->
-      <% @user.badges.each do |badge| %>
-        <div class="badge">
-          <%= image_tag url_for(badge.image) if badge.image.attached? %>
-          <p><%= badge.name %></p>
-          <p><%= badge.description %></p>
-        </div>
-      <% end %>
+      <%= link_to pluralize(@user.followers.count, 'Follower'), followers_user_path(@user) %>
 
       <!-- User Actions -->
       <div class="mt-3 mb-3">
@@ -55,6 +48,15 @@
 
       <!-- Comments -->
       <%= render partial: 'shared/comments_section', locals: { comments: @comments, commentable: @user } %>
+
+      <!-- Badges -->
+      <% @user.badges.each do |badge| %>
+        <div class="badge">
+          <%= image_tag url_for(badge.image) if badge.image.attached? %>
+          <p><%= badge.name %></p>
+          <p><%= badge.description %></p>
+        </div>
+      <% end %>
 
 
     </div> <!-- col-md-12 -->

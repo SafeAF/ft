@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :comments, :listings, :articles, :edit_bio, :update_bio]
+  before_action :set_user, only: [:show, :edit, :update, :comments, :listings, :articles,
+     :edit_bio, :update_bio, :followers]
   before_action :authenticate_user!
   before_action :correct_user, only: [:edit, :update, :edit_bio, :update_bio]
 
@@ -12,18 +13,6 @@ class UsersController < ApplicationController
   
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path, alert: "User not found"
-  end
-
-  def comments
-    @comments = @user.comments.order('created_at DESC').page(params[:page]).per(10) # 10 comments per page
-  end
-  
-  def listings
-    @listings = @user.listings.order('created_at DESC').page(params[:page]).per(10) # 10 comments per page
-  end
-  
-  def articles
-    @articles = @user.articles.order('created_at DESC').page(params[:page]).per(10) # 10 comments per page
   end
   
   def edit
@@ -77,6 +66,23 @@ class UsersController < ApplicationController
     end
   end
   
+  def comments
+    @comments = @user.comments.order('created_at DESC').page(params[:page]).per(10) # 10 comments per page
+  end
+  
+  def listings
+    @listings = @user.listings.order('created_at DESC').page(params[:page]).per(10) # 10 comments per page
+  end
+  
+  def articles
+    @articles = @user.articles.order('created_at DESC').page(params[:page]).per(10) # 10 comments per page
+  end
+
+
+  def followers
+    @followers = @user.followers.page(params[:page]).per(10)  # Assuming you're using Kaminari for pagination
+  end
+
   private
 
   # Setup for username slugs
