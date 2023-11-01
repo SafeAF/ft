@@ -149,7 +149,7 @@ Rails.application.routes.draw do
       post 'lock'  
 
       get 'followers'
-      
+      get 'following'
 
       
     end

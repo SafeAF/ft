@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :comments, :listings, :articles,
-     :edit_bio, :update_bio, :followers]
+     :edit_bio, :update_bio, :followers, :following]
   before_action :authenticate_user!
   before_action :correct_user, only: [:edit, :update, :edit_bio, :update_bio]
 
@@ -83,6 +83,11 @@ class UsersController < ApplicationController
     @followers = @user.followers.page(params[:page]).per(10)  # Assuming you're using Kaminari for pagination
   end
 
+  def following
+    @following = @user.following.page(params[:page]).per(10)
+  end
+
+  
   private
 
   # Setup for username slugs
