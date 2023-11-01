@@ -4,6 +4,16 @@ class Reply < ApplicationRecord
   
   has_many :notifications, as: :notifiable, dependent: :destroy
 
+  # Validations
+  validates_length_of :content, minimum: 1, maximum: 3000, allow_blank: false,
+    too_long: "Your comment cannot be more than 3000 characters.",
+    too_short: "Your comment must contain at least one character."
+
+  validates :flags_count, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :visible, inclusion: { in: [true, false] }
+
+
+
   # Callback to create a notification after a reply is saved
   after_create :create_notification
 
