@@ -1,26 +1,25 @@
 <!-- app/views/timelines/show.html.erb -->
 <div class="container">
   <h1>Your Timeline</h1>
-
-  <div class="row">
+ <div class="row">
     <div class="col-md-8">
       <ul>
         <% @poasts.each do |poast| %>
-          <li class="d-flex align-items-center">
-            <% if poast.thumbnail.attached? %>
-              <%= image_tag poast.thumbnail.variant(resize_to_limit: [100, 100]), class: 'mr-3' %>
-
-            <% end %>
-            <div>
-              <strong><%= link_to poast.title, poast_path(poast), style: "margin-left: 1rem;" %></strong>
-              <p style="margin-left: 1rem;"><%= poast.subheading %></p>
+          <li class="d-flex align-items-start">
+            <div class="col-md-2">
+              <% if poast.thumbnail.attached? %>
+                <%= image_tag poast.thumbnail.variant(resize_to_limit: [100, 100]), class: 'mr-3' %>
+              <% end %>
+            </div>
+            <div class="col-md-10">
+              <strong><%= link_to poast.title, poast_path(poast) %></strong>
+              <p><%= poast.subheading %></p>
             </div>
           </li>
         <% end %>
       </ul>
       <%= paginate @poasts %>
     </div>
-
 
 
 
