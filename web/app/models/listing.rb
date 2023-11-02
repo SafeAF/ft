@@ -61,4 +61,20 @@ class Listing < ApplicationRecord
     def self.ransackable_attributes(auth_object = nil)
       ["title", "category", "description", "location"]
     end
-  end
+
+    after_create :create_notifications_for_followers
+
+    private
+  
+    def create_notifications_for_followers
+      # Notify followers about the new listing
+      user.followers.each do |follower|
+        Notification.create(
+          user: follower,
+          notifiable: self,
+          status: :unread,
+          message: "#{user.username} has posted a new listing: #{title}."
+        )
+      end
+    end
+end
