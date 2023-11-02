@@ -73,7 +73,7 @@ class Listing < ApplicationRecord
           user: follower,
           notifiable: self,
           status: :unread,
-          message: "#{user.username} has posted a new listing: #{title}."
+          message: "#{user.username} has posted a new listing: #{title.truncate(30)}."
         )
       end
     end
