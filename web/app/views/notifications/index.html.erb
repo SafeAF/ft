@@ -1,7 +1,7 @@
 <div class="container">
   <h1 class="mb-4">Your Notifications</h1>
 
-<%= render 'mark_all_as_read' %>
+  <%= render 'mark_all_as_read' %>
   <div class="list-group mt-4">
     <% @notifications.each do |notification| %>
       <div class="list-group-item" id="notification_<%= notification.id %>">
@@ -17,10 +17,12 @@
               <%= link_to notification.message, polymorphic_path(commentable, anchor: "reply_#{notifiable.id}") %>
             <% when 'Message' %>
               <%= link_to notification.message, conversation_path(notifiable.conversation_id, anchor: "message_#{notifiable.id}") %>
-            <% when 'Relationship' %> <!-- This line handles the follow notifications -->
+            <% when 'Relationship' %> <!-- This line handles follow notifications -->
               <%= link_to notification.message, user_path(notifiable.follower.username) %>
-            <% when 'Poast' %> <!-- Add this line to handle Poast notifications -->
+            <% when 'Poast' %> <!-- This line handles Poast notifications -->
               <%= link_to notification.message, poast_path(notifiable.id, anchor: "poast_#{notifiable.id}") %>
+            <% when 'Listing' %> <!-- Add this line to handle Listing notifications -->
+              <%= link_to notification.message, listing_path(notifiable.id, anchor: "listing_#{notifiable.id}") %>
             <% else %>
               <!-- Fallback content for notifiables without a commentable -->
               <%= notification.message %>
