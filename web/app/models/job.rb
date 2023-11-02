@@ -24,4 +24,19 @@ class Job < ApplicationRecord
     ["company_contact", "company_description", "company_email", "company_name", "company_phone", "company_website",
      "description", "job_type", "location", "title"]
   end
+
+  after_create :create_notifications_for_followers
+
+  private
+
+  def create_notifications_for_followers
+    user.followers.each do |follower|
+      Notification.create(
+        user: follower,
+        notifiable: self,
+        status: :unread,
+        message: "#{user.username} has posted a new job."
+      )
+    end
+  end
 end

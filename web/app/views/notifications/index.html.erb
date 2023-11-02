@@ -17,12 +17,14 @@
               <%= link_to notification.message, polymorphic_path(commentable, anchor: "reply_#{notifiable.id}") %>
             <% when 'Message' %>
               <%= link_to notification.message, conversation_path(notifiable.conversation_id, anchor: "message_#{notifiable.id}") %>
-            <% when 'Relationship' %> <!-- This line handles follow notifications -->
+            <% when 'Relationship' %>
               <%= link_to notification.message, user_path(notifiable.follower.username) %>
-            <% when 'Poast' %> <!-- This line handles Poast notifications -->
+            <% when 'Poast' %>
               <%= link_to notification.message, poast_path(notifiable.id, anchor: "poast_#{notifiable.id}") %>
-            <% when 'Listing' %> <!-- Add this line to handle Listing notifications -->
+            <% when 'Listing' %>
               <%= link_to notification.message, listing_path(notifiable.id, anchor: "listing_#{notifiable.id}") %>
+            <% when 'Job' %> <!-- Add this line to handle Job notifications -->
+              <%= link_to notification.message, job_path(notifiable.id, anchor: "job_#{notifiable.id}") %>
             <% else %>
               <!-- Fallback content for notifiables without a commentable -->
               <%= notification.message %>
