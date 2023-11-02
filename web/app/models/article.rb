@@ -21,4 +21,18 @@ class Article < ApplicationRecord
   #   end
   # end
 
+  after_create :create_notifications_for_followers
+
+  private
+
+  def create_notifications_for_followers
+    user.followers.each do |follower|
+      Notification.create(
+        user: follower,
+        notifiable: self,
+        status: :unread,
+        message: "#{user.username} has published a new article: #{title.truncate(30)}."
+      )
+    end
+  end
 end

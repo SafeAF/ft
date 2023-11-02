@@ -40,7 +40,7 @@ class Poast < ApplicationRecord
         user: follower,
         notifiable: self,
         status: :unread,
-        message: "#{self.user.username} has made a new poast."
+        message: "#{self.user.username} has made a new poast: #{title.truncate(30)}."
       )
     end
   end

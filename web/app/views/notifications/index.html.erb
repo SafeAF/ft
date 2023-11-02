@@ -23,8 +23,10 @@
               <%= link_to notification.message, poast_path(notifiable.id, anchor: "poast_#{notifiable.id}") %>
             <% when 'Listing' %>
               <%= link_to notification.message, listing_path(notifiable.id, anchor: "listing_#{notifiable.id}") %>
-            <% when 'Job' %> <!-- Add this line to handle Job notifications -->
+            <% when 'Job' %>
               <%= link_to notification.message, job_path(notifiable.id, anchor: "job_#{notifiable.id}") %>
+            <% when 'Article' %> <!-- Add this line to handle Article notifications -->
+              <%= link_to notification.message, article_path(notifiable.id, anchor: "article_#{notifiable.id}") %>
             <% else %>
               <!-- Fallback content for notifiables without a commentable -->
               <%= notification.message %>
