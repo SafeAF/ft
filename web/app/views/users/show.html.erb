@@ -17,6 +17,18 @@
 
       <%= link_to @user.following.count.to_s +  ' Following', following_user_path(@user) %>
 
+    <div class="row">
+      <div class="col-md-12">
+      <% @user.badges.each do |badge| %>
+        <div class="badge">
+          <% if badge.image.attached? %>
+            <%= image_tag badge.image.variant(:thumb), width: '50', height: '50', class: 'img-thumbnail mb-3' %>
+          <% end %>
+        </div>
+       <% end %>
+       </div>
+      </div>
+
       <!-- User Actions -->
       <div class="mt-3 mb-3">
         <% if current_user == @user %>
@@ -61,13 +73,8 @@
       <%= render partial: 'shared/comments_section', locals: { comments: @comments, commentable: @user } %>
 
       <!-- Badges -->
-      <% @user.badges.each do |badge| %>
-        <div class="badge">
-          <%= image_tag url_for(badge.image) if badge.image.attached? %>
-          <p><%= badge.name %></p>
-          <p><%= badge.description %></p>
-        </div>
-      <% end %>
+
+
 
 
     </div> <!-- col-md-12 -->
