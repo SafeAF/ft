@@ -107,21 +107,5 @@ img {
   
 
 
- /* Notification index styling to ensure consistent appearance */
-
- .notification-title {
-  flex: 1; /* This will make the title occupy the available space */
-  min-width: 0; /* Prevents the title from overflowing */
-}
-.notification-title h5 {
-  overflow: hidden;
-  text-overflow: ellipsis; /* Ensures text doesn't overflow but is truncated with an ellipsis */
-  white-space: nowrap; /* Keeps the text in a single line */
-}
-.notification-meta {
-  flex-shrink: 0; /* Prevents the timestamp and button from shrinking */
-  white-space: nowrap; /* Keeps the text in a single line */
-}
-
 
 

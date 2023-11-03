@@ -2,49 +2,40 @@
   <h1 class="mb-4">Your Notifications</h1>
 
   <%= render 'mark_all_as_read' %>
-
   <div class="list-group mt-4">
     <% @notifications.each do |notification| %>
       <div class="list-group-item" id="notification_<%= notification.id %>">
         <div class="d-flex justify-content-between align-items-center">
-          
-          <div class="notification-title">
-            <h5 class="mb-0">
-              <% notifiable = notification.notifiable %>
-              <% case notifiable.class.name %>
-              <% when 'Comment' %>
-                <%= link_to notification.message, polymorphic_path(notifiable.commentable, anchor: "comment_#{notifiable.id}") %>
-              <% when 'Reply' %>
-                <% comment = notifiable.comment %>
-                <% commentable = comment.commentable %>
-                <%= link_to notification.message, polymorphic_path(commentable, anchor: "reply_#{notifiable.id}") %>
-              <% when 'Message' %>
-                <%= link_to notification.message, conversation_path(notifiable.conversation_id, anchor: "message_#{notifiable.id}") %>
-              <% when 'Relationship' %>
-                <%= link_to notification.message, user_path(notifiable.follower.username) %>
-              <% when 'Poast' %>
-                <%= link_to notification.message, poast_path(notifiable.id, anchor: "poast_#{notifiable.id}") %>
-              <% when 'Listing' %>
-                <%= link_to notification.message, listing_path(notifiable.id, anchor: "listing_#{notifiable.id}") %>
-              <% when 'Job' %>
-                <%= link_to notification.message, job_path(notifiable.id, anchor: "job_#{notifiable.id}") %>
-              <% when 'Article' %>
-                <%= link_to notification.message, article_path(notifiable.id, anchor: "article_#{notifiable.id}") %>
-              <% else %>
-                <%= notification.message %>
-              <% end %>
-            </h5>
-          </div>
-
-          <div class="notification-meta d-flex align-items-center">
-            <small class="text-muted me-2">
-              Received at <%= notification.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
-            </small>
-            <%= form_with url: mark_as_read_notification_path(notification), method: :post, data: { turbo_frame: "notification_#{notification.id}" }, class: 'mb-0' do %>
-              <%= submit_tag 'Mark as Read', class: 'btn btn-sm btn-primary mb-0' %>
+          <h5 class="mb-0 me-2">
+            <% notifiable = notification.notifiable %>
+            <% case notifiable.class.name %>
+            <% when 'Comment' %>
+              <%= link_to notification.message, polymorphic_path(notifiable.commentable, anchor: "comment_#{notifiable.id}") %>
+            <% when 'Reply' %>
+              <% comment = notifiable.comment %>
+              <% commentable = comment.commentable %>
+              <%= link_to notification.message, polymorphic_path(commentable, anchor: "reply_#{notifiable.id}") %>
+            <% when 'Message' %>
+              <%= link_to notification.message, conversation_path(notifiable.conversation_id, anchor: "message_#{notifiable.id}") %>
+            <% when 'Relationship' %>
+              <%= link_to notification.message, user_path(notifiable.follower.username) %>
+            <% when 'Poast' %>
+              <%= link_to notification.message, poast_path(notifiable.id, anchor: "poast_#{notifiable.id}") %>
+            <% when 'Listing' %>
+              <%= link_to notification.message, listing_path(notifiable.id, anchor: "listing_#{notifiable.id}") %>
+            <% when 'Job' %>
+              <%= link_to notification.message, job_path(notifiable.id, anchor: "job_#{notifiable.id}") %>
+            <% when 'Article' %> <!-- Add this line to handle Article notifications -->
+              <%= link_to notification.message, article_path(notifiable.id, anchor: "article_#{notifiable.id}") %>
+            <% else %>
+              <!-- Fallback content for notifiables without a commentable -->
+              <%= notification.message %>
             <% end %>
-          </div>
-
+          </h5>
+          <small class="text-muted me-2">Received at <%= notification.created_at.strftime('%Y-%m-%d %H:%M:%S') %></small>
+          <%= form_with url: mark_as_read_notification_path(notification), method: :post, data: { turbo_frame: "notification_#{notification.id}" }, class: 'mb-0' do %>
+            <%= submit_tag 'Mark as Read', class: 'btn btn-sm btn-primary mb-0' %>
+          <% end %>
         </div>
       </div>
     <% end %>
