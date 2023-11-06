@@ -12,7 +12,10 @@ class User < ApplicationRecord
   uniqueness: { case_sensitive: false },
   format: { with: /\A[a-zA-Z0-9]+\Z/, message: "only allows alphanumeric characters" }
 
+  before_validation :downcase_username
 
+
+  
 
   # Relationships
   has_many :companies, dependent: :destroy
@@ -148,6 +151,11 @@ class User < ApplicationRecord
 
   private
   
+  def downcase_username
+    username.downcase! if username.present?
+  end
+
+
   # Format user profile picture
   def avatar_format
     return unless avatar.attached?

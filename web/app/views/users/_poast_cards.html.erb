@@ -1,6 +1,8 @@
 <!-- _poast_cards.html.erb -->
-<%= link_to 'View All Poasts', poasts_path(username: @user.username), class: 'btn btn-primary' %>
-<%= link_to 'New Poast', new_poast_path, class: 'btn btn-primary mb-3' %>
+<div class="d-flex justify-content-start mb-3">
+  <%= link_to 'View All Poasts', poasts_path(username: @user.username), class: 'btn btn-primary me-2' %>
+  <%= link_to 'New Poast', new_poast_path, class: 'btn btn-primary' %>
+</div>
 
 <% poasts.each do |poast| %>
   <div class="card mb-3">
