@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_23_142656) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_06_150855) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -293,6 +293,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_23_142656) do
   add_foreign_key "campaigns", "advertisers"
   add_foreign_key "comments", "users"
   add_foreign_key "companies", "users"
+  add_foreign_key "conversations", "users", column: "recipient_id"
+  add_foreign_key "conversations", "users", column: "sender_id"
   add_foreign_key "jobs", "users"
   add_foreign_key "listings", "users"
   add_foreign_key "messages", "conversations"
