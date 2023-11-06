@@ -48,7 +48,7 @@ class User < ApplicationRecord
   # ActiveText
   has_rich_text :bio
 
-  validate :validate_image_count
+  #validate :validate_image_count
 
   def validate_image_count
     max_images = 2 # Set your limit here
