@@ -6,6 +6,14 @@ class ConversationsController < ApplicationController
     @conversations = Conversation.ordered_by_recent_message_for(current_user, params[:page], 10)
   end
   
+  # Improved way for ordering convo by recent message
+  # def index
+  #   @conversations = Conversation.ordered_by_recent_message_for(current_user)
+  #                               .page(params[:page])
+  #                               .per(params[:per_page] || 10) # you could set a default per_page value
+  # end
+
+
   # def index
   #   @conversations = Conversation.involving(current_user).order(updated_at: :desc).page(params[:page]).per(10)
   # end

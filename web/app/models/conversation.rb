@@ -43,6 +43,17 @@ class Conversation < ApplicationRecord
     .per(per_page)
   end
 
+
+  # # Improved method for order by recent message
+  # def self.ordered_by_recent_message_for(user)
+  #   Conversation.joins(:messages)
+  #               .where(conversations: { id: Conversation.involving(user) })
+  #               .select('conversations.*, MAX(messages.created_at) as last_message_time')
+  #               .group('conversations.id')
+  #               .order('last_message_time DESC')
+  # end
+
+
 end
 
 
