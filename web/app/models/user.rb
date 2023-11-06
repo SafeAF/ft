@@ -48,17 +48,24 @@ class User < ApplicationRecord
   # ActiveText
   has_rich_text :bio
 
-  #validate :validate_image_count
+  validate :validate_image_count
 
   def validate_image_count
+    return if bio.blank? # Skip validation if bio is nil or empty
+  
     max_images = 2 # Set your limit here
-    image_count = Nokogiri::HTML(bio.body.to_trix_html).css('figure').size
-
-    if image_count > max_images
-      errors.add(:bio, "can have at most #{max_images} images")
+    begin
+      # Attempt to parse the HTML and count <figure> tags (assuming images are wrapped in these)
+      image_count = Nokogiri::HTML(bio.to_s).css('figure').size
+  
+      if image_count > max_images
+        errors.add(:bio, "can have at most #{max_images} images")
+      end
+    rescue => e
+      errors.add(:bio, "contains invalid HTML content") # Generic error if parsing fails
     end
   end
-
+  
 
 
   # User Profile Picture
