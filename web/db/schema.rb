@@ -77,7 +77,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_06_150855) do
     t.integer "campaign_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "ad_type"
     t.index ["campaign_id"], name: "index_adverts_on_campaign_id"
   end
 
