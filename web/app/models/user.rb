@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  before_validation :downcase_username
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -7,12 +9,25 @@ class User < ApplicationRecord
   # Username validations
   validates :username,
   presence: true,
-  length: { minimum: 3, maximum: 20 },
+  length: { minimum: 4, maximum: 20 },
   exclusion: { in: %w(admin root guest superuser), message: "is reserved." },
   uniqueness: { case_sensitive: false },
   format: { with: /\A[a-zA-Z0-9]+\Z/, message: "only allows alphanumeric characters" }
 
-  before_validation :downcase_username
+
+  # Ensure email is present, unique, and formatted correctly
+  validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: URI::MailTo::EMAIL_REGEXP }
+
+
+  # Ensure location is not too long and only contains valid characters if provided
+  validates :location, length: { maximum: 100 },
+            format: { with: /\A[a-zA-Z0-9 ,.]+\z/, message: 'only allows letters, numbers, commas, periods, and spaces' },
+            allow_blank: true
+
+  # Ensure that the flagged_count is an integer and greater than or equal to 0 if provided
+  validates :flagged_count, numericality: { only_integer: true, greater_than_or_equal_to: 0 }, allow_nil: true
+
+  
 
 
   
