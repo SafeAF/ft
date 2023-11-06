@@ -25,7 +25,7 @@ class User < ApplicationRecord
             allow_blank: true
 
   # Ensure that the flagged_count is an integer and greater than or equal to 0 if provided
-  validates :flagged_count, numericality: { only_integer: true, greater_than_or_equal_to: 0 }, allow_nil: true
+  #validates :flagged_count, numericality: { only_integer: true, greater_than_or_equal_to: 0 }, allow_nil: true
 
   
 
