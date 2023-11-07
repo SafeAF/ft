@@ -1,12 +1,15 @@
 class JobsController < ApplicationController
-    before_action :set_job, only: [:show, :edit, :update, :destroy]
+    before_action :set_job, only: [:show, :edit, :update, :destroy, :pin, :unpin]
     before_action :authenticate_user! #, only: [:new, :create, :edit, :update, :destroy]
     before_action :authorize_user!, only: [:edit, :update, :destroy]
-  
+    before_action :check_moderator, only: [:pin, :unpin]
     # GET /jobs
     def index
       @q = Job.where(visible: true).ransack(params[:q])
-      @jobs = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(10)
+      @jobs = @q.result(distinct: true)
+                .order(pinned: :desc, created_at: :desc)
+                .page(params[:page])
+                .per(10)
     end
     
 
@@ -72,6 +75,25 @@ class JobsController < ApplicationController
       redirect_to @job, notice: 'Job has been flagged.'
     end
 
+    # Job pinning
+
+    def pin
+      if @job.update(pinned: true)
+        redirect_to jobs_path, notice: 'Job was successfully pinned.'
+      else
+        redirect_to jobs_path, alert: 'Unable to pin the job.'
+      end
+    end
+  
+    def unpin
+      if @job.update(pinned: false)
+        redirect_to jobs_path, notice: 'Job was successfully unpinned.'
+      else
+        redirect_to jobs_path, alert: 'Unable to unpin the job.'
+      end
+    end
+  
+  
 
     private
   
@@ -89,6 +111,10 @@ class JobsController < ApplicationController
     # Authorization: Ensure current user owns the job
     def authorize_user!
       redirect_to @job, alert: 'Not authorized.' unless @job.user == current_user || current_user.moderator?
+    end
+
+    def check_moderator
+      redirect_to(root_url) unless current_user.moderator?
     end
   end
   
