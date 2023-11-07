@@ -1,12 +1,15 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user! #, except: [:index, :show] # Ensure the user is authenticated for actions except index and show
-  before_action :set_article, only: %i[ show edit update destroy ]
+  before_action :set_article, only: %i[ show edit update destroy pin unpin ]
   before_action :verify_owner, only: [:edit, :update, :destroy] # Ensure the current user is the owner for edit, update, and destroy
-
+  before_action :check_moderator, only: [:pin, :unpin]
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.where(visible: true).order(created_at: :desc).page(params[:page]).per(10)
+    @q = Article.where(visible: true).ransack(params[:q])
+    @articles = @q.result(distinct: true)
+                  .order(pinned: :desc, created_at: :desc)
+                  .page(params[:page]).per(10)
   end
 
   # GET /articles/1 or /articles/1.json
@@ -77,6 +80,24 @@ class ArticlesController < ApplicationController
     redirect_to @article, notice: 'Article has been flagged.'
   end
 
+  # Pin articles
+
+  def pin
+    if @article.update(pinned: true)
+      redirect_to articles_path, notice: 'Article was successfully pinned.'
+    else
+      redirect_to articles_path, alert: 'Unable to pin the article.'
+    end
+  end
+
+  def unpin
+    if @article.update(pinned: false)
+      redirect_to articles_path, notice: 'Article was successfully unpinned.'
+    else
+      redirect_to articles_path, alert: 'Unable to unpin the article.'
+    end
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -95,5 +116,9 @@ class ArticlesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def article_params
       params.require(:article).permit(:user_id, :title, :description, :location, :views, :category, :content, :thumbnail)
+    end
+
+    def check_moderator
+      redirect_to(root_url) unless current_user.moderator?
     end
 end

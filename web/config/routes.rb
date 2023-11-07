@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
     member do
       post :flag
+
+      # Pinning
+      post :pin
+      post :unpin
     end  
   end
 
