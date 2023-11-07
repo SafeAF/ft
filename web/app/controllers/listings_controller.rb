@@ -1,17 +1,24 @@
 class ListingsController < ApplicationController
-  before_action :set_listing, only: %i[ show edit update destroy ]
+  before_action :set_listing, only: %i[ show edit update destroy pin unpin ]
   before_action :authenticate_user! #, except: [:show, :index] # Ensure the user is logged in for all actions except show and index
   before_action :check_owner, only: %i[edit update destroy] # Check if the current user is the owner before edit, update, or destroy
+
+  # For pinning
+  before_action :check_moderator, only: [:pin, :unpin]
 
  
   # GET /listings or /listings.json
   def index
-    @q = Listing.where(visible: true).ransack(params[:q])
-    #@listings = Listing.order(created_at: :desc)
-    @listings = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(10)
-  
+    @q = Listing.ransack(params[:q])
+    # Select listings that are visible and order them with pinned listings first.
+    # Ensure that the pinned listings are also sorted by their creation date.
+    @listings = @q.result(distinct: true)
+                  .where(visible: true)
+                  .order(pinned: :desc, created_at: :desc)
+                  .page(params[:page])
+                  .per(10)
   end
-
+  
 
   # GET /listings/1 or /listings/1.json
   def show
@@ -76,6 +83,18 @@ class ListingsController < ApplicationController
     redirect_to @listing, notice: 'Listing has been flagged for review.'
   end
 
+  # Pin listings to the top
+
+  def pin
+    @listing.update(pinned: true)
+    redirect_to listings_path, notice: 'Listing was successfully pinned.'
+  end
+
+  def unpin
+    @listing.update(pinned: false)
+    redirect_to listings_path, notice: 'Listing was successfully unpinned.'
+  end
+
   
   
   private
@@ -97,4 +116,8 @@ class ListingsController < ApplicationController
     end
   end
   
+  def check_moderator
+    redirect_to(root_url) unless current_user.moderator?
+  end
+
 end

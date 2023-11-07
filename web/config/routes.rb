@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
     member do
       post :flag
+      post :pin
+      post :unpin
     end
   end
 
