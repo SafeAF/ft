@@ -1,0 +1,30 @@
+<!-- app/views/shared/_user_card.html.erb -->
+<div class="col-md-4 mb-4">
+  <div class="card">
+    <div class="card-top">
+      <div class="avatar-container" style="margin-left: 1.25rem; margin-top: 1.25rem;">
+        <%= render 'shared/avatar', user: user %>
+      </div>
+      <div class="card-icons" style="margin-right: 1.25rem; margin-top: 1.25rem;">
+        <%= render 'shared/send_message_button', user: user %>
+        <%= render 'shared/follow_button', user: user %>
+      </div>
+    </div>
+    <div class="card-body">
+    <div class="card-body">
+  <div class="d-flex justify-content-between align-items-center">
+    <h5 class="card-title mb-0">
+      <%= link_to user.username, user_path(user) %>
+    </h5>
+    <small class="text-muted">
+      <%= pluralize(user.followers.count, 'follower') %>
+    </small>
+  </div>
+  <p class="card-text mt-2">
+    <%= truncate(user.bio.to_plain_text, length: 80) %>
+  </p>
+</div>
+
+    </div>
+  </div>
+</div>
