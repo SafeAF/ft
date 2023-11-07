@@ -1,24 +1,21 @@
 class CompaniesController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
-  before_action :set_company, only: %i[ show edit update destroy ]
+  before_action :set_company, only: %i[ show edit update destroy pin unpin ]
   before_action :check_user, only: [:edit, :update, :destroy]
-
+  before_action :check_moderator, only: [:pin, :unpin]
 
 
   # GET /companies or /companies.json
   def index
-    #@companies = Company.all
-
     @q = Company.ransack(params[:q])
- 
- #   @q = Company.ransack(name_cont: 'company_name', category_eq: 'category_name')
-
-    # Show 10 companies per page
-    #@companies = @q.result(distinct: true).page(params[:page]).per(10) 
-    @companies = @q.result(distinct: true).order(name: :asc).page(params[:page]).per(10)
-
-
+  
+    # Sort companies by `pinned` (descending so true comes first), then by `name` (ascending)
+    # `pinned` column should be boolean type, add it to your companies table if not already present
+    @companies = @q.result(distinct: true)
+                   .order(pinned: :desc, name: :asc)
+                   .page(params[:page]).per(10)
   end
+  
 
   
   def show
@@ -86,6 +83,24 @@ class CompaniesController < ApplicationController
   end
 
 
+    # Pin articles
+
+  def pin
+    if @company.update(pinned: true)
+      redirect_to companies_path, notice: 'Company was successfully pinned.'
+    else
+      redirect_to companies_path, alert: 'Unable to pin the company.'
+    end
+  end
+
+  def unpin
+    if @company.update(pinned: false)
+      redirect_to companies_path, notice: 'Company was successfully unpinned.'
+    else
+      redirect_to companies_path, alert: 'Unable to unpin the company.'
+    end
+  end
+
 
   private
 
@@ -107,5 +122,8 @@ class CompaniesController < ApplicationController
         redirect_to companies_path, alert: "Sorry, you aren't allowed to edit this company."
       end
     end
-    
+
+    def check_moderator
+      redirect_to(root_url) unless current_user.moderator?
+    end
 end

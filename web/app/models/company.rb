@@ -16,7 +16,7 @@ class Company < ApplicationRecord
 
 
   # Limit number of images to 4 for listings
-  validate :validate_image_count
+  #validate :validate_image_count
 
   def validate_image_count
     max_images = 4 # Set your limit here

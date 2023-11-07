@@ -2,10 +2,23 @@
 
 <%= render @company %>
 
+
+  <div class="mt-3">
+<% if current_user.moderator? %>
+  <% if @company.pinned? %>
+    <%= button_to 'Unpin', unpin_company_path(@company), method: :delete %>
+  <% else %>
+    <%= button_to 'Pin', pin_company_path(@company), method: :post %>
+  <% end %>
+<% end %>
+  </div>
+
+
 <% unless @company.description.body.blank? %>
 <div class="card mt-4">
   <div class="card-body mt-4">
     <h3 class="card-title"></h3>
+
 
 
 
