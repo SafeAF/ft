@@ -1,10 +1,22 @@
-<h1>Editing listing</h1>
+<!-- app/views/listings/edit.html.erb -->
 
-<%= render "form", listing: @listing %>
+<div class="container text-center">
+  <h1>Editing Listing</h1>
+</div>
 
-<br>
+<div class="container">
+  <div class="card rounded">
+    <div class="card-body">
+      <div class="col">
+        
+        <%= render "form", listing: @listing %>
 
-<div>
-  <%= link_to "Show this listing", @listing %> |
-  <%= link_to "Back to listings", listings_path %>
+        <div class="mt-3 d-flex justify-content-between">
+          <%= link_to "Show this listing", @listing, class: "btn btn-info me-2" %> <!-- margin end -->
+          <%= link_to "Back to listings", listings_path, class: "btn btn-secondary" %>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </div>
