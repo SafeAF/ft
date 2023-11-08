@@ -11,10 +11,6 @@
             </div>
           <% end %>
 
-          <!-- User ID (Generally this would be set in the controller and not directly editable by users) -->
-          <div class="mb-3 d-none">
-            <%= form.hidden_field :user_id, value: current_user.id %>
-          </div>
 
           <div class="mb-3">
             <%= form.label :title, class: "form-label" %>
@@ -36,10 +32,6 @@
             <%= form.text_field :location, class: "form-control" %>
           </div>
 
-          <div class="mb-3">
-            <%= form.label :category, class: "form-label" %>
-            <%= form.text_field :category, class: "form-control" %>
-          </div>
 
           <div class="mb-3">
             <%= form.label :thumbnail, class: "form-label" %>
