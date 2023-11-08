@@ -5,15 +5,17 @@ class Poast < ApplicationRecord
 
   has_many :comments, as: :commentable
 
-  validates :title, presence: true
-  validates :subheading, presence: true
-  #validates :content, presence: true
-  #validates :thumbnail, presence: true 
+
+  validates :title, presence: true, length: { minimum: 10, maximum: 100 }
+  validates :subheading, presence: true, length: { minimum: 10, maximum: 200 }
+  
+  validates :content, presence: true
+  validates :thumbnail, presence: true 
   
 
 
   # Limit number of images to 5 for listings
-  #validate :validate_image_count
+  validate :validate_image_count
 
   def validate_image_count
     return if content.blank?

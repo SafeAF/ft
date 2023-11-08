@@ -3,6 +3,13 @@ class Article < ApplicationRecord
 
   has_many :comments, as: :commentable
   has_rich_text :content
+
+  validates :title, presence: true, length: { minimum: 10, maximum: 100 }
+  validates :description, presence: true, length: { minimum: 10, maximum: 2000 }
+  validates :location, presence: true, 
+        format: { with: /\A[\w, ]+\z/, message: "only allows alphanumeric characters, commas, and spaces" },
+        length: { minimum: 2, maximum: 255 }
+
   
   has_one_attached :thumbnail  do |attachable|
     attachable.variant :thumb, resize_to_limit: [300, 300]
