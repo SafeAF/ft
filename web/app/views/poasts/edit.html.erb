@@ -1,5 +1,21 @@
-<h1>Edit Poast</h1>
+<!-- app/views/poasts/edit.html.erb -->
 
-<%= render 'form', poast: @poast %>
+<div class="container text-center">
+  <h1>Edit Post</h1>
+</div>
 
-<%= link_to 'Back', poast_path(@poast), class: "btn btn-secondary" %>
+<div class="container">
+  <div class="card rounded">
+    <div class="card-body">
+      <div class="col">
+        
+        <%= render 'form', poast: @poast %>
+        
+        <div class="mt-3 d-flex justify-content-center">
+          <%= link_to 'Back', poast_path(@poast), class: "btn btn-secondary mt-2" %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
