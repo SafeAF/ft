@@ -5,7 +5,32 @@ class Job < ApplicationRecord
 
   has_many :comments, as: :commentable
 
-
+  
+    # Validations for presence
+    validates :title, :description, :job_type, :location, :company_name, :company_description, :company_website, :company_phone, :company_email, :company_contact, presence: true
+    
+    # Length validations
+    validates :title, :job_type, :location, :company_name, length: { minimum: 10, maximum: 100 }
+    validates :description, :company_description, length: { minimum: 10, maximum: 500 }
+    validates :company_website, length: { maximum: 255 }
+    
+    # Format validations
+    validates :company_email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "is not a valid email" }
+    validates :company_website, format: { with: /\Ahttps?:\/\/[\S]+\z/, message: "must be a valid URL starting with http:// or https://" }
+    
+    # Custom validation for phone format, allowing international formats
+    validates :company_phone, format: { with: /\A\+?[\d\s\-()]+\z/, message: "is not a valid phone number" }
+  
+    # Only alphanumeric, spaces, and commas are allowed in the location field
+    validates :location, format: { with: /\A[\w\s,]+\z/, message: "only allows alphanumeric characters, spaces, and commas" }
+      
+    # Custom validator for company contact name to allow only letters and basic punctuation
+    validates :company_contact, format: { with: /\A[\p{Alpha}\p{Space}\-,.']+\z/, message: "only allows letters, spaces, and basic punctuation (hyphen, comma, period, apostrophe)" }
+    
+    # Validation for user_id to ensure the job is associated with a user
+    validates :user_id, presence: true
+  
+  
 
   # Limit number of images to 5 for listings
   validate :validate_image_count
