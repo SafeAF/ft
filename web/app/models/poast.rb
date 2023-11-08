@@ -16,11 +16,16 @@ class Poast < ApplicationRecord
   #validate :validate_image_count
 
   def validate_image_count
+    return if content.blank?
     max_images = 2 # Set your limit here
-    image_count = Nokogiri::HTML(content.body.to_trix_html).css('figure').size
+    begin
+      image_count = Nokogiri::HTML(content.body.to_trix_html).css('figure').size
 
-    if image_count > max_images
-      errors.add(:content, "can have at most #{max_images} images")
+      if image_count > max_images
+        errors.add(:content, "can have at most #{max_images} images")
+      end
+    rescue => e
+      errors.add(:bio, "contains invalid HTML content") # Generic error if parsing fails
     end
   end
 

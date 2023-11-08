@@ -11,11 +11,17 @@ class Job < ApplicationRecord
   validate :validate_image_count
 
   def validate_image_count
-    max_images = 4 # Set your limit here
-    image_count = Nokogiri::HTML(details.body.to_trix_html).css('figure').size
+    return if details.blank?
 
-    if image_count > max_images
-      errors.add(:details, "can have at most #{max_images} images")
+      max_images = 4 # Set your limit here
+    begin
+      image_count = Nokogiri::HTML(details.body.to_trix_html).css('figure').size
+
+      if image_count > max_images
+        errors.add(:details, "can have at most #{max_images} images")
+      end
+    rescue => e
+      errors.add(:bio, "contains invalid HTML content") # Generic error if parsing fails
     end
   end
 

@@ -6,7 +6,7 @@ class Listing < ApplicationRecord
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :flags, as: :flaggable, dependent: :destroy
   
-
+  
 
   # Limit size of action_text
    # validates :content, length: { maximum: 500.kilobytes }, if: -> { content.blob.present? }
@@ -16,12 +16,18 @@ class Listing < ApplicationRecord
    validate :validate_image_count
 
    def validate_image_count
+    return if content.blank?
+
      max_images = 5 # Set your limit here
+    begin
      image_count = Nokogiri::HTML(content.body.to_trix_html).css('figure').size
  
      if image_count > max_images
        errors.add(:content, "can have at most #{max_images} images")
      end
+    rescue => e
+      errors.add(:content, "contains invalid HTML content")
+    end
    end
  
 
