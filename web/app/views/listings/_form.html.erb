@@ -1,7 +1,4 @@
-<div class="container">
-  <div class="card rounded">
-    <div class="card-body">
-      <div class="col">
+
         <%= form_with(model: listing, html: {class: 'needs-validation', novalidate: true}) do |form| %>
           <% if listing.errors.any? %>
             <div class="alert alert-danger">
@@ -53,7 +50,3 @@
             <%= form.submit class: "btn btn-primary" %>
           </div>
         <% end %>
-      </div>
-    </div>
-  </div>
-</div>
