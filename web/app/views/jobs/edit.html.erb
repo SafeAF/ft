@@ -1,7 +1,21 @@
 <!-- app/views/jobs/edit.html.erb -->
 
-<h1>Edit Job</h1>
+<div class="container text-center">
+  <h1>Edit Job</h1>
+</div>
 
-<%= render 'form' %>
+<div class="container">
+  <div class="card rounded">
+    <div class="card-body">
+      <div class="col">
 
-<%= link_to 'Back', jobs_path %>
+        <p>You may only have 1 active job listing at a time, if you would like to post additional jobs please contact us</p>
+        
+        <%= render 'form' %>
+        
+        <%= link_to 'Back', jobs_path, class: "btn btn-secondary mt-2" %>
+        
+      </div>
+    </div>
+  </div>
+</div>
