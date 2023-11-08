@@ -1,69 +1,67 @@
-<!-- app/views/jobs/_form.html.erb -->
-
-<%= form_with(model: @job) do |form| %>
+<%= form_with(model: @job, html: { class: 'needs-validation', novalidate: true }) do |form| %>
   <% if @job.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="alert alert-danger" role="alert">
       <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
 
       <ul>
-      <% @job.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @job.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="mb-3">
+    <%= form.label :title, class: 'form-label' %>
+    <%= form.text_field :title, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+  <div class="mb-3">
+    <%= form.label :description, class: 'form-label' %>
+    <%= form.text_area :description, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :job_type %>
-    <%= form.text_field :job_type %>
+  <div class="mb-3">
+    <%= form.label :job_type, class: 'form-label' %>
+    <%= form.text_field :job_type, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :location %>
-    <%= form.text_field :location %>
+  <div class="mb-3">
+    <%= form.label :location, class: 'form-label' %>
+    <%= form.text_field :location, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :company_name %>
-    <%= form.text_field :company_name %>
+  <div class="mb-3">
+    <%= form.label :company_name, class: 'form-label' %>
+    <%= form.text_field :company_name, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :company_description %>
-    <%= form.text_area :company_description %>
+  <div class="mb-3">
+    <%= form.label :company_description, class: 'form-label' %>
+    <%= form.text_area :company_description, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :company_website %>
-    <%= form.text_field :company_website %>
+  <div class="mb-3">
+    <%= form.label :company_website, class: 'form-label' %>
+    <%= form.text_field :company_website, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :company_phone %>
-    <%= form.text_field :company_phone %>
+  <div class="mb-3">
+    <%= form.label :company_phone, class: 'form-label' %>
+    <%= form.text_field :company_phone, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :company_contact %>
-    <%= form.text_field :company_contact %>
+  <div class="mb-3">
+    <%= form.label :company_contact, class: 'form-label' %>
+    <%= form.text_field :company_contact, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :details, "Job Details" %>
-    <%= form.rich_text_area :details %>
+  <div class="mb-3">
+    <%= form.label :details, "Job Details", class: 'form-label' %>
+    <%= form.rich_text_area :details, class: 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-primary' %>
   </div>
 <% end %>

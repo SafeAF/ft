@@ -1,7 +1,4 @@
-<div class="container">
-  <div class="card rounded">
-    <div class="card-body">
-      <div class="col">
+
         <%= form_with(model: article, html: {class: 'needs-validation', novalidate: true}) do |form| %>
           <% if article.errors.any? %>
             <div class="alert alert-danger">
