@@ -66,9 +66,22 @@
       </ul>
 
       <!-- Poasts -->
-      <h2>Poasts</h2>
-      <%= render partial: 'poast_cards', locals: { poasts: @poasts } %>
+    <h2 class="mt-4">Poasts</h2>
+      <% if user_signed_in? && current_user == @user %>
+        <%= link_to 'Create New Poast', new_poast_path, class: "btn btn-primary mb-4", role: "button" %>
+      <% end %>
 
+    <div class="row">
+      <div class="col-md-12">
+        <% @poasts.each do |poast| %>
+          <%= render 'shared/poast_card', poast: poast %>
+        <% end %>
+        <!-- Pagination -->
+        <div class="mt-3">
+          <%= paginate @poasts %>
+        </div>
+      </div>
+    </div>
       <!-- Comments -->
       <%= render partial: 'shared/comments_section', locals: { comments: @comments, commentable: @user } %>
 

@@ -4,20 +4,8 @@
  <div class="row mt-5">
     <div class="col-md-8">
       <% @poasts.each do |poast| %>
-        <div class="card mb-3">
-          <% if poast.thumbnail.attached? %>
-            <%= image_tag poast.thumbnail.variant(resize_to_limit: [500, 300]), class: 'card-img-top' %>
-          <% end %>
-          <div class="card-body">
-            <h5 class="card-title">
-              <%= link_to poast.title, poast_path(poast) %>
-            </h5>
-            <p class="card-text"><%= poast.subheading %></p>
-              <p class="card-text">
-                <small class="text-muted"><i>Posted <%= time_ago_in_words(poast.created_at) %> ago</i></small>
-              </p>
-          </div>
-        </div>
+        <%= render 'shared/poast_card', poast: poast %>
+
       <% end %>
       <%= paginate @poasts %>
     </div>
