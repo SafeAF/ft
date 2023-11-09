@@ -1,76 +1,59 @@
 <div id="<%= dom_id company %>" class="card mt-4">
-  <div class="card-body mt-4">
-    <h3 class="card-title">
-<div class="d-flex align-items-center">
-  <% if company.logo.attached? %>
-    <%= image_tag company.logo.variant(:thumb), width: '100', height: '100', class: 'me-2' %>
-  <% end %>
-  <%= link_to company.name, company %>
-
-
-
-<% if company.user == current_user %>
-
-  <%= link_to edit_company_path(@company), class: "ms-2" do %>
-    <i class="fa-solid fa-pen-to-square "></i>
-  <% end %>
-<% end %>
-</div>
-
- 
+  <div class="card-body">
+    <div class="card-title d-flex align-items-center justify-content-between">
+      <% if company.logo.attached? %>
+        <%= image_tag company.logo.variant(:thumb), width: '100', height: '100', class: 'me-2' %>
+      <% end %>
+      <h3><%= link_to company.name, company %></h3>
+      <% if company.user == current_user %>
+        <%= link_to edit_company_path(company), class: "btn btn-outline-secondary btn-sm ms-auto" do %>
+          <i class="fas fa-pen"></i> Edit
+        <% end %>
+      <% end %>
+    </div>
     
-    </h3>
-
-    <p class="card-text">
-     
+    <p class="card-text mt-2">
       <%= company.about.truncate(160) %>
     </p>
 
     <div class="row">
       <div class="col-md-6">
-              <p>
-          <strong>Address:</strong>
+        <p>
+          <i class="fas fa-map-marker-alt"></i> <strong>Address:</strong>
           <%= company.address %>
         </p>
 
         <p>
-          <strong>Contact:</strong> <%= company.contact %>
+          <i class="fas fa-user"></i> <strong>Contact:</strong> <%= company.contact %>
         </p>
+
         <p>
-          <strong>Phone:</strong>
+          <i class="fas fa-phone"></i> <strong>Phone:</strong>
           <%= company.phone %>
         </p>
 
-
-
         <p>
-          <strong>Email:</strong>
-         <%= mail_to company.email %>
+          <i class="fas fa-envelope"></i> <strong>Email:</strong>
+          <%= mail_to company.email %>
         </p>
-
       </div>
 
       <div class="col-md-6">
         <p>
-          <strong>Website:</strong>
+          <i class="fas fa-globe"></i> <strong>Website:</strong>
           <%= link_to company.website, company.website, target: "_blank" %>
         </p>
 
         <p>
-          <strong>Hours:</strong>
+          <i class="fas fa-clock"></i> <strong>Hours:</strong>
           <%= company.hours %>
         </p>
 
-
         <p>
-          <strong>Industry:</strong>
+          <i class="fas fa-industry"></i> <strong>Industry:</strong>
           <%= Company.categories[company.category] %>
         </p>
       </div>
     </div>
-
-
-
-
   </div>
 </div>
