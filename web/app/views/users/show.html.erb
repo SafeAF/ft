@@ -30,51 +30,61 @@
     </div>
 
       <!-- User Actions -->
-      <div class="mt-3 mb-3">
-        <% if current_user == @user %>
-          <%= link_to "Change Password", edit_user_registration_path, class: 'btn btn-warning' %>
-          <%= link_to "Edit Bio", edit_bio_user_path(@user), class: 'btn btn-primary' %>
-        <% end %>
-      </div>
+     <div class="mt-3 mb-3">
+  <% if current_user == @user %>
+    <%= link_to edit_user_registration_path, class: 'btn btn-warning' do %>
+      <i class="fa fa-lock"></i> Change Password
+    <% end %>
+    <%= link_to edit_bio_user_path(@user), class: 'btn btn-primary' do %>
+      <i class="fa fa-pencil-alt"></i> Edit Bio
+    <% end %>
+  <% end %>
+</div>
 
-      <!-- Moderator Actions -->
-      <% if current_user&.moderator? %>
-        <%= button_to "Lock User", lock_user_path(@user), method: :post, class: 'btn btn-warning' %>
-      <% end %>
+<!-- Moderator Actions -->
+<% if current_user&.moderator? %>
+  <%= button_to lock_user_path(@user), method: :post, class: 'btn btn-warning mt-2' do %>
+    <i class="fa fa-user-lock"></i> Lock User
+  <% end %>
+<% end %>
 
-      <!-- Flag User -->
-      <% unless current_user == @user %>
-        <%= button_to "Flag User", flag_user_path(@user), method: :post, class: 'btn btn-danger' %>
-      <% end %>
+<!-- Flag User -->
+<% unless current_user == @user %>
+  <%= button_to flag_user_path(@user), method: :post, class: 'btn btn-danger mt-2' do %>
+    <i class="fa fa-flag"></i> Flag User
+  <% end %>
+<% end %>
 
       <!-- Bio -->
-      <h2>Bio</h2>
+      <h2 class="mt-4">Bio</h2>
       <% if @user.bio.present? %>
         <%= render partial: 'bio_card', locals: { bio: @user.bio } %>
       <% end %>
 
-      <!-- User Interactions -->
-      <%= render 'shared/send_message_button', user: @user %>
-      <%= render 'shared/follow_button', user: @user %>
       
 
       <!-- Poasts -->
-    <h2 class="mt-4">Poasts</h2>
+      <h2 class="mt-4">Poasts</h2>
       <% if user_signed_in? && current_user == @user %>
         <%= link_to 'Create New Poast', new_poast_path, class: "btn btn-primary mb-4", role: "button" %>
       <% end %>
 
-    <div class="row">
-      <div class="col-md-12">
-        <% @poasts.each do |poast| %>
-          <%= render 'shared/poast_card', poast: poast %>
-        <% end %>
-        <!-- Pagination -->
-        <div class="mt-3">
-          <%= paginate @poasts %>
+      <div class="row">
+        <div class="col-md-12">
+          <% if @poasts.any? %>
+            <% @poasts.each do |poast| %>
+              <%= render 'shared/poast_card', poast: poast %>
+            <% end %>
+            <!-- Pagination -->
+            <div class="mt-3">
+              <%= paginate @poasts %>
+            </div>
+          <% else %>
+            <p class="text-muted">Nothing here yet. Stay tuned!</p>
+          <% end %>
         </div>
       </div>
-    </div>
+
       <!-- Comments -->
       <%= render partial: 'shared/comments_section', locals: { comments: @comments, commentable: @user } %>
 
