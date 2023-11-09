@@ -10,7 +10,7 @@ class Job < ApplicationRecord
     validates :title, :description, :job_type, :location, :company_name, :company_description, :company_website, :company_phone, :company_email, :company_contact, presence: true
     
     # Length validations
-    validates :title, :job_type, :location, :company_name, length: { minimum: 10, maximum: 100 }
+    validates :title, :job_type, :location, :company_name, length: { minimum: 1, maximum: 100 }
     validates :description, :company_description, length: { minimum: 10, maximum: 500 }
     validates :company_website, length: { maximum: 255 }
     

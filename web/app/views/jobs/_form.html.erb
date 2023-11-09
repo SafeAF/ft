@@ -47,6 +47,11 @@
   </div>
 
   <div class="mb-3">
+    <%= form.label :company_email, class: 'form-label' %>
+    <%= form.email_field :company_email, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
     <%= form.label :company_phone, class: 'form-label' %>
     <%= form.text_field :company_phone, class: 'form-control' %>
   </div>
