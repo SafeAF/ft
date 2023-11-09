@@ -1,11 +1,5 @@
 <div class="container mt-5">
-  <!-- Display notice -->
-  <% if notice.present? %>
-    <div class="alert alert-success">
-      <%= notice %>
-    </div>
-  <% end %>
-
+  
   <h1>Local News and Events</h1>
   <p>Great for garage sales, missing pets, or crime alerts</p>
   
@@ -18,12 +12,24 @@
   <div class="row row-cols-1 row-cols-md-2 g-4">
     <% @articles.each do |article| %>
       <div class="col">
-        <div class="card">
+        <div class="card h-100"> <!-- Make cards of equal height -->
+          <% if article.thumbnail.attached? %>
+            <%= image_tag article.thumbnail.variant(resize_to_limit: [300, 200]), class: 'card-img-top' %> <!-- Thumbnail image -->
+          <% end %>
           <div class="card-body">
             <h5 class="card-title"><%= link_to article.title, article %></h5>
             <p class="card-text"><%= truncate(article.description, length: 50) %></p>
-            <p class="card-text"><small class="text-muted">Location: <%= article.location %></small></p>
-            <p class="card-text"><small class="text-muted">Views: <%= article.views %></small></p>
+            <div class="d-flex justify-content-between">
+              <p class="card-text">
+                <i class="fa fa-map-marker-alt"></i> <!-- Font Awesome location icon -->
+                <small class="text-muted">Location: <%= article.location %></small>
+              </p>
+              <p class="card-text">
+                <i class="fa fa-eye"></i> <!-- Font Awesome views icon -->
+                <small class="text-muted">Views: <%= article.views %></small>
+              </p>
+            </div>            <!-- Add posted date in italics here -->
+            <p class="card-text"><small class="text-muted"><i>Posted: <%= article.created_at.strftime("%B %d, %Y") %></i></small></p>
           </div>
         </div>
       </div>
