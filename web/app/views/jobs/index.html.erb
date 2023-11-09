@@ -32,23 +32,35 @@
 
 
   <!-- Job List Group -->
-  <div class="list-group mt-4">
-    <% @jobs.each do |job| %>
-      <div class="list-group-item">
-        <div class="d-flex justify-content-between align-items-center">
-          <div>
-            <h5 class="mb-1"><%= link_to job.title, job %></h5>
-            <p class="mb-1">Type: <%= job.job_type %></p>
-            <p class="mb-1">Location: <%= job.location %></p>
-            <p class="mb-1">Company: <%= job.company_name %></p>
-          </div>
-          <div>
-          
-          </div>
+  <div class="list-group mt-5">
+  <% @jobs.each do |job| %>
+    <div class="list-group-item">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <h5 class="mb-3">
+            <%= link_to job.title, job %>
+          </h5>
+          <p class="mb-2">
+            <i class="fas fa-align-left"></i> Job Description: <%= truncate(job.description, length: 250) %>
+          </p>
+          <p class="mb-2">
+            <i class="fas fa-briefcase"></i> Type: <%= job.job_type %>
+          </p>
+          <p class="mb-2">
+            <i class="fas fa-map-marker-alt"></i> Location: <%= job.location %>
+          </p>
+          <p class="mb-4">
+            <i class="fas fa-building"></i> Company: <%= job.company_name %>
+          </p>
+        </div>
+        <div>
+          <!-- You can place additional content here, like action buttons or job status indicators -->
         </div>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
+</div>
+
 
   <!-- Pagination -->
   <div class="d-flex justify-content-center mt-4">

@@ -22,14 +22,14 @@
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <% @listings.each do |listing| %>
       <div class="col">
-        <%= link_to listing, class: "no-underline text-dark" do %>
+        <%= link_to listing, class: "no-underline" do %>
           <div class="card h-100">
             <% if listing.thumbnail.attached? %>
               <%= image_tag listing.thumbnail.variant(resize_to_limit: [300, 200]), class: 'card-img-top' %>
             <% end %>
             <div class="card-body">
               <h5 class="card-title"><%= listing.title %></h5>
-              <p class="card-text"><%= truncate(listing.description, length: 100) %></p>
+              <p class="card-text text-dark"><%= truncate(listing.description, length: 100) %></p>
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
