@@ -4,7 +4,7 @@ class Article < ApplicationRecord
   has_many :comments, as: :commentable
   has_rich_text :content
 
-  validates :title, presence: true, length: { minimum: 10, maximum: 100 }
+  validates :title, presence: true, length: { minimum: 10, maximum: 120 }
   validates :description, presence: true, length: { minimum: 10, maximum: 2000 }
   validates :location, presence: true, 
         format: { with: /\A[\w, ]+\z/, message: "only allows alphanumeric characters, commas, and spaces" },
