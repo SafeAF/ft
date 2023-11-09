@@ -13,6 +13,9 @@
               <%= link_to poast.title, poast_path(poast) %>
             </h5>
             <p class="card-text"><%= poast.subheading %></p>
+              <p class="card-text">
+                <small class="text-muted"><i>Posted <%= time_ago_in_words(poast.created_at) %> ago</i></small>
+              </p>
           </div>
         </div>
       <% end %>
