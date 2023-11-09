@@ -3,21 +3,19 @@
   <h1>Your Timeline</h1>
  <div class="row mt-5">
     <div class="col-md-8">
-      <ul>
-        <% @poasts.each do |poast| %>
-          <li class="d-flex align-items-start">
-            <div class="col-md-2">
-              <% if poast.thumbnail.attached? %>
-                <%= image_tag poast.thumbnail.variant(resize_to_limit: [100, 100]), class: 'mr-3' %>
-              <% end %>
-            </div>
-            <div class="col-md-10">
-              <strong><%= link_to poast.title.truncate(80), poast_path(poast), style: "margin-left: 1rem;" %></strong>
-              <p style="margin-left: 1rem;"><%= poast.subheading.truncate(160) %></p>
-            </div>
-          </li>
-        <% end %>
-      </ul>
+      <% @poasts.each do |poast| %>
+        <div class="card mb-3">
+          <% if poast.thumbnail.attached? %>
+            <%= image_tag poast.thumbnail.variant(resize_to_limit: [500, 300]), class: 'card-img-top' %>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= link_to poast.title, poast_path(poast) %>
+            </h5>
+            <p class="card-text"><%= poast.subheading %></p>
+          </div>
+        </div>
+      <% end %>
       <%= paginate @poasts %>
     </div>
 
