@@ -1,4 +1,4 @@
-<!-- app/views/shared/_poast_card.html.erb -->
+<!-- app/views/shared/_post_card.html.erb -->
 <div class="card mb-3">
   <% if poast.thumbnail.attached? %>
     <%= image_tag poast.thumbnail.variant(resize_to_limit: [500, 300]), class: 'card-img-top' %>
@@ -8,8 +8,17 @@
       <%= link_to poast.title, poast_path(poast) %>
     </h5>
     <p class="card-text"><%= poast.subheading %></p>
-    <p class="card-text">
-      <small class="text-muted"><i>Posted <%= time_ago_in_words(poast.created_at) %> ago</i></small>
-    </p>
+    
+    <!-- Avatar and Posted by -->
+    <div class="d-flex align-items-center mt-5 mb-3">
+      <div class="me-2">
+        <%= render partial: 'shared/avatar', locals: { user: poast.user } %>
+      </div>
+      <div>
+        Posted by: <%= link_to poast.user.username, user_path(poast.user) %>
+        <span class="text-muted small">- <%= time_ago_in_words(poast.created_at) %> ago</span>
+      </div>
+    </div>
+    
   </div>
 </div>
