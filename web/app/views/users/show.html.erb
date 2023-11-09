@@ -57,13 +57,6 @@
       <%= render 'shared/send_message_button', user: @user %>
       <%= render 'shared/follow_button', user: @user %>
       
-      <!-- User Activity -->
-      <h2 class="mt-4">Activity</h2>
-      <ul class="list-group">
-        <li class="list-group-item"><%= link_to "View Comment History", comments_user_path(@user) %></li>
-        <li class="list-group-item"><%= link_to "View Listings", listings_user_path(@user) %></li>
-        <li class="list-group-item"><%= link_to "View Articles", articles_user_path(@user) %></li>
-      </ul>
 
       <!-- Poasts -->
     <h2 class="mt-4">Poasts</h2>
@@ -84,6 +77,14 @@
     </div>
       <!-- Comments -->
       <%= render partial: 'shared/comments_section', locals: { comments: @comments, commentable: @user } %>
+
+      <!-- User Activity -->
+      <h2 class="mt-4">Activity</h2>
+      <ul class="list-group">
+        <li class="list-group-item"><%= link_to "View Comment History", comments_user_path(@user) %></li>
+        <li class="list-group-item"><%= link_to "View Listings", listings_user_path(@user) %></li>
+        <li class="list-group-item"><%= link_to "View Articles", articles_user_path(@user) %></li>
+      </ul>
 
       <!-- Badges -->
 
