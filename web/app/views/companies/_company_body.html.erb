@@ -1,68 +1,55 @@
+<!-- company_body.html.erb -->
+<div class="company-body">
+  <!-- About Section -->
+  <div class="about mb-2">
+    <%= company.about.truncate(160) %>
+  </div>
 
-            <div class="about mt-3">
-            <%= company.about.truncate(160) %>
-            </div>
+  <!-- Address -->
+  <div class="row">
+    <div class="col">
+      <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
+      <%= company.address %>
+    </div>
+  </div>
 
-          <div class="row mt-2">
-            <div class="col">
-        
+  <!-- Phone -->
+  <div class="row mt-1">
+    <div class="col">
+      <i class="fa fa-phone" aria-hidden="true"></i>
+      <%= company.phone %>
+    </div>
+  </div>
 
-              <div class="row mt-1">
-                <div class="col">
-                  Address: <%= company.address %>
-                </div>
-              </div>
-        
+  <!-- Email -->
+  <div class="row mt-1">
+    <div class="col">
+      <i class="fa fa-envelope" aria-hidden="true"></i>
+      <%= mail_to company.email %>
+    </div>
+  </div>
 
-              <div class="row mt-1">
-                <div class="col">
-                  Phone: <%= company.phone %>
-                </div>
-              </div>
+  <!-- Website -->
+  <div class="row mt-1">
+    <div class="col">
+      <i class="fa fa-globe" aria-hidden="true"></i>
+      <%= link_to company.website, company.website, target: "_blank" %>
+    </div>
+  </div>
 
-              <div class="row">
-               <div class="col">
-                 
-                Email: <%= mail_to company.email %>
+  <!-- Hours -->
+  <div class="row mt-1">
+    <div class="col">
+      <i class="fa fa-clock" aria-hidden="true"></i>
+      <%= company.hours %>
+    </div>
+  </div>
 
-                </div>
-              </div>
-
-
-                <div class="row mt-1">
-                <div class="col">
-                 
-                Website: <%= link_to company.website, company.website, target: "_blank" %>
-
-              </div>
-              </div>
-
-
-
-              <div class="row mt-1">
-                <div class="col">
-                  Hours: <%= company.hours %>
-                </div>
-              </div>
-
-            </div>
-
-
-              <div class="row mt-1">
-            <div class="col">
-
-            Industry: <%= Company.categories[company.category] %>
-
-            </div>
-
-
-
-            </div>
-          </div>
-
-
-
-
-
-
-
+  <!-- Industry -->
+  <div class="row mt-1">
+    <div class="col">
+      <i class="fa fa-industry" aria-hidden="true"></i>
+      <%= Company.categories[company.category] %>
+    </div>
+  </div>
+</div>
