@@ -131,17 +131,18 @@ class User < ApplicationRecord
     most_poasts_users = most_poasts.to_a
   
     # Combine and remove duplicates
-    combined_users = top_followed_users + most_poasts_users
+    combined_users = (top_followed_users + most_poasts_users).uniq
   
     # Fetch all other users and append them
     other_users = User.where.not(id: combined_users.map(&:id)).to_a
   
-    # Combine all groups of users
-    all_users = combined_users + other_users
+    # Combine all groups of users and ensure uniqueness
+    all_users = (combined_users + other_users).uniq
   
     # Return the combined array
     all_users
   end
+  
     
 
   # Timeline
