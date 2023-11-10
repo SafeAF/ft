@@ -23,7 +23,7 @@
     <% @listings.each do |listing| %>
       <div class="col">
         <%= link_to listing, class: "no-underline" do %>
-          <div class="card h-100">
+          <div class="card h-100 <%= 'pinned' if listing.pinned %>">
             <% if listing.thumbnail.attached? %>
               <%= image_tag listing.thumbnail.variant(resize_to_limit: [300, 200]), class: 'card-img-top' %>
             <% end %>

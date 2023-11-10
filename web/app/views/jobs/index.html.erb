@@ -34,7 +34,7 @@
   <!-- Job List Group -->
   <div class="list-group mt-5">
   <% @jobs.each do |job| %>
-    <div class="list-group-item">
+    <div class="list-group-item <%= 'pinned' if job.pinned %>">
       <div class="d-flex justify-content-between align-items-center">
         <div>
           <h5 class="mb-3">

@@ -12,7 +12,7 @@
   <div class="row row-cols-1 row-cols-md-2 g-4">
     <% @articles.each do |article| %>
       <div class="col">
-        <div class="card h-100"> <!-- Make cards of equal height -->
+        <div class="card h-100 <%= 'pinned' if article.pinned %>"> <!-- Make cards of equal height -->
           <% if article.thumbnail.attached? %>
             <%= image_tag article.thumbnail.variant(resize_to_limit: [300, 200]), class: 'card-img-top' %> <!-- Thumbnail image -->
           <% end %>
