@@ -3,14 +3,14 @@
     <% if current_user.following?(user) %>
       <%= form_with(url: relationship_path(current_user.active_relationships.find_by(followed_id: user.id)), method: :delete) do |f| %>
         <%= f.button type: 'submit', class: 'btn-as-link' do %>
-          <i class="fas fa-user-minus text-danger"></i>
+          <i class="fas fa-user-minus text-danger fa-2x"></i> 
         <% end %>
       <% end %>
     <% else %>
       <%= form_with(url: relationships_path, method: :post) do |f| %>
         <%= f.hidden_field :followed_id, value: user.id %>
         <%= f.button type: 'submit', class: 'btn-as-link' do %>
-          <i class="fas fa-user-plus text-primary"></i>
+          <i class="fas fa-user-plus text-primary fa-2x"></i> 
         <% end %>
       <% end %>
     <% end %>

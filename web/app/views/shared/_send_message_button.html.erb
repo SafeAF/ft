@@ -1,7 +1,7 @@
 <% unless user == current_user %>
   <%= form_with(url: start_conversation_path(user.id), method: :post) do |f| %>
     <%= f.button type: 'submit', class: 'btn-as-link' do %>
-      <i class="fas fa-comment-dots"></i>
+      <i class="fas fa-comment-dots fa-2x"></i>
     <% end %>
   <% end %>
 <% end %>
