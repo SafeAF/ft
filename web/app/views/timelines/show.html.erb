@@ -1,16 +1,17 @@
 <!-- app/views/timelines/show.html.erb -->
 <div class="container">
   <h1>Your Timeline</h1>
- <div class="row mt-5">
+  <div class="row mt-5">
     <div class="col-md-8">
-      <% @poasts.each do |poast| %>
-        <%= render 'shared/poast_card', poast: poast %>
-
+      <% if @poasts.empty? %>
+        <p class="text-muted">There are no poasts to display at the moment. Check back later!</p>
+      <% else %>
+        <% @poasts.each do |poast| %>
+          <%= render 'shared/poast_card', poast: poast %>
+        <% end %>
+        <%= paginate @poasts %>
       <% end %>
-      <%= paginate @poasts %>
     </div>
-
-
 
     <div class="col-md-4">
       <h3>Who to Follow</h3>
@@ -28,4 +29,3 @@
     </div>
   </div>
 </div>
- 
