@@ -154,9 +154,9 @@ class User < ApplicationRecord
   # Active Record version
   def timeline_poasts
     followed_user_ids = Relationship.where(follower_id: id).pluck(:followed_id)
-    Poast.where(user_id: followed_user_ids + [id])
+    Poast.where(user_id: followed_user_ids)
   end
-  
+    
   # Get the top followed users who the user isn't already following for the timeline
   scope :who_to_follow, -> (current_user) do
     where.not(id: current_user.following.pluck(:id) + [current_user.id])  # Exclude users the current user is already following, as well as themselves
