@@ -5,7 +5,7 @@ class PoastsController < ApplicationController
   
     def index
         if params[:username]
-            @user = User.find_by!(username: params[:username])
+            @user = User.find_by!(username: params[:username].downcase!)
             @poasts = @user.poasts.where(visible: true).order(created_at: :desc).page(params[:page]).per(5)
         else
             @poasts = Poast.where(visible: true).order(created_at: :desc).page(params[:page]).per(5)
