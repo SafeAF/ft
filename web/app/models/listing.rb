@@ -4,9 +4,20 @@ class Listing < ApplicationRecord
 
   has_rich_text :content
   has_many :comments, as: :commentable, dependent: :destroy
-  has_many :flags, as: :flaggable, dependent: :destroy
+ 
+  validates :title, presence: true, length: { minimum: 3, maximum: 100 }
+  validates :description, presence: true, length: { minimum: 10 }
+  validates :location, presence: true
+  validates :price, numericality: { greater_than_or_equal_to: 0 }
+  validates :category, presence: true
+
+
+  # Validate categories
+  # validates :category, inclusion: { in: %w[Category1 Category2 Category3] }
+
+
   
-  
+
 
   # Limit size of action_text
    # validates :content, length: { maximum: 500.kilobytes }, if: -> { content.blob.present? }
