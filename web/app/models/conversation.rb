@@ -3,7 +3,10 @@ class Conversation < ApplicationRecord
   belongs_to :recipient, foreign_key: :recipient_id, class_name: 'User'
   
 
-#  validates_uniqueness_of :sender_id, scope: :recipient_id
+  # Validations
+  validates :sender_id, presence: true
+  validates :recipient_id, presence: true
+  validate :sender_and_recipient_are_different
 
 
   # scope in order to sort messages by created date
@@ -52,6 +55,12 @@ class Conversation < ApplicationRecord
   #               .group('conversations.id')
   #               .order('last_message_time DESC')
   # end
+
+  private
+
+  def sender_and_recipient_are_different
+    errors.add(:recipient_id, "can't be the same as sender") if sender_id == recipient_id
+  end
 
 
 end
