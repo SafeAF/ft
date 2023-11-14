@@ -1,7 +1,14 @@
 <!-- app/views/poasts/index.html.erb -->
 <div class="container mb-5">
   <h1>All Poasts</h1>
-  
+
+  <!-- New Poast Button -->
+  <% if user_signed_in? %>
+    <div class="mb-3">
+      <%= link_to 'New Poast', new_poast_path, class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
   <div class="row mt-5">
     <div class="col-md-12">
       <% if @poasts.any? %>
