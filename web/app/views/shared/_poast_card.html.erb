@@ -9,22 +9,23 @@
     </h5>
     <p class="card-text"><%= poast.subheading %></p>
     
-    <!-- Avatar and Posted by -->
-    <div class="d-flex align-items-center">
-      <div class="me-2">
-        <%= render partial: 'shared/avatar', locals: { user: poast.user } %>
+    <!-- Avatar, Posted by, and Views -->
+    <div class="d-flex justify-content-between align-items-center mt-3 mb-3">
+      <div class="d-flex align-items-center">
+        <div class="me-2">
+          <%= render partial: 'shared/avatar', locals: { user: poast.user } %>
+        </div>
+        <div>
+          Posted by: <%= link_to poast.user.username, user_path(poast.user) %>
+          <span class="text-muted small">- <%= time_ago_in_words(poast.created_at) %> ago</span>
+        </div>
       </div>
       <div>
-        Posted by: <%= link_to poast.user.username, user_path(poast.user) %>
-        <span class="text-muted small">- <%= time_ago_in_words(poast.created_at) %> ago</span>
+        <small class="text-muted">
+          <i class="fas fa-eye"></i> <%= poast.views %> Views
+        </small>
       </div>
     </div>
-
-    <!-- Views -->
-    <div class="mt-3">
-      <small class="text-muted">
-        <i class="fas fa-eye"></i> <%= poast.views %> Views
-      </small>
-    </div>
+    
   </div>
 </div>
