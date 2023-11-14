@@ -1,5 +1,10 @@
 <div class="container">
   <h1>Conversation with <%= @conversation.opposed_user(current_user).username %></h1>
+  
+  <div class="mt-4">
+    <%= paginate @messages %>
+  </div>
+  
   <ul class="list-group mt-4">
     <% @messages.each do |message| %>
       <li class="list-group-item">

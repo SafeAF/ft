@@ -24,12 +24,12 @@ class ConversationsController < ApplicationController
     @conversation.recipient_id = params[:recipient_id] if params[:recipient_id].present?
   end
   
-
   def show
     @conversation = Conversation.find(params[:id])
-    @messages = @conversation.messages.order(created_at: :asc).page(params[:page]).per(10)
+    @messages = @conversation.messages.order(created_at: :desc).page(params[:page]).per(10)
     @message = Message.new
   end
+  
   
   def create
     if Conversation.between(current_user.id, conversation_params[:recipient_id]).present?
