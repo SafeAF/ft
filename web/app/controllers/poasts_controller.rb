@@ -3,15 +3,20 @@ class PoastsController < ApplicationController
     before_action :authenticate_user!
     before_action :authorize_user!, only: [:edit, :update, :destroy]
   
+
     def index
-        if params[:username]
-            @user = User.find_by!(username: params[:username].downcase!)
-            @poasts = @user.poasts.where(visible: true).order(created_at: :desc).page(params[:page]).per(5)
-        else
-            @poasts = Poast.where(visible: true).order(created_at: :desc).page(params[:page]).per(5)
-        end
+      @poasts = Poast.where(visible: true).order(created_at: :desc).page(params[:page]).per(10)
     end
-      
+    
+    # def index
+    #     if params[:username]
+    #         @user = User.find_by!(username: params[:username].downcase!)
+    #         @poasts = @user.poasts.where(visible: true).order(created_at: :desc).page(params[:page]).per(5)
+    #     else
+    #         @poasts = Poast.where(visible: true).order(created_at: :desc).page(params[:page]).per(5)
+    #     end
+    # end
+       
     # GET /poasts/1
     def show
       # Defined in the before_action :

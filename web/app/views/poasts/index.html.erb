@@ -1,27 +1,17 @@
-<div class="container">
-  <div class="row">
+<!-- app/views/poasts/index.html.erb -->
+<div class="container mb-5">
+  <h1>All Poasts</h1>
+  
+  <div class="row mt-5">
     <div class="col-md-12">
-      <h1>All Poasts by <%= @user.username %></h1>
-      <%= link_to "Back to User Profile", user_path(@user.username), class: 'btn btn-secondary mb-3' %>
-      
-      <div class="card-columns">
+      <% if @poasts.any? %>
         <% @poasts.each do |poast| %>
-          <div class="card mb-3">
-            <% if poast.thumbnail.present? %>
-              <%= image_tag poast.thumbnail, class: "card-img-top" %>
-            <% end %>
-            <div class="card-body">
-              <%= link_to truncate(poast.title, length: 60), poast_path(poast), class: "card-title" %>
-              <p class="card-text">
-                <%= truncate(poast.subheading, length: 60) %>
-              </p>
-            </div>
-          </div>
+          <%= render 'shared/poast_card', poast: poast %>
         <% end %>
-      </div>
- 
-      <%= paginate @poasts %>
-      
+        <%= paginate @poasts %>
+      <% else %>
+        <p>No poasts available.</p>
+      <% end %>
     </div>
   </div>
 </div>
