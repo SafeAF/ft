@@ -7,7 +7,12 @@ class PoastsController < ApplicationController
     def index
       @poasts = Poast.where(visible: true).order(created_at: :desc).page(params[:page]).per(10)
     end
+
+    def showall
+      @poasts = Poast.where(visible: true).order(created_at: :desc).page(params[:page]).per(10)
+    end
     
+
     # def index
     #     if params[:username]
     #         @user = User.find_by!(username: params[:username].downcase!)
