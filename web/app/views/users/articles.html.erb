@@ -1,5 +1,25 @@
 <!-- app/views/users/articles.html.erb -->
-<h1><%= @user.username %>'s Articles</h1>
-<%= render @articles %>
+<div class="container mt-5">
+  <h1 class="mb-4"><%= @user.username %>'s Articles</h1>
 
-<%= paginate @articles %>
+  <% if @articles.any? %>
+    <div class="list-group">
+      <% @articles.each do |article| %>
+        <a href="<%= article_path(article) %>" class="list-group-item list-group-item-action">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1"><%= article.title %></h5>
+            <small>Published <%= time_ago_in_words(article.created_at) %> ago</small>
+          </div>
+          <p class="mb-1"><%= truncate(article.description, length: 100) %></p>
+          <small>Location: <%= article.location %></small>
+        </a>
+      <% end %>
+    </div>
+  <% else %>
+    <p>No articles found.</p>
+  <% end %>
+
+  <div class="mt-4">
+    <%= paginate @articles %>
+  </div>
+</div>
