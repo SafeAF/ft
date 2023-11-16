@@ -5,11 +5,11 @@ class Listing < ApplicationRecord
   has_rich_text :content
   has_many :comments, as: :commentable, dependent: :destroy
  
-  validates :title, presence: true, length: { minimum: 3, maximum: 100 }
-  validates :description, presence: true, length: { minimum: 10 }
-  validates :location, presence: true
-  validates :price, numericality: { greater_than_or_equal_to: 0 }
-  validates :category, presence: true
+  # validates :title, presence: true, length: { minimum: 3, maximum: 100 }
+  # validates :description, presence: true, length: { minimum: 10 }
+  # validates :location, presence: true
+  # validates :price, numericality: { greater_than_or_equal_to: 0 }
+  # validates :category, presence: true
 
 
   # Validate categories
@@ -24,7 +24,7 @@ class Listing < ApplicationRecord
   
 
   # Limit number of images to 5 for listings
-   validate :validate_image_count
+  #  validate :validate_image_count
 
    def validate_image_count
     return if content.blank?
