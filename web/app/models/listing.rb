@@ -4,12 +4,15 @@ class Listing < ApplicationRecord
 
   has_rich_text :content
   has_many :comments, as: :commentable, dependent: :destroy
- 
-  # validates :title, presence: true, length: { minimum: 3, maximum: 100 }
-  # validates :description, presence: true, length: { minimum: 10 }
-  # validates :location, presence: true
-  # validates :price, numericality: { greater_than_or_equal_to: 0 }
-  # validates :category, presence: true
+
+  
+#  validates :title, length: {maximum: 70}, allow_blank: false
+
+  validates :title, presence: true, length: { minimum: 3, maximum: 100 }
+  validates :description, presence: true, length: { minimum: 10 }
+  validates :location, presence: true
+  validates :price, numericality: { greater_than_or_equal_to: 0 }
+  validates :category, presence: true
 
 
   # Validate categories
@@ -20,11 +23,11 @@ class Listing < ApplicationRecord
 
 
   # Limit size of action_text
-   # validates :content, length: { maximum: 500.kilobytes }, if: -> { content.blob.present? }
+  #  validates :content, length: { maximum: 500.kilobytes }, if: -> { content.blob.present? }
   
 
   # Limit number of images to 5 for listings
-  #  validate :validate_image_count
+   validate :validate_image_count
 
    def validate_image_count
     return if content.blank?
@@ -71,8 +74,6 @@ class Listing < ApplicationRecord
     other: 'Other'
   }
 
-
-  validates :title, length: {maximum: 70}, allow_blank: false
 
 
     def self.ransackable_attributes(auth_object = nil)
