@@ -159,11 +159,18 @@ class User < ApplicationRecord
   end
     
   # Get the top followed users who the user isn't already following for the timeline
+  # Order clause is borken in production?
+  # scope :who_to_follow, -> (current_user) do
+  #   where.not(id: current_user.following.pluck(:id) + [current_user.id])  # Exclude users the current user is already following, as well as themselves
+  #   .order(followers_count: :desc)
+  #   .limit(10)
+  # end
+
   scope :who_to_follow, -> (current_user) do
     where.not(id: current_user.following.pluck(:id) + [current_user.id])  # Exclude users the current user is already following, as well as themselves
-    .order(followers_count: :desc)
     .limit(10)
   end
+
 
 
   # Username slugs
