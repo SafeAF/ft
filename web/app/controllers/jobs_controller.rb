@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
     before_action :set_job, only: [:show, :edit, :update, :destroy, :pin, :unpin]
-    before_action :authenticate_user! #, only: [:new, :create, :edit, :update, :destroy]
+    before_action :authenticate_user! #, except: [:show, :index]
     before_action :authorize_user!, only: [:edit, :update, :destroy]
     before_action :check_moderator, only: [:pin, :unpin]
     # GET /jobs
