@@ -9,7 +9,7 @@
       </div>
 
       <div class="mt-3">
-        <% if current_user.moderator? %>
+        <% if current_user&.moderator? %>
           <% if @listing.pinned %>
             <%= button_to 'Unpin', unpin_listing_path(@listing), method: :post %>
           <% else %>

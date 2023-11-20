@@ -6,7 +6,7 @@
     <% end %>
   <% end %>
 
-  <% if resource.user == current_user || current_user.moderator? %>
+  <% if current_user && (resource.user == current_user || current_user.moderator?) %>
     <%= link_to send("edit_#{resource_type}_path", resource), class: 'btn btn-primary me-1' do %>
       <i class="fa fa-edit"></i>
     <% end %>
