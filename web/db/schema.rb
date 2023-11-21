@@ -24,8 +24,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_14_144524) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -44,7 +44,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_14_144524) do
   end
 
   create_table "active_storage_variant_records", force: :cascade do |t|
-    t.integer "blob_id", null: false
+    t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
@@ -126,9 +126,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_14_144524) do
     t.datetime "updated_at", null: false
     t.integer "flags_count", default: 0
     t.boolean "visible", default: true
-    t.integer "parent_id"
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
-    t.index ["parent_id"], name: "index_comments_on_parent_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -283,7 +281,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_14_144524) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "moderator", default: false
-    t.integer "flagged_count"
     t.boolean "locked", default: false
     t.boolean "administrator", default: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
