@@ -61,8 +61,9 @@ class UsersController < ApplicationController
     if params[:q].present?
       @users = @q.result(distinct: true).page(params[:page]).per(10)
     else # Default users shown, most followers, then the most poasts, then everyone else
-      all_users = User.default_search
-      @users = Kaminari.paginate_array(all_users).page(params[:page]).per(10)
+      @users = User.all
+      #all_users = User.default_search
+      #@users = Kaminari.paginate_array(all_users).page(params[:page]).per(10)
     end
   end
   
