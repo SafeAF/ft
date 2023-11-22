@@ -1,82 +1,60 @@
 <div class="container">
+  <section>
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-7 col-xl-6"> <!-- Adjust the column sizes for better centering -->
+          <div class="card" style="border-radius: 1rem;">
+            <div class="card-body text-black">
+              <!-- Centering the image with Bootstrap class -->
+              <div class="text-center mb-3">
+                <%= image_tag("ft-1.png", class: "d-block mx-lg-auto img-fluid", width: "150", height: "90", loading: "lazy") %>
 
+              </div>
 
+              <h5 class="text-center fw-normal mb-3 mt-5" style="letter-spacing: 1px;">Create a new account</h5>
 
-<section class="" >
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col col-xl-10 d-flex justify-content-center">
-        <div class="card" style="border-radius: 1rem;">
-          <div class="row g-0">
-   
-            <div class="col-md-6 col-lg-7 d-flex align-items-center">
-              <div class="card-body p-4 p-lg-5 text-black">
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                <%= render "devise/shared/error_messages", resource: resource %>
 
-                  <div class="d-flex align-items-center mb-3 pb-1">
-                       <%= image_tag("ft-1.png", class: "d-block mx-lg-auto img-fluid", width: "150", height: "90", loading: "lazy") %>
+                <div class="mb-4">
+                  <%= f.label :username, class: 'form-label' %>
+                  <%= f.text_field :username, class: 'form-control', autofocus: true %>
+                </div>
 
-                  </div>
+                <div class="mb-4">
+                  <%= f.label :email, class: 'form-label' %>
+                  <%= f.email_field :email, class: 'form-control', autofocus: true, autocomplete: "email" %>
+                </div>
 
-                  <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Create a new account</h5>
+                <div class="mb-4">
+                  <%= f.label :password, class: 'form-label' %>
+                  <% if @minimum_password_length %>
+                    <em>(<%= @minimum_password_length %> characters minimum)</em>
+                  <% end %>
+                  <%= f.password_field :password, class: 'form-control', autocomplete: "new-password" %>
+                </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+                <div class="mb-4">
+                  <%= f.label :password_confirmation, class: 'form-label' %>
+                  <%= f.password_field :password_confirmation, class: 'form-control', autocomplete: "new-password" %>
+                </div>
 
-    <div class="form-outline mb-4">
-      <%= f.label :username %><br />
-      <%= f.text_field :username, autofocus: true %>
-    </div>
+                <div class="text-center pt-1 mb-4">   
+                  <%= f.submit "Sign up", class: "btn btn-dark btn-lg" %>
+                </div>
+              <% end %>
 
-    <div class="form-outline mb-4">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
+              <%= render "devise/shared/links" %>
 
-    <div class="form-outline mb-4">
-      <%= f.label :password %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
-    </div>
-    <div class="form-outline mb-4">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </div>
-
-    <div class="pt-1 mb-4">   
-      <%= f.submit "Sign up", class: "btn btn-dark btn-lg btn-block" %>
-    
-    </div>
-
-           
-<% end %>
-
-<%= render "devise/shared/links" %>
-
-<div class="row mt-5">
-  <div class="col">
-        <%= link_to "Privacy Policy", privacy_policy_path %> |
-    <%= link_to "Terms of Service", terms_of_service_path %>
-  </div>
-
-</div>
-
-
-
+              <div class="text-center mt-5">
+                <%= link_to "Privacy Policy", privacy_policy_path %> |
+                <%= link_to "Terms of Service", terms_of_service_path %>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-
-
-
-
-
-
+  </section>
 </div>
+
