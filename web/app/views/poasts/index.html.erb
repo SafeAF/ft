@@ -1,13 +1,19 @@
 <!-- app/views/poasts/index.html.erb -->
-<div class="container mb-5">
-  <h1>All Poasts</h1>
+<div class="container mb-5 mt-5">
 
-  <!-- New Poast Button -->
+
+<% content_for :page_title do %>
+  Poasts
+<% end %>
+
+<% content_for :custom_buttons do %>
   <% if user_signed_in? %>
-    <div class="mb-3">
-      <%= link_to 'New Poast', new_poast_path, class: "btn btn-primary" %>
-    </div>
+  <%= link_to new_poast_path, class: "btn btn-custom mb-3" do %>
+    <i class="fa fa-pencil-alt"></i> New Poast
+      <% end %>
   <% end %>
+<% end %>
+
 
   <div class="row mt-5">
     <div class="col-md-12">
