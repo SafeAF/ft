@@ -1,33 +1,69 @@
 <div class="container mt-5 mb-2">
-  <h1>Job Listings</h1>
+<% content_for :page_title do %>
+  Job Board
+<% end %>
 
-  <!-- New Job Button -->
-  <div class="mb-4">
-    <%= link_to 'New Job', new_job_path, class: "btn btn-primary" %>
-  </div>
-
-<div class="container mt-4">
-  <%= search_form_for @q, class: 'form-inline' do |f| %>
-    <div class="form-group mr-2">
-      <%= f.label :title_cont, 'Title contains', class: 'mr-1' %>
-      <%= f.search_field :title_cont, class: 'form-control' %>
-    </div>
-
-    <div class="form-group mr-2">
-      <%= f.label :job_type_cont, 'Job Type contains', class: 'mr-1' %>
-      <%= f.search_field :job_type_cont, class: 'form-control' %>
-    </div>
-
-    <div class="form-group mr-2">
-      <%= f.label :location_cont, 'Location contains', class: 'mr-1' %>
-      <%= f.search_field :location_cont, class: 'form-control' %>
-    </div>
-
-    <div class="form-group mt-2">
-      <%= f.submit 'Search', class: 'btn btn-primary' %>
-    </div>
+<% content_for :custom_buttons do %>
+  <%= link_to new_job_path, class: "btn btn-custom mb-3" do %>
+    <i class="fa fa-pencil-alt"></i> Post New Job
   <% end %>
+<% end %>
+
+  <div class="row mt-2">
+    <div class="col d-flex justify-content-center text-center">
+<div class="card rounded mt-4">
+  <div class="card-body">
+    <%= search_form_for @q, html: { class: 'form-inline' } do |f| %>
+      
+      <!-- Title Field -->
+      <div class="form-group mb-2">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text custom-icon">
+              <i class="fa fa-font"></i> <!-- Icon for title -->
+            </span>
+          </div>
+          <%= f.search_field :title_cont, placeholder: 'Search by title', class: 'form-control' %>
+        </div>
+      </div>
+
+      <!-- Job Type Field -->
+      <div class="form-group mx-sm-3 mb-2">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text custom-icon">
+              <i class="fa fa-briefcase"></i> <!-- Icon for job type -->
+            </span>
+          </div>
+          <%= f.search_field :job_type_cont, placeholder: 'Search by job type', class: 'form-control' %>
+        </div>
+      </div>
+
+      <!-- Location Field -->
+      <div class="form-group mx-sm-3 mb-2">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text custom-icon">
+              <i class="fa fa-map-marker"></i> <!-- Icon for location -->
+            </span>
+          </div>
+          <%= f.search_field :location_cont, placeholder: 'Search by location', class: 'form-control' %>
+        </div>
+      </div>
+
+      <!-- Search Button -->
+      <div class="form-group mt-2 mb-2">
+        <button type="submit" class="btn btn-primary">
+          <i class="fa fa-search"></i> Search
+        </button>
+      </div>
+
+    <% end %>
+  </div>
 </div>
+</div>
+</div>
+
 
 
 
