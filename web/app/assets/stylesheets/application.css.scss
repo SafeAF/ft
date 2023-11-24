@@ -193,6 +193,13 @@ img {
 
 }
 
+/* Make sure navbar is ontop of hero text */
+.navbar {
+  position: relative; /* if not already positioned */
+  z-index: 1000; /* high value to ensure it's on top */
+}
+
+
 /* Custom hero text, used for headers in views, prints in center of hero */
 
 .custom-hero {
@@ -202,6 +209,10 @@ img {
   height: 400px; /* Adjust as needed */
   background-size: cover;
   background-position: center;
+  
+  /* Make sure hamburger menu is on top of custom hero */
+  position: relative; /* if needed */
+  z-index: 1; /* lower value than navbar */
 }
 
 .custom-hero-text {
@@ -228,9 +239,10 @@ img {
   background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent black background */
   padding: 40px; /* Padding around text */
   border-radius: 20px; /* Rounded corners */
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5); /* Faint black shadow box */
-  
+  box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.3); /* Softer and more spread shadow */
   backdrop-filter: blur(2px); /* Frosted glass effect */
+  
+  font-family: 'Lobster', cursive; /* This applies the Lobster font */
 }
 
 
