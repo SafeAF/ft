@@ -117,7 +117,7 @@ img {
  }
   
   
-  /* Header navbar and hero image */
+  /* Header navbar and hero joined image */
   
   .header-container {
   position: relative;
@@ -133,11 +133,46 @@ img {
   padding-top: 60px; /* Adjust this value based on the navbar's height */
 }
 
+
+/* Shadow and bold the header items for readability */
+
 .navbar-light .navbar-nav .nav-link {
   color: white; /* Change text color to white */
   text-shadow: 3px 3px 5px black; /* Add text shadow */
   font-weight: 750; /* Increase font weight, adjust as necessary */
 }
+
+
+/* Navbar collapse (hamburger) scroll bar to accomodate all the nav items */
+
+/* Custom CSS */
+@media (max-width: 992px) { /* Adjust the breakpoint as needed */
+  .navbar-collapse {
+    max-height: 70vh; /* Adjust based on your needs and screen size */
+    overflow-y: auto; /* Enables vertical scrolling */
+  }
+}
+
+/* Reduce padding between links in hamburger */
+@media (max-width: 992px) { /* Adjust the breakpoint as needed */
+  .navbar-nav .nav-link {
+    padding-top: 4px; /* Reduce the top padding */
+    padding-bottom: 4px; /* Reduce the bottom padding */
+  }
+}
+
+/* black transparent hamburger menu for readability */
+
+@media (max-width: 992px) { /* Adjust the breakpoint as needed */
+  #navbarSupportedContent {
+    background-color: rgba(0, 0, 0, 0.2); /* Black with reduced opacity */
+    padding: 10px; /* Optional: adds some padding inside the menu */
+    border-radius: 15px; /* Rounds the corners of the menu */
+  }
+}
+
+
+
 
 
 
