@@ -116,6 +116,29 @@ img {
    text-decoration: none;
  }
   
+  
+  /* Header navbar and hero image */
+  
+  .header-container {
+  position: relative;
+}
+
+.navbar {
+  position: absolute;
+  width: 100%;
+  top: 0;
+}
+
+.hero-section {
+  padding-top: 60px; /* Adjust this value based on the navbar's height */
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: white; /* Change text color to white */
+  text-shadow: 3px 3px 5px black; /* Add text shadow */
+  font-weight: 750; /* Increase font weight, adjust as necessary */
+}
+
 
 
 

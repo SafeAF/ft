@@ -16,11 +16,23 @@
 
 <body>
 <div class="container-fluid">
+
+<div class="header-container" style="
+    background-image: url('<%= asset_url('promising.webp') %>');
+    background-size: cover;
+    background-position: center;
+">
   <header>
     <%= render 'layouts/navbar' %>
   </header>
 
 
+
+  <!-- Hero Section -->
+  <div class="hero-section" style="height: 400px; /* Adjust as needed */">
+    <!-- Hero content here -->
+  </div>
+</div>
 
 
     <%= render 'layouts/alerts' %>
