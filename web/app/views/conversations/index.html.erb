@@ -1,35 +1,44 @@
 <!-- Wrap everything in a Bootstrap container for proper alignment -->
 <div class="container">
-  <div class="row mt-5 ">
+  <div class="row mt-5 mb-5">
     <div class="col">
-      <h1 class="display-4">Conversations</h1>
+      <% content_for :page_title do %>
+        Conversations
+      <% end %>
     </div>
     <div class="col-auto">
       <%= link_to 'New Conversation', new_conversation_path, class: "btn btn-primary" %>
     </div>
   </div>
 
-  
-  <div class="list-group mt-4">
-    <% @conversations.each do |conversation| %>
-      <a href="<%= conversation_path(conversation) %>" class="list-group-item list-group-item-action">
-        <div class="d-flex w-100 justify-content-between">
-          <div class="d-flex">
-            <div class="me-3">
-              <%= render partial: 'shared/avatar', locals: { user: conversation.opposed_user(current_user) } %>
-            </div>
-            <div>
-              <h5 class="mb-1"><%= conversation.opposed_user(current_user).username %></h5>
-              <small class="text-muted"><%= conversation.last_message.truncate(80) %></small>
+  <% if @conversations.empty? %>
+    <div class="text-center mt-4">
+      <h5 class="text-muted">You have no conversations yet.</h5>
+      <p>Looking to connect? <a href="<%= new_conversation_path %>">Start a new conversation</a> and engage with your community.</p>
+    </div>
+  <% else %>
+    <div class="list-group mt-4">
+      <% @conversations.each do |conversation| %>
+        <a href="<%= conversation_path(conversation) %>" class="list-group-item list-group-item-action">
+          <div class="d-flex w-100 justify-content-between">
+            <div class="d-flex">
+              <div class="me-3">
+                <%= render partial: 'shared/avatar', locals: { user: conversation.opposed_user(current_user) } %>
+              </div>
+              <div>
+                <h5 class="mb-1"><%= conversation.opposed_user(current_user).username %></h5>
+                <small class="text-muted"><%= conversation.last_message.truncate(80) %></small>
+              </div>
             </div>
           </div>
-        </div>
-      </a>
-    <% end %>
-  </div>
+        </a>
+      <% end %>
+    </div>
 
-  <!-- Add pagination controls -->
-  <div class="mt-4">
-    <%= paginate @conversations, class: "pagination justify-content-center" %>
-  </div>
+    <!-- Add pagination controls -->
+    <div class="mt-4">
+      <%= paginate @conversations, class: "pagination justify-content-center" %>
+    </div>
+  <% end %>
 </div>
+
