@@ -18,7 +18,7 @@
 <div class="container-fluid">
 
 <div class="header-container" style="
-    background-image: url('<%= asset_url('promising.webp') %>');
+    background-image: url('<%= asset_url('promising-f7-blend.png') %>');
     background-size: cover;
     background-position: center;
 ">
@@ -27,11 +27,21 @@
   </header>
 
 
+<!-- Hero Section -->
+<!-- if no custom page_title no shadowbox -->
 
-  <!-- Hero Section -->
-  <div class="hero-section" style="height: 400px; /* Adjust as needed */">
-    <!-- Hero content here -->
+  <div class="custom-hero">
+  <% if content_for?(:page_title) %>
+    <div class="custom-hero-text">
+      <h1><%= yield :page_title %></h1>
+    </div>
+    <% end %>
   </div>
+
+
+
+
+
 </div>
 
 

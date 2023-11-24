@@ -193,6 +193,47 @@ img {
 
 }
 
+/* Custom hero text, used for headers in views, prints in center of hero */
+
+.custom-hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px; /* Adjust as needed */
+  background-size: cover;
+  background-position: center;
+}
+
+.custom-hero-text {
+  text-align: center;
+  color: white;
+  font-weight: 750; /* Increase font weight, adjust as necessary */
+  text-shadow: 13px 13px 15px rgba(0, 0, 0, 0.7);
+  font-size: 4rem; /* Adjust the font size as needed */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Adjust as necessary */
+}
+
+.custom-hero-text h1 {
+  text-align: center;
+  color: white; /* Matches the dropdown link color */
+  font-weight: 750; /* To make it heavyweight */
+  text-shadow: 8px 8px 10px rgba(0, 0, 0, 0.99); /* Shadow effect similar to dropdown links */
+  font-size: 3rem; /* You can adjust the font size as needed */
+  
+  /* Shadowed box around content */
+  background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent black background */
+  padding: 40px; /* Padding around text */
+  border-radius: 20px; /* Rounded corners */
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5); /* Faint black shadow box */
+  
+  backdrop-filter: blur(2px); /* Frosted glass effect */
+}
+
+
 
 
 
