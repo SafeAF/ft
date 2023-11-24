@@ -12,6 +12,8 @@
     <%= javascript_importmap_tags %>
 
  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+
   </head>
 
 
@@ -30,14 +32,20 @@
 
 <!-- Hero Section -->
 <!-- if no custom page_title no shadowbox -->
-
-  <div class="custom-hero">
-  <% if content_for?(:page_title) %>
+<div class="custom-hero">
+  <% if content_for?(:page_title) || content_for?(:custom_buttons) %>
     <div class="custom-hero-text">
-      <h1><%= yield :page_title %></h1>
+      <% if content_for?(:page_title) %>
+        <h1><%= yield :page_title %></h1>
+      <% end %>
+      <% if content_for?(:custom_buttons) %>
+        <div class="button-group">
+          <%= yield :custom_buttons %>
+        </div>
+      <% end %>
     </div>
-    <% end %>
-  </div>
+  <% end %>
+</div>
 
 
 

@@ -226,6 +226,12 @@ img {
   justify-content: center;
   align-items: center;
   height: 100%; /* Adjust as necessary */
+  
+  /* make buttons below the h1 header tag */
+   flex-direction: column; /* Stack h1 and buttons vertically */
+  align-items: center; /* Align items to the center */
+  padding: 40px; /* Increase padding */
+  gap: 0px; /* Space between h1 and button group */
 }
 
 .custom-hero-text h1 {
@@ -243,6 +249,76 @@ img {
   backdrop-filter: blur(2px); /* Frosted glass effect */
   
   font-family: 'Lobster', cursive; /* This applies the Lobster font */
+}
+
+
+/* Custom buttons in the hero */
+
+.button-group {
+  display: flex;
+  justify-content: center; /* Center buttons horizontally */
+  flex-wrap: wrap; /* Wrap buttons to new line if many */
+  gap: 10px; /* Space between buttons */
+  
+    /* Shadowed box around content */
+  background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent black background */
+  padding: 20px; /* Padding around text */
+  border-radius: 20px; /* Rounded corners */
+  box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.3); /* Softer and more spread shadow */
+  backdrop-filter: blur(2px); /* Frosted glass effect */
+  
+ 
+}
+
+
+.custom-hero-buttons button {
+  /* Example Styles */
+  background-color: #007bff; /* Blue background */
+  color: white; /* White text */
+  border: none; /* No border */
+  padding: 10px 20px; /* Padding around the text */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 1rem; /* Font size */
+  cursor: pointer; /* Pointer cursor on hover */
+  margin: 5px; /* Margin around buttons */
+  /* Add other styles as needed */
+  
+  /* stack buttons */
+  display: flex;
+  justify-content: center; /* Center buttons horizontally */
+  flex-wrap: wrap; /* Wrap buttons to a new line if needed */
+  gap: 10px; /* Space between individual buttons */
+  
+   box-shadow: 10px 10px 15px 10px rgba(0, 0, 0, 0.5); /* Softer and more spread shadow */
+    text-shadow: 13px 13px 15px rgba(0, 0, 0, 0.7);
+}
+
+.custom-hero .btn {
+  box-shadow: 10px 10px 15px 10px rgba(0, 0, 0, 0.5); /* Softer and more spread shadow */
+    text-shadow: 13px 13px 15px rgba(0, 0, 0, 0.7);
+}
+
+.btn-custom {
+  background-color: #9c573e; /* Deep blue background */
+  color: white; /* White text color */
+  font-family: 'Roboto', sans-serif; /* Roboto font */
+  font-size: 16px; /* Adjust font size as needed */
+  padding: 10px 20px; /* Padding for button size */
+  border: none; /* No border for a modern look */
+  border-radius: 5px; /* Slightly rounded corners */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for depth */
+  cursor: pointer; /* Cursor changes to hand on hover */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+
+  margin-right: 5px; /* Adjust spacing between icon and text */
+  /* Adding a slight box-shadow for depth */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-custom:hover {
+  background-color: #083b66; /* Slightly darker shade on hover */
+  color: #ffe; /* Brighter text on hover for contrast */
+  /* You can also adjust text-shadow or box-shadow here if needed */
 }
 
 
