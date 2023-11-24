@@ -1,8 +1,34 @@
-<%= search_form_for @q do |f| %>
+<div class="card rounded">
+  <div class="card-body">
+    <%= search_form_for @q, html: { class: 'form-inline' } do |f| %>
 
-  <%= f.search_field :title_cont %>
+      <div class="form-group mb-2">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text custom-icon">
+              <i class="fa fa-search"></i>
+            </span>
+          </div>
+          <%= f.search_field :title_cont, placeholder: 'Search by title', class: 'form-control' %>
+        </div>
+      </div>
 
-  <%= f.select :category_eq, Listing.categories.keys.map { |c| [c.humanize, c] }.unshift(['All categories', nil]), include_blank: false, selected: @q.category_eq || nil %>
+      <div class="form-group mx-sm-3 mb-2">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text custom-icon">
+              <i class="fa fa-list"></i>
+            </span>
+          </div>
+          <%= f.select :category_eq, Listing.categories.keys.map { |c| [c.humanize, c] }.unshift(['All categories', nil]), { include_blank: false, selected: @q.category_eq || nil }, class: 'form-control custom-select' %>
+        </div>
+      </div>
 
-  <%= f.submit %>
-<% end %>
+      <button type="submit" class="btn btn-primary mt-2 mb-2">
+        <i class="fa fa-search"></i> Search
+      </button>
+
+    <% end %>
+  </div>
+</div>
+
