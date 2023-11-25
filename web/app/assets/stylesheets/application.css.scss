@@ -158,13 +158,13 @@ img {
 
 
 /* Footer image */
-.footer-background {
-background-image: url("<%= asset_path('cows.webp') %>");
 
-  background-size: cover; /* Cover the entire footer area */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Prevent the image from repeating */
+.footer-overlay {
+  background-color: rgba(0, 0, 0, 0.6); /* Adjust the opacity as needed */
+  padding: 20px; /* Adjust padding as needed */
+  border-radius: 10px; /* Optional, for rounded corners */
 }
+
 
 
 

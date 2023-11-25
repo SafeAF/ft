@@ -91,7 +91,7 @@
   background-size: cover;
   background-position: center;
   
-  /* Make sure hamburger menu is on top of custom hero */
+  /* Make sure hero us underneath hamburger nav */
   position: relative; /* if needed */
   z-index: 1; /* lower value than navbar */
 }
