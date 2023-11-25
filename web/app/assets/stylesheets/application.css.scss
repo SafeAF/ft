@@ -204,23 +204,38 @@ background-color: rgba(81, 137, 71, 0.7); /* Semi-transparent green background *
   font-weight: bold; /* Bold for the title */
 }
 
-.no-underline .card-text {
-  font-weight: normal; /* Override to ensure text is not bold */
-  color: inherit; /* Ensures text color is consistent */
-  text-decoration: none; /* Removes underline from links */
-}
+
 
 .no-underline .card-title {
   font-weight: bold; /* Bold for the title */
+  text-decoration: underline;
 }
 
-.no-underline .card-text,
+.no-underline .card-text {
+  font-weight: normal; /* Override to ensure text is not bold */
+  color: black; /* Ensures text color is consistent */
+  text-decoration: none; /* Removes underline from links */
+}
+
+
 .no-underline .list-group-item,
 .no-underline .card-footer {
   font-weight: normal; /* Override to ensure text is not bold */
   color: #0472b1; /* Ensures text color is consistent */
   text-decoration: none; /* Removes underline from links */
 }
+
+/* poast_card image fix */
+
+.card-img-top {
+  width: 100%; /* Ensures the image is responsive and fits the card width */
+
+  height: auto; /* Maintains aspect ratio */
+}
+
+
+
+
 
 
 

@@ -2,9 +2,7 @@
   <h1 class="display-4"><%= @poast.title %></h1>
   <h3 class="text-muted"><%= @poast.subheading %></h3>
 
-  <div class="mt-5">
-    <%= render partial: 'shared/action_buttons', locals: { resource: @poast, resource_type: 'poast' } %>
-  </div>
+
   
   <div class="mt-4">
     <% if @poast.thumbnail.attached? %>
@@ -19,7 +17,11 @@
   </div>
 
 
-
+  <div class="mt-5">
+    <%= render partial: 'shared/action_buttons', locals: { resource: @poast, resource_type: 'poast' } %>
+  </div>
   <!-- Comments Section -->
   <%= render partial: 'shared/comments_section', locals: { comments: @comments, commentable: @poast } %>
+  <div class="mb-5">
+  </div>
 </div>  

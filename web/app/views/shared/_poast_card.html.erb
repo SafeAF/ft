@@ -1,31 +1,37 @@
 <!-- app/views/shared/_poast_card.html.erb -->
-<div class="card mb-3">
-  <% if poast.thumbnail.attached? %>
-    <%= image_tag poast.thumbnail.variant(resize_to_limit: [500, 300]), class: 'card-img-top' %>
-  <% end %>
-  <div class="card-body">
-    <h5 class="card-title">
-      <%= link_to poast.title, poast_path(poast) %>
-    </h5>
-    <p class="card-text"><%= poast.subheading %></p>
-    
-    <!-- Avatar, Posted by, and Views -->
-    <div class="d-flex justify-content-between align-items-center mt-3 mb-3">
-      <div class="d-flex align-items-center">
-        <div class="me-2">
-          <%= render partial: 'shared/avatar', locals: { user: poast.user } %>
+
+
+    <div class="col">
+      <%= link_to poast_path(poast), class: "no-underline" do %>
+        <div class="card mb-3 custom-poast-card">
+          <% if poast.thumbnail.attached? %>
+            <%= image_tag poast.thumbnail.variant(resize_to_limit: [350, 300]), class: 'card-img-top' %>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= poast.title %></h5>
+            <p class="card-text"><%= poast.subheading %></p>
+            
+            <!-- Avatar and Posted by -->
+            <div class="d-flex align-items-center mt-3">
+              <div class="me-3">
+                <%= render partial: 'shared/avatar', locals: { user: poast.user } %>
+              </div>
+              <div>
+                Posted by: <%= link_to poast.user.username, user_path(poast.user) %>
+                <span class="text-muted small">- <%= time_ago_in_words(poast.created_at) %> ago</span>
+              </div>
+            </div>
+
+            <!-- Views -->
+            <div class="mt-3">
+              <small class="text-muted">
+                <i class="fas fa-eye"></i> <%= poast.views %> Views
+              </small>
+            </div>
+          </div>
         </div>
-        <div>
-          Posted by: <%= link_to poast.user.username, user_path(poast.user) %>
-          <span class="text-muted small">- <%= time_ago_in_words(poast.created_at) %> ago</span>
-        </div>
-      </div>
-      <div>
-        <small class="text-muted">
-          <i class="fas fa-eye"></i> <%= poast.views %> Views
-        </small>
-      </div>
+      <% end %>
     </div>
-    
-  </div>
-</div>
+
+
+

@@ -63,26 +63,27 @@
       
 
       <!-- Poasts -->
-      <h2 class="mt-4">Poasts</h2>
-      <% if user_signed_in? && current_user == @user %>
-        <%= link_to 'Create New Poast', new_poast_path, class: "btn btn-primary mb-4", role: "button" %>
-      <% end %>
+  <h2 class="mt-4">Poasts</h2>
+  <% if user_signed_in? && current_user == @user %>
+    <%= link_to 'Create New Poast', new_poast_path, class: "btn btn-primary mb-4", role: "button" %>
+  <% end %>
 
-      <div class="row">
-        <div class="col-md-12">
-          <% if @poasts.any? %>
-            <% @poasts.each do |poast| %>
-              <%= render 'shared/poast_card', poast: poast %>
-            <% end %>
-            <!-- Pagination -->
-            <div class="mt-3">
-              <%= paginate @poasts %>
-            </div>
-          <% else %>
-            <p class="text-muted">Nothing here yet. Stay tuned!</p>
-          <% end %>
+  <div class="row">
+    <% if @poasts.any? %>
+      <% @poasts.each do |poast| %>
+        <!-- Adjust the column size here -->
+        <div class="col-md-4 col-sm-6">
+          <%= render 'shared/poast_card', poast: poast %>
         </div>
+      <% end %>
+      <!-- Pagination -->
+      <div class="mt-3 col-12">
+        <%= paginate @poasts %>
       </div>
+    <% else %>
+      <p class="text-muted">Nothing here yet. Stay tuned!</p>
+    <% end %>
+  </div>
 
       <!-- Comments -->
       <%= render partial: 'shared/comments_section', locals: { comments: @comments, commentable: @user } %>

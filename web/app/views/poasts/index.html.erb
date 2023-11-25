@@ -15,16 +15,19 @@
 <% end %>
 
 
-  <div class="row mt-5">
-    <div class="col-md-12">
-      <% if @poasts.any? %>
-        <% @poasts.each do |poast| %>
-          <%= render 'shared/poast_card', poast: poast %>
-        <% end %>
-        <%= paginate @poasts %>
-      <% else %>
-        <p>No poasts available.</p>
-      <% end %>
+<div class="row mt-5">
+  <% if @poasts.any? %>
+    <% @poasts.each do |poast| %>
+      <div class="col-12 col-md-6 col-lg-4">
+        <%= render 'shared/poast_card', poast: poast %>
+      </div>
+    <% end %>
+    <div class="col-12">
+      <%= paginate @poasts %>
     </div>
-  </div>
+  <% else %>
+    <p class="col-12">No poasts available.</p>
+  <% end %>
+</div>
+
 </div>
