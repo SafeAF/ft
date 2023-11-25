@@ -1,5 +1,5 @@
  
-  <div class="alert alert-danger text-center mt-3" role="alert">Currently beta testing! Please try it out and tell me what you think. Email me at fallstradedotcom@gmail.com 
+  <div class="alert alert-danger text-center mt-5" role="alert">Currently beta testing! Please try it out and tell me what you think. Email me at fallstradedotcom@gmail.com 
   <%= link_to "Sign Up Now", new_user_registration_path %> </div>
 <main>
  
@@ -16,7 +16,69 @@
       </div>
       <div class="col-lg-6">
         <h1 class="display-5 fw-bold lh-1 mb-3">Discover Local Wonders with FallsTrade.com</h1>
-        <p class="lead">I built Fallstrade.com because I am tired of the scams and the fact that no one is guarding the henhouse on the big sites. So I built a new way to freely advertise a business, sell an item, post a job, or share an event or a bit of news here in Idaho. </p>
+        <p class="lead">So I made a new way to freely advertise a business, sell an item, post a job, or share an event or a bit of news here in Idaho. </p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+         <%= link_to "List Your Business", new_company_path, class: "btn btn-primary btn-lg px-4 me-md-2" %>
+         <%= link_to "List Your Item", new_listing_path, class: "btn btn-secondary btn-lg px-4 me-md-2" %>
+         <%= link_to "List A Job", new_job_path, class: "btn btn-warning btn-lg px-4 me-md-2" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<div class="custom-hero mt-5" style="background-image: url(<%= asset_path 'bridge.webp' %>)">
+  <!-- New container for the special section -->
+  <div class="special-section-left">
+    <div class="card">
+      <h3 class="card-heading">Why?</h3>
+      <p class="card-body">I built Fallstrade.com because I am tired of the scams and the fact that no one is guarding the henhouse on the big sites.</p>
+    </div>
+  </div>
+</div>
+
+
+  <div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+      <div class="col-10 col-sm-8 col-lg-6">
+<%= image_tag("ft-2.png", class: "d-block mx-lg-auto img-fluid", alt: "", width: "740", height: "500", loading: "lazy") %>
+
+      </div>
+      <div class="col-lg-6">
+        <h1 class="display-5 fw-bold lh-1 mb-3">Discover Local Wonders with FallsTrade.com</h1>
+        <p class="lead">So I made a new way to freely advertise a business, sell an item, post a job, or share an event or a bit of news here in Idaho. </p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+         <%= link_to "List Your Business", new_company_path, class: "btn btn-primary btn-lg px-4 me-md-2" %>
+         <%= link_to "List Your Item", new_listing_path, class: "btn btn-secondary btn-lg px-4 me-md-2" %>
+         <%= link_to "List A Job", new_job_path, class: "btn btn-warning btn-lg px-4 me-md-2" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<div class="custom-hero mt-5" style="background-image: url(<%= asset_path 'cows.webp' %>)">
+  <!-- Container for the card, aligned to the right -->
+  <div class="special-section-right">
+    <div class="card">
+      <h3 class="card-heading">Card Title</h3>
+      <p class="card-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+    </div>
+  </div>
+</div>
+
+
+
+  <div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+      <div class="col-10 col-sm-8 col-lg-6">
+<%= image_tag("ft-2.png", class: "d-block mx-lg-auto img-fluid", alt: "", width: "740", height: "500", loading: "lazy") %>
+
+      </div>
+      <div class="col-lg-6">
+        <h1 class="display-5 fw-bold lh-1 mb-3">Discover Local Wonders with FallsTrade.com</h1>
+        <p class="lead">I built Fallstrade.com because I am tired of the scams and the fact that no one is guarding the henhouse on the big sites. So I made a new way to freely advertise a business, sell an item, post a job, or share an event or a bit of news here in Idaho. </p>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start">
          <%= link_to "List Your Business", new_company_path, class: "btn btn-primary btn-lg px-4 me-md-2" %>
          <%= link_to "List Your Item", new_listing_path, class: "btn btn-secondary btn-lg px-4 me-md-2" %>
