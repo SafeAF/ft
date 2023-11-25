@@ -1,55 +1,36 @@
-<!-- company_body.html.erb -->
-<div class="company-body">
-  <!-- About Section -->
-  <div class="about mb-2">
-    <%= company.about.truncate(160) %>
+<div class="card h-100 no-underline">
+  <% if company.logo.attached? %>
+    <%= image_tag company.logo.variant(resize_to_limit: [300, 200]), class: 'card-img-top' %>
+  <% end %>
+
+  <div class="card-body">
+    <h5 class="card-title"><%= company.name %></h5>
+    <p class="card-text text-dark"><%= company.about.truncate(160) %></p>
   </div>
 
-  <!-- Address -->
-  <div class="row">
-    <div class="col">
-      <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
-      <%= company.address %>
-    </div>
-  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item no-underline">
+      <i class="fas fa-map-marker-alt"></i> <%= company.address %>
+    </li>
+    <li class="list-group-item no-underline">
+      <i class="fas fa-phone"></i> <%= company.phone %>
+    </li>
+    <li class="list-group-item no-underline">
+      <i class="fas fa-envelope"></i> <%= mail_to company.email %>
+    </li>
+    <li class="list-group-item no-underline">
+      <i class="fas fa-globe"></i> <%= link_to company.website, company.website, target: "_blank" %>
+    </li>
+    <li class="list-group-item no-underline">
+      <i class="fas fa-clock"></i> <%= company.hours %>
+    </li>
+    <li class="list-group-item no-underline">
+      <i class="fas fa-industry"></i> <%= Company.categories[company.category] %>
+    </li>
+  </ul>
 
-  <!-- Phone -->
-  <div class="row mt-1">
-    <div class="col">
-      <i class="fa fa-phone" aria-hidden="true"></i>
-      <%= company.phone %>
-    </div>
-  </div>
-
-  <!-- Email -->
-  <div class="row mt-1">
-    <div class="col">
-      <i class="fa fa-envelope" aria-hidden="true"></i>
-      <%= mail_to company.email %>
-    </div>
-  </div>
-
-  <!-- Website -->
-  <div class="row mt-1">
-    <div class="col">
-      <i class="fa fa-globe" aria-hidden="true"></i>
-      <%= link_to company.website, company.website, target: "_blank" %>
-    </div>
-  </div>
-
-  <!-- Hours -->
-  <div class="row mt-1">
-    <div class="col">
-      <i class="fa fa-clock" aria-hidden="true"></i>
-      <%= company.hours %>
-    </div>
-  </div>
-
-  <!-- Industry -->
-  <div class="row mt-1">
-    <div class="col">
-      <i class="fa fa-industry" aria-hidden="true"></i>
-      <%= Company.categories[company.category] %>
-    </div>
+  <div class="card-footer no-underline">
+    <small class="text-muted">More details...</small>
   </div>
 </div>
+

@@ -16,22 +16,15 @@
       <%= render 'search' %>
     </div>
   </div>
-
-  <div class="row mt-4 justify-content-center">
-    <% @companies.each do |company| %>
-      <div class="col-md-6 col-lg-4 mb-4">
-        <div class="card h-100 <%= 'pinned' if company.pinned %> ">
-          <% if company.logo.attached? %>
-            <%= image_tag company.logo.variant(resize_to_fill: [300, 200]), class: 'card-img-top' %>
-          <% end %>
-          <div class="card-body">
-            <h5 class="card-title"><%= link_to company.name, company %></h5>
-            <%= render partial: 'company_body', locals: { company: company } %>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
+<div class="row mt-4 justify-content-center">
+  <% @companies.each do |company| %>
+    <div class="col-md-6 col-lg-4 mb-4">
+      <%= link_to company_path(company), class: "no-underline" do %>
+        <%= render partial: 'company_body', locals: { company: company } %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 
   <div class="row mt-4">
     <div class="col d-flex justify-content-center">

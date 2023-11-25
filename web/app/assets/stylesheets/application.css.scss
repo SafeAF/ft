@@ -149,7 +149,7 @@ a:hover {
 /* Footer image */
 
 .footer-overlay {
-  background-color: rgba(81, 137, 71, 0.10); /* Green with opacity */
+  background-color: rgba(81, 137, 71, 0.05); /* Green with opacity */
   padding: 20px; /* Adjust padding as needed */
   border-radius: 10px; /* Optional, for rounded corners */
 }
@@ -243,6 +243,24 @@ background-color: rgba(81, 137, 71, 0.7); /* Semi-transparent green background *
 /* card fix so that the title is underlined but the rest of the text isnt */
 /* nevermind the underline on the no-underline class :) */
 
+
+/* Special override for green links, make them blue */
+.no-underline .list-group-item .fa-envelope + a,
+.no-underline .list-group-item .fa-globe + a {
+  color: #0472b1; /* Green color */
+  text-decoration: underline; /* Keep the underline */
+}
+
+.no-underline .list-group-item .fa {
+  color: inherit; /* Inherits color from parent, useful if icons need to be the same color as text */
+}
+
+.no-underline .list-group-item a {
+  color: #0472b1; /* Blue color */
+  text-decoration: underline; /* Keep the underline */
+}
+
+/* make card text blue not green */
 .no-underline .card-title {
   font-weight: bold; /* Bold for the title */
   text-decoration: underline;
