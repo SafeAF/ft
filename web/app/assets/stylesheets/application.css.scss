@@ -18,6 +18,7 @@
  @import "font-awesome";
  @import "section-card";
  @import "header-navbar-hero";
+ @import "buttons";
  
  /* Generic resets for all applications from Kevin Powell */
  html {
@@ -116,29 +117,7 @@ img {
    text-decoration: none;
  }
   
-  
-.btn-custom {
-  background-color: #9c573e; /* Deep blue background */
-  color: white; /* White text color */
-  font-family: 'Roboto', sans-serif; /* Roboto font */
-  font-size: 16px; /* Adjust font size as needed */
-  padding: 10px 20px; /* Padding for button size */
-  border: none; /* No border for a modern look */
-  border-radius: 5px; /* Slightly rounded corners */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for depth */
-  cursor: pointer; /* Cursor changes to hand on hover */
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
 
-  margin-right: 5px; /* Adjust spacing between icon and text */
-  /* Adding a slight box-shadow for depth */
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.btn-custom:hover {
-  background-color: #083b66; /* Slightly darker shade on hover */
-  color: #ffe; /* Brighter text on hover for contrast */
-  /* You can also adjust text-shadow or box-shadow here if needed */
-}
 
 
 /* Custom search box for listings */
@@ -165,8 +144,102 @@ img {
   border-radius: 10px; /* Optional, for rounded corners */
 }
 
+.body-text {
+  text-align: center;
+  color: #FFFFFF; /* White color */
+  font-weight: 750; /* To make it heavyweight */
+  text-shadow: 8px 8px 10px rgba(0, 0, 0, 0.99); /* Shadow effect similar to dropdown links */
+  font-size: 3rem; /* You can adjust the font size as needed */
+  
+  /* Shadowed box around content */
+background-color: rgba(81, 137, 71, 0.7); /* Semi-transparent green background */
+  padding: 40px; /* Padding around text */
+  border-radius: 20px; /* Rounded corners */
+  box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.3); /* Softer and more spread shadow */
+  backdrop-filter: blur(2px); /* Frosted glass effect */
+  
+  font-family: 'Lobster', cursive; /* This applies the Lobster font */
+}
 
+/* Custom form container for i.e. listings#new form */
 
+.custom-form-container {
+
+  background-size: cover;
+  background-position: center;
+  backdrop-filter: blur(5px);
+  padding: 20px;
+}
+
+.form-card {
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Shadow for the card */
+  backdrop-filter: blur(5px); /* Optional: if you want to blur the content inside the card */
+}
+
+/* new button-primary */
+
+.btn-primary {
+  background-color: #518947; /* Deep blue background */
+  color: white; /* White text color */
+  font-family: 'Roboto', sans-serif; /* Roboto font */
+  font-size: 16px; /* Adjust font size as needed */
+  padding: 10px 20px; /* Padding for button size */
+  border: none; /* No border for a modern look */
+  border-radius: 5px; /* Slightly rounded corners */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for depth */
+  cursor: pointer; /* Cursor changes to hand on hover */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Adding a slight box-shadow for depth */
+}
+
+.btn-primary:hover {
+  background-color: #9c573e; /* Slightly darker shade on hover */
+  color: #ffe; /* Brighter text on hover for contrast */
+}
+
+/* new button secondary */
+
+.btn-secondary {
+  background-color: #0472b1; /* Inverted background color */
+  color: white; /* White text color */
+  font-family: 'Roboto', sans-serif; /* Roboto font */
+  font-size: 16px; /* Adjust font size as needed */
+  padding: 10px 20px; /* Padding for button size */
+  border: none; /* No border for a modern look */
+  border-radius: 5px; /* Slightly rounded corners */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for depth */
+  cursor: pointer; /* Cursor changes to hand on hover */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Adding a slight box-shadow for depth */
+}
+
+.btn-secondary:hover {
+  background-color: #9c573e; /* Primary color for hover */
+  color: #ffe; /* Brighter text on hover for contrast */
+}
+
+/* new button teritary */
+
+.btn-tertiary {
+  background-color: #8e6a3d; /* Default background color */
+  color: white; /* White text color */
+  font-family: 'Roboto', sans-serif; /* Consistent font family */
+  font-size: 16px; /* Standard font size */
+  padding: 10px 20px; /* Comfortable padding */
+  border: none; /* No border for a sleek look */
+  border-radius: 5px; /* Slightly rounded corners */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Subtle text shadow for depth */
+  cursor: pointer; /* Hand cursor on hover */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Light box-shadow for a 3D effect */
+}
+
+.btn-tertiary:hover {
+  background-color: #9c573e; /* Hover background color */
+  color: #ffe; /* Brighter text color on hover for better contrast */
+  /* Additional hover effects like text-shadow or box-shadow can be added here if desired */
+}
 
 
 

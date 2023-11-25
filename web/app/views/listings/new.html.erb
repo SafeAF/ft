@@ -1,21 +1,14 @@
-<div class="container text-center">
-<h1>Post New Listing</h1>
-
+<div class="container text-center my-4 mt-5 mb-5">
+  <h1 class="body-text">Post New Listing</h1>
 </div>
 
-<div class="container">
-  <div class="card rounded">
+<div class="container mb-5 custom-form-container" >
+  <div class="card form-card rounded">
     <div class="card-body">
-      <div class="col">
-
-<%= render "form", listing: @listing %>
-
-<br>
-
-
-  <%= link_to 'Back', listings_path, class: "btn btn-secondary mt-2" %>
-
-      </div>
+      <%= render "form", listing: @listing %>
     </div>
   </div>
+
+
 </div>
+

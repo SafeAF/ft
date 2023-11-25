@@ -1,0 +1,136 @@
+/* new button-primary */
+
+.btn-primary {
+  background-color: #518947; /* Deep blue background */
+  color: white; /* White text color */
+  font-family: 'Roboto', sans-serif; /* Roboto font */
+  font-size: 16px; /* Adjust font size as needed */
+  padding: 10px 20px; /* Padding for button size */
+  border: none; /* No border for a modern look */
+  border-radius: 5px; /* Slightly rounded corners */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for depth */
+  cursor: pointer; /* Cursor changes to hand on hover */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Adding a slight box-shadow for depth */
+}
+
+.btn-primary:hover {
+  background-color: #9c573e; /* Slightly darker shade on hover */
+  color: #ffe; /* Brighter text on hover for contrast */
+}
+
+/* new button secondary */
+
+.btn-secondary {
+  background-color: #0472b1; /* Inverted background color */
+  color: white; /* White text color */
+  font-family: 'Roboto', sans-serif; /* Roboto font */
+  font-size: 16px; /* Adjust font size as needed */
+  padding: 10px 20px; /* Padding for button size */
+  border: none; /* No border for a modern look */
+  border-radius: 5px; /* Slightly rounded corners */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for depth */
+  cursor: pointer; /* Cursor changes to hand on hover */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Adding a slight box-shadow for depth */
+}
+
+.btn-secondary:hover {
+  background-color: #9c573e; /* Primary color for hover */
+  color: #ffe; /* Brighter text on hover for contrast */
+}
+
+/* new button teritary */
+
+.btn-tertiary {
+  background-color: #8e6a3d; /* Default background color */
+  color: white; /* White text color */
+  font-family: 'Roboto', sans-serif; /* Consistent font family */
+  font-size: 16px; /* Standard font size */
+  padding: 10px 20px; /* Comfortable padding */
+  border: none; /* No border for a sleek look */
+  border-radius: 5px; /* Slightly rounded corners */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Subtle text shadow for depth */
+  cursor: pointer; /* Hand cursor on hover */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Light box-shadow for a 3D effect */
+}
+
+.btn-tertiary:hover {
+  background-color: #9c573e; /* Hover background color */
+  color: #ffe; /* Brighter text color on hover for better contrast */
+  /* Additional hover effects like text-shadow or box-shadow can be added here if desired */
+}
+
+
+/* Warning button - Keep default bootstrap color but make the other changes */
+.btn-warning {
+  /* Retain the default Bootstrap warning color */
+  /* No explicit background-color set to keep the default one */
+
+  color: white; /* White text color */
+  font-family: 'Roboto', sans-serif; /* Consistent font family */
+  font-size: 16px; /* Standard font size */
+  padding: 10px 20px; /* Comfortable padding */
+  border: none; /* No border for a sleek look */
+  border-radius: 5px; /* Slightly rounded corners */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Subtle text shadow for depth */
+  cursor: pointer; /* Hand cursor on hover */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Light box-shadow for a 3D effect */
+}
+
+.btn-warning:hover {
+  /* Hover effects can be customized as needed */
+  /* For example, slightly darken the background color on hover */
+  filter: brightness(90%);
+}
+
+/* Danger button - Keep default bootstrap color but make the other changes */
+.btn-danger {
+  /* Retain the default Bootstrap danger color */
+  /* No explicit background-color set to keep the default one */
+
+  color: white; /* White text color for contrast */
+  font-family: 'Roboto', sans-serif; /* Consistent font family across buttons */
+  font-size: 16px; /* Standard font size */
+  padding: 10px 20px; /* Comfortable padding for better user interaction */
+  border: none; /* No border for a modern, sleek look */
+  border-radius: 5px; /* Slightly rounded corners for a softer appearance */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Subtle text shadow for depth */
+  cursor: pointer; /* Cursor changes to hand on hover for better UX */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Light box-shadow for a subtle 3D effect */
+}
+
+.btn-danger:hover {
+  /* Hover effects can be customized as needed */
+  /* For example, slightly darken the background color on hover */
+  filter: brightness(90%);
+}
+
+
+
+  /* custom button for hero header, soon all buttons like this */
+.btn-custom {
+  background-color: #518947; /* green  background  #9c573e*/
+  color: white; /* White text color */
+  font-family: 'Roboto', sans-serif; /* Roboto font */
+  font-size: 16px; /* Adjust font size as needed */
+  padding: 10px 20px; /* Padding for button size */
+  border: none; /* No border for a modern look */
+  border-radius: 5px; /* Slightly rounded corners */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for depth */
+  cursor: pointer; /* Cursor changes to hand on hover */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+
+  margin-right: 5px; /* Adjust spacing between icon and text */
+  /* Adding a slight box-shadow for depth */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-custom:hover {
+  background-color: #9c573e; /* red on hover #518947*/
+  color: #ffe; /* Brighter text on hover for contrast */
+  /* You can also adjust text-shadow or box-shadow here if needed */
+}
