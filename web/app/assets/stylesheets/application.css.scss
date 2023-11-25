@@ -338,7 +338,7 @@ img {
 
 /* Full width hero image cards (for home#index sections) */
 
-.card-container {
+.section-card-container {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -346,7 +346,7 @@ img {
   padding: 10px;
 }
 
-.card {
+.section-card {
   background-color: rgba(0, 0, 0, 0.6); /* Black with increased opacity */
   color: white;
   padding: 20px;
@@ -357,7 +357,7 @@ img {
   width: 100%;
 }
 
-.card-heading {
+.section-card-heading {
   font-family: 'Lobster', cursive; /* Apply the Lobster font */
   font-size: 1.5rem;
   font-weight: bold; /* Increase font weight */
@@ -365,7 +365,7 @@ img {
   margin-bottom: 10px;
 }
 
-.card-body {
+.section-card-body {
   font-size: 1rem;
   font-weight: bold; /* Increase font weight */
   text-shadow: 5px 5px 7px rgba(0, 0, 0, 0.7); /* Significant shadow */
@@ -390,7 +390,7 @@ img {
   right: 10%; /* Adjust for desktop view */
 }
 
-/* Cards just for mobile, for home#index sections */
+/* Cards setup just for mobile, for home#index sections */
 @media (max-width: 768px) {
   .special-section-left, .special-section-right {
     max-width: 80%; /* Increase max-width for better fit */
@@ -406,6 +406,15 @@ img {
     width: 100%; /* Full width on smaller screens */
     max-width: none; /* Remove max-width constraint */
   }
+}
+
+/* Footer image */
+.footer-background {
+background-image: url("<%= asset_path('cows.webp') %>");
+
+  background-size: cover; /* Cover the entire footer area */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
 }
 
 
