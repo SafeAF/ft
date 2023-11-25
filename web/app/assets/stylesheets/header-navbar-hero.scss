@@ -1,0 +1,180 @@
+  /* Header navbar and hero joined image */
+  
+  .header-container {
+  position: relative;
+}
+
+.navbar {
+  position: absolute;
+  width: 100%;
+  top: 0;
+}
+
+.hero-section {
+  padding-top: 60px; /* Adjust this value based on the navbar's height */
+}
+
+
+/* Shadow and bold the header items for readability */
+
+.navbar-light .navbar-nav .nav-link {
+  color: white; /* Change text color to white */
+  text-shadow: 3px 3px 5px black; /* Add text shadow */
+  font-weight: 750; /* Increase font weight, adjust as necessary */
+}
+
+
+/* Navbar collapse (hamburger) scroll bar to accomodate all the nav items */
+
+/* Custom CSS */
+@media (max-width: 992px) { /* Adjust the breakpoint as needed */
+  .navbar-collapse {
+    max-height: 70vh; /* Adjust based on your needs and screen size */
+    overflow-y: auto; /* Enables vertical scrolling */
+  }
+}
+
+/* Reduce padding between links in hamburger */
+@media (max-width: 992px) { /* Adjust the breakpoint as needed */
+  .navbar-nav .nav-link {
+    padding-top: 4px; /* Reduce the top padding */
+    padding-bottom: 4px; /* Reduce the bottom padding */
+  }
+}
+
+/* black transparent hamburger menu for readability */
+
+@media (max-width: 992px) { /* Adjust the breakpoint as needed */
+  #navbarSupportedContent {
+    background-color: rgba(0, 0, 0, 0.2); /* Black with reduced opacity */
+    padding: 10px; /* Optional: adds some padding inside the menu */
+    border-radius: 15px; /* Rounds the corners of the menu */
+  }
+}
+
+/* Navitem dropdown, used in user menu dropdown, styled like hamburger, 
+ 	transparent black */
+ 	
+.nav-item.dropdown .dropdown-menu {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    border-radius: 15px; /* Rounded corners */
+    padding: 10px; /* Padding inside the dropdown */
+    color: #fff; /* Text color */
+    border: none; /* Removing the default border */
+}
+
+.nav-item.dropdown .dropdown-menu .dropdown-item {
+    color: white; /* Change text color to white */
+    text-shadow: 3px 3px 5px black; /* Add text shadow */
+    font-weight: 750; /* Increase font weight */
+}
+
+.nav-item.dropdown .dropdown-menu .dropdown-item:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Slight highlight on hover */
+
+}
+
+/* Make sure navbar is ontop of hero text */
+.navbar {
+  position: relative; /* if not already positioned */
+  z-index: 1000; /* high value to ensure it's on top */
+}
+
+
+/* Custom hero text, used for headers in views, prints in center of hero */
+
+.custom-hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px; /* Adjust as needed */
+  background-size: cover;
+  background-position: center;
+  
+  /* Make sure hamburger menu is on top of custom hero */
+  position: relative; /* if needed */
+  z-index: 1; /* lower value than navbar */
+}
+
+.custom-hero-text {
+  text-align: center;
+  color: white;
+  font-weight: 750; /* Increase font weight, adjust as necessary */
+  text-shadow: 13px 13px 15px rgba(0, 0, 0, 0.7);
+  font-size: 4rem; /* Adjust the font size as needed */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Adjust as necessary */
+  
+  /* make buttons below the h1 header tag */
+   flex-direction: column; /* Stack h1 and buttons vertically */
+  align-items: center; /* Align items to the center */
+  padding: 40px; /* Increase padding */
+  gap: 0px; /* Space between h1 and button group */
+}
+
+.custom-hero-text h1 {
+  text-align: center;
+  color: white; /* Matches the dropdown link color */
+  font-weight: 750; /* To make it heavyweight */
+  text-shadow: 8px 8px 10px rgba(0, 0, 0, 0.99); /* Shadow effect similar to dropdown links */
+  font-size: 3rem; /* You can adjust the font size as needed */
+  
+  /* Shadowed box around content */
+  background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent black background */
+  padding: 40px; /* Padding around text */
+  border-radius: 20px; /* Rounded corners */
+  box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.3); /* Softer and more spread shadow */
+  backdrop-filter: blur(2px); /* Frosted glass effect */
+  
+  font-family: 'Lobster', cursive; /* This applies the Lobster font */
+}
+
+
+/* Custom buttons in the hero */
+
+.button-group {
+  display: flex;
+  justify-content: center; /* Center buttons horizontally */
+  flex-wrap: wrap; /* Wrap buttons to new line if many */
+  gap: 10px; /* Space between buttons */
+  
+    /* Shadowed box around content */
+  background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent black background */
+  padding: 20px; /* Padding around text */
+  border-radius: 20px; /* Rounded corners */
+  box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.3); /* Softer and more spread shadow */
+  backdrop-filter: blur(2px); /* Frosted glass effect */
+  
+ 
+}
+
+
+.custom-hero-buttons button {
+  /* Example Styles */
+  background-color: #007bff; /* Blue background */
+  color: white; /* White text */
+  border: none; /* No border */
+  padding: 10px 20px; /* Padding around the text */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 1rem; /* Font size */
+  cursor: pointer; /* Pointer cursor on hover */
+  margin: 5px; /* Margin around buttons */
+  /* Add other styles as needed */
+  
+  /* stack buttons */
+  display: flex;
+  justify-content: center; /* Center buttons horizontally */
+  flex-wrap: wrap; /* Wrap buttons to a new line if needed */
+  gap: 10px; /* Space between individual buttons */
+  
+   box-shadow: 10px 10px 15px 10px rgba(0, 0, 0, 0.5); /* Softer and more spread shadow */
+    text-shadow: 13px 13px 15px rgba(0, 0, 0, 0.7);
+}
+
+.custom-hero .btn {
+  box-shadow: 10px 10px 15px 10px rgba(0, 0, 0, 0.5); /* Softer and more spread shadow */
+    text-shadow: 13px 13px 15px rgba(0, 0, 0, 0.7);
+}
