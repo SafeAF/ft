@@ -41,6 +41,16 @@ img {
     display: block; 
 }
 
+/* Set link color */
+a {
+  color: #518947; /* Sets the color of all links to #518947 */
+  font-weight: bold;
+}
+
+a:hover {
+  color: darken(#518947, 10%); /* Darkens the link color slightly on hover for visual feedback */
+}
+
 
 
 /* search_user 'toolbar' follow/message css */
