@@ -149,10 +149,45 @@ a:hover {
 /* Footer image */
 
 .footer-overlay {
-  background-color: rgba(0, 0, 0, 0.6); /* Adjust the opacity as needed */
+  background-color: rgba(81, 137, 71, 0.10); /* Green with opacity */
   padding: 20px; /* Adjust padding as needed */
   border-radius: 10px; /* Optional, for rounded corners */
 }
+
+/* Footer styling */
+
+/* Footer column styling */
+.footer-column {
+  background-color: rgba(0, 0, 0, 0.3); /* Black with increased opacity */
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px); /* Frosted glass effect */
+}
+
+.footer-column h6 {
+  font-family: 'Lobster', cursive; /* Apply the Lobster font */
+  font-size: 1.5rem;
+  font-weight: bold; /* Increase font weight */
+  text-shadow: 8px 8px 10px rgba(0, 0, 0, 0.99); /* Significant shadow */
+  margin-bottom: 10px;
+}
+
+.footer-column p {
+  font-size: 1rem;
+  font-weight: bold; /* Increase font weight */
+  text-shadow: 5px 5px 7px rgba(0, 0, 0, 0.7); /* Significant shadow */
+}
+
+/* Adjustments for mobile view */
+@media (max-width: 768px) {
+  .footer-column {
+    width: 100%; /* Full width on smaller screens */
+  }
+}
+
+
 
 /* headline text like in listings new etc */
 
@@ -205,6 +240,8 @@ background-color: rgba(81, 137, 71, 0.7); /* Semi-transparent green background *
 }
 
 
+/* card fix so that the title is underlined but the rest of the text isnt */
+/* nevermind the underline on the no-underline class :) */
 
 .no-underline .card-title {
   font-weight: bold; /* Bold for the title */

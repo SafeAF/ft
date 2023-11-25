@@ -6,6 +6,7 @@
   flex-wrap: wrap;
   gap: 20px;
   padding: 10px;
+  
 }
 
 .section-card {
@@ -17,6 +18,7 @@
   width: 300px; /* Adjust width as needed */
   backdrop-filter: blur(2px); /* Frosted glass effect */
   width: 100%;
+  
 }
 
 .section-card-heading {
@@ -31,6 +33,7 @@
   font-size: 1rem;
   font-weight: bold; /* Increase font weight */
   text-shadow: 5px 5px 7px rgba(0, 0, 0, 0.7); /* Significant shadow */
+  
 }
 
 /* Shift card left or right */
