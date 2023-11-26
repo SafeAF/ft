@@ -8,24 +8,30 @@ class ListingsController < ApplicationController
 
  
   # GET /listings or /listings.json
-  def index
-    @q = Listing.ransack(params[:q])
-    # Select listings that are visible and order them with pinned listings first.
-    # Ensure that the pinned listings are also sorted by their creation date.
-    @listings = @q.result(distinct: true)
-                  .where(visible: true)
-                  .order(pinned: :desc, created_at: :desc)
-                  .page(params[:page])
-                  .per(10)
-  end
+def index
+  @q = Listing.ransack(params[:q])
+  @listings = @q.result(distinct: true)
+                .where(visible: true)
+                .left_joins(comments: :replies)
+                .select('listings.*, COUNT(DISTINCT comments.id) + COUNT(replies.id) AS total_comments_and_replies')
+                .group('listings.id')
+                .order(pinned: :desc, created_at: :desc)
+                .page(params[:page])
+                .per(10)
+end
+
   
 
   # GET /listings/1 or /listings/1.json
-  def show
-    @listing.views += 1
-    @listing.save!
-    @comments = @listing.comments.includes(:replies).where(visible: true).order(created_at: :desc).page(params[:page]).per(10)
-  end
+def show
+  @listing.increment!(:views)
+
+  @comments = @listing.comments.includes(:replies).where(visible: true).order(created_at: :desc).page(params[:page]).per(10)
+
+  # Calculate the total number of comments and replies
+  @total_comments_and_replies = @comments.to_a.sum { |comment| 1 + comment.replies.count }
+end
+
 
   # GET /listings/new
   def new
