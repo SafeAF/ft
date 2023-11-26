@@ -24,7 +24,7 @@ class PoastsController < ApplicationController
        
     # GET /poasts/1
     def show
-      # Defined in the before_action :
+      @poast.increment!(:views)
       @comments = @poast.comments.includes(:replies).where(visible: true).page(params[:page]).per(5)
     end
   
