@@ -3,10 +3,17 @@ class PoastsController < ApplicationController
     before_action :authenticate_user!
     before_action :authorize_user!, only: [:edit, :update, :destroy]
   
-
-    def index
-      @poasts = Poast.where(visible: true).order(created_at: :desc).page(params[:page]).per(10)
-    end
+	# use .include so as not to make excessive requests
+	# use left_joins to include 0 comment poasts
+	# and group to make it efficiently aggregated
+	def index
+  	@poasts = Poast.where(visible: true)
+                 .left_joins(:comments)
+                 .select('poasts.*, COUNT(comments.id) AS comments_count')
+                 .group('poasts.id')
+                 .order(created_at: :desc)
+                 .page(params[:page]).per(10)
+	end
 
     def showall
       @poasts = Poast.where(visible: true).order(created_at: :desc).page(params[:page]).per(10)
@@ -26,6 +33,8 @@ class PoastsController < ApplicationController
     def show
       @poast.increment!(:views)
       @comments = @poast.comments.includes(:replies).where(visible: true).page(params[:page]).per(5)
+      @total_comments_and_replies = @comments.to_a.sum { |comment| 1 + comment.replies.count }
+
     end
   
     # GET /poasts/new
