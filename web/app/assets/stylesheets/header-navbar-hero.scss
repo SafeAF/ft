@@ -133,6 +133,12 @@
 }
 
 
+/* Media query for medium screens (e.g., 768px) and above */
+@media (min-width: 768px) {
+  .custom-hero-text h1 {
+    font-size: 4rem; /* Larger font size for medium screens and above */
+  }
+}
 /* Custom buttons in the hero */
 
 .button-group {
