@@ -4,7 +4,30 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_user, only: [:edit, :update, :edit_bio, :update_bio]
 
-  def show 
+def show
+  # may want to eager load badges also, later.
+  @user = User.includes(:badges).find_by!(username: params[:id])
+
+  # Adjust the query to include comments count
+  @poasts = @user.poasts.where(visible: true)
+               .left_joins(:comments)
+               .select('poasts.*, COUNT(comments.id) AS comments_count')
+               .group('poasts.id')
+               .order(created_at: :desc)
+               .page(params[:page]).per(5)
+
+  @comments = @user.comments.includes(:replies)
+                  .where(visible: true)
+                  .order(created_at: :desc)
+                  .page(params[:page]).per(10)
+
+rescue ActiveRecord::RecordNotFound
+  redirect_to root_path, alert: "User not found"
+end
+
+
+
+  def old_show 
     # may want to eager load poats and comments also, later. 
     #@user = User.includes(:badges, :poasts, :comments).find_by!(username: params[:id])
     @user = User.includes(:badges).find_by!(username: params[:id])
