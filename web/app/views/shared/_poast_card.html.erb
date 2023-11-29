@@ -17,7 +17,7 @@
                 <%= render partial: 'shared/avatar', locals: { user: poast.user } %>
               </div>
               <div>
-                Posted by: <%= link_to poast.user.username, user_path(poast.user) %>
+                Posted by: <%= link_to poast.user.username.capitalize, user_path(poast.user) %>
                 <span class="text-muted small">- <%= time_ago_in_words(poast.created_at) %> ago</span>
               </div>
             </div>
