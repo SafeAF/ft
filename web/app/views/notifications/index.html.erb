@@ -3,7 +3,10 @@
     Notifications
   <% end %>
 
+<% if @notifications.any? %>
   <%= render 'mark_all_as_read' %>
+<% end %>
+
 
   <% if @notifications.empty? %>
     <div class="text-center mt-4">
