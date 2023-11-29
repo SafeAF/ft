@@ -7,14 +7,14 @@
       <% end %>
     </div>
     <div class="col-auto">
-      <%= link_to 'New Conversation', new_conversation_path, class: "btn btn-primary" %>
+      <%= link_to 'New Conversation', search_users_path, class: "btn btn-primary" %>
     </div>
   </div>
 
   <% if @conversations.empty? %>
     <div class="text-center mt-4">
       <h5 class="text-muted">You have no conversations yet.</h5>
-      <p>Looking to connect? <a href="<%= new_conversation_path %>">Start a new conversation</a> and engage with your community.</p>
+      <p>Looking to connect? <a href="<%= search_users_path %>">Start a new conversation</a> and engage with your community.</p>
     </div>
   <% else %>
     <div class="list-group mt-4">
