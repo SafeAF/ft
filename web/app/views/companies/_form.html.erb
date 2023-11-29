@@ -1,83 +1,71 @@
-
 <%= form_with(model: company, html: {class: 'needs-validation', novalidate: true}) do |form| %>
   <% if company.errors.any? %>
     <div class="alert alert-danger">
-      <h2><%= pluralize(company.errors.count, "error") %> prohibited this company from being saved:</h2>
-
+      <h4><%= pluralize(company.errors.count, "error") %> prohibited this company from being saved:</h4>
       <ul>
-        <% company.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% company.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="mb-3">
-    <%= form.label :company_name, class: "form-label" %>
+  <div class="form-group mt-2">
+    <%= form.label :name, class: "form-label" %>
     <%= form.text_field :name, class: "form-control" %>
   </div>
 
-  <div class="mb-3">
+  <div class="form-group mt-2">
     <%= form.label :contact, class: "form-label" %>
     <%= form.text_field :contact, class: "form-control" %>
   </div>
 
-  <div class="mb-3">
+  <div class="form-group mt-2">
     <%= form.label :address, class: "form-label" %>
     <%= form.text_field :address, class: "form-control" %>
   </div>
 
-  <div class="mb-3">
+  <div class="form-group mt-2">
     <%= form.label :phone, class: "form-label" %>
     <%= form.text_field :phone, class: "form-control" %>
   </div>
 
-  <div class="mb-3">
+  <div class="form-group mt-2">
     <%= form.label :email, class: "form-label" %>
     <%= form.text_field :email, class: "form-control" %>
   </div>
 
-  <div class="mb-3">
+  <div class="form-group mt-2">
     <%= form.label :website, class: "form-label" %>
     <%= form.text_field :website, class: "form-control" %>
   </div>
 
-  <div class="mb-3">
+  <div class="form-group mt-2">
     <%= form.label :hours, class: "form-label" %>
     <%= form.text_field :hours, class: "form-control" %>
   </div>
 
-  <div class="mb-3">
+  <div class="form-group mt-2">
     <%= form.label :about, class: "form-label" %>
     <%= form.text_area :about, class: "form-control" %>
   </div>
 
-  <div class="mb-3">
-    <%= form.label :industry, class: "form-label" %>
-    <%= form.select :category, Company.categories.keys.map { |c| [c.humanize, c] }, include_blank: false %>
-
-
-  <div class="mb-3">
-    <%= form.label :logo, class: "form-label" %>
-    <%= form.file_field :logo, class: "form-control" %>
+  <div class="form-group mt-2">
+    <%= form.label :category, class: "form-label" %>
+    <%= form.select :category, Company.categories.keys.map { |c| [c.humanize, c] }, include_blank: false, class: "form-control" %>
   </div>
 
+  <div class="form-group mt-2">
+    <%= form.label :logo, class: "form-label" %>
+    <%= form.file_field :logo, class: "form-control-file" %>
+  </div>
 
-
-
-  <div class="col mt-5 d-flex justify-content-center">
-
-<div class="row">
-<h2>You can upload images and marketing material here:</h2>
-  <div class="mb-3">
-    
+  <div class="form-group mt-3">
+    <h2>You can upload images and marketing material here:</h2>
     <%= form.rich_text_area :description, class: "form-control" %>
   </div>
 
-  <div class="mb-3 d-flex justify-content-center ">
-    <%= form.submit class: "btn btn-primary" %>
+  <div class="actions d-flex justify-content-center">
+    <%= form.submit class: "btn btn-primary mt-2" %>
   </div>
-
-  </div>
-</div>
 <% end %>
