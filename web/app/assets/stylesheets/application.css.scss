@@ -1,4 +1,4 @@
-/*
+/* 
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -240,45 +240,17 @@ background-color: rgba(81, 137, 71, 0.7); /* Semi-transparent green background *
 }
 
 
-/* card fix so that the title is underlined but the rest of the text isnt */
-/* nevermind the underline on the no-underline class :) */
-
-
-/* Special override for green links, make them blue */
-.no-underline .list-group-item .fa-envelope + a,
-.no-underline .list-group-item .fa-globe + a {
-  color: #0472b1; /* Green color */
-  text-decoration: underline; /* Keep the underline */
-}
-
-.no-underline .list-group-item .fa {
-  color: inherit; /* Inherits color from parent, useful if icons need to be the same color as text */
-}
-
-.no-underline .list-group-item a {
-  color: #0472b1; /* Blue color */
-  text-decoration: underline; /* Keep the underline */
-}
-
-/* make card text blue not green */
-.no-underline .card-title {
-  font-weight: bold; /* Bold for the title */
-  text-decoration: underline;
-}
-
-.no-underline .card-text {
-  font-weight: normal; /* Override to ensure text is not bold */
-  color: black; /* Ensures text color is consistent */
-  text-decoration: none; /* Removes underline from links */
-}
-
-
+/* No underline text or list items in cards that are link_to's */
 .no-underline .list-group-item,
-.no-underline .card-footer {
-  font-weight: normal; /* Override to ensure text is not bold */
-  color: #0472b1; /* Ensures text color is consistent */
-  text-decoration: none; /* Removes underline from links */
+.no-underline .card-text {
+    font-weight: normal;
 }
+
+.no-underline .fas.fa-envelope {
+    color: black; /* or the specific color code you're using for other icons */
+}
+
+
 
 /* poast_card image fix */
 

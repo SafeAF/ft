@@ -1,4 +1,4 @@
-<div class="card h-100 no-underline">
+<div class="card h-100 ">
   <% if company.logo.attached? %>
     <%= image_tag company.logo.variant(resize_to_limit: [300, 200]), class: 'card-img-top' %>
   <% end %>
@@ -9,27 +9,27 @@
   </div>
 
   <ul class="list-group list-group-flush">
-    <li class="list-group-item no-underline">
+    <li class="list-group-item ">
       <i class="fas fa-map-marker-alt"></i> <%= company.address %>
     </li>
-    <li class="list-group-item no-underline">
+    <li class="list-group-item ">
       <i class="fas fa-phone"></i> <%= company.phone %>
     </li>
-    <li class="list-group-item no-underline">
+    <li class="list-group-item ">
       <i class="fas fa-envelope"></i> <%= mail_to company.email %>
     </li>
-    <li class="list-group-item no-underline">
+    <li class="list-group-item ">
       <i class="fas fa-globe"></i> <%= link_to company.website, company.website, target: "_blank" %>
     </li>
-    <li class="list-group-item no-underline">
+    <li class="list-group-item ">
       <i class="fas fa-clock"></i> <%= company.hours %>
     </li>
-    <li class="list-group-item no-underline">
+    <li class="list-group-item ">
       <i class="fas fa-industry"></i> <%= Company.categories[company.category] %>
     </li>
   </ul>
 
-  <div class="card-footer no-underline">
+  <div class="card-footer ">
     <small class="text-muted">More details...</small>
   </div>
 </div>
