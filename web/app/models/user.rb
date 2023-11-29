@@ -153,11 +153,20 @@ class User < ApplicationRecord
   # end
 
   # Active Record version
+  # Does not include users own poasts
   def timeline_poasts
     followed_user_ids = Relationship.where(follower_id: id).pluck(:followed_id)
     Poast.where(user_id: followed_user_ids)
   end
-    
+  
+  # Include users own poasts  
+  # def timeline_poasts
+  #   followed_user_ids = Relationship.where(follower_id: id).pluck(:followed_id)
+  #   followed_user_ids << id # Add the user's own ID to the list
+  #   Poast.where(user_id: followed_user_ids)
+  # end
+
+
   # Get the top followed users who the user isn't already following for the timeline
   # Order clause is borken in production?
   # scope :who_to_follow, -> (current_user) do
