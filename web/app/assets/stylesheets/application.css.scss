@@ -242,8 +242,11 @@ background-color: rgba(81, 137, 71, 0.7); /* Semi-transparent green background *
 
 /* No underline text or list items in cards that are link_to's */
 .no-underline .list-group-item,
-.no-underline .card-text {
+.no-underline .card-text,
+.no-under p {
     font-weight: normal;
+    color: black;
+    text-shadow: none;
 }
 
 .no-underline .fas.fa-envelope {
