@@ -5,7 +5,7 @@
   <div class="flex-grow-1 flex-shrink-1">
     <div class="d-flex justify-content-between align-items-center">
       <p class="mb-1 d-inline">
-        <%= link_to reply.user.username, user_path(reply.user) %> <span class="small">- <%= reply.created_at.strftime('%B %d, %Y') %></span>
+        <%= link_to reply.user.username.capitalize, user_path(reply.user) %> <span class="small">- <%= reply.created_at.strftime('%B %d, %Y') %></span>
       </p>
       <div class="action-icons d-inline">
         <% if current_user && (reply.user == current_user || current_user.moderator?) %>
@@ -18,7 +18,7 @@
           <% end %>
         <% end %>
         <%= form_with url: flag_comment_reply_path(comment_id: comment.id, id: reply.id), method: :post, class: "d-inline" do %>
-          <%= button_tag(type: 'submit', class: "btn btn-sm btn-danger") do %>
+          <%= button_tag(type: 'submit', class: "btn btn-sm btn-warning") do %>
             <i class="fas fa-flag"></i>
           <% end %>
         <% end %>
