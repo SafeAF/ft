@@ -57,6 +57,18 @@ a:hover {
     font-family: 'Lobster', cursive;
 }
 
+
+/* Make attach file button on the left side */
+/* Instead of hidden on right side off screen on mobile */
+.trix-button-row {
+  display: flex; /* Enable flexbox */
+}
+
+.trix-button-group--file-tools {
+  order: -1; /* Move the Attach Files button to the start */
+}
+
+
 /* search_user 'toolbar' follow/message css */
 .card-top {
    display: flex;
