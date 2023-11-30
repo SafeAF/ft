@@ -57,8 +57,11 @@ a:hover {
     font-family: 'Lobster', cursive;
 }
 
+b {
+  font-weight: 700;
+}
 
-/* Make attach file button on the left side */
+/* MOVE IMAGE ATTACH BUTTON TO LEFT SIDE OF RICH_TEXT_BOX
 /* Instead of hidden on right side off screen on mobile */
 .trix-button-row {
   display: flex; /* Enable flexbox */
