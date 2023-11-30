@@ -59,7 +59,7 @@
       <!-- Bio -->
 
       <% if @user.bio.present? %>
-            <h2 class="mt-4">Bio</h2>
+            <h2 class="mt-4 lobster-font">Bio</h2>
         <%= render partial: 'bio_card', locals: { bio: @user.bio } %>
 
       <% end %>
