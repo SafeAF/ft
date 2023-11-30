@@ -1,7 +1,7 @@
 <div class="container mt-5 mb-5">
   <div class="row">
     <div class="col-md-12"><div class="d-flex align-items-center">
-  <h1 class="mb-0 mr-3" style="margin-right: 1rem;"><%= @user.username.capitalize %>'s Profile</h1>
+  <h1 class="mb-0 mr-3 lobster-font" style="margin-right: 1rem;"><%= @user.username.capitalize %>'s Profile</h1>
   <div class="me-2">
     <%= render 'shared/send_message_button', user: @user %>
   </div>
@@ -57,15 +57,17 @@
 <% end %>
 
       <!-- Bio -->
-      <h2 class="mt-4">Bio</h2>
+
       <% if @user.bio.present? %>
+            <h2 class="mt-4">Bio</h2>
         <%= render partial: 'bio_card', locals: { bio: @user.bio } %>
+
       <% end %>
 
       
 
       <!-- Poasts -->
-  <h2 class="mt-4">Poasts</h2>
+  <h2 class="mt-5 lobster-font">Poasts</h2>
   <% if user_signed_in? && current_user == @user %>
     <%= link_to 'Create New Poast', new_poast_path, class: "btn btn-primary mb-4", role: "button" %>
   <% end %>
@@ -91,7 +93,7 @@
       <%= render partial: 'shared/comments_section', locals: { comments: @comments, commentable: @user } %>
 
       <!-- User Activity -->
-      <h2 class="mt-4">Activity</h2>
+      <h2 class="mt-4 lobster-font">Activity</h2>
       <ul class="list-group">
         <li class="list-group-item"><%= link_to "View Comment History", comments_user_path(@user) %></li>
         <li class="list-group-item"><%= link_to "View Listings", listings_user_path(@user) %></li>
