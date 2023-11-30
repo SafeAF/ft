@@ -20,7 +20,8 @@
               <i class="fa fa-list"></i>
             </span>
           </div>
-          <%= f.select :category_eq, Company.categories.keys.map { |c| [c.humanize, c] }.unshift(['All categories', nil]), { include_blank: false, selected: @q.category_eq || nil }, class: 'form-control custom-select' %>
+        <%= f.select :category_eq, Company.categories.map { |key, value| [value, key] }.sort_by { |pair| pair.first }.unshift(['All categories', nil]), { include_blank: false, selected: @q.category_eq || nil }, class: 'form-control custom-select' %>
+
         </div>
       </div>
 
