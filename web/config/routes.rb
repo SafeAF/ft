@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end  
   end
 
-  resources :companies do
+  resources :companies, path: 'c' do
     resources :comments, only: [:create, :edit, :update, :destroy] do
       resources :replies, only: [:create, :destroy]  
     end
