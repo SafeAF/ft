@@ -18,7 +18,7 @@
   </div>
 <div class="row mt-4 justify-content-center">
   <% @companies.each do |company| %>
-    <div class="col-md-6 col-lg-4 mb-4">
+    <div class="col-md-6 col-lg-4 mb-4 <%= 'pinned' if company.pinned %>">
       <%= link_to company_path(company), class: "no-underline" do %>
         <%= render partial: 'company_body', locals: { company: company } %>
       <% end %>
