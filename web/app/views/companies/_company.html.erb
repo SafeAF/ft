@@ -9,8 +9,10 @@
         <h3 class="mb-0"><%= link_to company.name, company %></h3>
       </div>
 
-      <div class="ms-3 d-flex align-items-center">
-        <%= render 'shared/follow_button', user: @user, style: 'margin-right: 10px;' %>
+
+
+      <div class="card-icons" style="margin-right: 1.25rem;">
+        <%= render 'shared/follow_button', user: @user %>
         <%= render 'shared/send_message_button', user: @user %>
       </div>
 
