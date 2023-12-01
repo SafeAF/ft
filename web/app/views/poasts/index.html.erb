@@ -13,12 +13,12 @@
       <% end %>
   <% end %>
 <% end %>
-
+ 
 
 <div class="row mt-5">
   <% if @poasts.any? %>
     <% @poasts.each do |poast| %>
-      <div class="col-12 col-md-6 col-lg-4">
+      <div class="col-12 col-md-6 col-lg-4  <%= 'pinned' if poast.pinned %>">
         <%= render 'shared/poast_card', poast: poast %>
       </div>
     <% end %>

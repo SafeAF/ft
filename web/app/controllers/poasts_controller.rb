@@ -1,19 +1,21 @@
 class PoastsController < ApplicationController
-    before_action :set_poast, only: [:show, :edit, :update, :destroy]
+    before_action :set_poast, only: [:show, :edit, :update, :destroy, :pin, :unpin]
     before_action :authenticate_user!
     before_action :authorize_user!, only: [:edit, :update, :destroy]
   
 	# use .include so as not to make excessive requests
 	# use left_joins to include 0 comment poasts
 	# and group to make it efficiently aggregated
-	def index
-  	@poasts = Poast.where(visible: true)
-                 .left_joins(:comments)
-                 .select('poasts.*, COUNT(comments.id) AS comments_count')
-                 .group('poasts.id')
-                 .order(created_at: :desc)
-                 .page(params[:page]).per(10)
-	end
+
+    def index
+      @poasts = Poast.where(visible: true)
+                     .left_joins(:comments)
+                     .select('poasts.*, COUNT(comments.id) AS comments_count')
+                     .group('poasts.id')
+                     .order(pinned: :desc, created_at: :desc)
+                     .page(params[:page]).per(10)
+    end
+
 
     def showall
       @poasts = Poast.where(visible: true).order(created_at: :desc).page(params[:page]).per(10)
@@ -96,6 +98,23 @@ class PoastsController < ApplicationController
     
       redirect_to @poast, notice: 'Poast has been flagged.'
     end
+
+    def pin
+      if @poast.update(pinned: true)
+        redirect_to poasts_path, notice: 'Poast was successfully pinned.'
+      else
+        redirect_to poasts_path, alert: 'Unable to pin the poast.'
+      end
+    end
+
+    def unpin
+      if @poast.update(pinned: false)
+        redirect_to poasts_path, notice: 'Poast was successfully unpinned.'
+      else
+        redirect_to poasts_path, alert: 'Unable to unpin the poast.'
+      end
+    end
+
     
     private
   

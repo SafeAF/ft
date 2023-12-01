@@ -23,6 +23,15 @@
     <i class="fa fa-comments"></i> <%= @total_comments_and_replies %> Comments
   </span>
 </div>
+<div class="mt-3">
+  <% if current_user&.moderator? %>
+    <% if @poast.pinned? %>
+      <%= button_to 'Unpin', unpin_poast_path(@poast), method: :delete, class: 'btn btn-secondary' %>
+    <% else %>
+      <%= button_to 'Pin', pin_poast_path(@poast), method: :post, class: 'btn btn-tertiary' %>
+    <% end %>
+  <% end %>
+</div>
 
 
   <div class="mt-5">

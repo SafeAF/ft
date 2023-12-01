@@ -74,6 +74,8 @@ Rails.application.routes.draw do
 
     member do
       post :flag
+      post :pin
+      delete :unpin
     end
   end
 
