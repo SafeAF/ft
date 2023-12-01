@@ -44,14 +44,14 @@
 
 <!-- Moderator Actions -->
 <% if current_user&.moderator? %>
-  <%= button_to lock_user_path(@user), method: :post, class: 'btn btn-warning mt-2' do %>
+  <%= button_to lock_user_path(@user), method: :post, class: 'btn btn-danger mt-2' do %>
     <i class="fa fa-user-lock"></i> Lock User
   <% end %>
 <% end %>
 
 <!-- Flag User -->
 <% unless current_user == @user %>
-  <%= button_to flag_user_path(@user), method: :post, class: 'btn btn-danger mt-2' do %>
+  <%= button_to flag_user_path(@user), method: :post, class: 'btn btn-warning mt-2' do %>
     <i class="fa fa-flag"></i> Flag User
   <% end %>
 <% end %>
