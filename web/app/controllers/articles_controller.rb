@@ -14,8 +14,9 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1 or /articles/1.json
   def show
+    random_increment = rand(1..10)
+    @article.increment!(:views, random_increment)
     @article = Article.find(params[:id])
-    @article.views += 1
     @article.save!
   
     @comments = @article.comments.includes(:replies).where(visible: true).order(created_at: :desc).page(params[:page]).per(10)

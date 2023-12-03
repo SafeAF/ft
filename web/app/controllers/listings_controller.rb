@@ -24,7 +24,9 @@ end
 
   # GET /listings/1 or /listings/1.json
 def show
-  @listing.increment!(:views)
+  #@listing.increment!(:views)
+  random_increment = rand(1..10)
+  @listing.increment!(:views, random_increment)
 
   @comments = @listing.comments.includes(:replies).where(visible: true).order(created_at: :desc).page(params[:page]).per(10)
 

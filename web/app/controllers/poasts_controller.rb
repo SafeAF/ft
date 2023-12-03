@@ -33,7 +33,9 @@ class PoastsController < ApplicationController
        
     # GET /poasts/1
     def show
-      @poast.increment!(:views)
+      random_increment = rand(1..10)
+      @poast.increment!(:views, random_increment)
+      #@poast.increment!(:views)
       @comments = @poast.comments.includes(:replies).where(visible: true).page(params[:page]).per(5)
       @total_comments_and_replies = @comments.to_a.sum { |comment| 1 + comment.replies.count }
 
