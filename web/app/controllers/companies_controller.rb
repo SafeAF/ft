@@ -19,7 +19,7 @@ class CompaniesController < ApplicationController
 
   
   def show
-    @company = Company.find(params[:id])
+    #@company = Company.find(params[:id])
     @comments = @company.comments.includes(:replies).where(visible: true).order(created_at: :desc).page(params[:page]).per(10)
     @user = @company.user 
   end
@@ -107,7 +107,8 @@ class CompaniesController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_company
-      @company = Company.find(params[:id])
+      @company = Company.friendly.find(params[:id])
+      #@company = Company.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

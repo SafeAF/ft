@@ -1,4 +1,10 @@
 class Company < ApplicationRecord
+
+  # For slugging
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
+
   belongs_to :user
   has_rich_text :description
   has_one_attached :logo do |attachable|
