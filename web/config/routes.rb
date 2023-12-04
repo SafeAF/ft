@@ -144,9 +144,11 @@ Rails.application.routes.draw do
     end
   end
   
-  # Users  
-  devise_for :users
-
+  # for user IP storage, custom sessions & reg controller
+devise_for :users, controllers: {
+  sessions: 'users/sessions',
+  registrations: 'users/registrations'
+}
   resources :users, only: [:show] do
     resources :poasts, only: [:index]
     
