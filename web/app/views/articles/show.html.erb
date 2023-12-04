@@ -14,6 +14,20 @@
     <%= @article.content %>
   </div>
 
+
+    <!-- Avatar and Posted by -->
+  <div class="d-flex align-items-center mt-5">
+    <div class="me-3">
+      <%= render partial: 'shared/avatar', locals: { user: @article.user } %>
+    </div>
+    <div>
+      Posted by: <%= link_to @article.user.username.capitalize, user_path(@article.user) %>
+      <span class="text-muted small">- <%= time_ago_in_words(@article.created_at) %> ago</span>
+    </div>
+  </div>
+
+
+
   <div class="mt-4 d-flex justify-content-start align-items-center">
     <span style="margin-right: 20px;">
       <i class="fa fa-eye"></i> <%= @article.views %> Views
@@ -41,6 +55,7 @@
       <%= render 'shared/send_message_button', user: @article.user %>
     </div>
   </div>
+
 
   <!-- Comments Section -->
   <%= render partial: 'shared/comments_section', locals: { comments: @comments, commentable: @article } %>
