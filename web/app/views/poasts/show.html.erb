@@ -14,6 +14,18 @@
   <div class="mt-4">
     <%= @poast.content %>
   </div>
+
+      <!-- Avatar and Posted by -->
+  <div class="d-flex align-items-center mt-5">
+    <div class="me-3">
+      <%= render partial: 'shared/avatar', locals: { user: @poast.user } %>
+    </div>
+    <div>
+      Posted by: <%= link_to @poast.user.username.capitalize, user_path(@poast.user) %>
+      <span class="text-muted small">- <%= time_ago_in_words(@poast.created_at) %> ago</span>
+    </div>
+  </div>
+
   
  <div class="mt-4">
   <span style="margin-right: 20px;">
@@ -33,12 +45,18 @@
   <% end %>
 </div>
 
+<!-- Action Buttons and Follow/Message Icons -->
+<div class="mt-5 d-flex justify-content-start align-items-center">
+  <%= render partial: 'shared/action_buttons', locals: { resource: @poast, resource_type: 'poast' } %>
+  <div class="card-icons ms-3">
+    <%= render 'shared/follow_button', user: @poast.user %>
+    <%= render 'shared/send_message_button', user: @poast.user %>
+  </div>
+</div>
 
-  <div class="mt-5">
-    <%= render partial: 'shared/action_buttons', locals: { resource: @poast, resource_type: 'poast' } %>
-  </div>
-  <!-- Comments Section -->
-  <%= render partial: 'shared/comments_section', locals: { comments: @comments, commentable: @poast } %>
-  <div class="mb-5">
-  </div>
+<!-- Comments Section -->
+<%= render partial: 'shared/comments_section', locals: { comments: @comments, commentable: @poast } %>
+<div class="mb-5">
+</div>
+
 </div>  
