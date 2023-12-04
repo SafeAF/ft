@@ -68,7 +68,9 @@ class Listing < ApplicationRecord
     sports_outdoors: 'Sports & Outdoors',
     toys_games: 'Toys & Games',
     pets: 'Pets',
-    other: 'Other'
+    other: 'Other',
+    free: 'Free',
+    iso: "ISO"
   }
 
 

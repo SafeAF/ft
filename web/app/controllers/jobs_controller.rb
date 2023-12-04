@@ -30,24 +30,29 @@ class JobsController < ApplicationController
     def edit
     end
   
-    # POST /jobs
+    # POST /jobs 
 
     def create
       existing_visible_job = current_user.jobs.find_by(visible: true)
-  
+
       if existing_visible_job
         redirect_to jobs_url, alert: 'Please contact us to post additional jobs'
         return
       end
-  
+
       @job = current_user.jobs.new(job_params)
-  
-      if @job.save
-        redirect_to @job, notice: 'Job was successfully created.'
-      else
-        render :new
+
+      respond_to do |format|
+        if @job.save
+          format.html { redirect_to job_url(@job), notice: 'Job was successfully created.' }
+          format.json { render :show, status: :created, location: @job }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @job.errors, status: :unprocessable_entity }
+        end
       end
     end
+
   
   
     # PATCH/PUT /jobs/1
