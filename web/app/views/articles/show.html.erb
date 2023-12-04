@@ -14,11 +14,11 @@
     <%= @article.content %>
   </div>
 
-  <div class="mt-4">
+  <div class="mt-4 d-flex justify-content-start align-items-center">
     <span style="margin-right: 20px;">
       <i class="fa fa-eye"></i> <%= @article.views %> Views
     </span>
-    <span>
+    <span style="margin-right: 20px;">
       <i class="fa fa-comments"></i> <%= pluralize(@article.comments.count, 'Comment') %>
     </span>
   </div>
@@ -33,8 +33,13 @@
     <% end %>
   </div>
 
-  <div class="mt-5">
+  <!-- Action Buttons and Follow/Message Icons -->
+  <div class="mt-5 d-flex justify-content-start align-items-center">
     <%= render partial: 'shared/action_buttons', locals: { resource: @article, resource_type: 'article' } %>
+    <div class="card-icons ms-3">
+      <%= render 'shared/follow_button', user: @article.user %>
+      <%= render 'shared/send_message_button', user: @article.user %>
+    </div>
   </div>
 
   <!-- Comments Section -->
