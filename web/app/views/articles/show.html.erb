@@ -1,54 +1,45 @@
-<div class="container">
-  <!-- Thumbnail -->
-  <% if @article.thumbnail.attached? %>
-    <%= image_tag @article.thumbnail.variant(resize_to_limit: [300, 300]) %>
+<div class="container mt-5">
+  <h1 class="display-4 bevan-font"><%= @article.title %></h1>
+  <h3 class="text-muted"><%= @article.description %></h3>
 
-  <% end %>
-
-  <!-- Article Details -->
-  <div id="<%= dom_id @article %>">
-    <h3><%= @article.title %></h3>
-    <p><%= @article.description %></p>
-    <p>
-      <strong>Location:</strong> <%= @article.location %>
-    </p>
-    <p>
-      <strong>Views:</strong> <%= @article.views %>
-    </p>
-    <p>
-    Posted by: <%= link_to @article.user.username, user_path(@article.user) %> <span class="small">- <%= @article.created_at.strftime('%B %d, %Y') %></span>
-      
-    </p>
+  <div class="mt-5">
+    <% if @article.thumbnail.attached? %>
+      <%= image_tag @article.thumbnail, class: 'img-fluid' %>
+    <% else %>
+      <p>No thumbnail available.</p>
+    <% end %>
   </div>
 
-  <hr> 
-
-  <!-- Article Content -->
-  <div>
+  <div class="mt-4">
     <%= @article.content %>
   </div>
 
-
-  <div>
-   <%= render partial: 'shared/action_buttons', locals: { resource: @article, resource_type: 'article' } %>
+  <div class="mt-4">
+    <span style="margin-right: 20px;">
+      <i class="fa fa-eye"></i> <%= @article.views %> Views
+    </span>
+    <span>
+      <i class="fa fa-comments"></i> <%= pluralize(@article.comments.count, 'Comment') %>
+    </span>
   </div>
 
   <div class="mt-3">
-<% if current_user.moderator? %>
-  <% if @article.pinned? %>
-    <%= button_to 'Unpin', unpin_article_path(@article), method: :delete %>
-  <% else %>
-    <%= button_to 'Pin', pin_article_path(@article), method: :post %>
-  <% end %>
-<% end %>
+    <% if current_user&.moderator? %>
+      <% if @article.pinned? %>
+        <%= button_to 'Unpin', unpin_article_path(@article), method: :delete, class: 'btn btn-secondary' %>
+      <% else %>
+        <%= button_to 'Pin', pin_article_path(@article), method: :post, class: 'btn btn-tertiary' %>
+      <% end %>
+    <% end %>
   </div>
 
-
-  <hr>
+  <div class="mt-5">
+    <%= render partial: 'shared/action_buttons', locals: { resource: @article, resource_type: 'article' } %>
+  </div>
 
   <!-- Comments Section -->
   <%= render partial: 'shared/comments_section', locals: { comments: @comments, commentable: @article } %>
 
+  <div class="mb-5">
+  </div>
 </div>
-
-

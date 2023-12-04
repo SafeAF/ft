@@ -52,6 +52,7 @@ class Listing < ApplicationRecord
 
   enum category: {
     fresh_produce: 'Fresh Produce',
+    animal_products: 'Meat, Eggs, & Dairy',
     rehoming: 'Re-homing',
     homemade_goods: 'Homemade Goods',
     seeds_plants: 'Seeds & Plants',
