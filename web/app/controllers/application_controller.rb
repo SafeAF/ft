@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
   # Banner dvertisments
   before_action :fetch_banner_ads, unless: :skip_banner_ads?
 
+  # Check if user is in banned ip list
+  before_action :check_for_banned_ip
 
   # Include notifications on every page if user is signed in.
   def fetch_notifications
@@ -39,6 +41,16 @@ class ApplicationController < ActionController::Base
   
 
   private
+
+
+
+
+  def check_for_banned_ip
+    if BannedIp.exists?(ip: request.remote_ip)
+      render plain: "Access denied", status: :forbidden
+      # You can customize the response as needed
+    end
+  end
 
     
   def set_global_alert

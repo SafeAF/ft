@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_04_133227) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_04_134842) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -303,6 +303,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_04_133227) do
     t.boolean "moderator", default: false
     t.boolean "locked", default: false
     t.boolean "administrator", default: false
+    t.string "last_ip_address"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
