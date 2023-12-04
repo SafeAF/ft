@@ -4,13 +4,16 @@ class ArticlesController < ApplicationController
   before_action :verify_owner, only: [:edit, :update, :destroy] # Ensure the current user is the owner for edit, update, and destroy
   before_action :check_moderator, only: [:pin, :unpin]
 
-  # GET /articles or /articles.json
   def index
     @q = Article.where(visible: true).ransack(params[:q])
     @articles = @q.result(distinct: true)
+                  .left_joins(:comments) # Assuming Article has_many :comments
+                  .select('articles.*, COUNT(comments.id) AS comments_count')
+                  .group('articles.id')
                   .order(pinned: :desc, created_at: :desc)
                   .page(params[:page]).per(10)
   end
+
 
   # GET /articles/1 or /articles/1.json
   def show
