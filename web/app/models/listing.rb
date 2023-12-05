@@ -51,27 +51,27 @@ class Listing < ApplicationRecord
 
 
   enum category: {
-    fresh_produce: 'Fresh Produce',
     animal_products: 'Meat, Eggs, & Dairy',
-    rehoming: 'Re-homing',
-    homemade_goods: 'Homemade Goods',
-    seeds_plants: 'Seeds & Plants',
-    crafts_art: 'Crafts & Art',
-    services: 'Services',
-    vehicles: 'Vehicles',
-    tools: 'Tools',
-    equipment: 'Equipment',
-    furniture: 'Furniture',
-    electronics: 'Electronics',
-    clothing: 'Clothing',
-    home_garden: 'Home & Garden',
     books_media: 'Books & Media',
-    sports_outdoors: 'Sports & Outdoors',
-    toys_games: 'Toys & Games',
-    pets: 'Pets',
-    other: 'Other',
+    clothing: 'Clothing',
+    crafts_art: 'Crafts & Art',
+    electronics: 'Electronics',
+    equipment: 'Equipment',
     free: 'Free',
-    iso: "ISO"
+    fresh_produce: 'Fresh Produce',
+    furniture: 'Furniture',
+    home_garden: 'Home & Garden',
+    homemade_goods: 'Homemade Goods',
+    iso: "ISO",
+    other: 'Other',
+    pets: 'Pets',
+    rehoming: 'Re-homing',
+    seeds_plants: 'Seeds & Plants',
+    services: 'Services',
+    sports_outdoors: 'Sports & Outdoors',
+    tools: 'Tools',
+    toys_games: 'Toys & Games',
+    vehicles: 'Vehicles'
   }
 
 
