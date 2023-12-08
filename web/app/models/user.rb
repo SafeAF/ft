@@ -10,7 +10,7 @@ class User < ApplicationRecord
   validates :username,
   presence: true,
   length: { minimum: 5, maximum: 20 },
-  exclusion: { in: %w(admin root guest superuser administrator moderator), message: "is reserved." },
+  exclusion: { in: %w(admin root guest superuser moderator), message: "is reserved." },
   uniqueness: { case_sensitive: false },
   format: { with: /\A[a-zA-Z0-9]+\Z/, message: "only allows alphanumeric characters" }
 
