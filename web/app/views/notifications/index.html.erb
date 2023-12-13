@@ -3,10 +3,9 @@
     Notifications
   <% end %>
 
-<% if @notifications.any? %>
-  <%= render 'mark_all_as_read' %>
-<% end %>
-
+  <% if @notifications.any? %>
+    <%= render 'mark_all_as_read' %>
+  <% end %>
 
   <% if @notifications.empty? %>
     <div class="text-center mt-4">
@@ -30,7 +29,11 @@
               <% when 'Message' %>
                 <%= link_to notification.message, conversation_path(notifiable.conversation_id, anchor: "message_#{notifiable.id}") %>
               <% when 'Relationship' %>
-                <%= link_to notification.message, user_path(notifiable.follower.username) %>
+                <% if notifiable.follower.present? %>
+                  <%= link_to notification.message, user_path(notifiable.follower.username) %>
+                <% else %>
+                  <%= notification.message %>
+                <% end %>
               <% when 'Poast' %>
                 <%= link_to notification.message, poast_path(notifiable.id, anchor: "poast_#{notifiable.id}") %>
               <% when 'Listing' %>
@@ -56,4 +59,3 @@
     </div>
   <% end %>
 </div>
-
