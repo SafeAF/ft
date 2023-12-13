@@ -12,8 +12,10 @@
 
 
       <div class="card-icons" style="margin-right: 1.25rem;">
+        <% if current_user %>
         <%= render 'shared/follow_button', user: @user %>
         <%= render 'shared/send_message_button', user: @user %>
+        <% end %>
       </div>
 
       <% if company.user == current_user %>
