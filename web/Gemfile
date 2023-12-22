@@ -7,6 +7,8 @@ ruby "3.1.0"
 gem "rails", "~> 7.0.4", ">= 7.0.4.3"
 
 ###########################
+# for auth
+gem "devise", "~> 4.9"
 
 # for company slugs
 gem 'friendly_id', '~> 5.4.0'
@@ -17,11 +19,14 @@ gem 'ahoy_matey'
 # for icons
 gem "font-awesome-sass", "~> 6.4.0"
 
-#for pagination
+# for pagination
 gem 'kaminari'
 
 # for search
 gem 'ransack'
+
+# for openai api
+gem 'openai'
 
 #######################
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
@@ -90,7 +95,6 @@ group :test do
   gem "webdrivers"
 end
 
-gem "devise", "~> 4.9"
 
 group :production do
   gem 'mysql2'
