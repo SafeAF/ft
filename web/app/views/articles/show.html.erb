@@ -46,15 +46,19 @@
       <% end %>
     <% end %>
   </div>
-
-  <!-- Action Buttons and Follow/Message Icons -->
-  <div class="mt-5 d-flex justify-content-start align-items-center">
-    <%= render partial: 'shared/action_buttons', locals: { resource: @article, resource_type: 'article' } %>
+ 
+<!-- Action Buttons and Follow/Message Icons -->
+<div class="mt-5 d-flex justify-content-start align-items-center">
+  <%= render partial: 'shared/action_buttons', locals: { resource: @article, resource_type: 'article' } %>
+  
+  <% if current_user %>
     <div class="card-icons ms-3">
       <%= render 'shared/follow_button', user: @article.user %>
       <%= render 'shared/send_message_button', user: @article.user %>
     </div>
-  </div>
+  <% end %>
+</div>
+
 
 
   <!-- Comments Section -->
