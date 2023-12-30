@@ -28,6 +28,9 @@ gem 'ransack'
 # for openai api
 gem 'ruby-openai'
 
+# for news scraper
+gem 'httparty'
+
 #######################
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"

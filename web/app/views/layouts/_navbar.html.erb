@@ -25,9 +25,11 @@
       <li class="nav-item">
         <%= link_to "News&Events", articles_path, class: 'nav-link' %>
       </li>
-      <li class="nav-item">
-        <%= link_to "Timeline", timeline_path, class: 'nav-link' %>
-      </li>
+      <% if current_user %>
+        <li class="nav-item">
+          <%= link_to "Timeline", timeline_path, class: 'nav-link' %>
+        </li>
+      <% end %>
       <li class="nav-item">
         <%= link_to "Poasts", poasts_path, class: 'nav-link' %>
       </li>
