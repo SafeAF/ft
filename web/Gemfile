@@ -26,7 +26,7 @@ gem 'kaminari'
 gem 'ransack'
 
 # for openai api
-gem 'openai'
+gem 'ruby-openai'
 
 #######################
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]

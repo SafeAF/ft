@@ -1,8 +1,7 @@
-
-
-require "openai"
+require 'net/http'
+require 'uri'
 require 'json'
-
+require_relative '../config/environment'
 
 api_key = ENV['OPENAI_API_KEY']
 
@@ -10,26 +9,35 @@ if api_key.nil?
   puts "[-] Error: OPENAI_API_KEY environment variable is not set."
   exit 1
 end
+puts "[+] OpenAI Key Detected #{api_key}"
 
-p "[+] OpenAI Key Detected"
+puts "[+] Loaded Rails Environment"
 
+poast = Poast.last
 
-require_relative '../config/environment'
-p "[+] Loaded Rails Environment"
+def query_openai_api(prompt, api_key)
+  return if prompt.nil?
 
-def query_openai_api(proompt)
-client = OpenAI::Client.new(access_token: api_key)
+  uri = URI.parse("https://api.openai.com/v1/chat/completions")
 
-#OpenAI.rough_token_count("Your text")
+  header = {
+      'Content-Type': 'application/json',
+      'Authorization': "Bearer #{api_key}"
+  }
 
-#p client.models.list
+  body = {
+      model: "gpt-3.5-turbo", # You can change this to "gpt-4-turbo" if needed
+      messages: [{ role: "user", content: prompt }],
+      temperature: 0.7
+  }
 
-response = client.chat(
-    parameters: {
-        model: "gpt-3.5-turbo", # Required.
-        messages: [{ role: "user", content: proompt}], # Required.
-        temperature: 0.7,
-    })
-puts response.dig("choices", 0, "message", "content")
-# => "Hello! How may I assist you today?"
+  http = Net::HTTP.new(uri.host, uri.port)
+  http.use_ssl = true
+  request = Net::HTTP::Post.new(uri.request_uri, header)
+  request.body = body.to_json
+
+  response = http.request(request)
+  JSON.parse(response.body)["choices"][0]["message"]["content"]
 end
+
+puts query_openai_api(poast.content.to_s, api_key)
