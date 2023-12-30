@@ -43,16 +43,20 @@
       <%= button_to 'Pin', pin_poast_path(@poast), method: :post, class: 'btn btn-tertiary' %>
     <% end %>
   <% end %>
-</div>
+</div> 
 
 <!-- Action Buttons and Follow/Message Icons -->
 <div class="mt-5 d-flex justify-content-start align-items-center">
   <%= render partial: 'shared/action_buttons', locals: { resource: @poast, resource_type: 'poast' } %>
-  <div class="card-icons ms-3">
-    <%= render 'shared/follow_button', user: @poast.user %>
-    <%= render 'shared/send_message_button', user: @poast.user %>
-  </div>
+  
+  <% if current_user && @poast.user != current_user %>
+    <div class="card-icons ms-3">
+      <%= render 'shared/follow_button', user: @poast.user %>
+      <%= render 'shared/send_message_button', user: @poast.user %>
+    </div>
+  <% end %>
 </div>
+
 
 <!-- Comments Section -->
 <%= render partial: 'shared/comments_section', locals: { comments: @comments, commentable: @poast } %>

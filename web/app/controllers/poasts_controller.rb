@@ -1,6 +1,6 @@
 class PoastsController < ApplicationController
     before_action :set_poast, only: [:show, :edit, :update, :destroy, :pin, :unpin]
-    before_action :authenticate_user!
+    before_action :authenticate_user!, except: [:index, :show] # Ensure the user is authenticated for actions except index and show
     before_action :authorize_user!, only: [:edit, :update, :destroy]
   
 	# use .include so as not to make excessive requests
