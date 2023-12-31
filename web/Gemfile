@@ -25,8 +25,8 @@ gem 'kaminari'
 # for search
 gem 'ransack'
 
-# for openai api
-gem 'ruby-openai'
+# for openai api - depracated, using Net::HTTP now
+#gem 'ruby-openai'
 
 # for news scraper
 gem 'httparty'

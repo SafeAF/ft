@@ -2,6 +2,7 @@ require 'net/http'
 require 'uri'
 require 'json'
 require_relative '../config/environment'
+puts "[+] Loaded Rails Environment"
 
 api_key = ENV['OPENAI_API_KEY']
 
@@ -11,7 +12,7 @@ if api_key.nil?
 end
 puts "[+] OpenAI Key Detected #{api_key}"
 
-puts "[+] Loaded Rails Environment"
+
 
 def query_openai_api(prompt, api_key)
   return if prompt.nil?
@@ -38,11 +39,3 @@ def query_openai_api(prompt, api_key)
   JSON.parse(response.body)["choices"][0]["message"]["content"]
 end
 
-
-#poast = Poast.last
-
-puts query_openai_api("Are files in rails lib/ directory available
- to other areas of rails, like if i have a class in lib can I use that
-  class elsewhere or do I need to load it?", api_key)
-
-#puts query_openai_api(poast.content.to_s, api_key)
