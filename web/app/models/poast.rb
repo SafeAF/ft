@@ -6,11 +6,11 @@ class Poast < ApplicationRecord
   has_many :comments, as: :commentable
 
 
-  validates :title, presence: true, length: { minimum: 10, maximum: 100 }
-  validates :subheading, presence: true, length: { minimum: 10, maximum: 200 }
+  validates :title, presence: true, length: { minimum: 1, maximum: 100 }
+  validates :subheading, presence: true, length: { minimum: 1, maximum: 200 }
   
-  validates :content, presence: true
-  validates :thumbnail, presence: true 
+  #validates :content, presence: true
+  #validates :thumbnail, presence: true 
   
 
 
