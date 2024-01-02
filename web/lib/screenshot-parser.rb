@@ -79,11 +79,13 @@ begin
       user: User.first,
       title: post_data["title"],
       subheading: post_data["heading"],
-      content: post_data["action"] # Assuming 'action' contains the content
+      content: post_data["content"] # Assuming 'action' contains the content
     )
 
     if post.save
       puts "Post titled '#{post.title}' created successfully."
+      puts "Subheading: #{post.subheading}"
+      puts "ActionText: #{post.content}"
     else
       puts "Failed to create post titled '#{post.title}'."
     end
