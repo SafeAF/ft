@@ -31,6 +31,7 @@ gem 'ransack'
 # for news scraper
 gem 'httparty'
 
+gem 'rtesseract'
 #######################
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
