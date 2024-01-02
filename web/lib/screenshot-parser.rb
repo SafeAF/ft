@@ -54,7 +54,10 @@ proompt = "can you take this output from rtesseract and clean it up " +
 "and create rails 'poast' objects with title, heading, and action text content from it please and " +
 "can we ignore the part you are interpreting as the title and heading" +
 "and craft a new title and heading from the content so it is relevant " +
-"and makes more sense? And can you return it as valid JSON with no extra words, i need to be able to use the response programmatically: " + text
+"and makes more sense? Please keep the 'content' portion intact and unchanged,  " +
+"but do create a new paragraph with reactions from other users" +
+"And can you return it as valid JSON with no extra words, " +
+" i need to be able to use the response programmatically: " + text
 
 puts "[+] Image read and proompt crafted, querying chad"
 
