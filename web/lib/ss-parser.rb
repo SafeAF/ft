@@ -13,29 +13,6 @@ if api_key.nil?
 end
 puts "[+] OpenAI Key Detected"
 
-if ARGV.empty?
-  puts "[-] No image. Usage: ruby screenshot-parser.rb <image_path>"
-  exit 1
-end
-
-image_path = ARGV[0]
-
-p "[+] Using image #{ARGV[0]}"
-
-
-ft_bot_user = User.find_by(username: "ft-bot")
-
-# Fall back to the first user if 'ft-bot' is not found
-ft_bot_user = User.first unless ft_bot_user
-
-# Check if a user is found
-unless ft_bot_user
-  puts "No users available."
-  exit 1
-end
-
-p "[+] Will poast as user #{ft_bot_user.username} "
-
 def query_openai_api(prompt, api_key)
   return if prompt.nil?
 
@@ -70,26 +47,22 @@ rescue RTesseract::Error => e
   puts "An error occurred: #{e.message}"
 end
 
-
 # Example usage
-
+image_path = 'test3.png'
 text = read_text_from_image(image_path)
 proompt = "can you take this output from rtesseract and clean it up " +
 "and create json objects with title, heading, and content from it please and " +
 "can we ignore the part you are interpreting as the title and heading" +
 "and craft a new title and heading from the content so it is relevant " +
-"and makes more sense? please keep the content the same. And can you return it as valid JSON with no extra words, i need to be able to use the response programmatically: " + text
+"please keep the content the same. " +
+"and makes more sense? And can you return it as valid JSON with no extra words, i need to be able to use the response programmatically: " + text
 
-p = "Prompt: #{proompt}}"
-
-puts "[+] Image read and proompt crafted, querying Chad.."
-
+puts "[+] Image read and proompt crafted, querying chad"
 
 raw_response = query_openai_api(proompt, api_key)
 puts "Raw response: #{raw_response}"
 
 
-puts "[+] Parsing.."
 
 begin
   # Adjusted regular expression to match JSON array structure
@@ -101,11 +74,10 @@ begin
     raise "No JSON found in the response"
   end
 
-  p "[+] Parsing complete, creating poasts.."
   # Create Post objects from the parsed data
   posts_data.each do |post_data|
     post = Poast.new(
-      user: ft_bot_user,
+      user: User.first,
       title: post_data["title"],
       subheading: post_data["heading"],
       content: post_data["content"] # Assuming 'action' contains the content
@@ -127,3 +99,29 @@ rescue => e
   puts "An error occurred: #{e.message}"
   exit 1
 end
+
+# begin
+#   # Assuming the extra text is always the same and ends with ':'
+#   json_part = raw_response.split(':').last
+#   posts_data = JSON.parse(json_part)
+# rescue JSON::ParserError => e
+#   puts "Failed to parse JSON: #{e.message}"
+#   puts "Raw response: #{raw_response}"
+#   exit 1
+# end
+
+
+# # Create Post objects from the parsed data
+# posts_data.each do |post_data|
+#   post = Poast.new(
+#     title: post_data["title"],
+#     heading: post_data["heading"],
+#     content: post_data["action_text_content"]
+#   )
+
+#   if post.save
+#     puts "Post titled '#{post.title}' created successfully."
+#   else
+#     puts "Failed to create post titled '#{post.title}'."
+#   end
+# end
