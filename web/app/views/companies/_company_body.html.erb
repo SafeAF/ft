@@ -3,7 +3,7 @@
     <% begin %>
       <%= image_tag company.logo.variant(resize_to_limit: [300, 200]), class: 'card-img-top' %>
     <% rescue ActiveStorage::InvariableError %>
-      <%= image_tag 'default-company-thumbnail.webp', class: 'card-img-top' %>
+      <%= image_tag 'default-thumbnail.webp', class: 'card-img-top' %>
     <% end %>
   <% else %>
     <%= image_tag 'default-company-thumbnail.webp', class: 'card-img-top' %>
