@@ -1,42 +1,40 @@
 <!-- app/views/shared/_poast_card.html.erb -->
 
-
-    <div class="col">
-      <%= link_to poast_path(poast), class: "no-underline" do %>
-        <div class="card mb-3 custom-poast-card">
-          <% if poast.thumbnail.attached? %>
-            <%= image_tag poast.thumbnail.variant(resize_to_limit: [350, 300]), class: 'card-img-top' %>
-          <% end %>
-          <div class="card-body">
-            <h5 class="card-title"><%= poast.title %></h5>
-            <p class="card-text"><%= poast.subheading %></p>
-            
-            <!-- Avatar and Posted by -->
-            <div class="d-flex align-items-center mt-3">
-              <div class="me-3">
-                <%= render partial: 'shared/avatar', locals: { user: poast.user } %>
-              </div>
-              <div>
-                Posted by: <%= link_to poast.user.username.capitalize, user_path(poast.user) %>
-                <span class="text-muted small">- <%= time_ago_in_words(poast.created_at) %> ago</span>
-              </div>
-            </div>
-
-            <!-- Views -->
-<div class="mt-3">
-  <small class="text-muted">
-    <i class="fas fa-eye" style="margin-right: 5px;"></i> <%= poast.views %> views
-  </small>
-  <small class="text-muted" style="margin-left: 15px;"> <!-- Adjusted inline margin-left for spacing -->
-    <i class="fas fa-comments" style="margin-right: 5px;"></i> <%= pluralize(poast.comments_count, 'comment') %>
-  </small>
-</div>
-
-
+<div class="col">
+  <%= link_to poast_path(poast), class: "no-underline" do %>
+    <div class="card mb-3 custom-poast-card">
+      <% if poast.thumbnail.attached? %>
+        <% begin %>
+          <%= image_tag poast.thumbnail.variant(resize_to_limit: [350, 300]), class: 'card-img-top' %>
+        <% rescue ActiveStorage::InvariableError %>
+          <%= image_tag 'default-thumbnail.webp', class: 'card-img-top' %>
+        <% end %>
+      <% end %>
+      <div class="card-body">
+        <h5 class="card-title"><%= poast.title %></h5>
+        <p class="card-text"><%= poast.subheading %></p>
+        
+        <!-- Avatar and Posted by -->
+        <div class="d-flex align-items-center mt-3">
+          <div class="me-3">
+            <%= render partial: 'shared/avatar', locals: { user: poast.user } %>
+          </div>
+          <div>
+            Posted by: <%= link_to poast.user.username.capitalize, user_path(poast.user) %>
+            <span class="text-muted small">- <%= time_ago_in_words(poast.created_at) %> ago</span>
           </div>
         </div>
-      <% end %>
+
+        <!-- Views -->
+        <div class="mt-3">
+          <small class="text-muted">
+            <i class="fas fa-eye" style="margin-right: 5px;"></i> <%= poast.views %> views
+          </small>
+          <small class="text-muted" style="margin-left: 15px;"> <!-- Adjusted inline margin-left for spacing -->
+            <i class="fas fa-comments" style="margin-right: 5px;"></i> <%= pluralize(poast.comments_count, 'comment') %>
+          </small>
+        </div>
+      </div>
     </div>
-
-
-
+  <% end %>
+</div>
