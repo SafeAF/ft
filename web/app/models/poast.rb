@@ -3,6 +3,8 @@ class Poast < ApplicationRecord
   has_one_attached :thumbnail
   has_rich_text :content
 
+    validates :thumbnail, content_type: [:png, :jpg, :jpeg, :webp, :gif]
+
   has_many :comments, as: :commentable
 
 

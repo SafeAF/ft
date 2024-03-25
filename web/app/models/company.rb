@@ -11,6 +11,9 @@ class Company < ApplicationRecord
     attachable.variant :thumb, resize_to_limit: [100, 100]
   end
   
+    validates :logo, content_type: [:png, :jpg, :jpeg, :webp, :gif]
+
+
   has_many :comments, as: :commentable, dependent: :destroy
 
   # Validation

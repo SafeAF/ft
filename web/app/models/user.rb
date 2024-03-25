@@ -71,6 +71,8 @@ class User < ApplicationRecord
   # User Profile Picture
   has_one_attached :avatar  
   validate :avatar_format
+
+    validates :avatar, content_type: [:png, :jpg, :jpeg, :webp, :gif]
   
 
   # Achievement Badges

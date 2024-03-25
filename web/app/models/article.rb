@@ -19,6 +19,8 @@ class Article < ApplicationRecord
   # Limit number of images to 5 for listings
   validate :validate_image_count
 
+  validates :thumbnail, content_type: [:png, :jpg, :jpeg, :webp, :gif]
+
   def validate_image_count
     return if content.blank?
 
