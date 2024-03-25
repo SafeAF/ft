@@ -15,7 +15,7 @@ class Listing < ApplicationRecord
   validates :category, presence: true
 
   # Added this validation, crashed without it when bad filetype
-  validates :thumbnail, content_type: [:png, :jpg, :jpeg]
+  validates :thumbnail, content_type: [:png, :jpg, :jpeg, :webp, :gif]
   # Validate categories
   # validates :category, inclusion: { in: %w[Category1 Category2 Category3] }
 
