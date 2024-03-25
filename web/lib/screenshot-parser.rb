@@ -80,13 +80,13 @@ proompt = "can you take this output from rtesseract and clean it up " +
 "and craft a new title and heading from the content so it is relevant " +
 "and makes more sense? please keep the content the same. And can you return it as valid JSON with no extra words, i need to be able to use the response programmatically: " + text
 
-p = "Prompt: #{proompt}}"
+#p = "Prompt: #{proompt}}"
 
 puts "[+] Image read and proompt crafted, querying Chad.."
 
 
 raw_response = query_openai_api(proompt, api_key)
-puts "Raw response: #{raw_response}"
+#puts "Raw response: #{raw_response}"
 
 
 puts "[+] Parsing.."
