@@ -14,6 +14,7 @@ class Listing < ApplicationRecord
   validates :price, numericality: { greater_than_or_equal_to: 0 }
   validates :category, presence: true
 
+  # Added this validation, crashed without it when bad filetype
   validates :thumbnail, content_type: [:png, :jpg, :jpeg]
   # Validate categories
   # validates :category, inclusion: { in: %w[Category1 Category2 Category3] }

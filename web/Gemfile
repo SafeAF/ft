@@ -19,6 +19,9 @@ gem 'ahoy_matey'
 # for icons
 gem "font-awesome-sass", "~> 6.4.0"
 
+# req for better validation of images
+gem 'active_storage_validations'
+
 # for pagination
 gem 'kaminari'
 
