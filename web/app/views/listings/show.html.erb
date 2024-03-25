@@ -5,7 +5,7 @@
         <% begin %>
           <%= image_tag @listing.thumbnail.variant(:thumb), width: '300', height: '300', class: 'img-thumbnail mb-3' %>
         <% rescue ActiveStorage::InvariableError %>
-          <%= image_tag 'default-thumbnail.png', width: '300', height: '300', class: 'img-thumbnail mb-3' %>
+          <%= image_tag 'default-thumbnail.webp', width: '300', height: '300', class: 'img-thumbnail mb-3' %>
         <% end %>
       <% end %>
       <div class="mt-3">
